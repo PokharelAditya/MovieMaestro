@@ -116,7 +116,9 @@ compiler_rcc_clean:
 	-$(DEL_FILE) release\qrc_Photos.cpp
 release/qrc_Photos.cpp: ../../Photos.qrc \
 		C:/Qt/6.7.1/mingw_64/bin/rcc.exe \
-		../../../../Others/anarchy-anonymous-dark-hacker-wallpaper-preview.jpg
+		../../../photos\ for\ project/andhadhun.jpg \
+		../../../photos\ for\ project/avengers-infinity-war-4yngzhbhqmtam73j.jpg \
+		../../../photos\ for\ project/americanpsycho.jpg
 	C:\Qt\6.7.1\mingw_64\bin\rcc.exe -name Photos --no-zstd ..\..\Photos.qrc -o release\qrc_Photos.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -318,7 +320,7 @@ release/moc_admin.cpp: ../../admin.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		release/moc_predefs.h \
 		C:/Qt/6.7.1/mingw_64/bin/moc.exe
-	C:\Qt\6.7.1\mingw_64\bin\moc.exe $(DEFINES) --include "A:/Coding/Project - 2nd Sem/Codes/MovieMaestro/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/6.7.1/mingw_64/mkspecs/win32-g++ -I"A:/Coding/Project - 2nd Sem/Codes/MovieMaestro" -IC:/Qt/6.7.1/mingw_64/include -IC:/Qt/6.7.1/mingw_64/include/QtWidgets -IC:/Qt/6.7.1/mingw_64/include/QtGui -IC:/Qt/6.7.1/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\admin.h -o release\moc_admin.cpp
+	C:\Qt\6.7.1\mingw_64\bin\moc.exe $(DEFINES) --include S:/MovieMaestro/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/6.7.1/mingw_64/mkspecs/win32-g++ -IS:/MovieMaestro -IC:/Qt/6.7.1/mingw_64/include -IC:/Qt/6.7.1/mingw_64/include/QtWidgets -IC:/Qt/6.7.1/mingw_64/include/QtGui -IC:/Qt/6.7.1/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\admin.h -o release\moc_admin.cpp
 
 release/moc_mainwindow.cpp: ../../mainwindow.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QMainWindow \
@@ -511,7 +513,7 @@ release/moc_mainwindow.cpp: ../../mainwindow.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qtabwidget.h \
 		release/moc_predefs.h \
 		C:/Qt/6.7.1/mingw_64/bin/moc.exe
-	C:\Qt\6.7.1\mingw_64\bin\moc.exe $(DEFINES) --include "A:/Coding/Project - 2nd Sem/Codes/MovieMaestro/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/6.7.1/mingw_64/mkspecs/win32-g++ -I"A:/Coding/Project - 2nd Sem/Codes/MovieMaestro" -IC:/Qt/6.7.1/mingw_64/include -IC:/Qt/6.7.1/mingw_64/include/QtWidgets -IC:/Qt/6.7.1/mingw_64/include/QtGui -IC:/Qt/6.7.1/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\6.7.1\mingw_64\bin\moc.exe $(DEFINES) --include S:/MovieMaestro/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/6.7.1/mingw_64/mkspecs/win32-g++ -IS:/MovieMaestro -IC:/Qt/6.7.1/mingw_64/include -IC:/Qt/6.7.1/mingw_64/include/QtWidgets -IC:/Qt/6.7.1/mingw_64/include/QtGui -IC:/Qt/6.7.1/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\mainwindow.h -o release\moc_mainwindow.cpp
 
 release/moc_user.cpp: ../../user.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QDialog \
@@ -703,7 +705,7 @@ release/moc_user.cpp: ../../user.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		release/moc_predefs.h \
 		C:/Qt/6.7.1/mingw_64/bin/moc.exe
-	C:\Qt\6.7.1\mingw_64\bin\moc.exe $(DEFINES) --include "A:/Coding/Project - 2nd Sem/Codes/MovieMaestro/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/6.7.1/mingw_64/mkspecs/win32-g++ -I"A:/Coding/Project - 2nd Sem/Codes/MovieMaestro" -IC:/Qt/6.7.1/mingw_64/include -IC:/Qt/6.7.1/mingw_64/include/QtWidgets -IC:/Qt/6.7.1/mingw_64/include/QtGui -IC:/Qt/6.7.1/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\user.h -o release\moc_user.cpp
+	C:\Qt\6.7.1\mingw_64\bin\moc.exe $(DEFINES) --include S:/MovieMaestro/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/release/moc_predefs.h -IC:/Qt/6.7.1/mingw_64/mkspecs/win32-g++ -IS:/MovieMaestro -IC:/Qt/6.7.1/mingw_64/include -IC:/Qt/6.7.1/mingw_64/include/QtWidgets -IC:/Qt/6.7.1/mingw_64/include/QtGui -IC:/Qt/6.7.1/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\user.h -o release\moc_user.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1525,12 +1527,11 @@ release/user.o: ../../user.cpp ../../user.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qguiapplication_platform.h \
 		ui_user.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QVariant \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QAbstractButton \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qapplication.h \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QDialogButtonBox \
-		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QGroupBox \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qgroupbox.h \
+		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qframe.h \
 		../../admin.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\user.o ..\..\user.cpp
 
