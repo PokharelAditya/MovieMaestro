@@ -57,19 +57,6 @@ border-radius: 15px;</string>
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>310</x>
-     <y>-10</y>
-     <width>601</width>
-     <height>261</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Aditya</string>
-   </property>
-  </widget>
  </widget>
  <resources/>
  <connections/>
