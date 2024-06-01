@@ -61,7 +61,8 @@ QGroupBox::title {
     <property name="styleSheet">
      <string notr="true">QGroupBox
 {
-background-image :url(:/photos for project/andhadhun.jpg)no-repeat center center fixed;
+background-image:url(:/andhadhun.jpg);
+background-repeat:no-repeat;
  background-size: cover;
 background-position : top;
  border:none;

@@ -34,7 +34,7 @@ public:
         AdminGroupBox->setObjectName("AdminGroupBox");
         AdminGroupBox->setGeometry(QRect(300, 150, 600, 450));
         AdminGroupBox->setAutoFillBackground(false);
-        AdminGroupBox->setStyleSheet(QString::fromUtf8("background-image:url(:/Others/anarchy-anonymous-dark-hacker-wallpaper-preview.jpg);\n"
+        AdminGroupBox->setStyleSheet(QString::fromUtf8("background-image:url(:/anarchy-anonymous-dark-hacker-wallpaper-preview.jpg);\n"
 "background-position:center;\n"
 "background-repeat:no-repeat;\n"
 "border: 2px solid gray;\n"

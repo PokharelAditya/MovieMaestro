@@ -57,7 +57,8 @@ public:
         groupBox->setGeometry(QRect(110, 60, 280, 330));
         groupBox->setStyleSheet(QString::fromUtf8("QGroupBox\n"
 "{\n"
-"background-image :url(:/photos for project/andhadhun.jpg)no-repeat center center fixed;\n"
+"background-image:url(:/andhadhun.jpg);\n"
+"background-repeat:no-repeat;\n"
 " background-size: cover;\n"
 "background-position : top;\n"
 " border:none;\n"
@@ -77,8 +78,7 @@ public:
         groupBox_3->setObjectName("groupBox_3");
         groupBox_3->setGeometry(QRect(340, 30, 551, 401));
         groupBox_3->setStyleSheet(QString::fromUtf8("QGroupBox\n"
-"{background-image : url(:/photos for project/avengers-infinity-war-4yngzhbhqmtam73j.jpg) no-repeat center center fixed;\n"
-" background-size: cover;\n"
+"{background-image : url(:/photos for project/avengers-infinity-war-4yngzhbhqmtam73j.jpg) 0 0 0 0 stretch stretch;\n"
 "background-position : center;\n"
 "height:100%;\n"
 "width:100%;\n"
