@@ -60,14 +60,14 @@ border-radius: 15px;</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>-10</y>
-     <width>601</width>
-     <height>261</height>
+     <x>330</x>
+     <y>90</y>
+     <width>561</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Aditya</string>
+    <string>TextLabel</string>
    </property>
   </widget>
  </widget>
