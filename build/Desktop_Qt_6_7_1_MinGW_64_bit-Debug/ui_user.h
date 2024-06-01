@@ -10,32 +10,30 @@
 #define UI_USER_H
 
 #include <QtCore/QVariant>
-#include <QtWidgets/QAbstractButton>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QGroupBox>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_User
 {
 public:
-    QDialogButtonBox *buttonBox;
+    QGroupBox *groupBox;
 
     void setupUi(QDialog *User)
     {
         if (User->objectName().isEmpty())
             User->setObjectName("User");
-        User->resize(400, 300);
-        buttonBox = new QDialogButtonBox(User);
-        buttonBox->setObjectName("buttonBox");
-        buttonBox->setGeometry(QRect(30, 240, 341, 32));
-        buttonBox->setOrientation(Qt::Horizontal);
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        User->resize(1200, 750);
+        groupBox = new QGroupBox(User);
+        groupBox->setObjectName("groupBox");
+        groupBox->setGeometry(QRect(190, 10, 701, 375));
+        groupBox->setStyleSheet(QString::fromUtf8("QGroupBox\n"
+"{\n"
+"background-color:green;}"));
 
         retranslateUi(User);
-        QObject::connect(buttonBox, &QDialogButtonBox::accepted, User, qOverload<>(&QDialog::accept));
-        QObject::connect(buttonBox, &QDialogButtonBox::rejected, User, qOverload<>(&QDialog::reject));
 
         QMetaObject::connectSlotsByName(User);
     } // setupUi
@@ -43,6 +41,7 @@ public:
     void retranslateUi(QDialog *User)
     {
         User->setWindowTitle(QCoreApplication::translate("User", "Dialog", nullptr));
+        groupBox->setTitle(QCoreApplication::translate("User", "GroupBox", nullptr));
     } // retranslateUi
 
 };
