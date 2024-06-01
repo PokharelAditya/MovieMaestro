@@ -1,4 +1,6 @@
 #include "mainwindow.h"
+#include "user.h"
+#include "admin.h"
 
 #include <QApplication>
 
@@ -6,6 +8,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    w.show();
+    User *myuser = new User();
+    myuser->show();
     return a.exec();
 }
