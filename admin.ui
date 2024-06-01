@@ -44,7 +44,7 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-image:url(:/Others/anarchy-anonymous-dark-hacker-wallpaper-preview.jpg);
+    <string notr="true">background-image:url(:/anarchy-anonymous-dark-hacker-wallpaper-preview.jpg);
 background-position:center;
 background-repeat:no-repeat;
 border: 2px solid gray;
