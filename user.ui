@@ -14,112 +14,263 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QDialog
-{
-
-background-color:white;
-}</string>
+   <string notr="true"> background: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:1, y2:0, 
+        stop:0 #000000, stop:0.65 #000000, stop:1 #505050
+    );</string>
   </property>
-  <widget class="QGroupBox" name="Topbox">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1201</width>
-     <height>491</height>
+     <x>20</x>
+     <y>140</y>
+     <width>641</width>
+     <height>381</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/logo.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="Userloginform">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>50</y>
+     <width>471</width>
+     <height>661</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QGroupBox {
-  
-    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 black, stop:1 red);
-border:none;
-filter:blue(8px);
-
-}
-
-QGroupBox::title {
-    subcontrol-origin: margin;
-    subcontrol-position: top center;
-    padding: 0 3px;
-}
-
+    <string notr="true">background:none;
+border:1px solid black;
 </string>
    </property>
    <property name="title">
     <string/>
    </property>
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QLabel" name="Signup">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>60</y>
-      <width>280</width>
-      <height>330</height>
+      <x>10</x>
+      <y>10</y>
+      <width>111</width>
+      <height>41</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox
-{
-background-image:url(:/andhadhun.jpg);
-background-repeat:no-repeat;
- background-size: cover;
-background-position : top;
- border:none;
-}</string>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <italic>true</italic>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+      <kerning>true</kerning>
+      <fontweight>Black</fontweight>
+     </font>
     </property>
-    <property name="title">
-     <string/>
+    <property name="styleSheet">
+     <string notr="true">color:white;</string>
+    </property>
+    <property name="text">
+     <string>SignUp</string>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox_2">
+   <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>850</x>
-      <y>70</y>
-      <width>280</width>
-      <height>330</height>
+      <x>20</x>
+      <y>240</y>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QGroupBox
-{
-background-image:url(:/photos for project/americanpsycho.jpg);
-background-size:contain;
-background-repeat:no-repeat;
-background-position:top right;
-border:none;
-}</string>
-    </property>
-    <property name="title">
+    <property name="text">
      <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="images.qrc">:/passwordicon.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
     </property>
    </widget>
-   <widget class="QGroupBox" name="groupBox_3">
+   <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>30</y>
-      <width>551</width>
-      <height>401</height>
+      <x>20</x>
+      <y>150</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="images.qrc">:/usericon.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="usernameslot">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>150</y>
+      <width>361</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">QGroupBox
-{background-image : url(:/photos for project/avengers-infinity-war-4yngzhbhqmtam73j.jpg) 0 0 0 0 stretch stretch;
-background-position : center;
-height:100%;
-width:100%;
-
-border:none;
- }</string>
+     <string notr="true">background:none;
+border:1px solid white;
+background-color:transparent;
+color:white;</string>
     </property>
-    <property name="title">
+    <property name="placeholderText">
+     <string>enter user name must be 8 characters long</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="passwordslot">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>240</y>
+      <width>361</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:none;
+border:1px solid white;
+background-color:transparent;
+color:white;
+</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string>enter your password</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>330</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
      <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="images.qrc">:/passwordicon.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="passwordslot_2">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>330</y>
+      <width>361</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:none;
+border:1px solid white;
+background-color:transparent;
+color:white;
+</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string>confirm your password</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="haveanaccountlabel">
+    <property name="geometry">
+     <rect>
+      <x>278</x>
+      <y>400</y>
+      <width>171</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:none;
+color:white;</string>
+    </property>
+    <property name="text">
+     <string>already have an account</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>430</y>
+      <width>118</width>
+      <height>3</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:white;</string>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="signupbutton">
+    <property name="geometry">
+     <rect>
+      <x>59</x>
+      <y>460</y>
+      <width>361</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255,163,26);</string>
+    </property>
+    <property name="text">
+     <string>Sign Up</string>
     </property>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -15,6 +15,9 @@ public:
     explicit User(QWidget *parent = nullptr);
     ~User();
 
+private slots:
+    void on_haveanaccountlabel_linkActivated(const QString &link);
+
 private:
     Ui::User *ui;
 };

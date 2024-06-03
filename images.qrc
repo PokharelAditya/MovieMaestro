@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>andhadhun.jpg</file>
+        <file>logo.jpg</file>
+        <file>usericon.png</file>
+        <file>passwordicon.png</file>
     </qresource>
 </RCC>
