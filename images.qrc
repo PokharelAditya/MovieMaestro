@@ -4,5 +4,6 @@
         <file>logo.jpg</file>
         <file>usericon.png</file>
         <file>passwordicon.png</file>
+        <file>eyes.png</file>
     </qresource>
 </RCC>

@@ -35,6 +35,7 @@ public:
     QLabel *haveanaccountlabel;
     QFrame *line;
     QPushButton *signupbutton;
+    QPushButton *eye;
 
     void setupUi(QDialog *User)
     {
@@ -132,6 +133,11 @@ public:
         signupbutton->setFont(font1);
         signupbutton->setCursor(QCursor(Qt::PointingHandCursor));
         signupbutton->setStyleSheet(QString::fromUtf8("background-color:rgb(255,163,26);"));
+        eye = new QPushButton(Userloginform);
+        eye->setObjectName("eye");
+        eye->setGeometry(QRect(370, 290, 51, 31));
+        eye->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:none;"));
 
         retranslateUi(User);
 
@@ -152,6 +158,7 @@ public:
         passwordslot_2->setPlaceholderText(QCoreApplication::translate("User", "confirm your password", nullptr));
         haveanaccountlabel->setText(QCoreApplication::translate("User", "already have an account", nullptr));
         signupbutton->setText(QCoreApplication::translate("User", "Sign Up", nullptr));
+        eye->setText(QCoreApplication::translate("User", "\360\237\221\200", nullptr));
     } // retranslateUi
 
 };
