@@ -3,6 +3,9 @@
 #include<QLineEdit>
 #include <QDialog>
 #include<QPushButton>
+#include<QTSql>
+#include<QDebug>
+#include<QFileInfo>
 namespace Ui {
 class User;
 }
@@ -30,10 +33,12 @@ private:
     Ui::User *ui;
     bool checklength(const QString &text, bool ispassword);// changed
      bool containsSpecialCharAndNumber(const QString &text);
-    QLineEdit *usernameslot;//changed
+    QLineEdit *usernameslot;//changed you have to declar all the user defined datatypes you are going to make in .header file and then only provdie implementation in the .cpp file
     QLineEdit *passwordslot;// changed
-    QLineEdit *passwordslot_2; // changed
-
+    QLineEdit *passwordslot_2; // changed here the data type is QLineEdit
+    bool checkifalreadyexists(QString &user_id);
+    bool adduserdata(QString &user_id , QString &password);
+    bool isquerypass;
 };
 
 #endif // USER_H
