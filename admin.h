@@ -15,8 +15,14 @@ public:
     explicit Admin(QWidget *parent = nullptr);
     ~Admin();
 
+private slots:
+    void on_BackToUser_clicked();
+
+    void on_ShowHidePW_clicked();
+
 private:
     Ui::Admin *ui;
+    bool pwvisible;
+    QIcon OpenEye,CloseEye;
 };
-
 #endif // ADMIN_H
