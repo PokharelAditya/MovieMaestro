@@ -12,9 +12,22 @@ User::User(QWidget *parent)
 {
     ui->setupUi(this);
     /////
-    usernameslot = findChild<QLineEdit *>("usernameslot");//changed here
+    usernameslot = findChild<QLineEdit *>("usernameslot");//changed here this is how you find the child and use the same name of the datatpe that you defined in the header file
     passwordslot =findChild<QLineEdit *>("passwordslot");//changed here
     passwordslot_2 =findChild<QLineEdit *>("passwordslot_2"); // changed here
+    QSqlDatabase userdatabase = QSqlDatabase::addDatabase("QSQLITE" , "myconnection"); // here my connection is to say provide a unique id generally when we create a quey in slots the qt program already konws that we are doing referring to the given database but wheen we delcare a user defined function then the qt doesn't know what quey is to be passed where so we used myconnection unique id
+      userdatabase.setDatabaseName("D:/database/userdatabase.db");
+    if(!userdatabase.open())
+     {
+         QMessageBox::warning(this , "database info", "failed to connect to the database"+ userdatabase.lastError().text(), QMessageBox::Ok);
+
+     }
+     else
+    {
+        QMessageBox::warning(this , "database info", " connect to the database", QMessageBox::Ok);
+
+
+    }
 
 }
 
@@ -55,7 +68,36 @@ bool User::checklength(const QString &text, bool ispassword)///changed here
         }
     }
 }
+bool User::checkifalreadyexists(QString &users )
+{
+     // Check if the username already exists
+    QSqlQuery checkQuery(QSqlDatabase::database("myconnection"));
+    checkQuery.prepare("SELECT user_id FROM userinfo WHERE user_id = :username");
+    checkQuery.bindValue(":username", users);
 
+    if (checkQuery.exec()) {
+        return checkQuery.next(); // If a row exists, return true
+    } else {
+
+        return false;
+    }
+
+ }
+bool User::adduserdata(QString &user_id , QString &password)
+ {
+     QSqlQuery query(QSqlDatabase::database("myconnection"));
+     query.prepare("INSERT INTO userinfo (user_id, password) VALUES (:username, :password)");
+     query.bindValue(":username", user_id);
+     query.bindValue(":password", password);
+
+     if (query.exec()) {
+         return true;
+
+     } else {
+         return false;
+
+     }
+ }
 void User::on_signupbutton_clicked()
 {
     QString username = usernameslot->text();
@@ -70,7 +112,26 @@ void User::on_signupbutton_clicked()
             {
                 if(containsSpecialCharAndNumber(password))
                 {
-                    // connect to sql
+                    if(!(checkifalreadyexists(username)))
+                    {
+                       isquerypass =  adduserdata(username , password);
+                        if(isquerypass)
+                       {
+                            QMessageBox::information(this, "Signup Successful", "User signed up successfully!");
+
+                       }
+                        else
+                        {
+                            QMessageBox::warning(this, "Database Error", "Failed to insert data into the database: ");
+
+                        }
+                    }
+                    else
+                    {
+                        QMessageBox::warning(this, "Username Exists", "The username already exists. Please choose a different one.", QMessageBox::Ok);
+                        usernameslot->clear();
+                    }
+
                 }
           else
                 {
