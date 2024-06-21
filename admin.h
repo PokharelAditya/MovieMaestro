@@ -20,6 +20,18 @@ private slots:
 
     void on_ShowHidePW_clicked();
 
+    void on_LogInButton_clicked();
+
+    void on_TwoFA1_textChanged();
+
+    void on_TwoFA2_textChanged();
+
+    void on_TwoFA3_textChanged();
+
+    void on_TwoFA4_textChanged();
+
+    void on_ConfirmButton_clicked();
+
 private:
     Ui::Admin *ui;
     bool pwvisible;

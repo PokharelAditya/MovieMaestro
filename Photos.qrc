@@ -8,5 +8,7 @@
         <file>back icon.png</file>
         <file>CloseEye.png</file>
         <file>OpenEye.png</file>
+        <file>SettingsGlow.png</file>
+        <file>SettingsNoGlow.png</file>
     </qresource>
 </RCC>

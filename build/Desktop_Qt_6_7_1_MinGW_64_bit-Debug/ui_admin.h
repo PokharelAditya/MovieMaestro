@@ -35,6 +35,13 @@ public:
     QLabel *Background;
     QLabel *Logo;
     QPushButton *BackToUser;
+    QGroupBox *TwoFABox;
+    QPushButton *ConfirmButton;
+    QLabel *textTwoFA;
+    QLineEdit *TwoFA1;
+    QLineEdit *TwoFA2;
+    QLineEdit *TwoFA4;
+    QLineEdit *TwoFA3;
 
     void setupUi(QDialog *Admin)
     {
@@ -67,7 +74,7 @@ public:
         AdminGroupBox->setAlignment(Qt::AlignCenter);
         LogInButton = new QPushButton(AdminGroupBox);
         LogInButton->setObjectName("LogInButton");
-        LogInButton->setGeometry(QRect(110, 360, 200, 41));
+        LogInButton->setGeometry(QRect(110, 360, 200, 51));
         QSizePolicy sizePolicy1(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
@@ -82,11 +89,16 @@ public:
         LogInButton->setCursor(QCursor(Qt::PointingHandCursor));
         LogInButton->setMouseTracking(true);
         LogInButton->setLayoutDirection(Qt::LeftToRight);
-        LogInButton->setStyleSheet(QString::fromUtf8("border:none;\n"
-"background:rgba(230, 149, 40, 200);\n"
-"border-radius:none;\n"
+        LogInButton->setStyleSheet(QString::fromUtf8("#LogInButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
 "border-radius:20px;\n"
-""));
+"}\n"
+"#LogInButton:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
         LogInButton->setAutoRepeatInterval(-1);
         APassword = new QLineEdit(AdminGroupBox);
         APassword->setObjectName("APassword");
@@ -209,10 +221,132 @@ public:
         icon2.addFile(QString::fromUtf8(":/back icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         BackToUser->setIcon(icon2);
         BackToUser->setIconSize(QSize(50, 50));
+        TwoFABox = new QGroupBox(Admin);
+        TwoFABox->setObjectName("TwoFABox");
+        TwoFABox->setGeometry(QRect(400, 215, 400, 320));
+        sizePolicy.setHeightForWidth(TwoFABox->sizePolicy().hasHeightForWidth());
+        TwoFABox->setSizePolicy(sizePolicy);
+        TwoFABox->setLayoutDirection(Qt::LeftToRight);
+        TwoFABox->setAutoFillBackground(false);
+        TwoFABox->setStyleSheet(QString::fromUtf8("background-color:rgba(0, 0, 0, 100);\n"
+"background-position:left;\n"
+"border: none;\n"
+"border-radius: 15px;"));
+        TwoFABox->setAlignment(Qt::AlignCenter);
+        ConfirmButton = new QPushButton(TwoFABox);
+        ConfirmButton->setObjectName("ConfirmButton");
+        ConfirmButton->setGeometry(QRect(100, 210, 200, 50));
+        sizePolicy1.setHeightForWidth(ConfirmButton->sizePolicy().hasHeightForWidth());
+        ConfirmButton->setSizePolicy(sizePolicy1);
+        ConfirmButton->setFont(font);
+        ConfirmButton->setCursor(QCursor(Qt::PointingHandCursor));
+        ConfirmButton->setMouseTracking(true);
+        ConfirmButton->setLayoutDirection(Qt::LeftToRight);
+        ConfirmButton->setStyleSheet(QString::fromUtf8("#ConfirmButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#ConfirmButton:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        ConfirmButton->setAutoRepeatInterval(-1);
+        textTwoFA = new QLabel(TwoFABox);
+        textTwoFA->setObjectName("textTwoFA");
+        textTwoFA->setGeometry(QRect(15, 30, 370, 81));
+        QFont font5;
+        font5.setFamilies({QString::fromUtf8("Segoe UI")});
+        font5.setPointSize(17);
+        font5.setBold(true);
+        font5.setItalic(false);
+        textTwoFA->setFont(font5);
+        textTwoFA->setFocusPolicy(Qt::NoFocus);
+        textTwoFA->setContextMenuPolicy(Qt::DefaultContextMenu);
+        textTwoFA->setAutoFillBackground(false);
+        textTwoFA->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;\n"
+"color:rgb(230, 149, 40);"));
+        textTwoFA->setLineWidth(0);
+        textTwoFA->setScaledContents(false);
+        textTwoFA->setAlignment(Qt::AlignCenter);
+        textTwoFA->setWordWrap(false);
+        TwoFA1 = new QLineEdit(TwoFABox);
+        TwoFA1->setObjectName("TwoFA1");
+        TwoFA1->setGeometry(QRect(110, 140, 31, 35));
+        TwoFA1->setFont(font3);
+        TwoFA1->setFocusPolicy(Qt::StrongFocus);
+        TwoFA1->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;\n"
+"\n"
+""));
+        TwoFA1->setMaxLength(1);
+        TwoFA1->setFrame(true);
+        TwoFA1->setEchoMode(QLineEdit::Password);
+        TwoFA1->setCursorPosition(0);
+        TwoFA1->setAlignment(Qt::AlignCenter);
+        TwoFA2 = new QLineEdit(TwoFABox);
+        TwoFA2->setObjectName("TwoFA2");
+        TwoFA2->setGeometry(QRect(160, 140, 31, 35));
+        TwoFA2->setFont(font3);
+        TwoFA2->setFocusPolicy(Qt::StrongFocus);
+        TwoFA2->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;\n"
+"\n"
+""));
+        TwoFA2->setMaxLength(1);
+        TwoFA2->setFrame(true);
+        TwoFA2->setEchoMode(QLineEdit::Password);
+        TwoFA2->setCursorPosition(0);
+        TwoFA2->setAlignment(Qt::AlignCenter);
+        TwoFA4 = new QLineEdit(TwoFABox);
+        TwoFA4->setObjectName("TwoFA4");
+        TwoFA4->setGeometry(QRect(260, 140, 31, 35));
+        TwoFA4->setFont(font3);
+        TwoFA4->setFocusPolicy(Qt::StrongFocus);
+        TwoFA4->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;\n"
+"\n"
+""));
+        TwoFA4->setMaxLength(1);
+        TwoFA4->setFrame(true);
+        TwoFA4->setEchoMode(QLineEdit::Password);
+        TwoFA4->setCursorPosition(0);
+        TwoFA4->setAlignment(Qt::AlignCenter);
+        TwoFA4->setClearButtonEnabled(false);
+        TwoFA3 = new QLineEdit(TwoFABox);
+        TwoFA3->setObjectName("TwoFA3");
+        TwoFA3->setGeometry(QRect(210, 140, 31, 35));
+        TwoFA3->setFont(font3);
+        TwoFA3->setFocusPolicy(Qt::StrongFocus);
+        TwoFA3->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;\n"
+"\n"
+""));
+        TwoFA3->setMaxLength(1);
+        TwoFA3->setFrame(true);
+        TwoFA3->setEchoMode(QLineEdit::Password);
+        TwoFA3->setCursorPosition(0);
+        TwoFA3->setAlignment(Qt::AlignCenter);
+        TwoFA3->setClearButtonEnabled(false);
         Background->raise();
         AdminGroupBox->raise();
         Logo->raise();
         BackToUser->raise();
+        TwoFABox->raise();
 
         retranslateUi(Admin);
 
@@ -221,7 +355,7 @@ public:
 
     void retranslateUi(QDialog *Admin)
     {
-        Admin->setWindowTitle(QCoreApplication::translate("Admin", "Admin", nullptr));
+        Admin->setWindowTitle(QCoreApplication::translate("Admin", "MovieMaestro", nullptr));
         AdminGroupBox->setTitle(QString());
         LogInButton->setText(QCoreApplication::translate("Admin", "Sign In", nullptr));
         APassword->setText(QString());
@@ -234,6 +368,13 @@ public:
         Background->setText(QString());
         Logo->setText(QString());
         BackToUser->setText(QString());
+        TwoFABox->setTitle(QString());
+        ConfirmButton->setText(QCoreApplication::translate("Admin", "Confirm", nullptr));
+        textTwoFA->setText(QCoreApplication::translate("Admin", "Two Factor Authentication", nullptr));
+        TwoFA1->setText(QString());
+        TwoFA2->setText(QString());
+        TwoFA4->setText(QString());
+        TwoFA3->setText(QString());
     } // retranslateUi
 
 };

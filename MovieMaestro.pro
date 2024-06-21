@@ -10,17 +10,20 @@ CONFIG += c++17
 
 SOURCES += \
     admin.cpp \
+    adminoptions.cpp \
     main.cpp \
     mainwindow.cpp \
     user.cpp
 
 HEADERS += \
     admin.h \
+    adminoptions.h \
     mainwindow.h \
     user.h
 
 FORMS += \
     admin.ui \
+    adminoptions.ui \
     mainwindow.ui \
     user.ui
 
