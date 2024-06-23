@@ -32,6 +32,8 @@ private slots:
 
     void on_ConfirmButton_clicked();
 
+    void on_BackToAdmin_clicked();
+
 private:
     Ui::Admin *ui;
     bool pwvisible;

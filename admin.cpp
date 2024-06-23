@@ -15,6 +15,7 @@ Admin::Admin(QWidget *parent)
     ui->AUsername->setPlaceholderText("Username");
     ui->APassword->setPlaceholderText("Password");
     ui->TwoFABox->hide();
+    ui->BackToAdmin->hide();
 }
 
 Admin::~Admin()
@@ -29,6 +30,13 @@ void Admin::on_BackToUser_clicked()
     myuser->show();
 }
 
+void Admin::on_BackToAdmin_clicked()
+{
+    ui->BackToAdmin->hide();
+    ui->BackToUser->show();
+    ui->TwoFABox->hide();
+    ui->AdminGroupBox->show();
+}
 
 void Admin::on_ShowHidePW_clicked()
 {
@@ -52,6 +60,8 @@ void Admin::on_LogInButton_clicked()
     QString pw = ui->APassword->text();
     if(un == "Admin" && pw == ("admin"))
     {
+        ui->BackToUser->hide();
+        ui->BackToAdmin->show();
         ui->AdminGroupBox->hide();
         ui->TwoFABox->show();
         ui->TwoFA1->setFocus();
@@ -142,4 +152,3 @@ void Admin::on_ConfirmButton_clicked()
         ui->TwoFA1->setFocus();
     }
 }
-

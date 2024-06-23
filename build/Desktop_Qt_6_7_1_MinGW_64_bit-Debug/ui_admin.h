@@ -42,6 +42,7 @@ public:
     QLineEdit *TwoFA2;
     QLineEdit *TwoFA4;
     QLineEdit *TwoFA3;
+    QPushButton *BackToAdmin;
 
     void setupUi(QDialog *Admin)
     {
@@ -342,11 +343,21 @@ public:
         TwoFA3->setCursorPosition(0);
         TwoFA3->setAlignment(Qt::AlignCenter);
         TwoFA3->setClearButtonEnabled(false);
+        BackToAdmin = new QPushButton(Admin);
+        BackToAdmin->setObjectName("BackToAdmin");
+        BackToAdmin->setGeometry(QRect(40, 40, 51, 51));
+        BackToAdmin->setCursor(QCursor(Qt::PointingHandCursor));
+        BackToAdmin->setMouseTracking(true);
+        BackToAdmin->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        BackToAdmin->setIcon(icon2);
+        BackToAdmin->setIconSize(QSize(50, 50));
         Background->raise();
         AdminGroupBox->raise();
         Logo->raise();
         BackToUser->raise();
         TwoFABox->raise();
+        BackToAdmin->raise();
 
         retranslateUi(Admin);
 
@@ -375,6 +386,7 @@ public:
         TwoFA2->setText(QString());
         TwoFA4->setText(QString());
         TwoFA3->setText(QString());
+        BackToAdmin->setText(QString());
     } // retranslateUi
 
 };
