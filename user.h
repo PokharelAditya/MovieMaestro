@@ -28,6 +28,11 @@ private slots:
 
     void on_eye_clicked();
 
+    void on_clearusernamebtn_clicked();
+    void on_clearpasswordbtn_clicked();
+
+    void on_clearconfirmpasswordbtn_2_clicked();
+
 private:
     int count =0;
     Ui::User *ui;
@@ -39,6 +44,7 @@ private:
     bool checkifalreadyexists(QString &user_id);
     bool adduserdata(QString &user_id , QString &password);
     bool isquerypass;
+     QIcon OpenEye,CloseEye;
 };
 
 #endif // USER_H

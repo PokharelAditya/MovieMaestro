@@ -24,7 +24,7 @@ class Ui_User
 {
 public:
     QLabel *label;
-    QGroupBox *Userloginform;
+    QGroupBox *clearconfirmpasswordbtn;
     QLabel *Signup;
     QLabel *label_2;
     QLabel *label_3;
@@ -36,6 +36,9 @@ public:
     QFrame *line;
     QPushButton *signupbutton;
     QPushButton *eye;
+    QPushButton *clearusernamebtn;
+    QPushButton *clearpasswordbtn;
+    QPushButton *clearconfirmpasswordbtn_2;
 
     void setupUi(QDialog *User)
     {
@@ -51,13 +54,13 @@ public:
         label->setGeometry(QRect(20, 140, 641, 381));
         label->setPixmap(QPixmap(QString::fromUtf8(":/logo.jpg")));
         label->setScaledContents(true);
-        Userloginform = new QGroupBox(User);
-        Userloginform->setObjectName("Userloginform");
-        Userloginform->setGeometry(QRect(710, 50, 471, 661));
-        Userloginform->setStyleSheet(QString::fromUtf8("background:none;\n"
+        clearconfirmpasswordbtn = new QGroupBox(User);
+        clearconfirmpasswordbtn->setObjectName("clearconfirmpasswordbtn");
+        clearconfirmpasswordbtn->setGeometry(QRect(710, 50, 471, 661));
+        clearconfirmpasswordbtn->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:1px solid black;\n"
 ""));
-        Signup = new QLabel(Userloginform);
+        Signup = new QLabel(clearconfirmpasswordbtn);
         Signup->setObjectName("Signup");
         Signup->setGeometry(QRect(10, 10, 111, 41));
         QFont font;
@@ -69,24 +72,24 @@ public:
         font.setKerning(true);
         Signup->setFont(font);
         Signup->setStyleSheet(QString::fromUtf8("color:white;"));
-        label_2 = new QLabel(Userloginform);
+        label_2 = new QLabel(clearconfirmpasswordbtn);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(20, 240, 41, 41));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/passwordicon.png")));
         label_2->setScaledContents(true);
-        label_3 = new QLabel(Userloginform);
+        label_3 = new QLabel(clearconfirmpasswordbtn);
         label_3->setObjectName("label_3");
         label_3->setGeometry(QRect(20, 150, 41, 41));
         label_3->setPixmap(QPixmap(QString::fromUtf8(":/usericon.png")));
         label_3->setScaledContents(true);
-        usernameslot = new QLineEdit(Userloginform);
+        usernameslot = new QLineEdit(clearconfirmpasswordbtn);
         usernameslot->setObjectName("usernameslot");
         usernameslot->setGeometry(QRect(70, 150, 361, 41));
         usernameslot->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:1px solid white;\n"
 "background-color:transparent;\n"
 "color:white;"));
-        passwordslot = new QLineEdit(Userloginform);
+        passwordslot = new QLineEdit(clearconfirmpasswordbtn);
         passwordslot->setObjectName("passwordslot");
         passwordslot->setGeometry(QRect(70, 240, 361, 41));
         passwordslot->setStyleSheet(QString::fromUtf8("background:none;\n"
@@ -95,12 +98,12 @@ public:
 "color:white;\n"
 ""));
         passwordslot->setEchoMode(QLineEdit::Password);
-        label_4 = new QLabel(Userloginform);
+        label_4 = new QLabel(clearconfirmpasswordbtn);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(20, 330, 41, 41));
         label_4->setPixmap(QPixmap(QString::fromUtf8(":/passwordicon.png")));
         label_4->setScaledContents(true);
-        passwordslot_2 = new QLineEdit(Userloginform);
+        passwordslot_2 = new QLineEdit(clearconfirmpasswordbtn);
         passwordslot_2->setObjectName("passwordslot_2");
         passwordslot_2->setGeometry(QRect(70, 330, 361, 41));
         passwordslot_2->setStyleSheet(QString::fromUtf8("background:none;\n"
@@ -109,19 +112,19 @@ public:
 "color:white;\n"
 ""));
         passwordslot_2->setEchoMode(QLineEdit::Password);
-        haveanaccountlabel = new QLabel(Userloginform);
+        haveanaccountlabel = new QLabel(clearconfirmpasswordbtn);
         haveanaccountlabel->setObjectName("haveanaccountlabel");
         haveanaccountlabel->setGeometry(QRect(278, 400, 171, 20));
         haveanaccountlabel->setCursor(QCursor(Qt::PointingHandCursor));
         haveanaccountlabel->setStyleSheet(QString::fromUtf8("border:none;\n"
 "color:white;"));
-        line = new QFrame(Userloginform);
+        line = new QFrame(clearconfirmpasswordbtn);
         line->setObjectName("line");
         line->setGeometry(QRect(280, 430, 118, 3));
         line->setStyleSheet(QString::fromUtf8("background-color:white;"));
         line->setFrameShape(QFrame::Shape::HLine);
         line->setFrameShadow(QFrame::Shadow::Sunken);
-        signupbutton = new QPushButton(Userloginform);
+        signupbutton = new QPushButton(clearconfirmpasswordbtn);
         signupbutton->setObjectName("signupbutton");
         signupbutton->setGeometry(QRect(59, 460, 361, 51));
         QFont font1;
@@ -133,11 +136,20 @@ public:
         signupbutton->setFont(font1);
         signupbutton->setCursor(QCursor(Qt::PointingHandCursor));
         signupbutton->setStyleSheet(QString::fromUtf8("background-color:rgb(255,163,26);"));
-        eye = new QPushButton(Userloginform);
+        eye = new QPushButton(clearconfirmpasswordbtn);
         eye->setObjectName("eye");
         eye->setGeometry(QRect(370, 290, 51, 31));
         eye->setStyleSheet(QString::fromUtf8("border:none;\n"
 "background:none;"));
+        clearusernamebtn = new QPushButton(clearconfirmpasswordbtn);
+        clearusernamebtn->setObjectName("clearusernamebtn");
+        clearusernamebtn->setGeometry(QRect(400, 160, 21, 20));
+        clearpasswordbtn = new QPushButton(clearconfirmpasswordbtn);
+        clearpasswordbtn->setObjectName("clearpasswordbtn");
+        clearpasswordbtn->setGeometry(QRect(400, 250, 21, 20));
+        clearconfirmpasswordbtn_2 = new QPushButton(clearconfirmpasswordbtn);
+        clearconfirmpasswordbtn_2->setObjectName("clearconfirmpasswordbtn_2");
+        clearconfirmpasswordbtn_2->setGeometry(QRect(400, 340, 21, 20));
 
         retranslateUi(User);
 
@@ -148,7 +160,7 @@ public:
     {
         User->setWindowTitle(QCoreApplication::translate("User", "Dialog", nullptr));
         label->setText(QString());
-        Userloginform->setTitle(QString());
+        clearconfirmpasswordbtn->setTitle(QString());
         Signup->setText(QCoreApplication::translate("User", "SignUp", nullptr));
         label_2->setText(QString());
         label_3->setText(QString());
@@ -158,7 +170,10 @@ public:
         passwordslot_2->setPlaceholderText(QCoreApplication::translate("User", "confirm your password", nullptr));
         haveanaccountlabel->setText(QCoreApplication::translate("User", "already have an account", nullptr));
         signupbutton->setText(QCoreApplication::translate("User", "Sign Up", nullptr));
-        eye->setText(QCoreApplication::translate("User", "\360\237\221\200", nullptr));
+        eye->setText(QString());
+        clearusernamebtn->setText(QString());
+        clearpasswordbtn->setText(QString());
+        clearconfirmpasswordbtn_2->setText(QString());
     } // retranslateUi
 
 };

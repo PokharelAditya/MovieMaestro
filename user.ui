@@ -38,7 +38,7 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QGroupBox" name="Userloginform">
+  <widget class="QGroupBox" name="clearconfirmpasswordbtn">
    <property name="geometry">
     <rect>
      <x>710</x>
@@ -281,7 +281,46 @@ color:white;</string>
 background:none;</string>
     </property>
     <property name="text">
-     <string>👀</string>
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clearusernamebtn">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>160</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clearpasswordbtn">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>250</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="clearconfirmpasswordbtn_2">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>340</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

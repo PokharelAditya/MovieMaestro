@@ -8,7 +8,10 @@
 
 User::User(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::User)
+    , ui(new Ui::User),
+    OpenEye(":/OpenEye.png"),
+    CloseEye(":/CloseEye.png")
+
 {
     ui->setupUi(this);
     /////
@@ -28,7 +31,7 @@ User::User(QWidget *parent)
 
 
     }
-
+     ui->eye->setIcon(OpenEye);
 }
 
 User::~User()
@@ -168,13 +171,33 @@ void User::on_eye_clicked()
     {
     passwordslot->setEchoMode(QLineEdit::Normal);
     passwordslot_2->setEchoMode(QLineEdit::Normal);
+    ui->eye->setIcon(CloseEye);
         count++;
     }
     else
     {
         passwordslot->setEchoMode(QLineEdit::Password);
         passwordslot_2->setEchoMode(QLineEdit::Password);
+        ui->eye->setIcon(OpenEye);
         count++;
     }
+}
+
+
+void User::on_clearusernamebtn_clicked()
+{
+    ui->usernameslot->clear();
+
+}
+
+void User::on_clearpasswordbtn_clicked()
+{
+    ui->passwordslot->clear();
+
+}
+
+void User::on_clearconfirmpasswordbtn_2_clicked()
+{
+    ui->passwordslot_2->clear();
 }
 
