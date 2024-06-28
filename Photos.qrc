@@ -1,5 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>anarchy-anonymous-dark-hacker-wallpaper-preview.jpg</file>
+        <file>MM Black BG.png</file>
+        <file>MM Transparent BG.png</file>
+        <file>MM White BG.png</file>
+        <file>background1.png</file>
+        <file>back icon.png</file>
+        <file>CloseEye.png</file>
+        <file>OpenEye.png</file>
+        <file>SettingsGlow.png</file>
+        <file>SettingsNoGlow.png</file>
     </qresource>
 </RCC>

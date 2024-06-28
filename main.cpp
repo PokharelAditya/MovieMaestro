@@ -4,11 +4,13 @@
 
 #include <QApplication>
 
+
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
-    User *myuser = new User();
-    myuser->show();
+    //User *myuser = new User();myuser->show();
+    Admin *myadmin = new Admin();myadmin->show();
     return a.exec();
 }
