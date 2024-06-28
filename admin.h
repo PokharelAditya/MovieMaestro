@@ -17,7 +17,6 @@ public:
     explicit Admin(QWidget *parent = nullptr);
     ~Admin();
 
-    void accessDB(int &,QString &,QString &,QString &,int &);
     bool un_check(QString);
     bool pw_check(QString);
     bool twoFA_check(int);
@@ -49,6 +48,10 @@ private:
     Ui::Admin *ui;
     bool pwvisible;
     QIcon OpenEye,CloseEye;
+
+    void accessDB(int &,QString &,QString &,QString &,int &,QString &,QString &,QString &,QString &);
+    QString encrypt(QString);
+    QString decrypt(QString);
 };
 
 extern Admin *ad;

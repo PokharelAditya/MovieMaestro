@@ -31,10 +31,10 @@ Admin::Admin(QWidget *parent)
     }
 }
 
-void Admin::accessDB(int &id,QString &DBun,QString &DBpw,QString &DBemail,int &DBtwoFA)
+void Admin::accessDB(int &id,QString &DBun,QString &DBpw,QString &DBemail,int &DBtwoFA,QString &DBsq1,QString &DBsa1,QString &DBsq2,QString &DBsa2)
 {
     QSqlQuery query;
-    query.prepare("SELECT Id, Username, Password, Email, TwoFA FROM ADMIN");
+    query.prepare("SELECT Id, Username, Password, Email, TwoFA, SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2 FROM ADMIN");
     query.exec();
 
     while(query.next())
@@ -44,7 +44,13 @@ void Admin::accessDB(int &id,QString &DBun,QString &DBpw,QString &DBemail,int &D
         DBpw = query.value(2).toString();
         DBemail = query.value(3).toString();
         DBtwoFA = query.value(4).toInt();
+        DBsq1 = query.value(5).toString();
+        DBsa1 = query.value(6).toString();
+        DBsq2 = query.value(7).toString();
+        DBsa2 = query.value(8).toString();
     }
+
+
 }
 
 Admin::~Admin()
@@ -91,8 +97,8 @@ void Admin::on_ShowHidePW_clicked()
 bool Admin::un_check(QString un)
 {
     int id,DBtwoFA;
-    QString DBun,DBpw,DBemail;
-    accessDB(id,DBun,DBpw,DBemail,DBtwoFA);
+    QString DBun,DBpw,DBemail,DBsq1,DBsa1,DBsq2,DBsa2;
+    accessDB(id,DBun,DBpw,DBemail,DBtwoFA,DBsq1,DBsa1,DBsq2,DBsa2);
     if(DBun == un)
     {
         return true;
@@ -106,8 +112,8 @@ bool Admin::un_check(QString un)
 bool Admin::pw_check(QString pw)
 {
     int id,DBtwoFA;
-    QString DBun,DBpw,DBemail;
-    accessDB(id,DBun,DBpw,DBemail,DBtwoFA);
+    QString DBun,DBpw,DBemail,DBsq1,DBsa1,DBsq2,DBsa2;
+    accessDB(id,DBun,DBpw,DBemail,DBtwoFA,DBsq1,DBsa1,DBsq2,DBsa2);
     if(DBpw == pw)
     {
         return true;
@@ -195,8 +201,8 @@ void Admin::on_TwoFA4_textChanged()
 bool Admin::twoFA_check(int tfa)
 {
     int id,DBtwoFA;
-    QString DBun,DBpw,DBemail;
-    accessDB(id,DBun,DBpw,DBemail,DBtwoFA);
+    QString DBun,DBpw,DBemail,DBsq1,DBsa1,DBsq2,DBsa2;
+    accessDB(id,DBun,DBpw,DBemail,DBtwoFA,DBsq1,DBsa1,DBsq2,DBsa2);
     if(DBtwoFA==tfa)
     {
         return true;
