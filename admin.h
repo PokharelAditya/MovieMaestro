@@ -2,6 +2,8 @@
 #define ADMIN_H
 
 #include <QDialog>
+#include <QTSql>
+#include <QDebug>
 
 namespace Ui {
 class Admin;
@@ -14,6 +16,11 @@ class Admin : public QDialog
 public:
     explicit Admin(QWidget *parent = nullptr);
     ~Admin();
+
+    void accessDB(int &,QString &,QString &,QString &,int &);
+    bool un_check(QString);
+    bool pw_check(QString);
+    bool twoFA_check(int);
 
 private slots:
     void on_BackToUser_clicked();
@@ -34,9 +41,16 @@ private slots:
 
     void on_BackToAdmin_clicked();
 
+    void on_forgotPassword_clicked();
+
+    void on_forgotTwoFA_clicked();
+
 private:
     Ui::Admin *ui;
     bool pwvisible;
     QIcon OpenEye,CloseEye;
 };
+
+extern Admin *ad;
+
 #endif // ADMIN_H

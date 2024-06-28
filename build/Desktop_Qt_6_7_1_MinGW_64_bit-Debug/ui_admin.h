@@ -42,6 +42,7 @@ public:
     QLineEdit *TwoFA2;
     QLineEdit *TwoFA4;
     QLineEdit *TwoFA3;
+    QPushButton *forgotTwoFA;
     QPushButton *BackToAdmin;
 
     void setupUi(QDialog *Admin)
@@ -236,7 +237,7 @@ public:
         TwoFABox->setAlignment(Qt::AlignCenter);
         ConfirmButton = new QPushButton(TwoFABox);
         ConfirmButton->setObjectName("ConfirmButton");
-        ConfirmButton->setGeometry(QRect(100, 210, 200, 50));
+        ConfirmButton->setGeometry(QRect(100, 220, 200, 50));
         sizePolicy1.setHeightForWidth(ConfirmButton->sizePolicy().hasHeightForWidth());
         ConfirmButton->setSizePolicy(sizePolicy1);
         ConfirmButton->setFont(font);
@@ -256,7 +257,7 @@ public:
         ConfirmButton->setAutoRepeatInterval(-1);
         textTwoFA = new QLabel(TwoFABox);
         textTwoFA->setObjectName("textTwoFA");
-        textTwoFA->setGeometry(QRect(15, 30, 370, 81));
+        textTwoFA->setGeometry(QRect(15, 20, 370, 81));
         QFont font5;
         font5.setFamilies({QString::fromUtf8("Segoe UI")});
         font5.setPointSize(17);
@@ -275,7 +276,7 @@ public:
         textTwoFA->setWordWrap(false);
         TwoFA1 = new QLineEdit(TwoFABox);
         TwoFA1->setObjectName("TwoFA1");
-        TwoFA1->setGeometry(QRect(110, 140, 31, 35));
+        TwoFA1->setGeometry(QRect(110, 120, 31, 35));
         TwoFA1->setFont(font3);
         TwoFA1->setFocusPolicy(Qt::StrongFocus);
         TwoFA1->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
@@ -292,7 +293,7 @@ public:
         TwoFA1->setAlignment(Qt::AlignCenter);
         TwoFA2 = new QLineEdit(TwoFABox);
         TwoFA2->setObjectName("TwoFA2");
-        TwoFA2->setGeometry(QRect(160, 140, 31, 35));
+        TwoFA2->setGeometry(QRect(160, 120, 31, 35));
         TwoFA2->setFont(font3);
         TwoFA2->setFocusPolicy(Qt::StrongFocus);
         TwoFA2->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
@@ -309,7 +310,7 @@ public:
         TwoFA2->setAlignment(Qt::AlignCenter);
         TwoFA4 = new QLineEdit(TwoFABox);
         TwoFA4->setObjectName("TwoFA4");
-        TwoFA4->setGeometry(QRect(260, 140, 31, 35));
+        TwoFA4->setGeometry(QRect(260, 120, 31, 35));
         TwoFA4->setFont(font3);
         TwoFA4->setFocusPolicy(Qt::StrongFocus);
         TwoFA4->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
@@ -327,7 +328,7 @@ public:
         TwoFA4->setClearButtonEnabled(false);
         TwoFA3 = new QLineEdit(TwoFABox);
         TwoFA3->setObjectName("TwoFA3");
-        TwoFA3->setGeometry(QRect(210, 140, 31, 35));
+        TwoFA3->setGeometry(QRect(210, 120, 31, 35));
         TwoFA3->setFont(font3);
         TwoFA3->setFocusPolicy(Qt::StrongFocus);
         TwoFA3->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
@@ -343,6 +344,15 @@ public:
         TwoFA3->setCursorPosition(0);
         TwoFA3->setAlignment(Qt::AlignCenter);
         TwoFA3->setClearButtonEnabled(false);
+        forgotTwoFA = new QPushButton(TwoFABox);
+        forgotTwoFA->setObjectName("forgotTwoFA");
+        forgotTwoFA->setGeometry(QRect(260, 170, 121, 21));
+        forgotTwoFA->setFont(font4);
+        forgotTwoFA->setCursor(QCursor(Qt::PointingHandCursor));
+        forgotTwoFA->setMouseTracking(true);
+        forgotTwoFA->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;\n"
+"color:rgba(230, 149, 40, 200);"));
         BackToAdmin = new QPushButton(Admin);
         BackToAdmin->setObjectName("BackToAdmin");
         BackToAdmin->setGeometry(QRect(40, 40, 51, 51));
@@ -386,6 +396,7 @@ public:
         TwoFA2->setText(QString());
         TwoFA4->setText(QString());
         TwoFA3->setText(QString());
+        forgotTwoFA->setText(QCoreApplication::translate("Admin", "Forgot code?", nullptr));
         BackToAdmin->setText(QString());
     } // retranslateUi
 
