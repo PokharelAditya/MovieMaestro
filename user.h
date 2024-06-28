@@ -33,7 +33,32 @@ private slots:
 
     void on_clearconfirmpasswordbtn_2_clicked();
 
+    void on_leye_clicked();
+
+    void on_lclearusernamebtn_clicked();
+
+    void on_lclearpasswordbtn_clicked();
+
+    void on_goback_clicked();
+
+    void on_alreadyregistered_clicked();
+
+    void on_loginbutton_clicked();
+
+    void on_lusernameslot_returnPressed();
+
+    void on_lpasswordslot_returnPressed();
+
+    void on_usernameslot_returnPressed();
+
+    void on_passwordslot_returnPressed();
+
+    void on_passwordslot_2_returnPressed();
+
+    void on_adminloginbtn_clicked();
+
 private:
+    int lcount=0;
     int count =0;
     Ui::User *ui;
     bool checklength(const QString &text, bool ispassword);// changed
@@ -44,7 +69,9 @@ private:
     bool checkifalreadyexists(QString &user_id);
     bool adduserdata(QString &user_id , QString &password);
     bool isquerypass;
-     QIcon OpenEye,CloseEye;
+     QIcon OpenEye,CloseEye,Cross;
+    void setredusernamelineedit();
+    void setredpasswordlineedit();
 };
 
 #endif // USER_H
