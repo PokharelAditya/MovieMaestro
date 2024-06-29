@@ -61,6 +61,8 @@ private slots:
 
     void on_left_clicked();
 
+    void on_usernameslot_textChanged(const QString &arg1);
+
 private:
     int lcount=0;
     int count =0;
@@ -77,6 +79,14 @@ private:
      QIcon OpenEye,CloseEye,Cross,left;
     void setredusernamelineedit();
     void setredpasswordlineedit();
+    int charToInt(QChar ch);
+    QChar intToChar(int num);
+    int mod(int a, int b);
+    QString encrypt(const QString &plaintext);
+    int determinant(const QVector<QVector<int>> &matrix);
+    int modularInverse(int a, int m);
+    QVector<QVector<int>> inverseMatrix(const QVector<QVector<int>> &matrix);
+    QString decrypt(const QString &ciphertext);
 };
 
 #endif // USER_H

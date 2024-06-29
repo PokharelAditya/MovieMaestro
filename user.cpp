@@ -7,6 +7,7 @@
 #include <QRegularExpression>
 #include<QGroupBox>
 #include<admin.h>
+#include<QVector>
 User::User(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::User),
@@ -33,6 +34,11 @@ User::User(QWidget *parent)
 
 
     }
+     ui->clearconfirmpasswordbtn_2->hide();
+    ui->clearpasswordbtn->hide();
+     ui->clearusernamebtn->hide();
+    ui->lclearpasswordbtn->hide();
+     ui->lclearusernamebtn->hide();
      ui->left->setIcon(left);
      ui->horror->setAutoExclusive(false);
      ui->action->setAutoExclusive(false);
@@ -115,7 +121,7 @@ bool User::adduserdata(QString &user_id , QString &password)
      QSqlQuery query(QSqlDatabase::database("myconnection"));
      query.prepare("INSERT INTO userinfo (user_id, password) VALUES (:username, :password)");
      query.bindValue(":username", user_id);
-     query.bindValue(":password", password);
+     query.bindValue(":password", encrypt(password));
 
      if (query.exec()) {
          return true;
@@ -312,7 +318,7 @@ void User::on_loginbutton_clicked()
     if (myQuery.exec())/* this check if query sqlite ma gayera execute vayo kinai vanera  */{
         if (myQuery.next()) { // Check if a row is returned
             QString databasepw = myQuery.value(0).toString(); // Get the password from the result
-            if (databasepw == pw) {
+            if (decrypt(databasepw) == pw) {
                 QMessageBox::information(this, "Login Success", "Congratulations, you are logged in");
             } else {
                 QMessageBox::warning(this, "Login Failure", "Incorrect password entered");
@@ -426,3 +432,122 @@ void User::on_left_clicked()
     ui->signupbox->show();
 }
 
+
+void User::on_usernameslot_textChanged(const QString &arg1)
+{
+
+}
+///////////////////////////////////////////////////////////////////////////
+// Key matrix (2x2)
+const QVector<QVector<int>> keyMatrix = {{3, 3}, {2, 5}};
+
+// Character to integer mapping
+int User::charToInt(QChar ch) {
+    if (ch.isLower()) return ch.toLatin1() - 'a';
+    if (ch.isUpper()) return ch.toLatin1() - 'A' + 26;
+    if (ch.isDigit()) return ch.toLatin1() - '0' + 52;
+    return ch.unicode() - 33 + 62; // Assuming special characters start from '!' (ASCII 33)
+}
+
+// Integer to character mapping
+QChar User::intToChar(int num) {
+    if (num < 26) return QChar('a' + num);
+    if (num < 52) return QChar('A' + num - 26);
+    if (num < 62) return QChar('0' + num - 52);
+    return QChar(num - 62 + 33);
+}
+
+// Modulo function for positive results
+int User::mod(int a, int b) {
+    return (a % b + b) % b;
+}
+
+// Encrypt function
+QString User::encrypt(const QString &plaintext) {
+    int n = keyMatrix.size(); // Dimension of the key matrix
+    int m = plaintext.size();
+    if (m % n != 0) m += (n - m % n); // Pad plaintext length to multiple of n
+
+    QString paddedText = plaintext;
+    while (paddedText.size() < m) paddedText.append('x'); // Pad with 'x' for simplicity
+
+    QVector<int> encryptedValues(m);
+
+    // Convert plaintext to integers
+    for (int i = 0; i < m; ++i) {
+        encryptedValues[i] = charToInt(paddedText[i]);
+    }
+
+    // Encrypt in blocks of size n
+    QString ciphertext;
+    for (int i = 0; i < m; i += n) {
+        QVector<int> block(n, 0);
+        for (int j = 0; j < n; ++j) {
+            for (int k = 0; k < n; ++k) {
+                block[j] += keyMatrix[j][k] * encryptedValues[i + k];
+            }
+            block[j] = mod(block[j], 92); // Modulo 92 for our character range
+            ciphertext.append(intToChar(block[j]));
+        }
+    }
+
+    return ciphertext;
+}
+
+// Decryption utility functions
+int User::determinant(const QVector<QVector<int>> &matrix) {
+    return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+}
+
+int User::modularInverse(int a, int m) {
+    for (int x = 1; x < m; ++x) {
+        if ((a * x) % m == 1) return x;
+    }
+    return -1; // No modular inverse found
+}
+
+// Inverse matrix calculation
+QVector<QVector<int>> User::inverseMatrix(const QVector<QVector<int>> &matrix) {
+    int det = determinant(matrix);
+    int detInv = modularInverse(det, 92);
+
+    QVector<QVector<int>> invMatrix(2, QVector<int>(2));
+    invMatrix[0][0] = matrix[1][1] * detInv % 92;
+    invMatrix[0][1] = -matrix[0][1] * detInv % 92;
+    invMatrix[1][0] = -matrix[1][0] * detInv % 92;
+    invMatrix[1][1] = matrix[0][0] * detInv % 92;
+
+    for (auto &row : invMatrix) {
+        for (auto &val : row) {
+            val = mod(val, 92);
+        }
+    }
+    return invMatrix;
+}
+
+// Decrypt function
+QString User::decrypt(const QString &ciphertext) {
+    int n = keyMatrix.size(); // Dimension of the key matrix
+    int m = ciphertext.size();
+
+    QVector<int> encryptedValues(m);
+    for (int i = 0; i < m; ++i) {
+        encryptedValues[i] = charToInt(ciphertext[i]);
+    }
+
+    QVector<QVector<int>> invMatrix = inverseMatrix(keyMatrix);
+
+    QString plaintext;
+    for (int i = 0; i < m; i += n) {
+        QVector<int> block(n, 0);
+        for (int j = 0; j < n; ++j) {
+            for (int k = 0; k < n; ++k) {
+                block[j] += invMatrix[j][k] * encryptedValues[i + k];
+            }
+            block[j] = mod(block[j], 92); // Modulo 92 for our character range
+            plaintext.append(intToChar(block[j]));
+        }
+    }
+
+    return plaintext;
+}

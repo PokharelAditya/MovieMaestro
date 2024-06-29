@@ -137,6 +137,9 @@ color:white;</string>
     <property name="placeholderText">
      <string>enter user name must be 8 characters long</string>
     </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLineEdit" name="passwordslot">
     <property name="geometry">
@@ -159,6 +162,9 @@ color:white;
     </property>
     <property name="placeholderText">
      <string>enter your password</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -201,6 +207,9 @@ color:white;
     </property>
     <property name="placeholderText">
      <string>confirm your password</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -283,6 +292,12 @@ background:none;</string>
       <height>20</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:none;</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -296,6 +311,13 @@ background:none;</string>
       <height>20</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:none;
+</string>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -303,11 +325,17 @@ background:none;</string>
    <widget class="QPushButton" name="clearconfirmpasswordbtn_2">
     <property name="geometry">
      <rect>
-      <x>400</x>
+      <x>360</x>
       <y>340</y>
       <width>21</width>
       <height>20</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border:none;</string>
     </property>
     <property name="text">
      <string/>
@@ -321,6 +349,9 @@ background:none;</string>
       <width>181</width>
       <height>29</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton
@@ -439,6 +470,9 @@ color:white;</string>
     <property name="placeholderText">
      <string>enter user name must be 8 characters long</string>
     </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lpasswordslot">
     <property name="geometry">
@@ -461,6 +495,9 @@ color:white;
     </property>
     <property name="placeholderText">
      <string>enter your password</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="Line" name="line_2">
@@ -607,6 +644,9 @@ background-color:rgb(255,163,26);
      <pointsize>54</pointsize>
     </font>
    </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
    <property name="styleSheet">
     <string notr="true">background:black
 
@@ -667,6 +707,9 @@ background-color:rgb(255,163,26);
       <height>51</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
 {
@@ -692,6 +735,9 @@ background-color:rgb(255,163,26);
       <width>181</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
@@ -719,6 +765,9 @@ background-color:rgb(255,163,26);
       <height>51</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
 {
@@ -744,6 +793,9 @@ background-color:rgb(255,163,26);
       <width>181</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
@@ -771,6 +823,9 @@ background-color:rgb(255,163,26);
       <height>51</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
 {
@@ -796,6 +851,9 @@ background-color:rgb(255,163,26);
       <width>181</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
@@ -823,6 +881,9 @@ background-color:rgb(255,163,26);
       <height>51</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
 {
@@ -848,6 +909,9 @@ background-color:rgb(255,163,26);
       <width>181</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
@@ -875,6 +939,9 @@ background-color:rgb(255,163,26);
       <height>51</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
 {
@@ -900,6 +967,9 @@ background-color:rgb(255,163,26);
       <width>181</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">QRadioButton
@@ -964,6 +1034,9 @@ background-color:rgb(255,163,26);
       <width>131</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">background:none;
