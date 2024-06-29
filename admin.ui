@@ -857,8 +857,8 @@ border:none;</string>
   <zorder>BackToAdmin</zorder>
  </widget>
  <resources>
-  <include location="photos.qrc"/>
   <include location="images.qrc"/>
+  <include location="photos.qrc"/>
  </resources>
  <connections/>
 </ui>
