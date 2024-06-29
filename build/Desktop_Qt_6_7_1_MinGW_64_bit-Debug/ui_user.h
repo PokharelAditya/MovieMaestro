@@ -17,6 +17,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -52,6 +53,20 @@ public:
     QPushButton *lclearpasswordbtn;
     QPushButton *goback;
     QPushButton *adminloginbtn;
+    QGroupBox *genre;
+    QLabel *login_2;
+    QRadioButton *horror;
+    QRadioButton *action;
+    QRadioButton *thriller;
+    QRadioButton *romance;
+    QRadioButton *comedy;
+    QRadioButton *romcom;
+    QRadioButton *drama;
+    QRadioButton *scifi;
+    QRadioButton *history;
+    QRadioButton *suspense;
+    QPushButton *submit;
+    QPushButton *left;
 
     void setupUi(QDialog *User)
     {
@@ -249,6 +264,7 @@ public:
         lclearusernamebtn->setObjectName("lclearusernamebtn");
         lclearusernamebtn->setGeometry(QRect(400, 160, 21, 20));
         lclearusernamebtn->setFocusPolicy(Qt::NoFocus);
+        lclearusernamebtn->setStyleSheet(QString::fromUtf8(""));
         lclearpasswordbtn = new QPushButton(loginbox);
         lclearpasswordbtn->setObjectName("lclearpasswordbtn");
         lclearpasswordbtn->setGeometry(QRect(400, 250, 21, 20));
@@ -275,6 +291,178 @@ public:
         adminloginbtn->setStyleSheet(QString::fromUtf8("background:black\n"
 "\n"
 ";\n"
+""));
+        genre = new QGroupBox(User);
+        genre->setObjectName("genre");
+        genre->setGeometry(QRect(710, 55, 471, 661));
+        genre->setStyleSheet(QString::fromUtf8("background:none;"));
+        login_2 = new QLabel(genre);
+        login_2->setObjectName("login_2");
+        login_2->setGeometry(QRect(10, 30, 261, 41));
+        login_2->setFont(font);
+        login_2->setStyleSheet(QString::fromUtf8("color:white;"));
+        horror = new QRadioButton(genre);
+        horror->setObjectName("horror");
+        horror->setGeometry(QRect(10, 130, 181, 51));
+        horror->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        action = new QRadioButton(genre);
+        action->setObjectName("action");
+        action->setGeometry(QRect(220, 130, 181, 51));
+        action->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        thriller = new QRadioButton(genre);
+        thriller->setObjectName("thriller");
+        thriller->setGeometry(QRect(10, 210, 181, 51));
+        thriller->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        romance = new QRadioButton(genre);
+        romance->setObjectName("romance");
+        romance->setGeometry(QRect(220, 210, 181, 51));
+        romance->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        comedy = new QRadioButton(genre);
+        comedy->setObjectName("comedy");
+        comedy->setGeometry(QRect(10, 290, 181, 51));
+        comedy->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        romcom = new QRadioButton(genre);
+        romcom->setObjectName("romcom");
+        romcom->setGeometry(QRect(220, 290, 181, 51));
+        romcom->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        drama = new QRadioButton(genre);
+        drama->setObjectName("drama");
+        drama->setGeometry(QRect(10, 370, 181, 51));
+        drama->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        scifi = new QRadioButton(genre);
+        scifi->setObjectName("scifi");
+        scifi->setGeometry(QRect(220, 370, 181, 51));
+        scifi->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        history = new QRadioButton(genre);
+        history->setObjectName("history");
+        history->setGeometry(QRect(10, 440, 181, 51));
+        history->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        suspense = new QRadioButton(genre);
+        suspense->setObjectName("suspense");
+        suspense->setGeometry(QRect(220, 440, 181, 51));
+        suspense->setStyleSheet(QString::fromUtf8("QRadioButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QRadioButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        submit = new QPushButton(genre);
+        submit->setObjectName("submit");
+        submit->setGeometry(QRect(30, 530, 361, 51));
+        submit->setFont(font1);
+        submit->setCursor(QCursor(Qt::PointingHandCursor));
+        submit->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"padding:5px;\n"
+"\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color:rgb(255,163,26);\n"
+"}"));
+        left = new QPushButton(genre);
+        left->setObjectName("left");
+        left->setGeometry(QRect(330, 20, 131, 51));
+        left->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
 ""));
 
         retranslateUi(User);
@@ -312,6 +500,20 @@ public:
         lclearpasswordbtn->setText(QString());
         goback->setText(QCoreApplication::translate("User", "go back to sign up", nullptr));
         adminloginbtn->setText(QCoreApplication::translate("User", "\360\237\221\250\342\200\215\360\237\222\273", nullptr));
+        genre->setTitle(QString());
+        login_2->setText(QCoreApplication::translate("User", "Your Preferences", nullptr));
+        horror->setText(QCoreApplication::translate("User", "horror", nullptr));
+        action->setText(QCoreApplication::translate("User", "action", nullptr));
+        thriller->setText(QCoreApplication::translate("User", "thriller", nullptr));
+        romance->setText(QCoreApplication::translate("User", "romance", nullptr));
+        comedy->setText(QCoreApplication::translate("User", "comedy", nullptr));
+        romcom->setText(QCoreApplication::translate("User", "rom-com", nullptr));
+        drama->setText(QCoreApplication::translate("User", "drama", nullptr));
+        scifi->setText(QCoreApplication::translate("User", "sci-fi", nullptr));
+        history->setText(QCoreApplication::translate("User", "history", nullptr));
+        suspense->setText(QCoreApplication::translate("User", "suspense", nullptr));
+        submit->setText(QCoreApplication::translate("User", "Submit", nullptr));
+        left->setText(QString());
     } // retranslateUi
 
 };

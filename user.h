@@ -57,9 +57,14 @@ private slots:
 
     void on_adminloginbtn_clicked();
 
+    void on_submit_clicked();
+
+    void on_left_clicked();
+
 private:
     int lcount=0;
     int count =0;
+    int horror =0 , action =0 , thriller =0, romance =0, comedy =0, rom_com=0, drama=0, sci_fi=0,history=0, suspense=0;
     Ui::User *ui;
     bool checklength(const QString &text, bool ispassword);// changed
      bool containsSpecialCharAndNumber(const QString &text);
@@ -69,7 +74,7 @@ private:
     bool checkifalreadyexists(QString &user_id);
     bool adduserdata(QString &user_id , QString &password);
     bool isquerypass;
-     QIcon OpenEye,CloseEye,Cross;
+     QIcon OpenEye,CloseEye,Cross,left;
     void setredusernamelineedit();
     void setredpasswordlineedit();
 };

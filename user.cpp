@@ -12,7 +12,8 @@ User::User(QWidget *parent)
     , ui(new Ui::User),
     OpenEye(":/OpenEye.png"),
     CloseEye(":/CloseEye.png"),
-    Cross(":/close.png")
+    Cross(":/close.png"),
+    left(":/back icon.png")
 {
     ui->setupUi(this);
     /////
@@ -32,6 +33,17 @@ User::User(QWidget *parent)
 
 
     }
+     ui->left->setIcon(left);
+     ui->horror->setAutoExclusive(false);
+     ui->action->setAutoExclusive(false);
+     ui->thriller->setAutoExclusive(false);
+     ui->romance->setAutoExclusive(false);
+     ui->comedy->setAutoExclusive(false);
+     ui->romcom->setAutoExclusive(false);
+     ui->drama->setAutoExclusive(false);
+     ui->scifi->setAutoExclusive(false);
+     ui->history->setAutoExclusive(false);
+     ui->suspense->setAutoExclusive(false);
      setWindowTitle("Movie Maestro");
    setWindowIcon(QIcon(":/MM Transparent BG.png" ));
      ui->eye->setIcon(OpenEye);
@@ -42,6 +54,7 @@ ui->clearusernamebtn->setIcon(Cross);
 ui->leye->setIcon(OpenEye);
     ui->lclearusernamebtn->setIcon(Cross);
 ui->lclearpasswordbtn->setIcon(Cross);
+    ui->genre->hide();
 
 }
 
@@ -156,6 +169,8 @@ void User::on_signupbutton_clicked()
                         if(isquerypass)
                        {
                             QMessageBox::information(this, "Signup Successful", "User signed up successfully!");
+                            ui->signupbox->hide();
+                            ui->genre->show();
 
                        }
                         else
@@ -365,5 +380,49 @@ void User::on_adminloginbtn_clicked()
     this->close();
     Admin *myadmin = new Admin();
     myadmin->show();
+}
+
+
+void User::on_submit_clicked()
+{
+    horror = ui->horror->isChecked() ? 1:0;
+    thriller = ui->thriller->isChecked() ? 1:0;
+     romance= ui->romance->isChecked() ? 1:0;
+    comedy = ui->comedy->isChecked() ? 1:0;
+    rom_com = ui->romcom->isChecked() ? 1:0;
+    drama = ui->drama->isChecked() ? 1:0;
+    sci_fi = ui->scifi->isChecked() ? 1:0;
+    history = ui->history->isChecked() ? 1:0;
+    suspense = ui->suspense->isChecked() ? 1:0;
+    action = ui->action->isChecked() ? 1:0;
+    QSqlQuery query(QSqlDatabase::database("myconnection"));
+    query.prepare("UPDATE userinfo SET horro = :horrorvalue, action = :actionvalue, thriller = :thrillervalue, romance = :romancevalue, comedy = :comedyvalue, rom_com = :rom_comvalue, drama = :dramavalue, sci_fi = :sci_fivalue, history = :historyvalue, suspense = :suspensevalue WHERE user_id = :username");
+    query.bindValue(":horrorvalue", horror);
+    query.bindValue(":actionvalue", action);
+    query.bindValue(":thrillervalue", thriller);
+    query.bindValue(":romancevalue", romance);
+    query.bindValue(":comedyvalue", comedy);
+    query.bindValue(":rom_comvalue", rom_com);
+    query.bindValue(":dramavalue", drama);
+    query.bindValue(":sci_fivalue", sci_fi);
+    query.bindValue(":historyvalue", history);
+    query.bindValue(":suspensevalue", suspense);
+    query.bindValue(":username", usernameslot->text());
+    if(query.exec())
+    {
+        qDebug()<<"database updated successfully";
+
+    }
+    else
+    {
+        qDebug()<<"erro updating database: "<<query.lastError().text();
+    }
+}
+
+
+void User::on_left_clicked()
+{
+    ui->genre->hide();
+    ui->signupbox->show();
 }
 

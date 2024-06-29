@@ -127,6 +127,7 @@ compiler_rcc_clean:
 debug/qrc_images.cpp: ../../images.qrc \
 		../../../QT/6.7.1/mingw_64/bin/rcc.exe \
 		../../usericon.png \
+		../../left.png \
 		../../andhadhun.jpg \
 		../../logo.jpg \
 		../../passwordicon.png \
@@ -2855,6 +2856,8 @@ debug/user.o: ../../user.cpp ../../user.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QLabel \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/qlabel.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtGui/qpicture.h \
+		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QRadioButton \
+		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/qradiobutton.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QVBoxLayout \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/qboxlayout.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/qlayout.h \
@@ -2863,7 +2866,8 @@ debug/user.o: ../../user.cpp ../../user.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QMessageBox \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/qmessagebox.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
-		../../../../../QT/6.7.1/mingw_64/include/QtCore/QRegularExpression
+		../../../../../QT/6.7.1/mingw_64/include/QtCore/QRegularExpression \
+		../../../../../MovieMaestro/admin.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/user.o ../../user.cpp
 
 debug/qrc_images.o: debug/qrc_images.cpp 
