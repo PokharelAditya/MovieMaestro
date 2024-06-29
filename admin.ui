@@ -497,7 +497,7 @@ border-radius: 15px;</string>
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>210</y>
+      <y>220</y>
       <width>200</width>
       <height>50</height>
      </rect>
@@ -548,7 +548,7 @@ background:rgba(230, 149, 40, 200);
     <property name="geometry">
      <rect>
       <x>15</x>
-      <y>30</y>
+      <y>20</y>
       <width>370</width>
       <height>81</height>
      </rect>
@@ -595,7 +595,7 @@ color:rgb(230, 149, 40);</string>
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>140</y>
+      <y>120</y>
       <width>31</width>
       <height>35</height>
      </rect>
@@ -642,7 +642,7 @@ border-radius:5px;
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>140</y>
+      <y>120</y>
       <width>31</width>
       <height>35</height>
      </rect>
@@ -689,7 +689,7 @@ border-radius:5px;
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>140</y>
+      <y>120</y>
       <width>31</width>
       <height>35</height>
      </rect>
@@ -739,7 +739,7 @@ border-radius:5px;
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>140</y>
+      <y>120</y>
       <width>31</width>
       <height>35</height>
      </rect>
@@ -785,6 +785,36 @@ border-radius:5px;
      <bool>false</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="forgotTwoFA">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>170</y>
+      <width>121</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>9</pointsize>
+      <underline>false</underline>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:none;
+border:none;
+color:rgba(230, 149, 40, 200);</string>
+    </property>
+    <property name="text">
+     <string>Forgot code?</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QPushButton" name="BackToAdmin">
    <property name="geometry">
@@ -827,8 +857,8 @@ border:none;</string>
   <zorder>BackToAdmin</zorder>
  </widget>
  <resources>
-  <include location="images.qrc"/>
   <include location="photos.qrc"/>
+  <include location="images.qrc"/>
  </resources>
  <connections/>
 </ui>
