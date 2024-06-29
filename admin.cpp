@@ -31,26 +31,68 @@ Admin::Admin(QWidget *parent)
     }
 }
 
-void Admin::accessDB(int &id,QString &DBun,QString &DBpw,QString &DBemail,int &DBtwoFA,QString &DBsq1,QString &DBsa1,QString &DBsq2,QString &DBsa2)
+void Admin::accessDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_twoFA,QString &D_sq1,QString &D_sa1,QString &D_sq2,QString &D_sa2)
 {
     QSqlQuery query;
     query.prepare("SELECT Id, Username, Password, Email, TwoFA, SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2 FROM ADMIN");
     query.exec();
 
+    QString E_un,E_pw,E_email,E_twoFA,E_sq1,E_sa1,E_sq2,E_sa2;
+
     while(query.next())
     {
         id = query.value(0).toInt();
-        DBun = query.value(1).toString();
-        DBpw = query.value(2).toString();
-        DBemail = query.value(3).toString();
-        DBtwoFA = query.value(4).toInt();
-        DBsq1 = query.value(5).toString();
-        DBsa1 = query.value(6).toString();
-        DBsq2 = query.value(7).toString();
-        DBsa2 = query.value(8).toString();
+        E_un = query.value(1).toString();
+        E_pw = query.value(2).toString();
+        E_email = query.value(3).toString();
+        E_twoFA = query.value(4).toString();
+        E_sq1 = query.value(5).toString();
+        E_sa1 = query.value(6).toString();
+        E_sq2 = query.value(7).toString();
+        E_sa2 = query.value(8).toString();
     }
 
+    D_un = decrypt(E_un);
+    D_pw = decrypt(E_pw);
+    D_email = decrypt(E_email);
+    D_twoFA = decrypt(E_twoFA).toInt();
+    D_sq1 = decrypt(E_sq1);
+    D_sa1 = decrypt(E_sa1);
+    D_sq2 = decrypt(E_sq2);
+    D_sa2 = decrypt(E_sa2);
+}
 
+QString Admin::encrypt(QString d)
+{
+    QString e="",h;
+    int a;
+    for(int i=d.length()-1;i>=0;i--)
+    {
+        a = static_cast<int>(d[i].toLatin1());
+        a = (((((a+43)*7)+19)*3)+413);
+        h = QString::number(a,16).toUpper();
+        e = e + h;
+    }
+    return e;
+}
+
+QString Admin::decrypt(QString e)
+{
+    QString h,d="";
+    int a;
+    bool ok;
+    for(int i=e.length();i>0;i-=3)
+    {
+        h = "";
+        for(int j=i-3;j<i;j++)
+        {
+            h = h + e[j];
+        }
+        a = h.toInt(&ok,16);
+        a = (((((a-413)/3)-19)/7)-43);
+        d = d + QString(QChar(static_cast<char>(a)));
+    }
+    return d;
 }
 
 Admin::~Admin()
@@ -96,10 +138,10 @@ void Admin::on_ShowHidePW_clicked()
 
 bool Admin::un_check(QString un)
 {
-    int id,DBtwoFA;
-    QString DBun,DBpw,DBemail,DBsq1,DBsa1,DBsq2,DBsa2;
-    accessDB(id,DBun,DBpw,DBemail,DBtwoFA,DBsq1,DBsa1,DBsq2,DBsa2);
-    if(DBun == un)
+    int id,D_twoFA;
+    QString D_un,D_pw,D_email,D_sq1,D_sa1,D_sq2,D_sa2;
+    accessDB(id,D_un,D_pw,D_email,D_twoFA,D_sq1,D_sa1,D_sq2,D_sa2);
+    if(D_un == un)
     {
         return true;
     }
@@ -111,10 +153,10 @@ bool Admin::un_check(QString un)
 
 bool Admin::pw_check(QString pw)
 {
-    int id,DBtwoFA;
-    QString DBun,DBpw,DBemail,DBsq1,DBsa1,DBsq2,DBsa2;
-    accessDB(id,DBun,DBpw,DBemail,DBtwoFA,DBsq1,DBsa1,DBsq2,DBsa2);
-    if(DBpw == pw)
+    int id,D_twoFA;
+    QString D_un,D_pw,D_email,D_sq1,D_sa1,D_sq2,D_sa2;
+    accessDB(id,D_un,D_pw,D_email,D_twoFA,D_sq1,D_sa1,D_sq2,D_sa2);
+    if(D_pw == pw)
     {
         return true;
     }
@@ -200,10 +242,10 @@ void Admin::on_TwoFA4_textChanged()
 
 bool Admin::twoFA_check(int tfa)
 {
-    int id,DBtwoFA;
-    QString DBun,DBpw,DBemail,DBsq1,DBsa1,DBsq2,DBsa2;
-    accessDB(id,DBun,DBpw,DBemail,DBtwoFA,DBsq1,DBsa1,DBsq2,DBsa2);
-    if(DBtwoFA==tfa)
+    int id,D_twoFA;
+    QString D_un,D_pw,D_email,D_sq1,D_sa1,D_sq2,D_sa2;
+    accessDB(id,D_un,D_pw,D_email,D_twoFA,D_sq1,D_sa1,D_sq2,D_sa2);
+    if(D_twoFA==tfa)
     {
         return true;
     }
