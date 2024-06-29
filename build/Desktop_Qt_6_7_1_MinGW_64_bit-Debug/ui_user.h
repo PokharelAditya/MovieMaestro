@@ -117,6 +117,7 @@ public:
 "border:1px solid white;\n"
 "background-color:transparent;\n"
 "color:white;"));
+        usernameslot->setClearButtonEnabled(true);
         passwordslot = new QLineEdit(signupbox);
         passwordslot->setObjectName("passwordslot");
         passwordslot->setGeometry(QRect(70, 240, 361, 41));
@@ -126,6 +127,7 @@ public:
 "color:white;\n"
 ""));
         passwordslot->setEchoMode(QLineEdit::Password);
+        passwordslot->setClearButtonEnabled(true);
         label_4 = new QLabel(signupbox);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(20, 330, 41, 41));
@@ -140,6 +142,7 @@ public:
 "color:white;\n"
 ""));
         passwordslot_2->setEchoMode(QLineEdit::Password);
+        passwordslot_2->setClearButtonEnabled(true);
         line = new QFrame(signupbox);
         line->setObjectName("line");
         line->setGeometry(QRect(280, 430, 118, 3));
@@ -176,15 +179,23 @@ public:
         clearusernamebtn = new QPushButton(signupbox);
         clearusernamebtn->setObjectName("clearusernamebtn");
         clearusernamebtn->setGeometry(QRect(400, 160, 21, 20));
+        clearusernamebtn->setCursor(QCursor(Qt::PointingHandCursor));
+        clearusernamebtn->setStyleSheet(QString::fromUtf8("border:none;"));
         clearpasswordbtn = new QPushButton(signupbox);
         clearpasswordbtn->setObjectName("clearpasswordbtn");
         clearpasswordbtn->setGeometry(QRect(400, 250, 21, 20));
+        clearpasswordbtn->setCursor(QCursor(Qt::PointingHandCursor));
+        clearpasswordbtn->setStyleSheet(QString::fromUtf8("border:none;\n"
+""));
         clearconfirmpasswordbtn_2 = new QPushButton(signupbox);
         clearconfirmpasswordbtn_2->setObjectName("clearconfirmpasswordbtn_2");
-        clearconfirmpasswordbtn_2->setGeometry(QRect(400, 340, 21, 20));
+        clearconfirmpasswordbtn_2->setGeometry(QRect(360, 340, 21, 20));
+        clearconfirmpasswordbtn_2->setCursor(QCursor(Qt::PointingHandCursor));
+        clearconfirmpasswordbtn_2->setStyleSheet(QString::fromUtf8("border:none;"));
         alreadyregistered = new QPushButton(signupbox);
         alreadyregistered->setObjectName("alreadyregistered");
         alreadyregistered->setGeometry(QRect(250, 393, 181, 29));
+        alreadyregistered->setCursor(QCursor(Qt::PointingHandCursor));
         alreadyregistered->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -224,6 +235,7 @@ public:
 "border:1px solid white;\n"
 "background-color:transparent;\n"
 "color:white;"));
+        lusernameslot->setClearButtonEnabled(true);
         lpasswordslot = new QLineEdit(loginbox);
         lpasswordslot->setObjectName("lpasswordslot");
         lpasswordslot->setGeometry(QRect(70, 240, 361, 41));
@@ -233,6 +245,7 @@ public:
 "color:white;\n"
 ""));
         lpasswordslot->setEchoMode(QLineEdit::Password);
+        lpasswordslot->setClearButtonEnabled(true);
         line_2 = new QFrame(loginbox);
         line_2->setObjectName("line_2");
         line_2->setGeometry(QRect(283, 359, 118, 3));
@@ -288,6 +301,7 @@ public:
         QFont font2;
         font2.setPointSize(54);
         adminloginbtn->setFont(font2);
+        adminloginbtn->setCursor(QCursor(Qt::PointingHandCursor));
         adminloginbtn->setStyleSheet(QString::fromUtf8("background:black\n"
 "\n"
 ";\n"
@@ -304,6 +318,7 @@ public:
         horror = new QRadioButton(genre);
         horror->setObjectName("horror");
         horror->setGeometry(QRect(10, 130, 181, 51));
+        horror->setCursor(QCursor(Qt::PointingHandCursor));
         horror->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -318,6 +333,7 @@ public:
         action = new QRadioButton(genre);
         action->setObjectName("action");
         action->setGeometry(QRect(220, 130, 181, 51));
+        action->setCursor(QCursor(Qt::PointingHandCursor));
         action->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -332,6 +348,7 @@ public:
         thriller = new QRadioButton(genre);
         thriller->setObjectName("thriller");
         thriller->setGeometry(QRect(10, 210, 181, 51));
+        thriller->setCursor(QCursor(Qt::PointingHandCursor));
         thriller->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -346,6 +363,7 @@ public:
         romance = new QRadioButton(genre);
         romance->setObjectName("romance");
         romance->setGeometry(QRect(220, 210, 181, 51));
+        romance->setCursor(QCursor(Qt::PointingHandCursor));
         romance->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -360,6 +378,7 @@ public:
         comedy = new QRadioButton(genre);
         comedy->setObjectName("comedy");
         comedy->setGeometry(QRect(10, 290, 181, 51));
+        comedy->setCursor(QCursor(Qt::PointingHandCursor));
         comedy->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -374,6 +393,7 @@ public:
         romcom = new QRadioButton(genre);
         romcom->setObjectName("romcom");
         romcom->setGeometry(QRect(220, 290, 181, 51));
+        romcom->setCursor(QCursor(Qt::PointingHandCursor));
         romcom->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -388,6 +408,7 @@ public:
         drama = new QRadioButton(genre);
         drama->setObjectName("drama");
         drama->setGeometry(QRect(10, 370, 181, 51));
+        drama->setCursor(QCursor(Qt::PointingHandCursor));
         drama->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -402,6 +423,7 @@ public:
         scifi = new QRadioButton(genre);
         scifi->setObjectName("scifi");
         scifi->setGeometry(QRect(220, 370, 181, 51));
+        scifi->setCursor(QCursor(Qt::PointingHandCursor));
         scifi->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -416,6 +438,7 @@ public:
         history = new QRadioButton(genre);
         history->setObjectName("history");
         history->setGeometry(QRect(10, 440, 181, 51));
+        history->setCursor(QCursor(Qt::PointingHandCursor));
         history->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -430,6 +453,7 @@ public:
         suspense = new QRadioButton(genre);
         suspense->setObjectName("suspense");
         suspense->setGeometry(QRect(220, 440, 181, 51));
+        suspense->setCursor(QCursor(Qt::PointingHandCursor));
         suspense->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
 "border:2px solid rgb(255,163,26);\n"
@@ -460,6 +484,7 @@ public:
         left = new QPushButton(genre);
         left->setObjectName("left");
         left->setGeometry(QRect(330, 20, 131, 51));
+        left->setCursor(QCursor(Qt::PointingHandCursor));
         left->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:2px solid rgb(255,163,26);\n"
 "border-radius:10px;\n"
