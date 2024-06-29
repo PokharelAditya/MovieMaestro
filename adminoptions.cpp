@@ -222,7 +222,30 @@ void adminoptions::on_NextButton2FA_clicked()
         ui->BackToPassword->hide();
         ui->TwoFABox->hide();
         ui->BackToAdminOptions->show();
+        if(v == "EmailChange")
+        {
 
+        }
+        else if(v == "UsernameChange")
+        {
+
+        }
+        else if(v == "PasswordChange")
+        {
+
+        }
+        else if(v == "TwoFAChange")
+        {
+
+        }
+        else if(v == "SQChange")
+        {
+
+        }
+        else
+        {
+            on_BackToAdminOptions_clicked();
+        }
     }
     else
     {
