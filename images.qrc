@@ -5,5 +5,7 @@
         <file>usericon.png</file>
         <file>passwordicon.png</file>
         <file>eyes.png</file>
+        <file>close.png</file>
+        <file>left.png</file>
     </qresource>
 </RCC>
