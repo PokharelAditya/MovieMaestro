@@ -57,8 +57,7 @@ constexpr auto qt_meta_stringdata_CLASSUserENDCLASS = QtMocHelpers::stringData(
     "on_adminloginbtn_clicked",
     "on_submit_clicked",
     "on_left_clicked",
-    "on_usernameslot_textChanged",
-    "arg1"
+    "on_UploadImage_clicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -98,7 +97,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSUserENDCLASS[] = {
       18,    0,  150,    2, 0x08,   17 /* Private */,
       19,    0,  151,    2, 0x08,   18 /* Private */,
       20,    0,  152,    2, 0x08,   19 /* Private */,
-      21,    1,  153,    2, 0x08,   20 /* Private */,
+      21,    0,  153,    2, 0x08,   20 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -120,7 +119,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSUserENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   22,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -172,9 +171,8 @@ Q_CONSTINIT const QMetaObject User::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_left_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'on_usernameslot_textChanged'
-        QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+        // method 'on_UploadImage_clicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
 } };
@@ -204,10 +202,11 @@ void User::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 16: _t->on_adminloginbtn_clicked(); break;
         case 17: _t->on_submit_clicked(); break;
         case 18: _t->on_left_clicked(); break;
-        case 19: _t->on_usernameslot_textChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 19: _t->on_UploadImage_clicked(); break;
         default: ;
         }
     }
+    (void)_a;
 }
 
 const QMetaObject *User::metaObject() const

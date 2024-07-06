@@ -40,6 +40,7 @@ public:
     QPushButton *clearpasswordbtn;
     QPushButton *clearconfirmpasswordbtn_2;
     QPushButton *alreadyregistered;
+    QPushButton *UploadImage;
     QGroupBox *loginbox;
     QLabel *login;
     QLabel *label_5;
@@ -151,7 +152,7 @@ public:
         line->setFrameShadow(QFrame::Shadow::Sunken);
         signupbutton = new QPushButton(signupbox);
         signupbutton->setObjectName("signupbutton");
-        signupbutton->setGeometry(QRect(59, 460, 361, 51));
+        signupbutton->setGeometry(QRect(50, 480, 361, 51));
         QFont font1;
         font1.setPointSize(15);
         font1.setBold(true);
@@ -207,6 +208,20 @@ public:
 "{\n"
 "background-color:rgb(255,163,26);\n"
 "}"));
+        UploadImage = new QPushButton(signupbox);
+        UploadImage->setObjectName("UploadImage");
+        UploadImage->setGeometry(QRect(300, 20, 141, 101));
+        UploadImage->setCursor(QCursor(Qt::PointingHandCursor));
+        UploadImage->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"background:none;\n"
+"border:2px solid rgb(255,163,26);\n"
+"border-radius:10px;\n"
+"color:white;}\n"
+"QPushButton:hover\n"
+"{\n"
+"background:rgb(255,163,26);\n"
+"}"));
+        UploadImage->setIconSize(QSize(141, 101));
         loginbox = new QGroupBox(User);
         loginbox->setObjectName("loginbox");
         loginbox->setGeometry(QRect(710, 55, 471, 661));
@@ -513,6 +528,7 @@ public:
         clearpasswordbtn->setText(QString());
         clearconfirmpasswordbtn_2->setText(QString());
         alreadyregistered->setText(QCoreApplication::translate("User", "already have an account", nullptr));
+        UploadImage->setText(QString());
         loginbox->setTitle(QString());
         login->setText(QCoreApplication::translate("User", "Login", nullptr));
         label_5->setText(QString());

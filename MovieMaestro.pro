@@ -11,19 +11,23 @@ CONFIG += c++17
 SOURCES += \
     admin.cpp \
     adminoptions.cpp \
+    homepage.cpp \
     main.cpp \
     mainwindow.cpp \
     user.cpp
 
 HEADERS += \
+    Databasemanager.h \
     admin.h \
     adminoptions.h \
+    homepage.h \
     mainwindow.h \
     user.h
 
 FORMS += \
     admin.ui \
     adminoptions.ui \
+    homepage.ui \
     mainwindow.ui \
     user.ui
 

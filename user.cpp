@@ -8,32 +8,28 @@
 #include<QGroupBox>
 #include<admin.h>
 #include<QVector>
+#include <QFileDialog>
+#include <QBuffer>
+#include <QImageReader>
+#include"homepage.h"
+#include "Databasemanager.h"
 User::User(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::User),
     OpenEye(":/OpenEye.png"),
+
     CloseEye(":/CloseEye.png"),
     Cross(":/close.png"),
     left(":/back icon.png")
 {
     ui->setupUi(this);
     /////
-    usernameslot = findChild<QLineEdit *>("usernameslot");//changed here this is how you find the child and use the same name of the datatpe that you defined in the header file
-    passwordslot =findChild<QLineEdit *>("passwordslot");//changed here
-    passwordslot_2 =findChild<QLineEdit *>("passwordslot_2"); // changed here
-    QSqlDatabase userdatabase = QSqlDatabase::addDatabase("QSQLITE" , "myconnection"); //(this is optional but some times it shows a particular error ) here my connection is to say provide a unique id generally when we create a quey in slots the qt program already konws that we are doing referring to the given database but wheen we delcare a user defined function then the qt doesn't know what quey is to be passed where so we used myconnection unique id
-      userdatabase.setDatabaseName(QCoreApplication::applicationDirPath()+"/../userdatabase.db");
-    if(!userdatabase.open())
-     {
-         QMessageBox::warning(this , "database info", "failed to connect to the database"+ userdatabase.lastError().text(), QMessageBox::Ok);
+   userdatabase = DatabaseManager::getDatabase();
 
-     }
-     else
-    {
-        QMessageBox::warning(this , "database info", " connect to the database", QMessageBox::Ok);
-
-
-    }
+     ////////////////////////////////////////////
+    disconnect(ui->passwordslot, &QLineEdit::returnPressed, this, &User::on_signupbutton_clicked);
+    /////////////////////////////////////////////
+    ui->UploadImage->setText("Profile Picture");
      ui->clearconfirmpasswordbtn_2->hide();
     ui->clearpasswordbtn->hide();
      ui->clearusernamebtn->hide();
@@ -61,7 +57,12 @@ ui->leye->setIcon(OpenEye);
     ui->lclearusernamebtn->setIcon(Cross);
 ui->lclearpasswordbtn->setIcon(Cross);
     ui->genre->hide();
+ui->left->hide();
+    /////////////////////////////////////////////////////
 
+
+
+/////////////////////////////////////////////////////////
 }
 
 User::~User()
@@ -77,6 +78,7 @@ bool User::containsSpecialCharAndNumber(const QString &text)
 }
 bool User::checklength(const QString &text, bool ispassword)///changed here
 {
+    qDebug()<<"inside the check length ";
     if(ispassword)
     {
         if(text.length() >= 8)
@@ -86,25 +88,20 @@ bool User::checklength(const QString &text, bool ispassword)///changed here
 
 
         }
-        else
-        {return false;}
+        return false;
     }
-    else
-    {
-        if(text.length() >= 8)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+
+     if(text.length() >= 8)
+     {
+        return true;
     }
+    return false;
+
 }
 bool User::checkifalreadyexists(QString &users )
 {
      // Check if the username already exists
-    QSqlQuery checkQuery(QSqlDatabase::database("myconnection"));
+    QSqlQuery checkQuery(userdatabase);
     checkQuery.prepare("SELECT user_id FROM userinfo WHERE user_id = :username");
     checkQuery.bindValue(":username", users);
 
@@ -116,13 +113,13 @@ bool User::checkifalreadyexists(QString &users )
     }
 
  }
-bool User::adduserdata(QString &user_id , QString &password)
+bool User::adduserdata(QString &user_id , QString &password , QByteArray &myData)
  {
-     QSqlQuery query(QSqlDatabase::database("myconnection"));
-     query.prepare("INSERT INTO userinfo (user_id, password) VALUES (:username, :password)");
+     QSqlQuery query(userdatabase);
+     query.prepare("INSERT INTO userinfo (user_id, password , images) VALUES (:username, :password , :image)");
      query.bindValue(":username", user_id);
      query.bindValue(":password", encrypt(password));
-
+     query.bindValue(":image" , myData);
      if (query.exec()) {
          return true;
 
@@ -133,6 +130,7 @@ bool User::adduserdata(QString &user_id , QString &password)
  }
  void User::setredusernamelineedit()
  {
+     qDebug()<<"this has been called the red username line ";
      ui->usernameslot->setPlaceholderText("entere at least 8 characters");
      ui->usernameslot->setStyleSheet(
          "QLineEdit {"
@@ -142,6 +140,7 @@ bool User::adduserdata(QString &user_id , QString &password)
  }
  void User::setredpasswordlineedit()
  {
+     qDebug()<<"the set red password line edit has been  called ";
      ui->passwordslot->setPlaceholderText("enter password");
      ui->passwordslot_2->setPlaceholderText("re-enter the same password");
      ui->passwordslot->setStyleSheet(
@@ -155,74 +154,64 @@ bool User::adduserdata(QString &user_id , QString &password)
          "background:none;"
          " }");
   }
-void User::on_signupbutton_clicked()
-{
-    QString username = usernameslot->text();
-    QString password = passwordslot->text();
-    QString confirmPassword = passwordslot_2->text();
-    QMessageBox msg;
-    msg.setStyleSheet("QMessageBox { background-color: white; color: black; }");
-    if(checklength(username, false)) {
-        if(password == confirmPassword)
-        {
-            if(checklength(password , true))
-            {
-                if(containsSpecialCharAndNumber(password))
-                {
-                    if(!(checkifalreadyexists(username)))
-                    {
-                       isquerypass =  adduserdata(username , password);
-                        if(isquerypass)
-                       {
-                            QMessageBox::information(this, "Signup Successful", "User signed up successfully!");
-                            ui->signupbox->hide();
-                            ui->genre->show();
 
-                       }
-                        else
-                        {
-                            QMessageBox::warning(this, "Database Error", "Failed to insert data into the database: ");
+ void User::on_signupbutton_clicked()
+ {
+     QString username = ui->usernameslot->text();
+     QString password = ui->passwordslot->text();
+     QString confirmPassword = ui->passwordslot_2->text();
 
-                        }
-                    }
-                    else
-                    {
-                        QMessageBox::warning(this, "Username Exists", "The username already exists. Please choose a different one.", QMessageBox::Ok);
-                        usernameslot->clear();
-                        setredusernamelineedit();
-                    }
+     QMessageBox msg;
+     msg.setStyleSheet("QMessageBox { background-color: white; color: black; }");
 
-                }
-          else
-                {
-                    msg.warning(this , "SecurityWarning", "For strengthening your password please enter at least one special character or number");
-                    passwordslot->clear();
-                    passwordslot_2->clear();
-                        setredpasswordlineedit();
-                }
-            }
-            else
-            {
-                msg.warning(this , "MessageBox" , "enter password of length 8 or more ");
-                passwordslot->clear();
-                passwordslot_2->clear();
-                setredpasswordlineedit();
-            }
-        }
-        else
-        { msg.warning(this, "Check Length", "You have to enter same password twice.");
-            passwordslot->clear();
-            passwordslot_2->clear();
-            setredpasswordlineedit();
-        }
-    } else {
-        msg.warning(this, "Check Length", "You have to enter a username with 8 or more characters.");
-        usernameslot->clear();
+     if (!checklength(username, false)) {
+         msg.warning(this, "Check Length", "You have to enter a username with 8 or more characters.");
+         ui->usernameslot->clear();
          setredusernamelineedit();
-        return; // Exit the function if username length is invalid
-    }
+         return; // Exit the function if username length is invalid
+     }
 
-}
+
+     if (password != confirmPassword) {
+         msg.warning(this, "Check Password", "You have to enter the same password twice.");
+         ui->passwordslot->clear();
+         ui->passwordslot_2->clear();
+         setredpasswordlineedit();
+         return; // Exit the function if passwords do not match
+     }
+
+     if (!checklength(password, true)) {
+         msg.warning(this, "Check Length", "Enter password of length 8 or more.");
+         ui->passwordslot->clear();
+         ui->passwordslot_2->clear();
+         setredpasswordlineedit();
+         return; // Exit the function if password length is invalid
+     }
+
+     if (!containsSpecialCharAndNumber(password)) {
+         msg.warning(this, "Security Warning", "For strengthening your password please enter at least one special character or number.");
+         ui->passwordslot->clear();
+         ui->passwordslot_2->clear();
+         setredpasswordlineedit();
+         return; // Exit the function if password does not meet security criteria
+     }
+
+     if (checkifalreadyexists(username)) {
+         msg.warning(this, "Username Exists", "The username already exists. Please choose a different one.");
+         ui->usernameslot->clear();
+         setredusernamelineedit();
+         return; // Exit the function if username already exists
+     }
+     if(myImage.isNull())
+     {
+         msg.warning(this , "Profile Picture" ,"Please select an approprite profile pic");
+         return;
+     }
+
+     ui->signupbox->hide();
+     ui->genre->show();
+ }
+
 
 
 
@@ -230,15 +219,15 @@ void User::on_eye_clicked()
 {
     if(count % 2==0)
     {
-    passwordslot->setEchoMode(QLineEdit::Normal);
-    passwordslot_2->setEchoMode(QLineEdit::Normal);
+        ui->passwordslot->setEchoMode(QLineEdit::Normal);
+        ui->passwordslot_2->setEchoMode(QLineEdit::Normal);
     ui->eye->setIcon(CloseEye);
         count++;
     }
     else
     {
-        passwordslot->setEchoMode(QLineEdit::Password);
-        passwordslot_2->setEchoMode(QLineEdit::Password);
+        ui->passwordslot->setEchoMode(QLineEdit::Password);
+        ui->passwordslot_2->setEchoMode(QLineEdit::Password);
         ui->eye->setIcon(OpenEye);
         count++;
     }
@@ -311,7 +300,7 @@ void User::on_loginbutton_clicked()
 {
     QString pw = ui->lpasswordslot->text();
     QString uname = ui->lusernameslot->text();
-    QSqlQuery myQuery(QSqlDatabase::database("myconnection"));
+    QSqlQuery myQuery(userdatabase);
     myQuery.prepare("SELECT password FROM userinfo WHERE user_id = :username");
     myQuery.bindValue(":username",uname);
 
@@ -319,7 +308,11 @@ void User::on_loginbutton_clicked()
         if (myQuery.next()) { // Check if a row is returned
             QString databasepw = myQuery.value(0).toString(); // Get the password from the result
             if (decrypt(databasepw) == pw) {
-                QMessageBox::information(this, "Login Success", "Congratulations, you are logged in");
+                User *myuser = new User();
+                myuser->_username = ui->lusernameslot->text();
+                HomePage *mypage = new HomePage(myuser);
+                this->close();
+                mypage->show();
             } else {
                 QMessageBox::warning(this, "Login Failure", "Incorrect password entered");
                 ui->lpasswordslot->clear();
@@ -353,7 +346,7 @@ void User::on_loginbutton_clicked()
 void User::on_lusernameslot_returnPressed()
 {
 
-    User::on_loginbutton_clicked();
+    ui->lpasswordslot->setFocus();
 }
 
 
@@ -365,24 +358,26 @@ void User::on_lpasswordslot_returnPressed()
 
 void User::on_usernameslot_returnPressed()
 {
-    User::on_signupbutton_clicked();
+
 }
+
 
 
 void User::on_passwordslot_returnPressed()
 {
-    User::on_signupbutton_clicked();
+
 }
 
 
 void User::on_passwordslot_2_returnPressed()
 {
-    User::on_signupbutton_clicked();
+
 }
 
 
 void User::on_adminloginbtn_clicked()
 {
+    qDebug("heylmao suckers suck your mom");
     this->close();
     Admin *myadmin = new Admin();
     myadmin->show();
@@ -391,17 +386,37 @@ void User::on_adminloginbtn_clicked()
 
 void User::on_submit_clicked()
 {
-    horror = ui->horror->isChecked() ? 1:0;
-    thriller = ui->thriller->isChecked() ? 1:0;
-     romance= ui->romance->isChecked() ? 1:0;
-    comedy = ui->comedy->isChecked() ? 1:0;
-    rom_com = ui->romcom->isChecked() ? 1:0;
-    drama = ui->drama->isChecked() ? 1:0;
-    sci_fi = ui->scifi->isChecked() ? 1:0;
-    history = ui->history->isChecked() ? 1:0;
-    suspense = ui->suspense->isChecked() ? 1:0;
-    action = ui->action->isChecked() ? 1:0;
-    QSqlQuery query(QSqlDatabase::database("myconnection"));
+
+    QString username = ui->usernameslot->text();
+    QString password = ui->passwordslot->text();
+
+    // Get genre selections
+    horror = ui->horror->isChecked() ? 1 : 0;
+    thriller = ui->thriller->isChecked() ? 1 : 0;
+    romance = ui->romance->isChecked() ? 1 : 0;
+    comedy = ui->comedy->isChecked() ? 1 : 0;
+    rom_com = ui->romcom->isChecked() ? 1 : 0;
+    drama = ui->drama->isChecked() ? 1 : 0;
+    sci_fi = ui->scifi->isChecked() ? 1 : 0;
+    history = ui->history->isChecked() ? 1 : 0;
+    suspense = ui->suspense->isChecked() ? 1 : 0;
+    action = ui->action->isChecked() ? 1 : 0;
+
+    if(horror == 0 && thriller == 0 && romance == 0 && comedy == 0 && rom_com == 0 && drama == 0 && sci_fi == 0 && history == 0 && suspense == 0 && action == 0)
+    {
+        QMessageBox::warning(this , "User Preference" , "Please select at least one of the preferences.");
+        return;
+    }
+
+    // Add user data
+    bool isQueryPass = adduserdata(username, password,myData);
+    if (!isQueryPass) {
+        QMessageBox::critical(this, "Database Error", "Failed to add user data.");
+        return;
+    }
+
+    // Update user preferences
+    QSqlQuery query(userdatabase);
     query.prepare("UPDATE userinfo SET horro = :horrorvalue, action = :actionvalue, thriller = :thrillervalue, romance = :romancevalue, comedy = :comedyvalue, rom_com = :rom_comvalue, drama = :dramavalue, sci_fi = :sci_fivalue, history = :historyvalue, suspense = :suspensevalue WHERE user_id = :username");
     query.bindValue(":horrorvalue", horror);
     query.bindValue(":actionvalue", action);
@@ -413,30 +428,53 @@ void User::on_submit_clicked()
     query.bindValue(":sci_fivalue", sci_fi);
     query.bindValue(":historyvalue", history);
     query.bindValue(":suspensevalue", suspense);
-    query.bindValue(":username", usernameslot->text());
-    if(query.exec())
-    {
-        qDebug()<<"database updated successfully";
+    query.bindValue(":username", username);
 
-    }
-    else
-    {
-        qDebug()<<"erro updating database: "<<query.lastError().text();
+    if (query.exec()) {
+        User *myuser = new User();
+        myuser->_username = ui->usernameslot->text();
+        HomePage *mypage = new HomePage(myuser);
+        this->close();
+        mypage->show();
+    } else {
+        qDebug() << "Error updating database: " << query.lastError().text();
+        QMessageBox::critical(this, "Database Error", "Failed to update user preferences: " + query.lastError().text());
     }
 }
+
 
 
 void User::on_left_clicked()
 {
-    ui->genre->hide();
-    ui->signupbox->show();
+    //
 }
 
-
-void User::on_usernameslot_textChanged(const QString &arg1)
+void User::on_UploadImage_clicked()
 {
+    QString filePath = QFileDialog::getOpenFileName(this, tr("Open Image"), "", tr("Image Files (*.png *.jpg *.bmp)"));// yo function le upload garna lai euta prompt opne garxa and return ma chai tesko file location pathauxa
+    if (filePath.isEmpty())
+    {
+        return;
+    }
+    QImage image(filePath); // yesma image upload hunxa image vanni variable ma with QImage data type
+    if (image.isNull()) {
+        QMessageBox::warning(this, "Image Load Error", "The selected file is not a valid image.");
+        return;
+    }
+    QByteArray imageData; // yesma image vanni variable lai arrayofbytes ma convert garne ho
+    QBuffer buffer(&imageData);
+
+    image.save(&buffer, "PNG"); // yo function le change garxa to appropriate fromat in our case PNG formate if needed
+    myData = imageData;
+    myImage = image;
+    QPixmap pixmap;
+    pixmap.loadFromData(imageData);
+    ui->UploadImage->setText("");
+    ui->UploadImage->setIcon(pixmap);
 
 }
+
+
 ///////////////////////////////////////////////////////////////////////////
 // Key matrix (2x2)
 const QVector<QVector<int>> keyMatrix = {{3, 3}, {2, 5}};
@@ -446,7 +484,7 @@ int User::charToInt(QChar ch) {
     if (ch.isLower()) return ch.toLatin1() - 'a';
     if (ch.isUpper()) return ch.toLatin1() - 'A' + 26;
     if (ch.isDigit()) return ch.toLatin1() - '0' + 52;
-    return ch.unicode() - 33 + 62; // Assuming special characters start from '!' (ASCII 33)
+    return ch.unicode() - 33 + 62; // Assuming spsecial characters start from '!' (ASCII 33)
 }
 
 // Integer to character mapping
@@ -551,3 +589,5 @@ QString User::decrypt(const QString &ciphertext) {
 
     return plaintext;
 }
+
+
