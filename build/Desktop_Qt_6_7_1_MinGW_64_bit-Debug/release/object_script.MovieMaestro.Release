@@ -1,5 +1,6 @@
 release/admin.o
 release/adminoptions.o
+release/homepage.o
 release/main.o
 release/mainwindow.o
 release/user.o
@@ -7,5 +8,6 @@ release/qrc_images.o
 release/qrc_photos.o
 release/moc_admin.o
 release/moc_adminoptions.o
+release/moc_homepage.o
 release/moc_mainwindow.o
 release/moc_user.o

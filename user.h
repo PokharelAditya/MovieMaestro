@@ -6,6 +6,9 @@
 #include<QTSql>
 #include<QDebug>
 #include<QFileInfo>
+#include <QFileDialog>
+#include <QBuffer>
+#include <QImageReader>
 namespace Ui {
 class User;
 }
@@ -17,7 +20,7 @@ class User : public QDialog
 public:
     explicit User(QWidget *parent = nullptr);
     ~User();
-
+    QString _username;
 private slots:
 
 
@@ -61,7 +64,9 @@ private slots:
 
     void on_left_clicked();
 
-    void on_usernameslot_textChanged(const QString &arg1);
+
+
+    void on_UploadImage_clicked();
 
 private:
     int lcount=0;
@@ -74,7 +79,7 @@ private:
     QLineEdit *passwordslot;// changed
     QLineEdit *passwordslot_2; // changed here the data type is QLineEdit
     bool checkifalreadyexists(QString &user_id);
-    bool adduserdata(QString &user_id , QString &password);
+    bool adduserdata(QString &user_id , QString &password,QByteArray &myData);
     bool isquerypass;
      QIcon OpenEye,CloseEye,Cross,left;
     void setredusernamelineedit();
@@ -87,6 +92,9 @@ private:
     int modularInverse(int a, int m);
     QVector<QVector<int>> inverseMatrix(const QVector<QVector<int>> &matrix);
     QString decrypt(const QString &ciphertext);
+    QImage myImage;
+     QByteArray myData;
+ QSqlDatabase userdatabase;
 };
 
 #endif // USER_H
