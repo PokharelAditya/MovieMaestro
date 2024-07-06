@@ -19,6 +19,14 @@ Admin::Admin(QWidget *parent)
     ui->APassword->setPlaceholderText("Password");
     ui->TwoFABox->hide();
     ui->BackToAdmin->hide();
+    ui->BackTo2FA->hide();
+    ui->SecurityBox->hide();
+    ui->forgotPwBox->hide();
+    ui->forgot2faBox->hide();
+
+    QIntValidator *intValidator = new QIntValidator(0, 9999, this);
+    ui->new2FA->setValidator(intValidator);
+    ui->cnew2FA->setValidator(intValidator);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(QCoreApplication::applicationDirPath() + "/AdminAuthentication.db");
@@ -60,6 +68,42 @@ void Admin::accessDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D
     D_sa1 = decrypt(E_sa1);
     D_sq2 = decrypt(E_sq2);
     D_sa2 = decrypt(E_sa2);
+}
+
+bool Admin::storeDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_twoFA,QString &D_sq1,QString &D_sa1,QString &D_sq2,QString &D_sa2)
+{
+    QString E_un,E_pw,E_email,E_twoFA,E_sq1,E_sa1,E_sq2,E_sa2;
+    E_un = encrypt(D_un);
+    E_pw = encrypt(D_pw);
+    E_email = encrypt(D_email);
+    E_twoFA = encrypt(QString::number(D_twoFA));
+    E_sq1 = encrypt(D_sq1);
+    E_sa1 = encrypt(D_sa1);
+    E_sq2 = encrypt(D_sq2);
+    E_sa2 = encrypt(D_sa2);
+    id++;
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO ADMIN(Id, Username, Password, Email, TwoFA, SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2)"
+                  "VALUES(:id, :un, :pw, :email, :twoFA, :sq1, :sa1, :sq2, :sa2)");
+    query.bindValue(":id",id);
+    query.bindValue(":un",E_un);
+    query.bindValue(":pw",E_pw);
+    query.bindValue(":email",E_email);
+    query.bindValue(":twoFA",E_twoFA);
+    query.bindValue(":sq1",E_sq1);
+    query.bindValue(":sa1",E_sa1);
+    query.bindValue(":sq2",E_sq2);
+    query.bindValue(":sa2",E_sa2);
+
+    if(query.exec())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 QString Admin::encrypt(QString d)
@@ -109,16 +153,27 @@ void Admin::on_BackToUser_clicked()
 
 void Admin::on_BackToAdmin_clicked()
 {
-    ui->BackToAdmin->hide();
-    ui->BackToUser->show();
-    ui->TwoFABox->hide();
     ui->AdminGroupBox->show();
+    ui->BackToUser->show();
+    ui->BackToAdmin->hide();
+    ui->TwoFABox->hide();
     ui->TwoFA1->clear();
     ui->TwoFA2->clear();
     ui->TwoFA3->clear();
     ui->TwoFA4->clear();
-    ui->AUsername->clear();
-    ui->APassword->clear();
+    ui->SQ1ans->clear();
+    ui->SQ2ans->clear();
+    ui->SecurityBox->hide();
+    ui->forgotPwBox->hide();
+    ui->newPassword->clear();
+    ui->cnewPassword->clear();
+    pwvisible = true;
+    on_ShowHideNPW_clicked();
+    ui->forgot2faBox->hide();
+    ui->new2FA->clear();
+    ui->cnew2FA->clear();
+    pwvisible = true;
+    on_ShowHide2FA_clicked();
 }
 
 void Admin::on_ShowHidePW_clicked()
@@ -178,6 +233,10 @@ void Admin::on_LogInButton_clicked()
         ui->AdminGroupBox->hide();
         ui->TwoFABox->show();
         ui->TwoFA1->setFocus();
+        ui->AUsername->clear();
+        ui->APassword->clear();
+        pwvisible = true;
+        on_ShowHidePW_clicked();
     }
     else if(un.isEmpty())
     {
@@ -279,12 +338,262 @@ void Admin::on_ConfirmButton_clicked()
     }
 }
 
+QString s;
+
 void Admin::on_forgotPassword_clicked()
 {
-
+    s = "forgotpassword";
+    pwvisible = true;
+    on_ShowHidePW_clicked();
+    ui->AUsername->clear();
+    ui->APassword->clear();
+    ui->BackToUser->hide();
+    ui->AdminGroupBox->hide();
+    ui->BackToAdmin->show();
+    securityQuestions();
 }
 
 void Admin::on_forgotTwoFA_clicked()
 {
+    s = "forgot2fa";
+    ui->TwoFA1->clear();
+    ui->TwoFA2->clear();
+    ui->TwoFA3->clear();
+    ui->TwoFA4->clear();
+    ui->BackToAdmin->hide();
+    ui->TwoFABox->hide();
+    ui->BackTo2FA->show();
+    securityQuestions();
+}
 
+void Admin::securityQuestions()
+{
+    ui->SecurityBox->show();
+
+    int id,D_twoFA;
+    QString D_un,D_pw,D_email,D_sq1,D_sa1,D_sq2,D_sa2;
+    accessDB(id,D_un,D_pw,D_email,D_twoFA,D_sq1,D_sa1,D_sq2,D_sa2);
+
+    ui->textSQ1->setText("1. " + D_sq1);
+    ui->textSQ2->setText("2. " + D_sq2);
+}
+
+void Admin::on_BackTo2FA_clicked()
+{
+    ui->SQ1ans->clear();
+    ui->SQ2ans->clear();
+    ui->BackTo2FA->hide();
+    ui->SecurityBox->hide();
+    ui->BackToAdmin->show();
+    ui->TwoFABox->show();
+}
+
+void Admin::on_SQ1ans_returnPressed()
+{
+    ui->SQ2ans->setFocus();
+}
+
+void Admin::on_SQ2ans_returnPressed()
+{
+    on_nextButton_clicked();
+}
+
+void Admin::on_nextButton_clicked()
+{
+    int id,D_twoFA;
+    QString D_un,D_pw,D_email,D_sq1,D_sa1,D_sq2,D_sa2;
+    accessDB(id,D_un,D_pw,D_email,D_twoFA,D_sq1,D_sa1,D_sq2,D_sa2);
+
+    if(ui->SQ1ans->text() == D_sa1 && ui->SQ2ans->text() == D_sa2)
+    {
+        ui->BackToAdmin->hide();
+        ui->BackTo2FA->hide();
+        ui->SecurityBox->hide();
+        if(s == "forgotpassword")
+        {
+            ui->forgotPwBox->show();
+        }
+        else if(s == "forgot2fa")
+        {
+            ui->forgot2faBox->show();
+        }
+    }
+    else
+    {
+        QMessageBox::warning(this,"Error","The answer you entered is incorrect.\nPlease try again!");
+        ui->SQ1ans->clear();
+        ui->SQ2ans->clear();
+        ui->SQ1ans->setFocus();
+    }
+}
+
+void Admin::on_cancelPW_clicked()
+{
+    if(QMessageBox::question(this,"Cancel","Are you sure to cancel resetting the password?",QMessageBox::Yes,QMessageBox::No) == QMessageBox::Yes)
+    {
+        on_BackToAdmin_clicked();
+    }
+}
+
+void Admin::on_ShowHideNPW_clicked()
+{
+    pwvisible = !pwvisible;
+    if(pwvisible)
+    {
+        ui->newPassword->setEchoMode(QLineEdit::Normal);
+        ui->cnewPassword->setEchoMode(QLineEdit::Normal);
+        ui->ShowHideNPW->setIcon(CloseEye);
+    }
+    else
+    {
+        ui->newPassword->setEchoMode(QLineEdit::Password);
+        ui->cnewPassword->setEchoMode(QLineEdit::Password);
+        ui->ShowHideNPW->setIcon(OpenEye);
+    }
+}
+
+void Admin::on_resetPW_clicked()
+{
+    QString np = ui->newPassword->text(),cp = ui->cnewPassword->text();
+    if(np.isEmpty())
+    {
+        QMessageBox::warning(this,"Error","Password cannot be empty.");
+        ui->newPassword->setFocus();
+    }
+    else if(cp.isEmpty())
+    {
+        QMessageBox::warning(this,"Error","Password cannot be empty.");
+        ui->cnewPassword->setFocus();
+    }
+    else if(np == cp)
+    {
+        int id,D_twoFA;
+        QString D_un,D_pw,D_email,D_sq1,D_sa1,D_sq2,D_sa2;
+        accessDB(id,D_un,D_pw,D_email,D_twoFA,D_sq1,D_sa1,D_sq2,D_sa2);
+        if(np == D_pw)
+        {
+            QMessageBox::warning(this,"Error","New password cannot be existing password.");
+            ui->newPassword->clear();
+            ui->cnewPassword->clear();
+            ui->newPassword->setFocus();
+        }
+        else if(storeDB(id,D_un,np,D_email,D_twoFA,D_sq1,D_sa1,D_sq2,D_sa2))
+        {
+            QMessageBox::information(this,"Done","The password has been changed.");
+            QTimer::singleShot(0,this,SLOT(on_BackToAdmin_clicked()));
+        }
+        else
+        {
+            QMessageBox::critical(this,"Error","Could not change password.");
+        }
+    }
+    else
+    {
+        QMessageBox::warning(this,"Error","Passwords do not match.");
+        ui->newPassword->clear();
+        ui->cnewPassword->clear();
+        ui->newPassword->setFocus();
+    }
+}
+
+void Admin::on_newPassword_returnPressed()
+{
+    on_resetPW_clicked();
+}
+
+void Admin::on_cnewPassword_returnPressed()
+{
+    on_resetPW_clicked();
+}
+
+void Admin::on_cancel2FA_clicked()
+{
+    if(QMessageBox::question(this,"Cancel","Are you sure to cancel resetting the code?",QMessageBox::Yes,QMessageBox::No) == QMessageBox::Yes)
+    {
+        on_BackToAdmin_clicked();
+    }
+}
+
+void Admin::on_ShowHide2FA_clicked()
+{
+    pwvisible = !pwvisible;
+    if(pwvisible)
+    {
+        ui->new2FA->setEchoMode(QLineEdit::Normal);
+        ui->cnew2FA->setEchoMode(QLineEdit::Normal);
+        ui->ShowHide2FA->setIcon(CloseEye);
+    }
+    else
+    {
+        ui->new2FA->setEchoMode(QLineEdit::Password);
+        ui->cnew2FA->setEchoMode(QLineEdit::Password);
+        ui->ShowHide2FA->setIcon(OpenEye);
+    }
+}
+
+void Admin::on_reset2FA_clicked()
+{
+    QString nc = ui->new2FA->text(),cc = ui->cnew2FA->text();
+    if(nc.isEmpty())
+    {
+        QMessageBox::warning(this,"Error","Code cannot be empty.");
+        ui->new2FA->setFocus();
+    }
+    else if(cc.isEmpty())
+    {
+        QMessageBox::warning(this,"Error","Code cannot be empty.");
+        ui->cnew2FA->setFocus();
+    }
+    else if(nc.length() != 4)
+    {
+        QMessageBox::warning(this,"Error","Code must be of 4 digit.");
+        ui->new2FA->clear();
+        ui->new2FA->setFocus();
+    }
+    else if(cc.length() != 4)
+    {
+        QMessageBox::warning(this,"Error","Code must be of 4 digit.");
+        ui->cnew2FA->clear();
+        ui->cnew2FA->setFocus();
+    }
+    else if(nc == cc)
+    {
+        int id,D_twoFA;
+        QString D_un,D_pw,D_email,D_sq1,D_sa1,D_sq2,D_sa2;
+        accessDB(id,D_un,D_pw,D_email,D_twoFA,D_sq1,D_sa1,D_sq2,D_sa2);
+        int code = nc.toInt();
+        if(code == D_twoFA)
+        {
+            QMessageBox::warning(this,"Error","New code cannot be existing code.");
+            ui->new2FA->clear();
+            ui->cnew2FA->clear();
+            ui->new2FA->setFocus();
+        }
+        else if(storeDB(id,D_un,D_pw,D_email,code,D_sq1,D_sa1,D_sq2,D_sa2))
+        {
+            QMessageBox::information(this,"Done","The code has been changed.");
+            QTimer::singleShot(0,this,SLOT(on_BackToAdmin_clicked()));
+        }
+        else
+        {
+            QMessageBox::critical(this,"Error","Could not change code.");
+        }
+    }
+    else
+    {
+        QMessageBox::warning(this,"Error","Codes do not match.");
+        ui->new2FA->clear();
+        ui->cnew2FA->clear();
+        ui->new2FA->setFocus();
+    }
+}
+
+void Admin::on_new2FA_returnPressed()
+{
+    on_reset2FA_clicked();
+}
+
+void Admin::on_cnew2FA_returnPressed()
+{
+    on_reset2FA_clicked();
 }

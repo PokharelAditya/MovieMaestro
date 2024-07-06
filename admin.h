@@ -20,6 +20,8 @@ public:
     bool un_check(QString);
     bool pw_check(QString);
     bool twoFA_check(int);
+    void accessDB(int &,QString &,QString &,QString &,int &,QString &,QString &,QString &,QString &);
+    bool storeDB(int &,QString &,QString &,QString &,int &,QString &,QString &,QString &,QString &);
 
 private slots:
     void on_BackToUser_clicked();
@@ -44,14 +46,42 @@ private slots:
 
     void on_forgotTwoFA_clicked();
 
+    void on_BackTo2FA_clicked();
+
+    void on_nextButton_clicked();
+
+    void on_SQ1ans_returnPressed();
+
+    void on_SQ2ans_returnPressed();
+
+    void on_cancelPW_clicked();
+
+    void on_ShowHideNPW_clicked();
+
+    void on_resetPW_clicked();
+
+    void on_newPassword_returnPressed();
+
+    void on_cnewPassword_returnPressed();
+
+    void on_cancel2FA_clicked();
+
+    void on_ShowHide2FA_clicked();
+
+    void on_reset2FA_clicked();
+
+    void on_new2FA_returnPressed();
+
+    void on_cnew2FA_returnPressed();
+
 private:
     Ui::Admin *ui;
     bool pwvisible;
     QIcon OpenEye,CloseEye;
 
-    void accessDB(int &,QString &,QString &,QString &,int &,QString &,QString &,QString &,QString &);
     QString encrypt(QString);
     QString decrypt(QString);
+    void securityQuestions();
 };
 
 extern Admin *ad;
