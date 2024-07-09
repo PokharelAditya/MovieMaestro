@@ -1,7 +1,7 @@
 #include "adminoptions.h"
 #include "admin.h"
 #include "ui_adminoptions.h"
-#include <QMessageBox>
+#include "addmovies.h"
 
 extern Admin *ad;
 QString v;
@@ -596,5 +596,37 @@ void adminoptions::on_changeSQ_clicked()
             QMessageBox::critical(this,"Error","Could not change code.");
         }
     }
+}
+
+
+void adminoptions::on_viewButton_clicked()
+{
+    close();
+    //viewmovies *vm = new viewmovies();
+    //vm->show();
+}
+
+
+void adminoptions::on_addButton_clicked()
+{
+    close();
+    addmovies *am = new addmovies();
+    am->show();
+}
+
+
+void adminoptions::on_updateButton_clicked()
+{
+    close();
+    //updatemovies *um = new updatemovies();
+    //um->show();
+}
+
+
+void adminoptions::on_deleteButton_clicked()
+{
+    close();
+    //deletemovies *dm = new deletemovies();
+    //dm->show();
 }
 

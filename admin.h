@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QTSql>
-#include <QDebug>
+#include <QMessageBox>
 
 namespace Ui {
 class Admin;
@@ -76,6 +76,9 @@ private slots:
 
 private:
     Ui::Admin *ui;
+
+    QSqlDatabase AdminLoginData;
+
     bool pwvisible;
     QIcon OpenEye,CloseEye;
 

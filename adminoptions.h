@@ -2,6 +2,7 @@
 #define ADMINOPTIONS_H
 
 #include <QWidget>
+#include <QMessageBox>
 
 namespace Ui {
 class adminoptions;
@@ -87,6 +88,14 @@ private slots:
     void on_cancelSQ_clicked();
 
     void on_changeSQ_clicked();
+
+    void on_viewButton_clicked();
+
+    void on_addButton_clicked();
+
+    void on_updateButton_clicked();
+
+    void on_deleteButton_clicked();
 
 private:
     Ui::adminoptions *ui;

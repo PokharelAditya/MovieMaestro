@@ -1185,11 +1185,8 @@ public:
         SQ2->raise();
         Background->raise();
         Logo->raise();
-        SettingsPanel->raise();
-        Settings->raise();
         BackToAdminOptions->raise();
         BackToPassword->raise();
-        optionsBox->raise();
         TwoFABox->raise();
         changeEmailBox->raise();
         changeUNbox->raise();
@@ -1197,6 +1194,9 @@ public:
         VerificationBox->raise();
         change2FAbox->raise();
         changeSQbox->raise();
+        SettingsPanel->raise();
+        Settings->raise();
+        optionsBox->raise();
 
         retranslateUi(adminoptions);
 

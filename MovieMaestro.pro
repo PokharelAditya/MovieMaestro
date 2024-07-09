@@ -9,26 +9,27 @@ CONFIG += c++17
 # DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    addmovies.cpp \
     admin.cpp \
     adminoptions.cpp \
     homepage.cpp \
     main.cpp \
-    mainwindow.cpp \
     user.cpp
 
 HEADERS += \
     Databasemanager.h \
+    addmovies.h \
     admin.h \
     adminoptions.h \
+    database.h \
     homepage.h \
-    mainwindow.h \
     user.h
 
 FORMS += \
+    addmovies.ui \
     admin.ui \
     adminoptions.ui \
     homepage.ui \
-    mainwindow.ui \
     user.ui
 
 # Default rules for deployment.

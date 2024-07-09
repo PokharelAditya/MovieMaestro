@@ -2,14 +2,14 @@
 #include "user.h"
 #include "adminoptions.h"
 #include "ui_admin.h"
-#include <QMessageBox>
-#include <QCoreApplication>
+#include "database.h"
 
 Admin *ad = nullptr;
 
 Admin::Admin(QWidget *parent)
     : QDialog(parent)
-    , ui(new Ui::Admin) ,
+    , ui(new Ui::Admin),
+    AdminLoginData(database::instance().getAdminLoginData()),
     pwvisible(false),
     OpenEye(":/OpenEye.png"),
     CloseEye(":/CloseEye.png")
@@ -27,23 +27,17 @@ Admin::Admin(QWidget *parent)
     QIntValidator *intValidator = new QIntValidator(0, 9999, this);
     ui->new2FA->setValidator(intValidator);
     ui->cnew2FA->setValidator(intValidator);
-
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(QCoreApplication::applicationDirPath() + "/AdminAuthentication.db");
-
-    if(!db.open())
-    {
-        QMessageBox::critical(this,"Error","Failed to connect database");
-        QTimer::singleShot(0, qApp, SLOT(quit()));
-        return;
-    }
 }
 
 void Admin::accessDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_twoFA,QString &D_sq1,QString &D_sa1,QString &D_sq2,QString &D_sa2)
 {
-    QSqlQuery query;
+    QSqlDatabase AdminLoginData = database::instance().getAdminLoginData();
+    QSqlQuery query(AdminLoginData);
     query.prepare("SELECT Id, Username, Password, Email, TwoFA, SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2 FROM ADMIN");
-    query.exec();
+    if(!query.exec())
+    {
+        QMessageBox::critical(this,"Error","Failed to fetch data from database");
+    }
 
     QString E_un,E_pw,E_email,E_twoFA,E_sq1,E_sa1,E_sq2,E_sa2;
 
@@ -83,7 +77,8 @@ bool Admin::storeDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_
     E_sa2 = encrypt(D_sa2);
     id++;
 
-    QSqlQuery query;
+    QSqlDatabase AdminLoginData = database::instance().getAdminLoginData();
+    QSqlQuery query(AdminLoginData);
     query.prepare("INSERT INTO ADMIN(Id, Username, Password, Email, TwoFA, SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2)"
                   "VALUES(:id, :un, :pw, :email, :twoFA, :sq1, :sa1, :sq2, :sa2)");
     query.bindValue(":id",id);

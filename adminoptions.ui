@@ -2920,11 +2920,8 @@ border-radius:5px;
   </widget>
   <zorder>Background</zorder>
   <zorder>Logo</zorder>
-  <zorder>SettingsPanel</zorder>
-  <zorder>Settings</zorder>
   <zorder>BackToAdminOptions</zorder>
   <zorder>BackToPassword</zorder>
-  <zorder>optionsBox</zorder>
   <zorder>TwoFABox</zorder>
   <zorder>changeEmailBox</zorder>
   <zorder>changeUNbox</zorder>
@@ -2932,6 +2929,9 @@ border-radius:5px;
   <zorder>VerificationBox</zorder>
   <zorder>change2FAbox</zorder>
   <zorder>changeSQbox</zorder>
+  <zorder>SettingsPanel</zorder>
+  <zorder>Settings</zorder>
+  <zorder>optionsBox</zorder>
  </widget>
  <resources>
   <include location="photos.qrc"/>
