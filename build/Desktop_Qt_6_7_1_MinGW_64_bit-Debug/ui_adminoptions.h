@@ -43,7 +43,7 @@ public:
     QGroupBox *VerificationBox;
     QPushButton *NextButton;
     QLineEdit *VPassword;
-    QLabel *textVerification;
+    QLabel *textPassword;
     QLabel *PWicon;
     QPushButton *ShowHidePW;
     QGroupBox *TwoFABox;
@@ -54,6 +54,40 @@ public:
     QLineEdit *TwoFA4;
     QLineEdit *TwoFA3;
     QPushButton *BackToPassword;
+    QGroupBox *changeEmailBox;
+    QPushButton *cancelEmail;
+    QLineEdit *newEmail;
+    QLabel *changeEmailtext;
+    QPushButton *changeEmail;
+    QGroupBox *changeUNbox;
+    QPushButton *cancelUN;
+    QLineEdit *newUN;
+    QLabel *changeUNtext;
+    QPushButton *changeUN;
+    QGroupBox *changePWbox;
+    QPushButton *cancelPW;
+    QLineEdit *newPassword;
+    QLabel *changePWtext;
+    QPushButton *ShowHideNPW;
+    QLineEdit *cnewPassword;
+    QPushButton *changePW;
+    QGroupBox *change2FAbox;
+    QPushButton *cancel2FA;
+    QLineEdit *new2FA;
+    QLabel *change2FAtext;
+    QPushButton *ShowHide2FA;
+    QLineEdit *cnew2FA;
+    QPushButton *change2FA;
+    QGroupBox *changeSQbox;
+    QLineEdit *SQ1ans;
+    QLabel *textChangeSQ;
+    QLabel *textSQ1;
+    QLineEdit *SQ2ans;
+    QLabel *textSQ2;
+    QPushButton *changeSQ;
+    QPushButton *cancelSQ;
+    QLineEdit *SQ1;
+    QLineEdit *SQ2;
 
     void setupUi(QWidget *adminoptions)
     {
@@ -434,25 +468,25 @@ public:
         VPassword->setAlignment(Qt::AlignCenter);
         VPassword->setCursorMoveStyle(Qt::LogicalMoveStyle);
         VPassword->setClearButtonEnabled(true);
-        textVerification = new QLabel(VerificationBox);
-        textVerification->setObjectName("textVerification");
-        textVerification->setGeometry(QRect(60, 30, 300, 81));
+        textPassword = new QLabel(VerificationBox);
+        textPassword->setObjectName("textPassword");
+        textPassword->setGeometry(QRect(60, 30, 300, 81));
         QFont font4;
         font4.setFamilies({QString::fromUtf8("Segoe UI")});
         font4.setPointSize(22);
         font4.setBold(true);
         font4.setItalic(false);
-        textVerification->setFont(font4);
-        textVerification->setFocusPolicy(Qt::NoFocus);
-        textVerification->setContextMenuPolicy(Qt::DefaultContextMenu);
-        textVerification->setAutoFillBackground(false);
-        textVerification->setStyleSheet(QString::fromUtf8("background:none;\n"
+        textPassword->setFont(font4);
+        textPassword->setFocusPolicy(Qt::NoFocus);
+        textPassword->setContextMenuPolicy(Qt::DefaultContextMenu);
+        textPassword->setAutoFillBackground(false);
+        textPassword->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:none;\n"
 "color:rgb(230, 149, 40);"));
-        textVerification->setLineWidth(0);
-        textVerification->setScaledContents(false);
-        textVerification->setAlignment(Qt::AlignCenter);
-        textVerification->setWordWrap(false);
+        textPassword->setLineWidth(0);
+        textPassword->setScaledContents(false);
+        textPassword->setAlignment(Qt::AlignCenter);
+        textPassword->setWordWrap(false);
         PWicon = new QLabel(VerificationBox);
         PWicon->setObjectName("PWicon");
         PWicon->setGeometry(QRect(40, 140, 31, 31));
@@ -604,15 +638,565 @@ public:
 "border:none;"));
         BackToPassword->setIcon(icon2);
         BackToPassword->setIconSize(QSize(40, 40));
+        changeEmailBox = new QGroupBox(adminoptions);
+        changeEmailBox->setObjectName("changeEmailBox");
+        changeEmailBox->setGeometry(QRect(390, 205, 420, 340));
+        sizePolicy1.setHeightForWidth(changeEmailBox->sizePolicy().hasHeightForWidth());
+        changeEmailBox->setSizePolicy(sizePolicy1);
+        changeEmailBox->setLayoutDirection(Qt::LeftToRight);
+        changeEmailBox->setAutoFillBackground(false);
+        changeEmailBox->setStyleSheet(QString::fromUtf8("background-color:rgba(0, 0, 0, 100);\n"
+"background-position:left;\n"
+"border: none;\n"
+"border-radius: 15px;"));
+        changeEmailBox->setAlignment(Qt::AlignCenter);
+        cancelEmail = new QPushButton(changeEmailBox);
+        cancelEmail->setObjectName("cancelEmail");
+        cancelEmail->setGeometry(QRect(50, 240, 140, 45));
+        sizePolicy.setHeightForWidth(cancelEmail->sizePolicy().hasHeightForWidth());
+        cancelEmail->setSizePolicy(sizePolicy);
+        cancelEmail->setFont(font1);
+        cancelEmail->setCursor(QCursor(Qt::PointingHandCursor));
+        cancelEmail->setMouseTracking(true);
+        cancelEmail->setLayoutDirection(Qt::LeftToRight);
+        cancelEmail->setStyleSheet(QString::fromUtf8("#cancelEmail\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#cancelEmail:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        cancelEmail->setAutoRepeatInterval(-1);
+        newEmail = new QLineEdit(changeEmailBox);
+        newEmail->setObjectName("newEmail");
+        newEmail->setGeometry(QRect(65, 150, 290, 35));
+        sizePolicy2.setHeightForWidth(newEmail->sizePolicy().hasHeightForWidth());
+        newEmail->setSizePolicy(sizePolicy2);
+        newEmail->setFont(font3);
+        newEmail->setCursor(QCursor(Qt::IBeamCursor));
+        newEmail->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;"));
+        newEmail->setEchoMode(QLineEdit::Normal);
+        newEmail->setAlignment(Qt::AlignCenter);
+        newEmail->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        newEmail->setClearButtonEnabled(true);
+        changeEmailtext = new QLabel(changeEmailBox);
+        changeEmailtext->setObjectName("changeEmailtext");
+        changeEmailtext->setGeometry(QRect(20, 30, 380, 80));
+        QFont font7;
+        font7.setFamilies({QString::fromUtf8("Segoe UI")});
+        font7.setPointSize(23);
+        font7.setBold(true);
+        font7.setItalic(false);
+        changeEmailtext->setFont(font7);
+        changeEmailtext->setFocusPolicy(Qt::NoFocus);
+        changeEmailtext->setContextMenuPolicy(Qt::DefaultContextMenu);
+        changeEmailtext->setAutoFillBackground(false);
+        changeEmailtext->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;\n"
+"color:rgb(230, 149, 40);"));
+        changeEmailtext->setLineWidth(0);
+        changeEmailtext->setScaledContents(false);
+        changeEmailtext->setAlignment(Qt::AlignCenter);
+        changeEmailtext->setWordWrap(false);
+        changeEmail = new QPushButton(changeEmailBox);
+        changeEmail->setObjectName("changeEmail");
+        changeEmail->setGeometry(QRect(230, 240, 140, 45));
+        sizePolicy.setHeightForWidth(changeEmail->sizePolicy().hasHeightForWidth());
+        changeEmail->setSizePolicy(sizePolicy);
+        changeEmail->setFont(font1);
+        changeEmail->setCursor(QCursor(Qt::PointingHandCursor));
+        changeEmail->setMouseTracking(true);
+        changeEmail->setLayoutDirection(Qt::LeftToRight);
+        changeEmail->setStyleSheet(QString::fromUtf8("#changeEmail\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#changeEmail:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        changeEmail->setAutoRepeatInterval(-1);
+        changeUNbox = new QGroupBox(adminoptions);
+        changeUNbox->setObjectName("changeUNbox");
+        changeUNbox->setGeometry(QRect(390, 205, 420, 340));
+        sizePolicy1.setHeightForWidth(changeUNbox->sizePolicy().hasHeightForWidth());
+        changeUNbox->setSizePolicy(sizePolicy1);
+        changeUNbox->setLayoutDirection(Qt::LeftToRight);
+        changeUNbox->setAutoFillBackground(false);
+        changeUNbox->setStyleSheet(QString::fromUtf8("background-color:rgba(0, 0, 0, 100);\n"
+"background-position:left;\n"
+"border: none;\n"
+"border-radius: 15px;"));
+        changeUNbox->setAlignment(Qt::AlignCenter);
+        cancelUN = new QPushButton(changeUNbox);
+        cancelUN->setObjectName("cancelUN");
+        cancelUN->setGeometry(QRect(50, 240, 140, 45));
+        sizePolicy.setHeightForWidth(cancelUN->sizePolicy().hasHeightForWidth());
+        cancelUN->setSizePolicy(sizePolicy);
+        cancelUN->setFont(font1);
+        cancelUN->setCursor(QCursor(Qt::PointingHandCursor));
+        cancelUN->setMouseTracking(true);
+        cancelUN->setLayoutDirection(Qt::LeftToRight);
+        cancelUN->setStyleSheet(QString::fromUtf8("#cancelUN\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#cancelUN:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        cancelUN->setAutoRepeatInterval(-1);
+        newUN = new QLineEdit(changeUNbox);
+        newUN->setObjectName("newUN");
+        newUN->setGeometry(QRect(65, 150, 290, 35));
+        sizePolicy2.setHeightForWidth(newUN->sizePolicy().hasHeightForWidth());
+        newUN->setSizePolicy(sizePolicy2);
+        newUN->setFont(font3);
+        newUN->setCursor(QCursor(Qt::IBeamCursor));
+        newUN->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;"));
+        newUN->setEchoMode(QLineEdit::Normal);
+        newUN->setAlignment(Qt::AlignCenter);
+        newUN->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        newUN->setClearButtonEnabled(true);
+        changeUNtext = new QLabel(changeUNbox);
+        changeUNtext->setObjectName("changeUNtext");
+        changeUNtext->setGeometry(QRect(20, 30, 380, 80));
+        changeUNtext->setFont(font7);
+        changeUNtext->setFocusPolicy(Qt::NoFocus);
+        changeUNtext->setContextMenuPolicy(Qt::DefaultContextMenu);
+        changeUNtext->setAutoFillBackground(false);
+        changeUNtext->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;\n"
+"color:rgb(230, 149, 40);"));
+        changeUNtext->setLineWidth(0);
+        changeUNtext->setScaledContents(false);
+        changeUNtext->setAlignment(Qt::AlignCenter);
+        changeUNtext->setWordWrap(false);
+        changeUN = new QPushButton(changeUNbox);
+        changeUN->setObjectName("changeUN");
+        changeUN->setGeometry(QRect(230, 240, 140, 45));
+        sizePolicy.setHeightForWidth(changeUN->sizePolicy().hasHeightForWidth());
+        changeUN->setSizePolicy(sizePolicy);
+        changeUN->setFont(font1);
+        changeUN->setCursor(QCursor(Qt::PointingHandCursor));
+        changeUN->setMouseTracking(true);
+        changeUN->setLayoutDirection(Qt::LeftToRight);
+        changeUN->setStyleSheet(QString::fromUtf8("#changeUN\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#changeUN:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        changeUN->setAutoRepeatInterval(-1);
+        changePWbox = new QGroupBox(adminoptions);
+        changePWbox->setObjectName("changePWbox");
+        changePWbox->setGeometry(QRect(390, 150, 420, 450));
+        sizePolicy1.setHeightForWidth(changePWbox->sizePolicy().hasHeightForWidth());
+        changePWbox->setSizePolicy(sizePolicy1);
+        changePWbox->setLayoutDirection(Qt::LeftToRight);
+        changePWbox->setAutoFillBackground(false);
+        changePWbox->setStyleSheet(QString::fromUtf8("background-color:rgba(0, 0, 0, 100);\n"
+"background-position:left;\n"
+"border: none;\n"
+"border-radius: 15px;"));
+        changePWbox->setAlignment(Qt::AlignCenter);
+        cancelPW = new QPushButton(changePWbox);
+        cancelPW->setObjectName("cancelPW");
+        cancelPW->setGeometry(QRect(50, 360, 140, 45));
+        sizePolicy.setHeightForWidth(cancelPW->sizePolicy().hasHeightForWidth());
+        cancelPW->setSizePolicy(sizePolicy);
+        cancelPW->setFont(font1);
+        cancelPW->setCursor(QCursor(Qt::PointingHandCursor));
+        cancelPW->setMouseTracking(true);
+        cancelPW->setLayoutDirection(Qt::LeftToRight);
+        cancelPW->setStyleSheet(QString::fromUtf8("#cancelPW\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#cancelPW:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        cancelPW->setAutoRepeatInterval(-1);
+        newPassword = new QLineEdit(changePWbox);
+        newPassword->setObjectName("newPassword");
+        newPassword->setGeometry(QRect(65, 160, 290, 35));
+        sizePolicy2.setHeightForWidth(newPassword->sizePolicy().hasHeightForWidth());
+        newPassword->setSizePolicy(sizePolicy2);
+        newPassword->setFont(font3);
+        newPassword->setCursor(QCursor(Qt::IBeamCursor));
+        newPassword->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;"));
+        newPassword->setEchoMode(QLineEdit::Password);
+        newPassword->setAlignment(Qt::AlignCenter);
+        newPassword->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        newPassword->setClearButtonEnabled(true);
+        changePWtext = new QLabel(changePWbox);
+        changePWtext->setObjectName("changePWtext");
+        changePWtext->setGeometry(QRect(20, 40, 380, 80));
+        changePWtext->setFont(font7);
+        changePWtext->setFocusPolicy(Qt::NoFocus);
+        changePWtext->setContextMenuPolicy(Qt::DefaultContextMenu);
+        changePWtext->setAutoFillBackground(false);
+        changePWtext->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;\n"
+"color:rgb(230, 149, 40);"));
+        changePWtext->setLineWidth(0);
+        changePWtext->setScaledContents(false);
+        changePWtext->setAlignment(Qt::AlignCenter);
+        changePWtext->setWordWrap(false);
+        ShowHideNPW = new QPushButton(changePWbox);
+        ShowHideNPW->setObjectName("ShowHideNPW");
+        ShowHideNPW->setGeometry(QRect(310, 290, 41, 21));
+        ShowHideNPW->setCursor(QCursor(Qt::PointingHandCursor));
+        ShowHideNPW->setMouseTracking(true);
+        ShowHideNPW->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        ShowHideNPW->setIcon(icon3);
+        ShowHideNPW->setIconSize(QSize(25, 30));
+        cnewPassword = new QLineEdit(changePWbox);
+        cnewPassword->setObjectName("cnewPassword");
+        cnewPassword->setGeometry(QRect(65, 240, 290, 35));
+        sizePolicy2.setHeightForWidth(cnewPassword->sizePolicy().hasHeightForWidth());
+        cnewPassword->setSizePolicy(sizePolicy2);
+        cnewPassword->setFont(font3);
+        cnewPassword->setCursor(QCursor(Qt::IBeamCursor));
+        cnewPassword->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;"));
+        cnewPassword->setEchoMode(QLineEdit::Password);
+        cnewPassword->setAlignment(Qt::AlignCenter);
+        cnewPassword->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        cnewPassword->setClearButtonEnabled(true);
+        changePW = new QPushButton(changePWbox);
+        changePW->setObjectName("changePW");
+        changePW->setGeometry(QRect(230, 360, 140, 45));
+        sizePolicy.setHeightForWidth(changePW->sizePolicy().hasHeightForWidth());
+        changePW->setSizePolicy(sizePolicy);
+        changePW->setFont(font1);
+        changePW->setCursor(QCursor(Qt::PointingHandCursor));
+        changePW->setMouseTracking(true);
+        changePW->setLayoutDirection(Qt::LeftToRight);
+        changePW->setStyleSheet(QString::fromUtf8("#changePW\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#changePW:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        changePW->setAutoRepeatInterval(-1);
+        change2FAbox = new QGroupBox(adminoptions);
+        change2FAbox->setObjectName("change2FAbox");
+        change2FAbox->setGeometry(QRect(390, 150, 420, 450));
+        sizePolicy1.setHeightForWidth(change2FAbox->sizePolicy().hasHeightForWidth());
+        change2FAbox->setSizePolicy(sizePolicy1);
+        change2FAbox->setLayoutDirection(Qt::LeftToRight);
+        change2FAbox->setAutoFillBackground(false);
+        change2FAbox->setStyleSheet(QString::fromUtf8("background-color:rgba(0, 0, 0, 100);\n"
+"background-position:left;\n"
+"border: none;\n"
+"border-radius: 15px;"));
+        change2FAbox->setAlignment(Qt::AlignCenter);
+        cancel2FA = new QPushButton(change2FAbox);
+        cancel2FA->setObjectName("cancel2FA");
+        cancel2FA->setGeometry(QRect(50, 360, 140, 45));
+        sizePolicy.setHeightForWidth(cancel2FA->sizePolicy().hasHeightForWidth());
+        cancel2FA->setSizePolicy(sizePolicy);
+        cancel2FA->setFont(font1);
+        cancel2FA->setCursor(QCursor(Qt::PointingHandCursor));
+        cancel2FA->setMouseTracking(true);
+        cancel2FA->setLayoutDirection(Qt::LeftToRight);
+        cancel2FA->setStyleSheet(QString::fromUtf8("#cancel2FA\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#cancel2FA:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        cancel2FA->setAutoRepeatInterval(-1);
+        new2FA = new QLineEdit(change2FAbox);
+        new2FA->setObjectName("new2FA");
+        new2FA->setGeometry(QRect(65, 160, 290, 35));
+        sizePolicy2.setHeightForWidth(new2FA->sizePolicy().hasHeightForWidth());
+        new2FA->setSizePolicy(sizePolicy2);
+        new2FA->setFont(font3);
+        new2FA->setCursor(QCursor(Qt::IBeamCursor));
+        new2FA->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;"));
+        new2FA->setMaxLength(4);
+        new2FA->setEchoMode(QLineEdit::Password);
+        new2FA->setAlignment(Qt::AlignCenter);
+        new2FA->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        new2FA->setClearButtonEnabled(true);
+        change2FAtext = new QLabel(change2FAbox);
+        change2FAtext->setObjectName("change2FAtext");
+        change2FAtext->setGeometry(QRect(20, 40, 380, 80));
+        change2FAtext->setFont(font7);
+        change2FAtext->setFocusPolicy(Qt::NoFocus);
+        change2FAtext->setContextMenuPolicy(Qt::DefaultContextMenu);
+        change2FAtext->setAutoFillBackground(false);
+        change2FAtext->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;\n"
+"color:rgb(230, 149, 40);"));
+        change2FAtext->setLineWidth(0);
+        change2FAtext->setScaledContents(false);
+        change2FAtext->setAlignment(Qt::AlignCenter);
+        change2FAtext->setWordWrap(false);
+        ShowHide2FA = new QPushButton(change2FAbox);
+        ShowHide2FA->setObjectName("ShowHide2FA");
+        ShowHide2FA->setGeometry(QRect(310, 290, 41, 21));
+        ShowHide2FA->setCursor(QCursor(Qt::PointingHandCursor));
+        ShowHide2FA->setMouseTracking(true);
+        ShowHide2FA->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        ShowHide2FA->setIcon(icon3);
+        ShowHide2FA->setIconSize(QSize(25, 30));
+        cnew2FA = new QLineEdit(change2FAbox);
+        cnew2FA->setObjectName("cnew2FA");
+        cnew2FA->setGeometry(QRect(65, 240, 290, 35));
+        sizePolicy2.setHeightForWidth(cnew2FA->sizePolicy().hasHeightForWidth());
+        cnew2FA->setSizePolicy(sizePolicy2);
+        cnew2FA->setFont(font3);
+        cnew2FA->setCursor(QCursor(Qt::IBeamCursor));
+        cnew2FA->setStyleSheet(QString::fromUtf8("background:rgb(194, 194, 194);\n"
+"border:none;\n"
+"color:black;\n"
+"border-radius:none;\n"
+"border-radius:5px;"));
+        cnew2FA->setMaxLength(4);
+        cnew2FA->setEchoMode(QLineEdit::Password);
+        cnew2FA->setAlignment(Qt::AlignCenter);
+        cnew2FA->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        cnew2FA->setClearButtonEnabled(true);
+        change2FA = new QPushButton(change2FAbox);
+        change2FA->setObjectName("change2FA");
+        change2FA->setGeometry(QRect(230, 360, 140, 45));
+        sizePolicy.setHeightForWidth(change2FA->sizePolicy().hasHeightForWidth());
+        change2FA->setSizePolicy(sizePolicy);
+        change2FA->setFont(font1);
+        change2FA->setCursor(QCursor(Qt::PointingHandCursor));
+        change2FA->setMouseTracking(true);
+        change2FA->setLayoutDirection(Qt::LeftToRight);
+        change2FA->setStyleSheet(QString::fromUtf8("#change2FA\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#change2FA:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        change2FA->setAutoRepeatInterval(-1);
+        changeSQbox = new QGroupBox(adminoptions);
+        changeSQbox->setObjectName("changeSQbox");
+        changeSQbox->setEnabled(true);
+        changeSQbox->setGeometry(QRect(130, 150, 940, 450));
+        sizePolicy1.setHeightForWidth(changeSQbox->sizePolicy().hasHeightForWidth());
+        changeSQbox->setSizePolicy(sizePolicy1);
+        changeSQbox->setLayoutDirection(Qt::LeftToRight);
+        changeSQbox->setAutoFillBackground(false);
+        changeSQbox->setStyleSheet(QString::fromUtf8("background-color:rgba(0, 0, 0, 100);\n"
+"background-position:left;\n"
+"border: none;\n"
+"border-radius: 15px;"));
+        changeSQbox->setAlignment(Qt::AlignCenter);
+        SQ1ans = new QLineEdit(changeSQbox);
+        SQ1ans->setObjectName("SQ1ans");
+        SQ1ans->setGeometry(QRect(50, 170, 280, 35));
+        sizePolicy2.setHeightForWidth(SQ1ans->sizePolicy().hasHeightForWidth());
+        SQ1ans->setSizePolicy(sizePolicy2);
+        SQ1ans->setFont(font3);
+        SQ1ans->setCursor(QCursor(Qt::IBeamCursor));
+        SQ1ans->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:rgb(194, 194, 194);\n"
+"color:black;\n"
+"border-radius:5px;\n"
+""));
+        SQ1ans->setEchoMode(QLineEdit::Normal);
+        SQ1ans->setAlignment(Qt::AlignCenter);
+        SQ1ans->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        SQ1ans->setClearButtonEnabled(true);
+        textChangeSQ = new QLabel(changeSQbox);
+        textChangeSQ->setObjectName("textChangeSQ");
+        textChangeSQ->setGeometry(QRect(270, 20, 400, 81));
+        QFont font8;
+        font8.setFamilies({QString::fromUtf8("Segoe UI")});
+        font8.setPointSize(20);
+        font8.setBold(true);
+        font8.setItalic(false);
+        textChangeSQ->setFont(font8);
+        textChangeSQ->setFocusPolicy(Qt::NoFocus);
+        textChangeSQ->setContextMenuPolicy(Qt::DefaultContextMenu);
+        textChangeSQ->setAutoFillBackground(false);
+        textChangeSQ->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;\n"
+"color:rgb(230, 149, 40);"));
+        textChangeSQ->setLineWidth(0);
+        textChangeSQ->setScaledContents(false);
+        textChangeSQ->setAlignment(Qt::AlignCenter);
+        textChangeSQ->setWordWrap(false);
+        textSQ1 = new QLabel(changeSQbox);
+        textSQ1->setObjectName("textSQ1");
+        textSQ1->setGeometry(QRect(30, 110, 870, 35));
+        QFont font9;
+        font9.setPointSize(12);
+        font9.setWeight(QFont::Medium);
+        font9.setItalic(true);
+        textSQ1->setFont(font9);
+        textSQ1->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        SQ2ans = new QLineEdit(changeSQbox);
+        SQ2ans->setObjectName("SQ2ans");
+        SQ2ans->setGeometry(QRect(50, 320, 280, 35));
+        sizePolicy2.setHeightForWidth(SQ2ans->sizePolicy().hasHeightForWidth());
+        SQ2ans->setSizePolicy(sizePolicy2);
+        SQ2ans->setFont(font3);
+        SQ2ans->setCursor(QCursor(Qt::IBeamCursor));
+        SQ2ans->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:rgb(194, 194, 194);\n"
+"color:black;\n"
+"border-radius:5px;"));
+        SQ2ans->setEchoMode(QLineEdit::Normal);
+        SQ2ans->setAlignment(Qt::AlignCenter);
+        SQ2ans->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        SQ2ans->setClearButtonEnabled(true);
+        textSQ2 = new QLabel(changeSQbox);
+        textSQ2->setObjectName("textSQ2");
+        textSQ2->setGeometry(QRect(30, 260, 870, 35));
+        textSQ2->setFont(font9);
+        textSQ2->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        changeSQ = new QPushButton(changeSQbox);
+        changeSQ->setObjectName("changeSQ");
+        changeSQ->setGeometry(QRect(780, 380, 140, 45));
+        sizePolicy.setHeightForWidth(changeSQ->sizePolicy().hasHeightForWidth());
+        changeSQ->setSizePolicy(sizePolicy);
+        changeSQ->setFont(font1);
+        changeSQ->setCursor(QCursor(Qt::PointingHandCursor));
+        changeSQ->setMouseTracking(true);
+        changeSQ->setLayoutDirection(Qt::LeftToRight);
+        changeSQ->setStyleSheet(QString::fromUtf8("#changeSQ\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#changeSQ:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        changeSQ->setAutoRepeatInterval(-1);
+        cancelSQ = new QPushButton(changeSQbox);
+        cancelSQ->setObjectName("cancelSQ");
+        cancelSQ->setGeometry(QRect(620, 380, 140, 45));
+        sizePolicy.setHeightForWidth(cancelSQ->sizePolicy().hasHeightForWidth());
+        cancelSQ->setSizePolicy(sizePolicy);
+        cancelSQ->setFont(font1);
+        cancelSQ->setCursor(QCursor(Qt::PointingHandCursor));
+        cancelSQ->setMouseTracking(true);
+        cancelSQ->setLayoutDirection(Qt::LeftToRight);
+        cancelSQ->setStyleSheet(QString::fromUtf8("#cancelSQ\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"#cancelSQ:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        cancelSQ->setAutoRepeatInterval(-1);
+        SQ1 = new QLineEdit(changeSQbox);
+        SQ1->setObjectName("SQ1");
+        SQ1->setGeometry(QRect(140, 110, 771, 35));
+        sizePolicy2.setHeightForWidth(SQ1->sizePolicy().hasHeightForWidth());
+        SQ1->setSizePolicy(sizePolicy2);
+        SQ1->setFont(font3);
+        SQ1->setCursor(QCursor(Qt::IBeamCursor));
+        SQ1->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:rgb(194, 194, 194);\n"
+"color:black;\n"
+"border-radius:5px;\n"
+""));
+        SQ1->setEchoMode(QLineEdit::Normal);
+        SQ1->setAlignment(Qt::AlignCenter);
+        SQ1->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        SQ1->setClearButtonEnabled(true);
+        SQ2 = new QLineEdit(changeSQbox);
+        SQ2->setObjectName("SQ2");
+        SQ2->setGeometry(QRect(140, 260, 771, 35));
+        sizePolicy2.setHeightForWidth(SQ2->sizePolicy().hasHeightForWidth());
+        SQ2->setSizePolicy(sizePolicy2);
+        SQ2->setFont(font3);
+        SQ2->setCursor(QCursor(Qt::IBeamCursor));
+        SQ2->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:rgb(194, 194, 194);\n"
+"color:black;\n"
+"border-radius:5px;\n"
+""));
+        SQ2->setEchoMode(QLineEdit::Normal);
+        SQ2->setAlignment(Qt::AlignCenter);
+        SQ2->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        SQ2->setClearButtonEnabled(true);
+        SQ1ans->raise();
+        textChangeSQ->raise();
+        SQ2ans->raise();
+        textSQ2->raise();
+        changeSQ->raise();
+        cancelSQ->raise();
+        textSQ1->raise();
+        SQ1->raise();
+        SQ2->raise();
         Background->raise();
         Logo->raise();
-        SettingsPanel->raise();
-        Settings->raise();
         BackToAdminOptions->raise();
         BackToPassword->raise();
-        optionsBox->raise();
-        VerificationBox->raise();
         TwoFABox->raise();
+        changeEmailBox->raise();
+        changeUNbox->raise();
+        changePWbox->raise();
+        VerificationBox->raise();
+        change2FAbox->raise();
+        changeSQbox->raise();
+        SettingsPanel->raise();
+        Settings->raise();
+        optionsBox->raise();
 
         retranslateUi(adminoptions);
 
@@ -641,7 +1225,7 @@ public:
         VerificationBox->setTitle(QString());
         NextButton->setText(QCoreApplication::translate("adminoptions", "Next", nullptr));
         VPassword->setText(QString());
-        textVerification->setText(QCoreApplication::translate("adminoptions", "Verification", nullptr));
+        textPassword->setText(QCoreApplication::translate("adminoptions", "Password", nullptr));
         PWicon->setText(QString());
         ShowHidePW->setText(QString());
         TwoFABox->setTitle(QString());
@@ -652,6 +1236,50 @@ public:
         TwoFA4->setText(QString());
         TwoFA3->setText(QString());
         BackToPassword->setText(QString());
+        changeEmailBox->setTitle(QString());
+        cancelEmail->setText(QCoreApplication::translate("adminoptions", "Cancel", nullptr));
+        newEmail->setText(QString());
+        newEmail->setPlaceholderText(QCoreApplication::translate("adminoptions", "New Email", nullptr));
+        changeEmailtext->setText(QCoreApplication::translate("adminoptions", "Change Email", nullptr));
+        changeEmail->setText(QCoreApplication::translate("adminoptions", "Change", nullptr));
+        changeUNbox->setTitle(QString());
+        cancelUN->setText(QCoreApplication::translate("adminoptions", "Cancel", nullptr));
+        newUN->setText(QString());
+        newUN->setPlaceholderText(QCoreApplication::translate("adminoptions", "New Username", nullptr));
+        changeUNtext->setText(QCoreApplication::translate("adminoptions", "Change Username", nullptr));
+        changeUN->setText(QCoreApplication::translate("adminoptions", "Change", nullptr));
+        changePWbox->setTitle(QString());
+        cancelPW->setText(QCoreApplication::translate("adminoptions", "Cancel", nullptr));
+        newPassword->setText(QString());
+        newPassword->setPlaceholderText(QCoreApplication::translate("adminoptions", "New Password", nullptr));
+        changePWtext->setText(QCoreApplication::translate("adminoptions", "Change Password", nullptr));
+        ShowHideNPW->setText(QString());
+        cnewPassword->setText(QString());
+        cnewPassword->setPlaceholderText(QCoreApplication::translate("adminoptions", "Confirm Password", nullptr));
+        changePW->setText(QCoreApplication::translate("adminoptions", "Change", nullptr));
+        change2FAbox->setTitle(QString());
+        cancel2FA->setText(QCoreApplication::translate("adminoptions", "Cancel", nullptr));
+        new2FA->setText(QString());
+        new2FA->setPlaceholderText(QCoreApplication::translate("adminoptions", "New 4 Digit Code", nullptr));
+        change2FAtext->setText(QCoreApplication::translate("adminoptions", "Change Two FA", nullptr));
+        ShowHide2FA->setText(QString());
+        cnew2FA->setText(QString());
+        cnew2FA->setPlaceholderText(QCoreApplication::translate("adminoptions", "Confirm Code", nullptr));
+        change2FA->setText(QCoreApplication::translate("adminoptions", "Change", nullptr));
+        changeSQbox->setTitle(QString());
+        SQ1ans->setText(QString());
+        SQ1ans->setPlaceholderText(QCoreApplication::translate("adminoptions", "Answer", nullptr));
+        textChangeSQ->setText(QCoreApplication::translate("adminoptions", "Change Security Question", nullptr));
+        textSQ1->setText(QCoreApplication::translate("adminoptions", "Question 1:", nullptr));
+        SQ2ans->setText(QString());
+        SQ2ans->setPlaceholderText(QCoreApplication::translate("adminoptions", "Answer", nullptr));
+        textSQ2->setText(QCoreApplication::translate("adminoptions", "Question 2:", nullptr));
+        changeSQ->setText(QCoreApplication::translate("adminoptions", "Change", nullptr));
+        cancelSQ->setText(QCoreApplication::translate("adminoptions", "Cancel", nullptr));
+        SQ1->setText(QString());
+        SQ1->setPlaceholderText(QCoreApplication::translate("adminoptions", "Question", nullptr));
+        SQ2->setText(QString());
+        SQ2->setPlaceholderText(QCoreApplication::translate("adminoptions", "Question", nullptr));
     } // retranslateUi
 
 };
