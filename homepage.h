@@ -20,6 +20,7 @@ private slots:
 
 private:
     Ui::HomePage *ui;
+     QSqlDatabase userdatabase;
 };
 
 #endif // HOMEPAGE_H

@@ -23,7 +23,7 @@ HomePage::HomePage(User *myuser ,QWidget *parent)
         QMessageBox::critical(this, tr("Error"), tr("Invalid user object."), QMessageBox::Ok);
         return;
     }
-   QSqlDatabase userdatabase = DatabaseManager::getDatabase();
+     userdatabase = DatabaseManager::instance().getDatabase();
 
     qDebug()<<"the username is " << myuser->_username;
     QSqlQuery query(userdatabase);
