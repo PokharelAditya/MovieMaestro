@@ -14,35 +14,33 @@ class database
     database(const database&) = delete;
     database& operator=(const database&) = delete;
 
-    QSqlDatabase db;
-
     public:
-    static database& instance()
+    static QSqlDatabase getAdminLoginData()
     {
-        static database instance;
-        return instance;
+        static QSqlDatabase db1 = QSqlDatabase::addDatabase("QSQLITE","AdminLoginDataConnection");
+        db1.setDatabaseName(QCoreApplication::applicationDirPath() + "/AdminAuthentication.db");
+        if(!db1.isOpen())
+        {
+            if(!db1.open())
+            {
+                QMessageBox::critical(nullptr,"Error","Failed to connect admin database");
+            }
+        }
+        return db1;
     }
 
-    QSqlDatabase getAdminLoginData()
+    static QSqlDatabase getMoviesData()
     {
-        db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName(QCoreApplication::applicationDirPath() + "/AdminAuthentication.db");
-        if(!db.open())
+        static QSqlDatabase db2 = QSqlDatabase::addDatabase("QSQLITE","AdminLoginDataConnection");
+        db2.setDatabaseName(QCoreApplication::applicationDirPath() + "/Movies.db");
+        if(!db2.isOpen())
         {
-            QMessageBox::critical(nullptr,"Error","Failed to connect database");
+            if(!db2.open())
+            {
+                QMessageBox::critical(nullptr,"Error","Failed to connect movies database");
+            }
         }
-        return db;
-    }
-
-    QSqlDatabase getMoviesData()
-    {
-        db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName(QCoreApplication::applicationDirPath() + "/Movies.db");
-        if(!db.open())
-        {
-            QMessageBox::critical(nullptr,"Error","Failed to connect database");
-        }
-        return db;
+        return db2;
     }
 };
 

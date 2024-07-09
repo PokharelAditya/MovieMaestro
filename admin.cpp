@@ -9,7 +9,7 @@ Admin *ad = nullptr;
 Admin::Admin(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Admin),
-    AdminLoginData(database::instance().getAdminLoginData()),
+    AdminLoginData(database::getAdminLoginData()),
     pwvisible(false),
     OpenEye(":/OpenEye.png"),
     CloseEye(":/CloseEye.png")
@@ -31,7 +31,7 @@ Admin::Admin(QWidget *parent)
 
 void Admin::accessDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_twoFA,QString &D_sq1,QString &D_sa1,QString &D_sq2,QString &D_sa2)
 {
-    QSqlDatabase AdminLoginData = database::instance().getAdminLoginData();
+    QSqlDatabase AdminLoginData = database::getAdminLoginData();
     QSqlQuery query(AdminLoginData);
     query.prepare("SELECT Id, Username, Password, Email, TwoFA, SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2 FROM ADMIN");
     if(!query.exec())
@@ -77,7 +77,7 @@ bool Admin::storeDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_
     E_sa2 = encrypt(D_sa2);
     id++;
 
-    QSqlDatabase AdminLoginData = database::instance().getAdminLoginData();
+    QSqlDatabase AdminLoginData = database::getAdminLoginData();
     QSqlQuery query(AdminLoginData);
     query.prepare("INSERT INTO ADMIN(Id, Username, Password, Email, TwoFA, SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2)"
                   "VALUES(:id, :un, :pw, :email, :twoFA, :sq1, :sa1, :sq2, :sa2)");

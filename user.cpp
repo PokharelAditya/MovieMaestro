@@ -24,7 +24,7 @@ User::User(QWidget *parent)
 {
     ui->setupUi(this);
     /////
-   userdatabase = DatabaseManager::instance().getDatabase();
+    userdatabase = DatabaseManager::instance().getDatabase();
 
      ////////////////////////////////////////////
     disconnect(ui->passwordslot, &QLineEdit::returnPressed, this, &User::on_signupbutton_clicked);

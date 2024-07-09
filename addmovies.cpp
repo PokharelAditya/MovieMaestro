@@ -6,7 +6,7 @@
 addmovies::addmovies(QWidget *parent)
     : QWidget(parent),
     ui(new Ui::addmovies),
-    MoviesData(database::instance().getMoviesData())
+    MoviesData(database::getMoviesData())
 {
     ui->setupUi(this);
     ui->BackToAddMovies->hide();
