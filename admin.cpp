@@ -15,8 +15,7 @@ Admin::Admin(QWidget *parent)
     CloseEye(":/CloseEye.png")
 {
     ui->setupUi(this);
-    ui->AUsername->setPlaceholderText("Username");
-    ui->APassword->setPlaceholderText("Password");
+    ui->UN_Focus_Button->setFocus();
     ui->TwoFABox->hide();
     ui->BackToAdmin->hide();
     ui->BackTo2FA->hide();
@@ -214,6 +213,11 @@ bool Admin::pw_check(QString pw)
     {
         return false;
     }
+}
+
+void Admin::on_UN_Focus_Button_clicked()
+{
+    ui->AUsername->setFocus();
 }
 
 void Admin::on_LogInButton_clicked()

@@ -165,6 +165,9 @@ border-radius:5px;</string>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="placeholderText">
+     <string>Password</string>
+    </property>
     <property name="cursorMoveStyle">
      <enum>Qt::LogicalMoveStyle</enum>
     </property>
@@ -306,6 +309,9 @@ border-radius:5px;
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+    <property name="placeholderText">
+     <string>Username</string>
+    </property>
     <property name="clearButtonEnabled">
      <bool>true</bool>
     </property>
@@ -373,6 +379,14 @@ color:rgba(230, 149, 40, 200);</string>
      <string>Forgot password?</string>
     </property>
    </widget>
+   <zorder>textAdmin</zorder>
+   <zorder>UNicon</zorder>
+   <zorder>PWicon</zorder>
+   <zorder>ShowHidePW</zorder>
+   <zorder>forgotPassword</zorder>
+   <zorder>AUsername</zorder>
+   <zorder>APassword</zorder>
+   <zorder>LogInButton</zorder>
   </widget>
   <widget class="QLabel" name="Background">
    <property name="geometry">
@@ -1802,20 +1816,38 @@ background:rgba(230, 149, 40, 200);
     </property>
    </widget>
   </widget>
+  <widget class="QPushButton" name="UN_Focus_Button">
+   <property name="geometry">
+    <rect>
+     <x>1090</x>
+     <y>70</y>
+     <width>21</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">backgroud:none;
+border:none;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
   <zorder>Background</zorder>
   <zorder>BackToUser</zorder>
   <zorder>TwoFABox</zorder>
   <zorder>BackToAdmin</zorder>
   <zorder>SecurityBox</zorder>
   <zorder>BackTo2FA</zorder>
-  <zorder>AdminGroupBox</zorder>
   <zorder>forgotPwBox</zorder>
   <zorder>forgot2faBox</zorder>
+  <zorder>UN_Focus_Button</zorder>
   <zorder>Logo</zorder>
+  <zorder>AdminGroupBox</zorder>
  </widget>
  <resources>
-  <include location="images.qrc"/>
   <include location="photos.qrc"/>
+  <include location="images.qrc"/>
  </resources>
  <connections/>
 </ui>

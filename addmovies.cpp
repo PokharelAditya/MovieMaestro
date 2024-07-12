@@ -16,9 +16,6 @@ addmovies::addmovies(QWidget *parent)
 
     QIntValidator *intValidator = new QIntValidator(0,999,this);
     ui->duration->setValidator(intValidator);
-
-    QDoubleValidator *doubleValidator = new QDoubleValidator(0,5,1,this);
-    ui->rating->setValidator(doubleValidator);
 }
 
 addmovies::~addmovies()
@@ -111,8 +108,7 @@ void addmovies::on_addButton_clicked()
             directors = ui->directors->toPlainText(),
             casts = ui->casts->toPlainText();
 
-    double duration = ui->duration->text().toDouble(),
-           rating = ui->rating->text().toDouble();
+    int duration = ui->duration->text().toInt();
 
     bool action = ui->action->isChecked(),
          comedy = ui->comedy->isChecked(),
@@ -136,19 +132,6 @@ void addmovies::on_addButton_clicked()
         QMessageBox::warning(this,"Error","Duration of the movie cannot be empty.");
         on_BackToAddMovies_clicked();
         ui->duration->setFocus();
-    }
-    else if(ui->rating->text().isEmpty())
-    {
-        QMessageBox::warning(this,"Error","Rating of the movie cannot be empty.");
-        on_BackToAddMovies_clicked();
-        ui->rating->setFocus();
-    }
-    else if(rating>5)
-    {
-        QMessageBox::warning(this,"Error","Rating of the movie cannot be greater than 5.");
-        on_BackToAddMovies_clicked();
-        ui->rating->clear();
-        ui->rating->setFocus();
     }
     else if(description.isEmpty())
     {
