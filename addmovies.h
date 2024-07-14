@@ -35,7 +35,6 @@ private slots:
 
 private:
     Ui::addmovies *ui;
-    QSqlDatabase MoviesData;
 
     bool check_if_movie_already_exist(QString);
 };

@@ -9,7 +9,6 @@ Admin *ad = nullptr;
 Admin::Admin(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Admin),
-    AdminLoginData(database::getAdminLoginData()),
     pwvisible(false),
     OpenEye(":/OpenEye.png"),
     CloseEye(":/CloseEye.png")
@@ -61,6 +60,8 @@ void Admin::accessDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D
     D_sa1 = decrypt(E_sa1);
     D_sq2 = decrypt(E_sq2);
     D_sa2 = decrypt(E_sa2);
+
+    database::closeAdminLoginData();
 }
 
 bool Admin::storeDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_twoFA,QString &D_sq1,QString &D_sa1,QString &D_sq2,QString &D_sa2)
@@ -92,10 +93,12 @@ bool Admin::storeDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_
 
     if(query.exec())
     {
+        database::closeAdminLoginData();
         return true;
     }
     else
     {
+        database::closeAdminLoginData();
         return false;
     }
 }

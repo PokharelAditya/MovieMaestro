@@ -79,8 +79,6 @@ private slots:
 private:
     Ui::Admin *ui;
 
-    QSqlDatabase AdminLoginData;
-
     bool pwvisible;
     QIcon OpenEye,CloseEye;
 

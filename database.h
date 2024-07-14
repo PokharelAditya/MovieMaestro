@@ -17,30 +17,44 @@ class database
     public:
     static QSqlDatabase getAdminLoginData()
     {
-        static QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE","AdminLoginDataConnection");
+        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE","AdminLoginDataConnection");
         db.setDatabaseName(QCoreApplication::applicationDirPath() + "/AdminAuthentication.db");
-        if(!db.isOpen())
+        if(!db.open())
         {
-            if(!db.open())
-            {
-                QMessageBox::critical(nullptr,"Error","Failed to connect admin database");
-            }
+            QMessageBox::critical(nullptr,"Error","Failed to connect admin database");
         }
         return db;
     }
 
+    static void closeAdminLoginData()
+    {
+        QSqlDatabase db = QSqlDatabase::database("AdminLoginDataConnection");
+        if(db.isOpen())
+        {
+            db.close();
+        }
+    }
+
     static QSqlDatabase getMoviesData()
     {
-        static QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE","MoviesDataConnection");
+        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE","MoviesDataConnection");
         db.setDatabaseName(QCoreApplication::applicationDirPath() + "/Movies.db");
-        if(!db.isOpen())
+        if(!db.open())
         {
-            if(!db.open())
-            {
-                QMessageBox::critical(nullptr,"Error","Failed to connect movies database");
-            }
+            QMessageBox::critical(nullptr,"Error","Failed to connect movies database");
         }
+        QSqlQuery query;
+        query.exec("PRAGMA foreign_keys = ON;");
         return db;
+    }
+
+    static void closeMoviesData()
+    {
+        QSqlDatabase db = QSqlDatabase::database("MoviesDataConnection");
+        if(db.isOpen())
+        {
+            db.close();
+        }
     }
 };
 
