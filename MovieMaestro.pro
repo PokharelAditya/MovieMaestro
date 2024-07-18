@@ -14,6 +14,7 @@ SOURCES += \
     adminoptions.cpp \
     homepage.cpp \
     main.cpp \
+    updatemovies.cpp \
     user.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     adminoptions.h \
     database.h \
     homepage.h \
+    updatemovies.h \
     user.h
 
 FORMS += \
@@ -30,6 +32,7 @@ FORMS += \
     admin.ui \
     adminoptions.ui \
     homepage.ui \
+    updatemovies.ui \
     user.ui
 
 # Default rules for deployment.

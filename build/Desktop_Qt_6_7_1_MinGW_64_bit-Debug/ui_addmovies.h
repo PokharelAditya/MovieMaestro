@@ -252,7 +252,7 @@ public:
         date->setDate(QDate(2000, 1, 1));
         poster = new QPushButton(addMoviesBox);
         poster->setObjectName("poster");
-        poster->setGeometry(QRect(690, 290, 220, 50));
+        poster->setGeometry(QRect(710, 310, 200, 50));
         QFont font6;
         font6.setPointSize(12);
         font6.setBold(false);
@@ -282,7 +282,7 @@ public:
 ""));
         posterLabel = new QLabel(addMoviesBox);
         posterLabel->setObjectName("posterLabel");
-        posterLabel->setGeometry(QRect(690, 80, 220, 260));
+        posterLabel->setGeometry(QRect(710, 60, 200, 300));
         posterLabel->setStyleSheet(QString::fromUtf8("#posterLabel\n"
 "{\n"
 "background:none;\n"
@@ -629,9 +629,9 @@ public:
         BackToAdminOptions->raise();
         BackToAddMovies->raise();
         BackToAddMovies2->raise();
-        addMoviesBox2->raise();
         genresBox->raise();
         addMoviesBox->raise();
+        addMoviesBox2->raise();
 
         retranslateUi(addmovies);
 
@@ -664,6 +664,9 @@ public:
         textDirectors->setText(QCoreApplication::translate("addmovies", "Directors:", nullptr));
         textCasts->setText(QCoreApplication::translate("addmovies", "Casts:", nullptr));
         nextButton2->setText(QCoreApplication::translate("addmovies", "Next", nullptr));
+        directors->setDocumentTitle(QString());
+        directors->setPlaceholderText(QCoreApplication::translate("addmovies", "For multiple directors, use comma to separate the directors", nullptr));
+        casts->setPlaceholderText(QCoreApplication::translate("addmovies", "For multiple casts, use comma to separate the directors", nullptr));
         genresBox->setTitle(QString());
         textGenres->setText(QCoreApplication::translate("addmovies", "Genres", nullptr));
         addButton->setText(QCoreApplication::translate("addmovies", "Add", nullptr));

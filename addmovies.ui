@@ -498,9 +498,9 @@ color:black;</string>
    <widget class="QPushButton" name="poster">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>290</y>
-      <width>220</width>
+      <x>710</x>
+      <y>310</y>
+      <width>200</width>
       <height>50</height>
      </rect>
     </property>
@@ -557,10 +557,10 @@ border-radius:5px;
    <widget class="QLabel" name="posterLabel">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>80</y>
-      <width>220</width>
-      <height>260</height>
+      <x>710</x>
+      <y>60</y>
+      <width>200</width>
+      <height>300</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -830,6 +830,12 @@ color:black;
 border-radius:5px;
 </string>
     </property>
+    <property name="documentTitle">
+     <string/>
+    </property>
+    <property name="placeholderText">
+     <string>For multiple directors, use comma to separate the directors</string>
+    </property>
    </widget>
    <widget class="QTextEdit" name="casts">
     <property name="geometry">
@@ -854,6 +860,9 @@ background:rgb(194, 194, 194);
 color:black;
 border-radius:5px;
 </string>
+    </property>
+    <property name="placeholderText">
+     <string>For multiple casts, use comma to separate the directors</string>
     </property>
    </widget>
   </widget>
@@ -1395,9 +1404,9 @@ border:none;</string>
   <zorder>BackToAdminOptions</zorder>
   <zorder>BackToAddMovies</zorder>
   <zorder>BackToAddMovies2</zorder>
-  <zorder>addMoviesBox2</zorder>
   <zorder>genresBox</zorder>
   <zorder>addMoviesBox</zorder>
+  <zorder>addMoviesBox2</zorder>
  </widget>
  <resources>
   <include location="photos.qrc"/>
