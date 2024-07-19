@@ -14,7 +14,7 @@ public:
     }
 
     QSqlDatabase getDatabase() {
-         userdatabase = QSqlDatabase::addDatabase("QSQLITE");
+      static QSqlDatabase  userdatabase = QSqlDatabase::addDatabase("QSQLITE" , "myconnection");
         if (!userdatabase.isOpen()) {
             userdatabase.setDatabaseName(QCoreApplication::applicationDirPath() + "/../userdatabase.db");
             if (!userdatabase.open()) {
@@ -26,9 +26,7 @@ public:
         return userdatabase;
     }
 
-private:
 
-    QSqlDatabase userdatabase;
 
 
 

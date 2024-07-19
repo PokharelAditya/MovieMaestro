@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QTSql>
 #include <QMessageBox>
-
+#include "homepage.h"
 namespace Ui {
 class Admin;
 }
