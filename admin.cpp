@@ -9,14 +9,12 @@ Admin *ad = nullptr;
 Admin::Admin(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::Admin),
-    AdminLoginData(database::instance().getAdminLoginData()),
     pwvisible(false),
     OpenEye(":/OpenEye.png"),
     CloseEye(":/CloseEye.png")
 {
     ui->setupUi(this);
-    ui->AUsername->setPlaceholderText("Username");
-    ui->APassword->setPlaceholderText("Password");
+    ui->UN_Focus_Button->setFocus();
     ui->TwoFABox->hide();
     ui->BackToAdmin->hide();
     ui->BackTo2FA->hide();
@@ -31,7 +29,7 @@ Admin::Admin(QWidget *parent)
 
 void Admin::accessDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_twoFA,QString &D_sq1,QString &D_sa1,QString &D_sq2,QString &D_sa2)
 {
-    QSqlDatabase AdminLoginData = database::instance().getAdminLoginData();
+    QSqlDatabase AdminLoginData = database::getAdminLoginData();
     QSqlQuery query(AdminLoginData);
     query.prepare("SELECT Id, Username, Password, Email, TwoFA, SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2 FROM ADMIN");
     if(!query.exec())
@@ -62,6 +60,8 @@ void Admin::accessDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D
     D_sa1 = decrypt(E_sa1);
     D_sq2 = decrypt(E_sq2);
     D_sa2 = decrypt(E_sa2);
+
+    database::closeAdminLoginData();
 }
 
 bool Admin::storeDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_twoFA,QString &D_sq1,QString &D_sa1,QString &D_sq2,QString &D_sa2)
@@ -77,7 +77,7 @@ bool Admin::storeDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_
     E_sa2 = encrypt(D_sa2);
     id++;
 
-    QSqlDatabase AdminLoginData = database::instance().getAdminLoginData();
+    QSqlDatabase AdminLoginData = database::getAdminLoginData();
     QSqlQuery query(AdminLoginData);
     query.prepare("INSERT INTO ADMIN(Id, Username, Password, Email, TwoFA, SecurityQuestion1, SecurityAnswer1, SecurityQuestion2, SecurityAnswer2)"
                   "VALUES(:id, :un, :pw, :email, :twoFA, :sq1, :sa1, :sq2, :sa2)");
@@ -93,10 +93,12 @@ bool Admin::storeDB(int &id,QString &D_un,QString &D_pw,QString &D_email,int &D_
 
     if(query.exec())
     {
+        database::closeAdminLoginData();
         return true;
     }
     else
     {
+        database::closeAdminLoginData();
         return false;
     }
 }
@@ -214,6 +216,11 @@ bool Admin::pw_check(QString pw)
     {
         return false;
     }
+}
+
+void Admin::on_UN_Focus_Button_clicked()
+{
+    ui->AUsername->setFocus();
 }
 
 void Admin::on_LogInButton_clicked()

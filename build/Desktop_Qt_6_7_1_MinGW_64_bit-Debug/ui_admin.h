@@ -66,6 +66,7 @@ public:
     QPushButton *ShowHide2FA;
     QLineEdit *cnew2FA;
     QPushButton *reset2FA;
+    QPushButton *UN_Focus_Button;
 
     void setupUi(QDialog *Admin)
     {
@@ -221,6 +222,14 @@ public:
         forgotPassword->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:none;\n"
 "color:rgba(230, 149, 40, 200);"));
+        textAdmin->raise();
+        UNicon->raise();
+        PWicon->raise();
+        ShowHidePW->raise();
+        forgotPassword->raise();
+        AUsername->raise();
+        APassword->raise();
+        LogInButton->raise();
         Background = new QLabel(Admin);
         Background->setObjectName("Background");
         Background->setGeometry(QRect(0, 0, 1200, 750));
@@ -718,16 +727,22 @@ public:
 "background:rgba(230, 149, 40, 200);\n"
 "}"));
         reset2FA->setAutoRepeatInterval(-1);
+        UN_Focus_Button = new QPushButton(Admin);
+        UN_Focus_Button->setObjectName("UN_Focus_Button");
+        UN_Focus_Button->setGeometry(QRect(1090, 70, 21, 21));
+        UN_Focus_Button->setStyleSheet(QString::fromUtf8("backgroud:none;\n"
+"border:none;"));
         Background->raise();
         BackToUser->raise();
         TwoFABox->raise();
         BackToAdmin->raise();
         SecurityBox->raise();
         BackTo2FA->raise();
-        AdminGroupBox->raise();
         forgotPwBox->raise();
         forgot2faBox->raise();
+        UN_Focus_Button->raise();
         Logo->raise();
+        AdminGroupBox->raise();
 
         retranslateUi(Admin);
 
@@ -740,10 +755,12 @@ public:
         AdminGroupBox->setTitle(QString());
         LogInButton->setText(QCoreApplication::translate("Admin", "Sign In", nullptr));
         APassword->setText(QString());
+        APassword->setPlaceholderText(QCoreApplication::translate("Admin", "Password", nullptr));
         textAdmin->setText(QCoreApplication::translate("Admin", "Admin", nullptr));
         UNicon->setText(QString());
         PWicon->setText(QString());
         AUsername->setText(QString());
+        AUsername->setPlaceholderText(QCoreApplication::translate("Admin", "Username", nullptr));
         ShowHidePW->setText(QString());
         forgotPassword->setText(QCoreApplication::translate("Admin", "Forgot password?", nullptr));
         Background->setText(QString());
@@ -786,6 +803,7 @@ public:
         cnew2FA->setText(QString());
         cnew2FA->setPlaceholderText(QCoreApplication::translate("Admin", "Confirm Code", nullptr));
         reset2FA->setText(QCoreApplication::translate("Admin", "Reset", nullptr));
+        UN_Focus_Button->setText(QString());
     } // retranslateUi
 
 };

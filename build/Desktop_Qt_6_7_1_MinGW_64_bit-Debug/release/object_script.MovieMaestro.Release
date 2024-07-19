@@ -3,6 +3,7 @@ release/admin.o
 release/adminoptions.o
 release/homepage.o
 release/main.o
+release/updatemovies.o
 release/user.o
 release/qrc_images.o
 release/qrc_photos.o
@@ -10,4 +11,5 @@ release/moc_addmovies.o
 release/moc_admin.o
 release/moc_adminoptions.o
 release/moc_homepage.o
+release/moc_updatemovies.o
 release/moc_user.o

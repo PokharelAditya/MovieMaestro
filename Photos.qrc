@@ -10,6 +10,10 @@
         <file>OpenEye.png</file>
         <file>SettingsGlow.png</file>
         <file>SettingsNoGlow.png</file>
+<<<<<<< HEAD
         <file>C:/Users/LENOVO/Downloads/sun.png</file>
+=======
+        <file>Search.png</file>
+>>>>>>> 615f8ebc185aad1ad8b7f7b5737c6d09ef52dd8a
     </qresource>
 </RCC>

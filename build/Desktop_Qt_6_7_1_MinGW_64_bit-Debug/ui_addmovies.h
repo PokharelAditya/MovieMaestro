@@ -38,8 +38,6 @@ public:
     QLabel *textDescription;
     QLabel *textDuration;
     QLineEdit *duration;
-    QLineEdit *rating;
-    QLabel *textRating;
     QLabel *textDate;
     QDateEdit *date;
     QPushButton *poster;
@@ -150,7 +148,7 @@ public:
         nextButton->setAutoRepeatInterval(-1);
         title = new QLineEdit(addMoviesBox);
         title->setObjectName("title");
-        title->setGeometry(QRect(99, 110, 281, 30));
+        title->setGeometry(QRect(99, 130, 281, 30));
         QSizePolicy sizePolicy2(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
@@ -192,7 +190,7 @@ public:
         textAddMovie->setWordWrap(false);
         textTitle = new QLabel(addMoviesBox);
         textTitle->setObjectName("textTitle");
-        textTitle->setGeometry(QRect(35, 110, 80, 30));
+        textTitle->setGeometry(QRect(35, 130, 80, 30));
         QFont font3;
         font3.setPointSize(12);
         font3.setWeight(QFont::Medium);
@@ -202,19 +200,19 @@ public:
 "border:none;"));
         textDescription = new QLabel(addMoviesBox);
         textDescription->setObjectName("textDescription");
-        textDescription->setGeometry(QRect(40, 310, 111, 35));
+        textDescription->setGeometry(QRect(40, 280, 111, 35));
         textDescription->setFont(font3);
         textDescription->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:none;"));
         textDuration = new QLabel(addMoviesBox);
         textDuration->setObjectName("textDuration");
-        textDuration->setGeometry(QRect(40, 160, 80, 30));
+        textDuration->setGeometry(QRect(40, 180, 80, 30));
         textDuration->setFont(font3);
         textDuration->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:none;"));
         duration = new QLineEdit(addMoviesBox);
         duration->setObjectName("duration");
-        duration->setGeometry(QRect(140, 160, 241, 30));
+        duration->setGeometry(QRect(140, 180, 241, 30));
         sizePolicy2.setHeightForWidth(duration->sizePolicy().hasHeightForWidth());
         duration->setSizePolicy(sizePolicy2);
         QFont font4;
@@ -232,38 +230,15 @@ public:
         duration->setAlignment(Qt::AlignCenter);
         duration->setCursorMoveStyle(Qt::LogicalMoveStyle);
         duration->setClearButtonEnabled(true);
-        rating = new QLineEdit(addMoviesBox);
-        rating->setObjectName("rating");
-        rating->setGeometry(QRect(120, 210, 261, 30));
-        sizePolicy2.setHeightForWidth(rating->sizePolicy().hasHeightForWidth());
-        rating->setSizePolicy(sizePolicy2);
-        rating->setFont(font4);
-        rating->setCursor(QCursor(Qt::IBeamCursor));
-        rating->setStyleSheet(QString::fromUtf8("border:none;\n"
-"background:rgb(194, 194, 194);\n"
-"color:black;\n"
-"border-radius:5px;\n"
-""));
-        rating->setMaxLength(3);
-        rating->setEchoMode(QLineEdit::Normal);
-        rating->setAlignment(Qt::AlignCenter);
-        rating->setCursorMoveStyle(Qt::LogicalMoveStyle);
-        rating->setClearButtonEnabled(true);
-        textRating = new QLabel(addMoviesBox);
-        textRating->setObjectName("textRating");
-        textRating->setGeometry(QRect(40, 210, 80, 30));
-        textRating->setFont(font3);
-        textRating->setStyleSheet(QString::fromUtf8("background:none;\n"
-"border:none;"));
         textDate = new QLabel(addMoviesBox);
         textDate->setObjectName("textDate");
-        textDate->setGeometry(QRect(40, 260, 131, 30));
+        textDate->setGeometry(QRect(40, 230, 131, 30));
         textDate->setFont(font3);
         textDate->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:none;"));
         date = new QDateEdit(addMoviesBox);
         date->setObjectName("date");
-        date->setGeometry(QRect(190, 260, 141, 30));
+        date->setGeometry(QRect(190, 230, 141, 30));
         QFont font5;
         font5.setPointSize(11);
         font5.setItalic(true);
@@ -277,7 +252,7 @@ public:
         date->setDate(QDate(2000, 1, 1));
         poster = new QPushButton(addMoviesBox);
         poster->setObjectName("poster");
-        poster->setGeometry(QRect(690, 290, 220, 50));
+        poster->setGeometry(QRect(710, 310, 200, 50));
         QFont font6;
         font6.setPointSize(12);
         font6.setBold(false);
@@ -295,7 +270,7 @@ public:
 "}"));
         description = new QTextEdit(addMoviesBox);
         description->setObjectName("description");
-        description->setGeometry(QRect(40, 359, 611, 91));
+        description->setGeometry(QRect(40, 330, 611, 91));
         QFont font7;
         font7.setPointSize(12);
         description->setFont(font7);
@@ -307,7 +282,7 @@ public:
 ""));
         posterLabel = new QLabel(addMoviesBox);
         posterLabel->setObjectName("posterLabel");
-        posterLabel->setGeometry(QRect(690, 80, 220, 260));
+        posterLabel->setGeometry(QRect(710, 60, 200, 300));
         posterLabel->setStyleSheet(QString::fromUtf8("#posterLabel\n"
 "{\n"
 "background:none;\n"
@@ -322,11 +297,9 @@ public:
         textDescription->raise();
         textDuration->raise();
         duration->raise();
-        textRating->raise();
         textDate->raise();
         date->raise();
         description->raise();
-        rating->raise();
         posterLabel->raise();
         poster->raise();
         BackToAddMovies = new QPushButton(addmovies);
@@ -656,9 +629,9 @@ public:
         BackToAdminOptions->raise();
         BackToAddMovies->raise();
         BackToAddMovies2->raise();
-        addMoviesBox2->raise();
         genresBox->raise();
         addMoviesBox->raise();
+        addMoviesBox2->raise();
 
         retranslateUi(addmovies);
 
@@ -681,9 +654,6 @@ public:
         textDuration->setText(QCoreApplication::translate("addmovies", "Duration:", nullptr));
         duration->setText(QString());
         duration->setPlaceholderText(QCoreApplication::translate("addmovies", "(mins)", nullptr));
-        rating->setText(QString());
-        rating->setPlaceholderText(QCoreApplication::translate("addmovies", "out of 5", nullptr));
-        textRating->setText(QCoreApplication::translate("addmovies", "Rating:", nullptr));
         textDate->setText(QCoreApplication::translate("addmovies", "Released Date:", nullptr));
         date->setDisplayFormat(QCoreApplication::translate("addmovies", "yyyy/MM/dd", nullptr));
         poster->setText(QCoreApplication::translate("addmovies", "Upload Poster", nullptr));
@@ -694,6 +664,9 @@ public:
         textDirectors->setText(QCoreApplication::translate("addmovies", "Directors:", nullptr));
         textCasts->setText(QCoreApplication::translate("addmovies", "Casts:", nullptr));
         nextButton2->setText(QCoreApplication::translate("addmovies", "Next", nullptr));
+        directors->setDocumentTitle(QString());
+        directors->setPlaceholderText(QCoreApplication::translate("addmovies", "For multiple directors, use comma to separate the directors", nullptr));
+        casts->setPlaceholderText(QCoreApplication::translate("addmovies", "For multiple casts, use comma to separate the directors", nullptr));
         genresBox->setTitle(QString());
         textGenres->setText(QCoreApplication::translate("addmovies", "Genres", nullptr));
         addButton->setText(QCoreApplication::translate("addmovies", "Add", nullptr));

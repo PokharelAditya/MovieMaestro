@@ -2,6 +2,7 @@
 #include "admin.h"
 #include "ui_adminoptions.h"
 #include "addmovies.h"
+#include "updatemovies.h"
 
 extern Admin *ad;
 QString v;
@@ -618,8 +619,8 @@ void adminoptions::on_addButton_clicked()
 void adminoptions::on_updateButton_clicked()
 {
     close();
-    //updatemovies *um = new updatemovies();
-    //um->show();
+    updatemovies *um = new updatemovies();
+    um->show();
 }
 
 

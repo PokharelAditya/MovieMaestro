@@ -74,10 +74,10 @@ private slots:
 
     void on_cnew2FA_returnPressed();
 
+    void on_UN_Focus_Button_clicked();
+
 private:
     Ui::Admin *ui;
-
-    QSqlDatabase AdminLoginData;
 
     bool pwvisible;
     QIcon OpenEye,CloseEye;
