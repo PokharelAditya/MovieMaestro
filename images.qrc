@@ -17,5 +17,7 @@
         <file>sun.png</file>
         <file>moon.png</file>
         <file>right.png</file>
+        <file>star.png</file>
+        <file>whitestar.png</file>
     </qresource>
 </RCC>
