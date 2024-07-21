@@ -10,6 +10,18 @@
     <height>750</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>750</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>750</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MovieMaestro</string>
   </property>
@@ -145,54 +157,12 @@ border:none;</string>
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="poster_1">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>140</y>
-      <width>180</width>
-      <height>270</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel
-{
-background:none;
-border:2px solid rgb(194,194,194);
-
-}</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::AutoText</enum>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
-    </property>
-    <property name="margin">
-     <number>0</number>
-    </property>
-   </widget>
    <widget class="QLabel" name="moviesText">
     <property name="geometry">
      <rect>
       <x>60</x>
       <y>40</y>
-      <width>211</width>
+      <width>210</width>
       <height>70</height>
      </rect>
     </property>
@@ -213,8 +183,8 @@ border:2px solid rgb(194,194,194);
    <widget class="QPushButton" name="Previous">
     <property name="geometry">
      <rect>
-      <x>525</x>
-      <y>560</y>
+      <x>520</x>
+      <y>570</y>
       <width>35</width>
       <height>35</height>
      </rect>
@@ -246,8 +216,8 @@ border:none;</string>
    <widget class="QPushButton" name="Next">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>560</y>
+      <x>570</x>
+      <y>570</y>
       <width>35</width>
       <height>35</height>
      </rect>
@@ -276,183 +246,656 @@ border:none;</string>
      </size>
     </property>
    </widget>
-   <widget class="QLabel" name="poster_2">
+   <widget class="QLabel" name="titleText">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>140</y>
-      <width>180</width>
-      <height>270</height>
+      <x>580</x>
+      <y>40</y>
+      <width>500</width>
+      <height>70</height>
      </rect>
     </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiBold</family>
+      <pointsize>20</pointsize>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel
-{
-background:none;
-border:2px solid white;
-
-}</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
+     <string notr="true">color:rgb(200, 200 200);</string>
     </property>
     <property name="text">
      <string/>
     </property>
-    <property name="textFormat">
-     <enum>Qt::AutoText</enum>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
     <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+     <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
     </property>
     <property name="wordWrap">
      <bool>true</bool>
-    </property>
-    <property name="margin">
-     <number>0</number>
     </property>
    </widget>
-   <widget class="QLabel" name="poster_3">
+   <widget class="QLabel" name="textID_1">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>140</y>
-      <width>180</width>
-      <height>270</height>
+      <x>60</x>
+      <y>220</y>
+      <width>101</width>
+      <height>20</height>
      </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel
-{
-background:none;
-border:2px solid white;
-
-}</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::AutoText</enum>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
-    </property>
-    <property name="margin">
-     <number>0</number>
     </property>
    </widget>
-   <widget class="QLabel" name="poster_4">
+   <widget class="QLabel" name="textID_8">
     <property name="geometry">
      <rect>
-      <x>700</x>
-      <y>140</y>
-      <width>180</width>
-      <height>270</height>
+      <x>60</x>
+      <y>430</y>
+      <width>101</width>
+      <height>20</height>
      </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLabel
-{
-background:none;
-border:2px solid white;
-
-}</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
     </property>
     <property name="text">
      <string/>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::AutoText</enum>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
-    </property>
-    <property name="wordWrap">
-     <bool>true</bool>
-    </property>
-    <property name="margin">
-     <number>0</number>
     </property>
    </widget>
-   <widget class="QLabel" name="poster_5">
+   <widget class="QLabel" name="textID_9">
     <property name="geometry">
      <rect>
-      <x>920</x>
+      <x>210</x>
+      <y>430</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_10">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>430</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_11">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>430</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_12">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>430</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_13">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>430</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_14">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>430</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_7">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>220</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_5">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>220</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_4">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>220</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_3">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>220</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_2">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>220</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="textID_6">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>220</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_1">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
       <y>140</y>
-      <width>180</width>
-      <height>270</height>
+      <width>124</width>
+      <height>184</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">QLabel
+     <string notr="true">QPushButton
 {
 background:none;
-border:2px solid white;
+border:2px solid rgb(194, 194, 194);
+}
 
-}</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::NoFrame</enum>
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
     <property name="text">
      <string/>
     </property>
-    <property name="textFormat">
-     <enum>Qt::AutoText</enum>
+   </widget>
+   <widget class="QPushButton" name="poster_2">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>140</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
     </property>
-    <property name="scaledContents">
-     <bool>true</bool>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
-    <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
-    <property name="wordWrap">
-     <bool>true</bool>
+    <property name="text">
+     <string/>
     </property>
-    <property name="margin">
-     <number>0</number>
+   </widget>
+   <widget class="QPushButton" name="poster_3">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>140</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_4">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>140</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_5">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>140</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_6">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>140</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_7">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>140</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_8">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>350</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_9">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>350</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_10">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>350</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_11">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>350</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_12">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>350</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_13">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>350</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="poster_14">
+    <property name="geometry">
+     <rect>
+      <x>950</x>
+      <y>350</y>
+      <width>124</width>
+      <height>184</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
    <zorder>Line</zorder>
-   <zorder>poster_1</zorder>
    <zorder>moviesText</zorder>
    <zorder>Next</zorder>
    <zorder>Previous</zorder>
+   <zorder>titleText</zorder>
+   <zorder>textID_1</zorder>
+   <zorder>textID_8</zorder>
+   <zorder>textID_9</zorder>
+   <zorder>textID_10</zorder>
+   <zorder>textID_11</zorder>
+   <zorder>textID_12</zorder>
+   <zorder>textID_13</zorder>
+   <zorder>textID_14</zorder>
+   <zorder>textID_7</zorder>
+   <zorder>textID_5</zorder>
+   <zorder>textID_4</zorder>
+   <zorder>textID_3</zorder>
+   <zorder>textID_2</zorder>
+   <zorder>textID_6</zorder>
+   <zorder>poster_1</zorder>
    <zorder>poster_2</zorder>
    <zorder>poster_3</zorder>
    <zorder>poster_4</zorder>
    <zorder>poster_5</zorder>
+   <zorder>poster_6</zorder>
+   <zorder>poster_7</zorder>
+   <zorder>poster_8</zorder>
+   <zorder>poster_9</zorder>
+   <zorder>poster_10</zorder>
+   <zorder>poster_11</zorder>
+   <zorder>poster_12</zorder>
+   <zorder>poster_13</zorder>
+   <zorder>poster_14</zorder>
   </widget>
   <widget class="QGroupBox" name="searchGroupBox">
    <property name="geometry">
@@ -570,11 +1013,440 @@ color:black;
     </property>
    </widget>
   </widget>
+  <widget class="QGroupBox" name="viewMoviesBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>160</y>
+     <width>1100</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgba(0, 0, 0, 125);
+background-position:left;
+border: none;
+border-radius: 15px;</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <widget class="QPushButton" name="viewDoneButton">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>440</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#viewDoneButton
+{
+background:none;
+border:2px solid rgba(230, 149, 40, 200);
+border-radius:20px;
+}
+#viewDoneButton:hover
+{
+background:rgba(230, 149, 40, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>Back</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoRepeatInterval">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="viewDetails">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>100</y>
+      <width>761</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+      <fontweight>Medium</fontweight>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:none;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>Details</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="viewTitle">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>20</y>
+      <width>600</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiBold</family>
+      <pointsize>20</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(200, 200 200);
+background:none;</string>
+    </property>
+    <property name="text">
+     <string>Title</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="viewPoster">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>224</width>
+      <height>334</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+border-radius:0px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="deleteMoviesBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>160</y>
+     <width>1100</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::LeftToRight</enum>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgba(0, 0, 0, 125);
+background-position:left;
+border: none;
+border-radius: 15px;</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <widget class="QPushButton" name="deleteDeleteButton">
+    <property name="geometry">
+     <rect>
+      <x>960</x>
+      <y>440</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#deleteDeleteButton
+{
+background:none;
+border:2px solid rgba(230, 149, 40, 200);
+border-radius:20px;
+}
+#deleteDeleteButton:hover
+{
+background:rgba(230, 149, 40, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>Delete</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoRepeatInterval">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="deleteDetails">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>100</y>
+      <width>761</width>
+      <height>321</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+      <italic>true</italic>
+      <fontweight>Medium</fontweight>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:none;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string>Details</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="deleteTitle">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>20</y>
+      <width>600</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift SemiBold</family>
+      <pointsize>20</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:rgb(200, 200 200);
+background:none;</string>
+    </property>
+    <property name="text">
+     <string>Title</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="deletePoster">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>224</width>
+      <height>334</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+border-radius:0px;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="deleteCancelButton">
+    <property name="geometry">
+     <rect>
+      <x>820</x>
+      <y>440</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>13</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="mouseTracking">
+     <bool>true</bool>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#deleteCancelButton
+{
+background:none;
+border:2px solid rgba(230, 149, 40, 200);
+border-radius:20px;
+}
+#deleteCancelButton:hover
+{
+background:rgba(230, 149, 40, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>Cancel</string>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="autoRepeatInterval">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="deleteID">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>240</y>
+      <width>63</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:none;
+border:none;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>deleteDeleteButton</zorder>
+   <zorder>deleteDetails</zorder>
+   <zorder>deleteTitle</zorder>
+   <zorder>deleteCancelButton</zorder>
+   <zorder>deleteID</zorder>
+   <zorder>deletePoster</zorder>
+  </widget>
   <zorder>Background</zorder>
   <zorder>moviesBox</zorder>
   <zorder>BackToAdminOptions</zorder>
   <zorder>searchGroupBox</zorder>
   <zorder>Logo</zorder>
+  <zorder>viewMoviesBox</zorder>
+  <zorder>deleteMoviesBox</zorder>
  </widget>
  <resources>
   <include location="photos.qrc"/>

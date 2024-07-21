@@ -4,6 +4,7 @@
 #include "addmovies.h"
 #include "updatemovies.h"
 
+QString option;
 extern Admin *ad;
 QString v;
 
@@ -602,9 +603,10 @@ void adminoptions::on_changeSQ_clicked()
 
 void adminoptions::on_viewButton_clicked()
 {
+    option = "view";
     close();
-    //viewmovies *vm = new viewmovies();
-    //vm->show();
+    updatemovies *um = new updatemovies();
+    um->show();
 }
 
 
@@ -618,6 +620,7 @@ void adminoptions::on_addButton_clicked()
 
 void adminoptions::on_updateButton_clicked()
 {
+    option = "update";
     close();
     updatemovies *um = new updatemovies();
     um->show();
@@ -626,8 +629,9 @@ void adminoptions::on_updateButton_clicked()
 
 void adminoptions::on_deleteButton_clicked()
 {
+    option = "delete";
     close();
-    //deletemovies *dm = new deletemovies();
-    //dm->show();
+    updatemovies *um = new updatemovies();
+    um->show();
 }
 

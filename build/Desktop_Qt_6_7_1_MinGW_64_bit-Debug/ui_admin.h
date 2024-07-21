@@ -93,7 +93,7 @@ public:
         AdminGroupBox->setLayoutDirection(Qt::LeftToRight);
         AdminGroupBox->setAutoFillBackground(false);
         AdminGroupBox->setStyleSheet(QString::fromUtf8("background-color:rgba(0, 0, 0, 100);\n"
-"background-position:left;\n"
+"bacground-position:left;\n"
 "border: none;\n"
 "border-radius: 15px;"));
         AdminGroupBox->setAlignment(Qt::AlignCenter);

@@ -1653,6 +1653,10 @@ release/moc_updatemovies.cpp: ../../updatemovies.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QPainter \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpainter.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qtextoption.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpen.h \
 		release/moc_predefs.h \
 		C:/Qt/6.7.1/mingw_64/bin/moc.exe
 	C:\Qt\6.7.1\mingw_64\bin\moc.exe $(DEFINES) --include "A:/Coding/Project - 2nd Sem/Codes/MovieMaestro/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/6.7.1/mingw_64/mkspecs/win32-g++ -I"A:/Coding/Project - 2nd Sem/Codes/MovieMaestro" -IC:/Qt/6.7.1/mingw_64/include -IC:/Qt/6.7.1/mingw_64/include/QtWidgets -IC:/Qt/6.7.1/mingw_64/include/QtGui -IC:/Qt/6.7.1/mingw_64/include/QtSql -IC:/Qt/6.7.1/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++ -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include -IC:/Qt/Tools/mingw1120_64/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed -IC:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include ..\..\updatemovies.h -o release\moc_updatemovies.cpp
@@ -3236,7 +3240,9 @@ release/adminoptions.o: ../../adminoptions.cpp ../../adminoptions.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QFileDialog \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qfiledialog.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QPixmap \
-		../../updatemovies.h
+		../../updatemovies.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QPainter \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpainter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\adminoptions.o ..\..\adminoptions.cpp
 
 release/homepage.o: ../../homepage.cpp ../../homepage.h \
@@ -4198,6 +4204,10 @@ release/updatemovies.o: ../../updatemovies.cpp ../../updatemovies.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/QPainter \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpainter.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qtextoption.h \
+		C:/Qt/6.7.1/mingw_64/include/QtGui/qpen.h \
 		ui_updatemovies.h \
 		C:/Qt/6.7.1/mingw_64/include/QtCore/QVariant \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/QIcon \
@@ -4215,8 +4225,6 @@ release/updatemovies.o: ../../updatemovies.cpp ../../updatemovies.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qlineedit.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qtextcursor.h \
 		C:/Qt/6.7.1/mingw_64/include/QtGui/qtextformat.h \
-		C:/Qt/6.7.1/mingw_64/include/QtGui/qpen.h \
-		C:/Qt/6.7.1/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.7.1/mingw_64/include/QtWidgets/qabstractbutton.h \

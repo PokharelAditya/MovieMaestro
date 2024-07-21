@@ -64,7 +64,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">background-color:rgba(0, 0, 0, 100);
-background-position:left;
+bacground-position:left;
 border: none;
 border-radius: 15px;</string>
    </property>
@@ -1846,8 +1846,8 @@ border:none;</string>
   <zorder>AdminGroupBox</zorder>
  </widget>
  <resources>
-  <include location="photos.qrc"/>
   <include location="images.qrc"/>
+  <include location="photos.qrc"/>
  </resources>
  <connections/>
 </ui>
