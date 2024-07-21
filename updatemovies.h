@@ -2,6 +2,7 @@
 #define UPDATEMOVIES_H
 
 #include <QWidget>
+#include <QPainter>
 
 namespace Ui {
 class updatemovies;

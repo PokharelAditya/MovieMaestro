@@ -11,5 +11,7 @@
         <file>SettingsGlow.png</file>
         <file>SettingsNoGlow.png</file>
         <file>Search.png</file>
+        <file>Next_icon.png</file>
+        <file>Previous_icon.png</file>
     </qresource>
 </RCC>

@@ -27,26 +27,20 @@ public:
     QPushButton *BackToAdminOptions;
     QLabel *Logo;
     QLabel *Background;
-    QLineEdit *searchBox;
-    QLineEdit *searchBoxBG;
-    QPushButton *searchButton;
     QGroupBox *moviesBox;
     QFrame *Line;
-    QLabel *poster_13;
-    QLabel *poster_9;
-    QLabel *poster_4;
-    QLabel *poster_5;
-    QLabel *poster_7;
-    QLabel *poster_8;
-    QLabel *poster_11;
     QLabel *poster_1;
     QLabel *moviesText;
-    QLabel *poster_14;
-    QLabel *poster_10;
-    QLabel *poster_3;
+    QPushButton *Previous;
+    QPushButton *Next;
     QLabel *poster_2;
-    QLabel *poster_12;
-    QLabel *poster_6;
+    QLabel *poster_3;
+    QLabel *poster_4;
+    QLabel *poster_5;
+    QGroupBox *searchGroupBox;
+    QLineEdit *searchBoxBG;
+    QPushButton *searchButton;
+    QLineEdit *searchBox;
 
     void setupUi(QWidget *updatemovies)
     {
@@ -72,6 +66,7 @@ public:
         Logo->setGeometry(QRect(1040, 30, 121, 111));
         Logo->setPixmap(QPixmap(QString::fromUtf8(":/MM Transparent BG.png")));
         Logo->setScaledContents(true);
+        Logo->setWordWrap(false);
         Background = new QLabel(updatemovies);
         Background->setObjectName("Background");
         Background->setGeometry(QRect(0, 0, 1200, 750));
@@ -82,47 +77,9 @@ public:
         Background->setTextFormat(Qt::MarkdownText);
         Background->setPixmap(QPixmap(QString::fromUtf8(":/background1.png")));
         Background->setScaledContents(true);
-        searchBox = new QLineEdit(updatemovies);
-        searchBox->setObjectName("searchBox");
-        searchBox->setGeometry(QRect(394, 55, 380, 40));
-        QFont font;
-        font.setPointSize(12);
-        searchBox->setFont(font);
-        searchBox->setStyleSheet(QString::fromUtf8("QLineEdit\n"
-"{\n"
-"background-color:rgb(225,225,225);\n"
-"border:none;\n"
-"border-radius:20px;\n"
-"color:black;\n"
-"}"));
-        searchBox->setFrame(true);
-        searchBox->setCursorPosition(0);
-        searchBox->setClearButtonEnabled(true);
-        searchBoxBG = new QLineEdit(updatemovies);
-        searchBoxBG->setObjectName("searchBoxBG");
-        searchBoxBG->setGeometry(QRect(380, 55, 440, 40));
-        searchBoxBG->setCursor(QCursor(Qt::ArrowCursor));
-        searchBoxBG->setStyleSheet(QString::fromUtf8("QLineEdit\n"
-"{\n"
-"background-color:rgb(225,225,225);\n"
-"border:none;\n"
-"border-radius:20px;\n"
-"}"));
-        searchBoxBG->setCursorPosition(0);
-        searchBoxBG->setReadOnly(true);
-        searchButton = new QPushButton(updatemovies);
-        searchButton->setObjectName("searchButton");
-        searchButton->setGeometry(QRect(775, 60, 30, 30));
-        searchButton->setCursor(QCursor(Qt::PointingHandCursor));
-        searchButton->setStyleSheet(QString::fromUtf8("border:none;\n"
-"background:none;"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
-        searchButton->setIcon(icon2);
-        searchButton->setIconSize(QSize(30, 30));
         moviesBox = new QGroupBox(updatemovies);
         moviesBox->setObjectName("moviesBox");
-        moviesBox->setGeometry(QRect(39, 120, 1121, 601));
+        moviesBox->setGeometry(QRect(30, 110, 1121, 621));
         moviesBox->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:none;"));
         Line = new QFrame(moviesBox);
@@ -132,120 +89,14 @@ public:
 "border:none;"));
         Line->setFrameShape(QFrame::Shape::VLine);
         Line->setFrameShadow(QFrame::Shadow::Sunken);
-        poster_13 = new QLabel(moviesBox);
-        poster_13->setObjectName("poster_13");
-        poster_13->setGeometry(QRect(810, 350, 120, 180));
-        poster_13->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_13->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"}"));
-        poster_13->setFrameShape(QFrame::NoFrame);
-        poster_13->setTextFormat(Qt::AutoText);
-        poster_13->setScaledContents(true);
-        poster_13->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_13->setWordWrap(true);
-        poster_13->setMargin(0);
-        poster_9 = new QLabel(moviesBox);
-        poster_9->setObjectName("poster_9");
-        poster_9->setGeometry(QRect(210, 350, 120, 180));
-        poster_9->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_9->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"}"));
-        poster_9->setFrameShape(QFrame::NoFrame);
-        poster_9->setTextFormat(Qt::AutoText);
-        poster_9->setScaledContents(true);
-        poster_9->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_9->setWordWrap(true);
-        poster_9->setMargin(0);
-        poster_9->setIndent(-1);
-        poster_4 = new QLabel(moviesBox);
-        poster_4->setObjectName("poster_4");
-        poster_4->setGeometry(QRect(510, 140, 120, 180));
-        poster_4->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_4->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"}"));
-        poster_4->setFrameShape(QFrame::NoFrame);
-        poster_4->setTextFormat(Qt::AutoText);
-        poster_4->setScaledContents(true);
-        poster_4->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_4->setWordWrap(true);
-        poster_4->setMargin(0);
-        poster_5 = new QLabel(moviesBox);
-        poster_5->setObjectName("poster_5");
-        poster_5->setGeometry(QRect(660, 140, 120, 180));
-        poster_5->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_5->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"}"));
-        poster_5->setFrameShape(QFrame::NoFrame);
-        poster_5->setTextFormat(Qt::AutoText);
-        poster_5->setScaledContents(true);
-        poster_5->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_5->setWordWrap(true);
-        poster_5->setMargin(0);
-        poster_7 = new QLabel(moviesBox);
-        poster_7->setObjectName("poster_7");
-        poster_7->setGeometry(QRect(960, 140, 120, 180));
-        poster_7->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_7->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"}"));
-        poster_7->setFrameShape(QFrame::NoFrame);
-        poster_7->setTextFormat(Qt::AutoText);
-        poster_7->setScaledContents(true);
-        poster_7->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_7->setWordWrap(true);
-        poster_7->setMargin(0);
-        poster_8 = new QLabel(moviesBox);
-        poster_8->setObjectName("poster_8");
-        poster_8->setGeometry(QRect(60, 350, 120, 180));
-        poster_8->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_8->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"}"));
-        poster_8->setFrameShape(QFrame::NoFrame);
-        poster_8->setTextFormat(Qt::AutoText);
-        poster_8->setScaledContents(true);
-        poster_8->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_8->setWordWrap(true);
-        poster_8->setMargin(0);
-        poster_11 = new QLabel(moviesBox);
-        poster_11->setObjectName("poster_11");
-        poster_11->setGeometry(QRect(510, 350, 120, 180));
-        poster_11->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_11->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"}"));
-        poster_11->setFrameShape(QFrame::NoFrame);
-        poster_11->setTextFormat(Qt::AutoText);
-        poster_11->setScaledContents(true);
-        poster_11->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_11->setWordWrap(true);
-        poster_11->setMargin(0);
         poster_1 = new QLabel(moviesBox);
         poster_1->setObjectName("poster_1");
-        poster_1->setGeometry(QRect(60, 140, 120, 180));
+        poster_1->setGeometry(QRect(40, 140, 180, 270));
         poster_1->setCursor(QCursor(Qt::PointingHandCursor));
         poster_1->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
+"border:2px solid rgb(194,194,194);\n"
 "\n"
 "}"));
         poster_1->setFrameShape(QFrame::NoFrame);
@@ -257,66 +108,42 @@ public:
         moviesText = new QLabel(moviesBox);
         moviesText->setObjectName("moviesText");
         moviesText->setGeometry(QRect(60, 40, 211, 70));
-        QFont font1;
-        font1.setFamilies({QString::fromUtf8("Bahnschrift SemiBold")});
-        font1.setPointSize(40);
-        font1.setBold(true);
-        moviesText->setFont(font1);
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Bahnschrift SemiBold")});
+        font.setPointSize(40);
+        font.setBold(true);
+        moviesText->setFont(font);
         moviesText->setStyleSheet(QString::fromUtf8("color:rgb(200, 200 200);"));
-        poster_14 = new QLabel(moviesBox);
-        poster_14->setObjectName("poster_14");
-        poster_14->setGeometry(QRect(960, 350, 120, 180));
-        poster_14->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_14->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"}"));
-        poster_14->setFrameShape(QFrame::NoFrame);
-        poster_14->setTextFormat(Qt::AutoText);
-        poster_14->setScaledContents(true);
-        poster_14->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_14->setWordWrap(true);
-        poster_14->setMargin(0);
-        poster_10 = new QLabel(moviesBox);
-        poster_10->setObjectName("poster_10");
-        poster_10->setGeometry(QRect(360, 350, 120, 180));
-        poster_10->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_10->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"}"));
-        poster_10->setFrameShape(QFrame::NoFrame);
-        poster_10->setTextFormat(Qt::AutoText);
-        poster_10->setScaledContents(true);
-        poster_10->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_10->setWordWrap(true);
-        poster_10->setMargin(0);
-        poster_3 = new QLabel(moviesBox);
-        poster_3->setObjectName("poster_3");
-        poster_3->setGeometry(QRect(360, 140, 120, 180));
-        poster_3->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_3->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
-"\n"
-"}"));
-        poster_3->setFrameShape(QFrame::NoFrame);
-        poster_3->setTextFormat(Qt::AutoText);
-        poster_3->setScaledContents(true);
-        poster_3->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_3->setWordWrap(true);
-        poster_3->setMargin(0);
+        Previous = new QPushButton(moviesBox);
+        Previous->setObjectName("Previous");
+        Previous->setGeometry(QRect(525, 560, 35, 35));
+        Previous->setCursor(QCursor(Qt::PointingHandCursor));
+        Previous->setMouseTracking(true);
+        Previous->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/Previous_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Previous->setIcon(icon2);
+        Previous->setIconSize(QSize(35, 35));
+        Next = new QPushButton(moviesBox);
+        Next->setObjectName("Next");
+        Next->setGeometry(QRect(580, 560, 35, 35));
+        Next->setCursor(QCursor(Qt::PointingHandCursor));
+        Next->setMouseTracking(true);
+        Next->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/Next_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Next->setIcon(icon3);
+        Next->setIconSize(QSize(35, 35));
         poster_2 = new QLabel(moviesBox);
         poster_2->setObjectName("poster_2");
-        poster_2->setGeometry(QRect(210, 140, 120, 180));
+        poster_2->setGeometry(QRect(260, 140, 180, 270));
         poster_2->setCursor(QCursor(Qt::PointingHandCursor));
         poster_2->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
+"border:2px solid white;\n"
 "\n"
 "}"));
         poster_2->setFrameShape(QFrame::NoFrame);
@@ -325,43 +152,111 @@ public:
         poster_2->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
         poster_2->setWordWrap(true);
         poster_2->setMargin(0);
-        poster_12 = new QLabel(moviesBox);
-        poster_12->setObjectName("poster_12");
-        poster_12->setGeometry(QRect(660, 350, 120, 180));
-        poster_12->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_12->setStyleSheet(QString::fromUtf8("QLabel\n"
+        poster_3 = new QLabel(moviesBox);
+        poster_3->setObjectName("poster_3");
+        poster_3->setGeometry(QRect(480, 140, 180, 270));
+        poster_3->setCursor(QCursor(Qt::PointingHandCursor));
+        poster_3->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
+"border:2px solid white;\n"
+"\n"
 "}"));
-        poster_12->setFrameShape(QFrame::NoFrame);
-        poster_12->setTextFormat(Qt::AutoText);
-        poster_12->setScaledContents(true);
-        poster_12->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_12->setWordWrap(true);
-        poster_12->setMargin(0);
-        poster_6 = new QLabel(moviesBox);
-        poster_6->setObjectName("poster_6");
-        poster_6->setGeometry(QRect(810, 140, 120, 180));
-        poster_6->setCursor(QCursor(Qt::PointingHandCursor));
-        poster_6->setStyleSheet(QString::fromUtf8("QLabel\n"
+        poster_3->setFrameShape(QFrame::NoFrame);
+        poster_3->setTextFormat(Qt::AutoText);
+        poster_3->setScaledContents(true);
+        poster_3->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
+        poster_3->setWordWrap(true);
+        poster_3->setMargin(0);
+        poster_4 = new QLabel(moviesBox);
+        poster_4->setObjectName("poster_4");
+        poster_4->setGeometry(QRect(700, 140, 180, 270));
+        poster_4->setCursor(QCursor(Qt::PointingHandCursor));
+        poster_4->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "background:none;\n"
-"border:2px solid rgba(230, 149, 40, 200);\n"
+"border:2px solid white;\n"
+"\n"
 "}"));
-        poster_6->setFrameShape(QFrame::NoFrame);
-        poster_6->setTextFormat(Qt::AutoText);
-        poster_6->setScaledContents(true);
-        poster_6->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-        poster_6->setWordWrap(true);
-        poster_6->setMargin(0);
+        poster_4->setFrameShape(QFrame::NoFrame);
+        poster_4->setTextFormat(Qt::AutoText);
+        poster_4->setScaledContents(true);
+        poster_4->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
+        poster_4->setWordWrap(true);
+        poster_4->setMargin(0);
+        poster_5 = new QLabel(moviesBox);
+        poster_5->setObjectName("poster_5");
+        poster_5->setGeometry(QRect(920, 140, 180, 270));
+        poster_5->setCursor(QCursor(Qt::PointingHandCursor));
+        poster_5->setStyleSheet(QString::fromUtf8("QLabel\n"
+"{\n"
+"background:none;\n"
+"border:2px solid white;\n"
+"\n"
+"}"));
+        poster_5->setFrameShape(QFrame::NoFrame);
+        poster_5->setTextFormat(Qt::AutoText);
+        poster_5->setScaledContents(true);
+        poster_5->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
+        poster_5->setWordWrap(true);
+        poster_5->setMargin(0);
+        Line->raise();
+        poster_1->raise();
+        moviesText->raise();
+        Next->raise();
+        Previous->raise();
+        poster_2->raise();
+        poster_3->raise();
+        poster_4->raise();
+        poster_5->raise();
+        searchGroupBox = new QGroupBox(updatemovies);
+        searchGroupBox->setObjectName("searchGroupBox");
+        searchGroupBox->setGeometry(QRect(340, 45, 510, 61));
+        searchGroupBox->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        searchBoxBG = new QLineEdit(searchGroupBox);
+        searchBoxBG->setObjectName("searchBoxBG");
+        searchBoxBG->setGeometry(QRect(40, 10, 440, 40));
+        searchBoxBG->setCursor(QCursor(Qt::ArrowCursor));
+        searchBoxBG->setStyleSheet(QString::fromUtf8("QLineEdit\n"
+"{\n"
+"background-color:rgb(225,225,225);\n"
+"border:none;\n"
+"border-radius:20px;\n"
+"}"));
+        searchBoxBG->setCursorPosition(0);
+        searchBoxBG->setReadOnly(true);
+        searchButton = new QPushButton(searchGroupBox);
+        searchButton->setObjectName("searchButton");
+        searchButton->setGeometry(QRect(435, 15, 30, 30));
+        searchButton->setCursor(QCursor(Qt::PointingHandCursor));
+        searchButton->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:none;"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/Search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        searchButton->setIcon(icon4);
+        searchButton->setIconSize(QSize(30, 30));
+        searchBox = new QLineEdit(searchGroupBox);
+        searchBox->setObjectName("searchBox");
+        searchBox->setGeometry(QRect(54, 10, 380, 40));
+        QFont font1;
+        font1.setPointSize(12);
+        searchBox->setFont(font1);
+        searchBox->setStyleSheet(QString::fromUtf8("QLineEdit\n"
+"{\n"
+"background-color:rgb(225,225,225);\n"
+"border:none;\n"
+"border-radius:20px;\n"
+"color:black;\n"
+"}"));
+        searchBox->setFrame(true);
+        searchBox->setCursorPosition(0);
+        searchBox->setClearButtonEnabled(true);
         Background->raise();
         moviesBox->raise();
-        Logo->raise();
         BackToAdminOptions->raise();
-        searchBoxBG->raise();
-        searchBox->raise();
-        searchButton->raise();
+        searchGroupBox->raise();
+        Logo->raise();
 
         retranslateUi(updatemovies);
 
@@ -374,26 +269,20 @@ public:
         BackToAdminOptions->setText(QString());
         Logo->setText(QString());
         Background->setText(QString());
-        searchBox->setText(QString());
-        searchBox->setPlaceholderText(QCoreApplication::translate("updatemovies", "Search Movies..", nullptr));
-        searchBoxBG->setPlaceholderText(QString());
-        searchButton->setText(QString());
         moviesBox->setTitle(QString());
-        poster_13->setText(QString());
-        poster_9->setText(QString());
-        poster_4->setText(QString());
-        poster_5->setText(QString());
-        poster_7->setText(QString());
-        poster_8->setText(QString());
-        poster_11->setText(QString());
         poster_1->setText(QString());
         moviesText->setText(QCoreApplication::translate("updatemovies", "Movies", nullptr));
-        poster_14->setText(QString());
-        poster_10->setText(QString());
-        poster_3->setText(QString());
+        Previous->setText(QString());
+        Next->setText(QString());
         poster_2->setText(QString());
-        poster_12->setText(QString());
-        poster_6->setText(QString());
+        poster_3->setText(QString());
+        poster_4->setText(QString());
+        poster_5->setText(QString());
+        searchGroupBox->setTitle(QString());
+        searchBoxBG->setPlaceholderText(QString());
+        searchButton->setText(QString());
+        searchBox->setText(QString());
+        searchBox->setPlaceholderText(QCoreApplication::translate("updatemovies", "Search Movies..", nullptr));
     } // retranslateUi
 
 };
