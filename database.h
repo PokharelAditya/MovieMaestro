@@ -43,8 +43,9 @@ class database
         {
             QMessageBox::critical(nullptr,"Error","Failed to connect movies database");
         }
-        QSqlQuery query;
-        query.exec("PRAGMA foreign_keys = ON;");
+        QSqlQuery query(db);
+        query.prepare("PRAGMA foreign_keys = ON");
+        query.exec();
         return db;
     }
 

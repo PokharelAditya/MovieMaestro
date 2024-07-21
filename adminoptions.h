@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QMessageBox>
 
+extern QString option;
+
 namespace Ui {
 class adminoptions;
 }
