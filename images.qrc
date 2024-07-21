@@ -7,5 +7,17 @@
         <file>eyes.png</file>
         <file>close.png</file>
         <file>left.png</file>
+        <file>searchicon.png</file>
+        <file>whitesearchicon.png</file>
+        <file>gear.png</file>
+        <file>whitegear.png</file>
+        <file>house.png</file>
+        <file>whitehouse.png</file>
+        <file>C:/Users/LENOVO/Downloads/sun.png</file>
+        <file>sun.png</file>
+        <file>moon.png</file>
+        <file>right.png</file>
+        <file>star.png</file>
+        <file>whitestar.png</file>
     </qresource>
 </RCC>

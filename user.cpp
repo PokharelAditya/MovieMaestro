@@ -11,8 +11,10 @@
 #include <QFileDialog>
 #include <QBuffer>
 #include <QImageReader>
+#include "database.h"
 #include"homepage.h"
 #include "Databasemanager.h"
+#include<QSettings>
 User::User(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::User),
@@ -308,8 +310,12 @@ void User::on_loginbutton_clicked()
         if (myQuery.next()) { // Check if a row is returned
             QString databasepw = myQuery.value(0).toString(); // Get the password from the result
             if (decrypt(databasepw) == pw) {
+                QSettings mysetting("myapp" ,"MovieMaestro");
+                mysetting.setValue("isLogged", true);
+                mysetting.setValue("username", ui->lusernameslot->text());
                 User *myuser = new User();
                 myuser->_username = ui->lusernameslot->text();
+
                 HomePage *mypage = new HomePage(myuser);
                 this->close();
                 mypage->show();
@@ -377,7 +383,7 @@ void User::on_passwordslot_2_returnPressed()
 
 void User::on_adminloginbtn_clicked()
 {
-    qDebug("heylmao suckers suck your mom");
+
     this->close();
     Admin *myadmin = new Admin();
     myadmin->show();
@@ -431,6 +437,9 @@ void User::on_submit_clicked()
     query.bindValue(":username", username);
 
     if (query.exec()) {
+        QSettings mysetting("myapp" ,"MovieMaestro");
+        mysetting.setValue("isLogged", true);
+        mysetting.setValue("username", ui->usernameslot->text());
         User *myuser = new User();
         myuser->_username = ui->usernameslot->text();
         HomePage *mypage = new HomePage(myuser);
