@@ -1246,6 +1246,9 @@ border:none;</string>
      <string notr="true">border:2px solid orange;
 border-radius:10px;</string>
     </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_7">
     <property name="geometry">
@@ -1279,6 +1282,9 @@ border-radius:10px;</string>
      <string notr="true">border:2px solid orange;
 border-radius:10px;</string>
     </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QTextEdit" name="castnames">
     <property name="geometry">
@@ -1292,6 +1298,9 @@ border-radius:10px;</string>
     <property name="styleSheet">
      <string notr="true">border:2px solid orange;
 border-radius:10px;</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

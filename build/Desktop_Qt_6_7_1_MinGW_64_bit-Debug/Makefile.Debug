@@ -157,8 +157,7 @@ debug/qrc_images.cpp: ../../images.qrc \
 		../../house.png \
 		../../searchicon.png \
 		../../gear.png \
-		../../close.png \
-		C:/Users/LENOVO/Downloads/sun.png
+		../../close.png
 	'D:\QT\6.7.1\mingw_64\bin\rcc.exe' -name images --no-zstd ../../images.qrc -o debug/qrc_images.cpp
 
 debug/qrc_photos.cpp: ../../photos.qrc \
@@ -912,6 +911,7 @@ debug/moc_admin.cpp: ../../admin.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QWidget \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QSettings \
+		../../../../../QT/6.7.1/mingw_64/include/QtCore/QVector \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QDate \
 		debug/moc_predefs.h \
 		../../../QT/6.7.1/mingw_64/bin/moc.exe
@@ -1486,6 +1486,7 @@ debug/moc_homepage.cpp: ../../homepage.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QWidget \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QSettings \
+		../../../../../QT/6.7.1/mingw_64/include/QtCore/QVector \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QDate \
 		debug/moc_predefs.h \
 		../../../QT/6.7.1/mingw_64/bin/moc.exe
@@ -2869,6 +2870,7 @@ debug/admin.o: ../../admin.cpp ../../admin.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QWidget \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QSettings \
+		../../../../../QT/6.7.1/mingw_64/include/QtCore/QVector \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QDate \
 		../../adminoptions.h \
 		ui_admin.h \
@@ -3263,6 +3265,7 @@ debug/adminoptions.o: ../../adminoptions.cpp ../../adminoptions.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtGui/qimagereader.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QSettings \
+		../../../../../QT/6.7.1/mingw_64/include/QtCore/QVector \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QDate \
 		ui_adminoptions.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtGui/QIcon \
@@ -3652,6 +3655,7 @@ debug/homepage.o: ../../homepage.cpp ../../homepage.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtGui/qimageiohandler.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QWidget \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QSettings \
+		../../../../../QT/6.7.1/mingw_64/include/QtCore/QVector \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QDate \
 		ui_homepage.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QApplication \
@@ -3675,7 +3679,6 @@ debug/homepage.o: ../../homepage.cpp ../../homepage.h \
 		../../../../../MovieMaestro/admin.h \
 		../../../../../MovieMaestro/homepage.h \
 		../../../../../MovieMaestro/user.h \
-		../../../../../QT/6.7.1/mingw_64/include/QtCore/QVector \
 		../../Databasemanager.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtSql/QSqlDatabase \
 		../../../../../QT/6.7.1/mingw_64/include/QtSql/QSqlError \
@@ -4058,6 +4061,7 @@ debug/main.o: ../../main.cpp ../../user.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QWidget \
 		../../homepage.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QSettings \
+		../../../../../QT/6.7.1/mingw_64/include/QtCore/QVector \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QDate \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/QApplication \
 		../../../../../QT/6.7.1/mingw_64/include/QtWidgets/qapplication.h
@@ -4840,8 +4844,8 @@ debug/user.o: ../../user.cpp ../../user.h \
 		../../../../../MovieMaestro/homepage.h \
 		../../../../../MovieMaestro/user.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QSettings \
-		../../../../../QT/6.7.1/mingw_64/include/QtCore/QDate \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QVector \
+		../../../../../QT/6.7.1/mingw_64/include/QtCore/QDate \
 		../../database.h \
 		../../../../../QT/6.7.1/mingw_64/include/QtCore/QCoreApplication \
 		../../homepage.h \

@@ -585,6 +585,7 @@ public:
         description->setGeometry(QRect(20, 360, 621, 151));
         description->setStyleSheet(QString::fromUtf8("border:2px solid orange;\n"
 "border-radius:10px;"));
+        description->setReadOnly(true);
         pushButton_7 = new QPushButton(descriptionbox);
         pushButton_7->setObjectName("pushButton_7");
         pushButton_7->setGeometry(QRect(612, 30, 61, 41));
@@ -595,11 +596,13 @@ public:
         directornames->setGeometry(QRect(100, 300, 541, 31));
         directornames->setStyleSheet(QString::fromUtf8("border:2px solid orange;\n"
 "border-radius:10px;"));
+        directornames->setReadOnly(true);
         castnames = new QTextEdit(descriptionbox);
         castnames->setObjectName("castnames");
         castnames->setGeometry(QRect(70, 250, 541, 31));
         castnames->setStyleSheet(QString::fromUtf8("border:2px solid orange;\n"
 "border-radius:10px;"));
+        castnames->setReadOnly(true);
 
         retranslateUi(HomePage);
 
