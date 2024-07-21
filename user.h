@@ -9,7 +9,6 @@
 #include <QFileDialog>
 #include <QBuffer>
 #include <QImageReader>
-#include<QWidget>
 namespace Ui {
 class User;
 }
@@ -96,7 +95,6 @@ private:
     QImage myImage;
      QByteArray myData;
  QSqlDatabase userdatabase;
-     QSqlDatabase anotheruserdatabase;
 };
 
 #endif // USER_H

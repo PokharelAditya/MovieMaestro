@@ -37,7 +37,7 @@ class database
 
     static QSqlDatabase getMoviesData()
     {
-     static  QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE","MoviesDataConnection");
+        QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE","MoviesDataConnection");
         db.setDatabaseName(QCoreApplication::applicationDirPath() + "/Movies.db");
         if(!db.open())
         {
@@ -51,7 +51,7 @@ class database
 
     static void closeMoviesData()
     {
-       static QSqlDatabase db = QSqlDatabase::database("QSQLITE","MoviesDataConnection");
+        QSqlDatabase db = QSqlDatabase::database("MoviesDataConnection");
         if(db.isOpen())
         {
             db.close();
