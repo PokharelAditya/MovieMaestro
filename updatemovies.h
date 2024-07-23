@@ -65,6 +65,8 @@ private slots:
 
     void on_updateUpdateButton_clicked();
 
+    void on_searchBox_textChanged(const QString &arg1);
+
 protected:
     bool eventFilter(QObject *, QEvent *) override;
 

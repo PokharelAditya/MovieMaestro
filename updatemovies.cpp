@@ -776,3 +776,62 @@ void updatemovies::on_updateUpdateButton_clicked()
         QMessageBox::information(this,"Info","The movie has been updated.");
     }
 }
+
+void updatemovies::on_searchBox_textChanged(const QString &searchText)
+{
+    if(searchText == "")
+    {
+        QSqlDatabase moviesData = database::getMoviesData();
+        QSqlQuery query(moviesData);
+        query.prepare("SELECT Movie_ID from Movies_table ORDER BY Movie_ID DESC");
+        query.exec();
+        query.next();
+        int id = query.value(0).toInt();
+        database::closeMoviesData();
+        setPoster(id);
+        ui->Previous->show();
+        ui->Next->show();
+        return;
+    }
+
+    QSqlDatabase moviesData = database::getMoviesData();
+    QSqlQuery Squery(moviesData);
+    Squery.prepare("SELECT Movie_ID,Poster from Movies_table WHERE title LIKE :searchText");
+    Squery.bindValue(":searchText","%"+searchText+"%");
+    Squery.exec();
+    for(int i=1;i<=14;i++)
+    {
+        Squery.next();
+
+        QString posterName = QString("poster_%1").arg(i);
+        QPushButton *poster = findChild<QPushButton *>(posterName);
+        QString idName = QString("textID_%1").arg(i);
+        QLabel *textID = findChild<QLabel *>(idName);
+
+        QString mid = Squery.value(0).toString();
+        QByteArray imageData = Squery.value(1).toByteArray();
+        QPixmap pixmap;
+        pixmap.loadFromData(imageData);
+
+        textID->setText(mid);
+        poster->setIcon(pixmap);
+        poster->setIconSize(QSize(120,180));
+
+        if(mid.isEmpty())
+        {
+            poster->hide();
+            textID->hide();
+        }
+        else
+        {
+            poster->show();
+            textID->show();
+            poster->installEventFilter(this);
+        }
+    }
+    database::closeMoviesData();
+
+    ui->Previous->hide();
+    ui->Next->hide();
+}
+
