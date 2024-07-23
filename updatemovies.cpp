@@ -12,6 +12,10 @@ updatemovies::updatemovies(QWidget *parent)
     ui->setupUi(this);
     ui->viewMoviesBox->hide();
     ui->deleteMoviesBox->hide();
+    ui->updateMoviesBox->hide();
+
+    QIntValidator *intValidator = new QIntValidator(0,999,this);
+    ui->duration->setValidator(intValidator);
 
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
@@ -266,14 +270,65 @@ void updatemovies::viewupdatedelete(int id)
     MGquery.prepare("SELECT Genre_ID FROM MoviesGenres_table WHERE Movie_ID = :id");
     MGquery.bindValue(":id",id);
     MGquery.exec();
+    ui->action->setChecked(false);
+    ui->comedy->setChecked(false);
+    ui->crime->setChecked(false);
+    ui->drama->setChecked(false);
+    ui->history->setChecked(false);
+    ui->horror->setChecked(false);
+    ui->romance->setChecked(false);
+    ui->scifi->setChecked(false);
+    ui->suspense->setChecked(false);
+    ui->thriller->setChecked(false);
     while(MGquery.next())
     {
+        int gid = MGquery.value(0).toInt();
+        if(gid == 1)
+        {
+            ui->action->setChecked(true);
+        }
+        else if(gid == 2)
+        {
+            ui->comedy->setChecked(true);
+        }
+        else if(gid == 3)
+        {
+            ui->crime->setChecked(true);
+        }
+        else if(gid == 4)
+        {
+            ui->drama->setChecked(true);
+        }
+        else if(gid == 5)
+        {
+            ui->history->setChecked(true);
+        }
+        else if(gid == 6)
+        {
+            ui->horror->setChecked(true);
+        }
+        else if(gid == 7)
+        {
+            ui->romance->setChecked(true);
+        }
+        else if(gid == 8)
+        {
+            ui->scifi->setChecked(true);
+        }
+        else if(gid == 9)
+        {
+            ui->suspense->setChecked(true);
+        }
+        else if(gid == 10)
+        {
+            ui->thriller->setChecked(true);
+        }
         QSqlQuery Gquery(moviesData);
         Gquery.prepare("SELECT Genre_ID, Genre_Name FROM Genres_table");
         Gquery.exec();
         while(Gquery.next())
         {
-            if(MGquery.value(0).toInt() == Gquery.value(0).toInt())
+            if(gid == Gquery.value(0).toInt())
             {
                 if(genres.isEmpty())
                 {
@@ -352,7 +407,16 @@ void updatemovies::viewupdatedelete(int id)
     }
     else if(option == "update")
     {
-
+        ui->updateMoviesBox->show();
+        ui->updateID->setText(QString::number(id));
+        ui->title->setText(title);
+        ui->duration->setText(duration);
+        ui->date->setDate(QDate::fromString(date,"yyyy-MM-dd"));
+        ui->directors->setText(directors);
+        ui->casts->setText(casts);
+        ui->description->setText(description);
+        ui->poster->setText("Change Poster");
+        ui->posterLabel->setPixmap(pixmap);
     }
     else if(option == "delete")
     {
@@ -404,3 +468,35 @@ void updatemovies::on_deleteDeleteButton_clicked()
         }
     }
 }
+
+void updatemovies::on_updateCancelButton_clicked()
+{
+    ui->updateMoviesBox->hide();
+    ui->BackToAdminOptions->show();
+    ui->searchGroupBox->show();
+    ui->moviesBox->show();
+}
+
+void updatemovies::on_poster_clicked()
+{
+    QString imagePath = QFileDialog::getOpenFileName(this, tr("Select Image"), "", tr("Image Files (*.png *.jpg *.bmp)"));
+    if(!imagePath.isEmpty())
+    {
+        QPixmap pixmap(imagePath);
+        if(!pixmap.isNull())
+        {
+            ui->posterLabel->setPixmap(pixmap);
+            ui->poster->setText(imagePath);
+        }
+        else
+        {
+            QMessageBox::critical(this,"Error","Could not load image.");
+        }
+    }
+}
+
+void updatemovies::on_updateUpdateButton_clicked()
+{
+
+}
+

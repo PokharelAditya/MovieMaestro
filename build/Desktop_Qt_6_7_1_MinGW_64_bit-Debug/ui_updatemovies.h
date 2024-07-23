@@ -9,14 +9,18 @@
 #ifndef UI_UPDATEMOVIES_H
 #define UI_UPDATEMOVIES_H
 
+#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
+#include <QtWidgets/QDateEdit>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -77,6 +81,34 @@ public:
     QLabel *deletePoster;
     QPushButton *deleteCancelButton;
     QLabel *deleteID;
+    QGroupBox *updateMoviesBox;
+    QLineEdit *title;
+    QLabel *textTitle;
+    QLabel *textDescription;
+    QLabel *textDuration;
+    QLineEdit *duration;
+    QLabel *textDate;
+    QDateEdit *date;
+    QTextEdit *description;
+    QLabel *posterLabel;
+    QPushButton *updateCancelButton;
+    QPushButton *updateUpdateButton;
+    QLabel *textDirectors;
+    QTextEdit *directors;
+    QTextEdit *casts;
+    QLabel *textCasts;
+    QPushButton *poster;
+    QCheckBox *drama;
+    QCheckBox *action;
+    QCheckBox *suspense;
+    QCheckBox *crime;
+    QCheckBox *thriller;
+    QCheckBox *horror;
+    QCheckBox *comedy;
+    QCheckBox *history;
+    QCheckBox *scifi;
+    QCheckBox *romance;
+    QLabel *updateID;
 
     void setupUi(QWidget *updatemovies)
     {
@@ -664,6 +696,433 @@ public:
         deleteCancelButton->raise();
         deleteID->raise();
         deletePoster->raise();
+        updateMoviesBox = new QGroupBox(updatemovies);
+        updateMoviesBox->setObjectName("updateMoviesBox");
+        updateMoviesBox->setEnabled(true);
+        updateMoviesBox->setGeometry(QRect(50, 160, 1101, 501));
+        sizePolicy.setHeightForWidth(updateMoviesBox->sizePolicy().hasHeightForWidth());
+        updateMoviesBox->setSizePolicy(sizePolicy);
+        updateMoviesBox->setLayoutDirection(Qt::LeftToRight);
+        updateMoviesBox->setAutoFillBackground(false);
+        updateMoviesBox->setStyleSheet(QString::fromUtf8("background-color:rgba(0, 0, 0, 125);\n"
+"background-position:left;\n"
+"border: none;\n"
+"border-radius: 15px;"));
+        updateMoviesBox->setAlignment(Qt::AlignCenter);
+        title = new QLineEdit(updateMoviesBox);
+        title->setObjectName("title");
+        title->setGeometry(QRect(400, 40, 270, 30));
+        QSizePolicy sizePolicy2(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(title->sizePolicy().hasHeightForWidth());
+        title->setSizePolicy(sizePolicy2);
+        QFont font5;
+        font5.setFamilies({QString::fromUtf8("Segoe UI")});
+        font5.setPointSize(10);
+        font5.setItalic(false);
+        title->setFont(font5);
+        title->setCursor(QCursor(Qt::IBeamCursor));
+        title->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:rgb(194, 194, 194);\n"
+"color:black;\n"
+"border-radius:5px;\n"
+""));
+        title->setEchoMode(QLineEdit::Normal);
+        title->setAlignment(Qt::AlignCenter);
+        title->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        title->setClearButtonEnabled(true);
+        textTitle = new QLabel(updateMoviesBox);
+        textTitle->setObjectName("textTitle");
+        textTitle->setGeometry(QRect(260, 40, 80, 30));
+        textTitle->setFont(font4);
+        textTitle->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        textDescription = new QLabel(updateMoviesBox);
+        textDescription->setObjectName("textDescription");
+        textDescription->setGeometry(QRect(40, 340, 111, 35));
+        textDescription->setFont(font4);
+        textDescription->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        textDuration = new QLabel(updateMoviesBox);
+        textDuration->setObjectName("textDuration");
+        textDuration->setGeometry(QRect(260, 90, 80, 30));
+        textDuration->setFont(font4);
+        textDuration->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        duration = new QLineEdit(updateMoviesBox);
+        duration->setObjectName("duration");
+        duration->setGeometry(QRect(400, 90, 270, 30));
+        sizePolicy2.setHeightForWidth(duration->sizePolicy().hasHeightForWidth());
+        duration->setSizePolicy(sizePolicy2);
+        QFont font6;
+        font6.setFamilies({QString::fromUtf8("Segoe UI")});
+        font6.setPointSize(10);
+        font6.setItalic(true);
+        duration->setFont(font6);
+        duration->setCursor(QCursor(Qt::IBeamCursor));
+        duration->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:rgb(194, 194, 194);\n"
+"color:black;\n"
+"border-radius:5px;\n"
+""));
+        duration->setEchoMode(QLineEdit::Normal);
+        duration->setAlignment(Qt::AlignCenter);
+        duration->setCursorMoveStyle(Qt::LogicalMoveStyle);
+        duration->setClearButtonEnabled(true);
+        textDate = new QLabel(updateMoviesBox);
+        textDate->setObjectName("textDate");
+        textDate->setGeometry(QRect(260, 140, 131, 30));
+        textDate->setFont(font4);
+        textDate->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        date = new QDateEdit(updateMoviesBox);
+        date->setObjectName("date");
+        date->setGeometry(QRect(460, 140, 150, 30));
+        QFont font7;
+        font7.setPointSize(10);
+        font7.setItalic(true);
+        date->setFont(font7);
+        date->setCursor(QCursor(Qt::IBeamCursor));
+        date->setStyleSheet(QString::fromUtf8("background-color:rgb(194, 194, 194);\n"
+"color:black;"));
+        date->setFrame(true);
+        date->setAlignment(Qt::AlignCenter);
+        date->setButtonSymbols(QAbstractSpinBox::NoButtons);
+        date->setDate(QDate(2000, 1, 1));
+        description = new QTextEdit(updateMoviesBox);
+        description->setObjectName("description");
+        description->setGeometry(QRect(40, 380, 681, 91));
+        QFont font8;
+        font8.setPointSize(10);
+        description->setFont(font8);
+        description->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
+        description->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:rgb(194, 194, 194);\n"
+"color:black;\n"
+"border-radius:5px;\n"
+""));
+        posterLabel = new QLabel(updateMoviesBox);
+        posterLabel->setObjectName("posterLabel");
+        posterLabel->setGeometry(QRect(40, 30, 200, 300));
+        posterLabel->setStyleSheet(QString::fromUtf8("#posterLabel\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgb(194,194,194);\n"
+"border-radius:0px;\n"
+"}"));
+        posterLabel->setScaledContents(true);
+        updateCancelButton = new QPushButton(updateMoviesBox);
+        updateCancelButton->setObjectName("updateCancelButton");
+        updateCancelButton->setGeometry(QRect(820, 440, 121, 41));
+        sizePolicy1.setHeightForWidth(updateCancelButton->sizePolicy().hasHeightForWidth());
+        updateCancelButton->setSizePolicy(sizePolicy1);
+        QFont font9;
+        font9.setFamilies({QString::fromUtf8("Segoe UI")});
+        font9.setPointSize(12);
+        font9.setBold(true);
+        font9.setItalic(false);
+        updateCancelButton->setFont(font9);
+        updateCancelButton->setCursor(QCursor(Qt::PointingHandCursor));
+        updateCancelButton->setMouseTracking(true);
+        updateCancelButton->setLayoutDirection(Qt::LeftToRight);
+        updateCancelButton->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        updateCancelButton->setCheckable(false);
+        updateCancelButton->setAutoRepeatInterval(-1);
+        updateUpdateButton = new QPushButton(updateMoviesBox);
+        updateUpdateButton->setObjectName("updateUpdateButton");
+        updateUpdateButton->setGeometry(QRect(960, 440, 121, 41));
+        sizePolicy1.setHeightForWidth(updateUpdateButton->sizePolicy().hasHeightForWidth());
+        updateUpdateButton->setSizePolicy(sizePolicy1);
+        updateUpdateButton->setFont(font9);
+        updateUpdateButton->setCursor(QCursor(Qt::PointingHandCursor));
+        updateUpdateButton->setMouseTracking(true);
+        updateUpdateButton->setLayoutDirection(Qt::LeftToRight);
+        updateUpdateButton->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:20px;\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        updateUpdateButton->setCheckable(false);
+        updateUpdateButton->setAutoRepeatInterval(-1);
+        textDirectors = new QLabel(updateMoviesBox);
+        textDirectors->setObjectName("textDirectors");
+        textDirectors->setGeometry(QRect(260, 200, 111, 35));
+        textDirectors->setFont(font4);
+        textDirectors->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        directors = new QTextEdit(updateMoviesBox);
+        directors->setObjectName("directors");
+        directors->setGeometry(QRect(350, 190, 370, 60));
+        directors->setFont(font8);
+        directors->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
+        directors->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:rgb(194, 194, 194);\n"
+"color:black;\n"
+"border-radius:5px;\n"
+""));
+        casts = new QTextEdit(updateMoviesBox);
+        casts->setObjectName("casts");
+        casts->setGeometry(QRect(350, 280, 370, 60));
+        casts->setFont(font8);
+        casts->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
+        casts->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:rgb(194, 194, 194);\n"
+"color:black;\n"
+"border-radius:5px;\n"
+""));
+        textCasts = new QLabel(updateMoviesBox);
+        textCasts->setObjectName("textCasts");
+        textCasts->setGeometry(QRect(260, 290, 111, 35));
+        textCasts->setFont(font4);
+        textCasts->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        poster = new QPushButton(updateMoviesBox);
+        poster->setObjectName("poster");
+        poster->setGeometry(QRect(40, 280, 200, 50));
+        QFont font10;
+        font10.setPointSize(12);
+        font10.setBold(false);
+        poster->setFont(font10);
+        poster->setCursor(QCursor(Qt::PointingHandCursor));
+        poster->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:rgba(20,20,20,200);\n"
+"border-radius:0px;\n"
+"border:2px solid rgb(194, 194, 194);\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background:rgb(100,100,100);\n"
+"\n"
+"}"));
+        drama = new QCheckBox(updateMoviesBox);
+        drama->setObjectName("drama");
+        drama->setGeometry(QRect(920, 110, 140, 50));
+        QFont font11;
+        font11.setPointSize(11);
+        font11.setBold(true);
+        drama->setFont(font11);
+        drama->setCursor(QCursor(Qt::PointingHandCursor));
+        drama->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        action = new QCheckBox(updateMoviesBox);
+        action->setObjectName("action");
+        action->setGeometry(QRect(760, 40, 140, 50));
+        action->setFont(font11);
+        action->setCursor(QCursor(Qt::PointingHandCursor));
+        action->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        suspense = new QCheckBox(updateMoviesBox);
+        suspense->setObjectName("suspense");
+        suspense->setGeometry(QRect(760, 320, 140, 50));
+        suspense->setFont(font11);
+        suspense->setCursor(QCursor(Qt::PointingHandCursor));
+        suspense->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        crime = new QCheckBox(updateMoviesBox);
+        crime->setObjectName("crime");
+        crime->setGeometry(QRect(760, 110, 140, 50));
+        QFont font12;
+        font12.setPointSize(12);
+        font12.setBold(true);
+        crime->setFont(font12);
+        crime->setCursor(QCursor(Qt::PointingHandCursor));
+        crime->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        thriller = new QCheckBox(updateMoviesBox);
+        thriller->setObjectName("thriller");
+        thriller->setGeometry(QRect(920, 320, 140, 50));
+        thriller->setFont(font11);
+        thriller->setCursor(QCursor(Qt::PointingHandCursor));
+        thriller->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        horror = new QCheckBox(updateMoviesBox);
+        horror->setObjectName("horror");
+        horror->setGeometry(QRect(920, 180, 140, 50));
+        horror->setFont(font11);
+        horror->setCursor(QCursor(Qt::PointingHandCursor));
+        horror->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        comedy = new QCheckBox(updateMoviesBox);
+        comedy->setObjectName("comedy");
+        comedy->setGeometry(QRect(920, 40, 140, 50));
+        comedy->setFont(font11);
+        comedy->setCursor(QCursor(Qt::PointingHandCursor));
+        comedy->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        history = new QCheckBox(updateMoviesBox);
+        history->setObjectName("history");
+        history->setGeometry(QRect(760, 180, 140, 50));
+        history->setFont(font11);
+        history->setCursor(QCursor(Qt::PointingHandCursor));
+        history->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        scifi = new QCheckBox(updateMoviesBox);
+        scifi->setObjectName("scifi");
+        scifi->setGeometry(QRect(920, 250, 140, 50));
+        scifi->setFont(font11);
+        scifi->setCursor(QCursor(Qt::PointingHandCursor));
+        scifi->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        romance = new QCheckBox(updateMoviesBox);
+        romance->setObjectName("romance");
+        romance->setGeometry(QRect(760, 250, 140, 50));
+        romance->setFont(font11);
+        romance->setCursor(QCursor(Qt::PointingHandCursor));
+        romance->setStyleSheet(QString::fromUtf8("QCheckBox\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgba(230, 149, 40, 200);\n"
+"border-radius:10px;\n"
+"padding-left: 20px; \n"
+"padding-right: 20px;\n"
+"}\n"
+"QCheckBox:hover\n"
+"{\n"
+"background:rgba(230, 149, 40, 200);\n"
+"}"));
+        updateID = new QLabel(updateMoviesBox);
+        updateID->setObjectName("updateID");
+        updateID->setGeometry(QRect(60, 160, 161, 20));
+        updateID->setStyleSheet(QString::fromUtf8("background:none;\n"
+"border:none;"));
+        title->raise();
+        textTitle->raise();
+        textDescription->raise();
+        textDuration->raise();
+        duration->raise();
+        textDate->raise();
+        date->raise();
+        description->raise();
+        updateCancelButton->raise();
+        updateUpdateButton->raise();
+        textDirectors->raise();
+        directors->raise();
+        casts->raise();
+        textCasts->raise();
+        drama->raise();
+        action->raise();
+        suspense->raise();
+        crime->raise();
+        thriller->raise();
+        horror->raise();
+        comedy->raise();
+        history->raise();
+        scifi->raise();
+        romance->raise();
+        updateID->raise();
+        posterLabel->raise();
+        poster->raise();
         Background->raise();
         moviesBox->raise();
         BackToAdminOptions->raise();
@@ -671,6 +1130,7 @@ public:
         Logo->raise();
         viewMoviesBox->raise();
         deleteMoviesBox->raise();
+        updateMoviesBox->raise();
 
         retranslateUi(updatemovies);
 
@@ -733,6 +1193,35 @@ public:
         deletePoster->setText(QString());
         deleteCancelButton->setText(QCoreApplication::translate("updatemovies", "Cancel", nullptr));
         deleteID->setText(QString());
+        updateMoviesBox->setTitle(QString());
+        title->setText(QString());
+        title->setPlaceholderText(QString());
+        textTitle->setText(QCoreApplication::translate("updatemovies", "Title:", nullptr));
+        textDescription->setText(QCoreApplication::translate("updatemovies", "Description:", nullptr));
+        textDuration->setText(QCoreApplication::translate("updatemovies", "Duration:", nullptr));
+        duration->setText(QString());
+        duration->setPlaceholderText(QCoreApplication::translate("updatemovies", "(mins)", nullptr));
+        textDate->setText(QCoreApplication::translate("updatemovies", "Released Date:", nullptr));
+        date->setDisplayFormat(QCoreApplication::translate("updatemovies", "yyyy/MM/dd", nullptr));
+        posterLabel->setText(QString());
+        updateCancelButton->setText(QCoreApplication::translate("updatemovies", "Cancel", nullptr));
+        updateUpdateButton->setText(QCoreApplication::translate("updatemovies", "Update", nullptr));
+        textDirectors->setText(QCoreApplication::translate("updatemovies", "Directors:", nullptr));
+        directors->setPlaceholderText(QCoreApplication::translate("updatemovies", "For multiple directors, use comma to separate the directors", nullptr));
+        casts->setPlaceholderText(QCoreApplication::translate("updatemovies", "For multiple casts, use comma to separate the casts", nullptr));
+        textCasts->setText(QCoreApplication::translate("updatemovies", "Casts:", nullptr));
+        poster->setText(QCoreApplication::translate("updatemovies", "Change Poster", nullptr));
+        drama->setText(QCoreApplication::translate("updatemovies", "Drama", nullptr));
+        action->setText(QCoreApplication::translate("updatemovies", "Action", nullptr));
+        suspense->setText(QCoreApplication::translate("updatemovies", "Suspense", nullptr));
+        crime->setText(QCoreApplication::translate("updatemovies", "Crime", nullptr));
+        thriller->setText(QCoreApplication::translate("updatemovies", "Thriller", nullptr));
+        horror->setText(QCoreApplication::translate("updatemovies", "Horror", nullptr));
+        comedy->setText(QCoreApplication::translate("updatemovies", "Comedy", nullptr));
+        history->setText(QCoreApplication::translate("updatemovies", "History", nullptr));
+        scifi->setText(QCoreApplication::translate("updatemovies", "Sci-Fi", nullptr));
+        romance->setText(QCoreApplication::translate("updatemovies", "Romance", nullptr));
+        updateID->setText(QString());
     } // retranslateUi
 
 };

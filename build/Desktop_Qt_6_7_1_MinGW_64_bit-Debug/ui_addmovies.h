@@ -666,7 +666,7 @@ public:
         nextButton2->setText(QCoreApplication::translate("addmovies", "Next", nullptr));
         directors->setDocumentTitle(QString());
         directors->setPlaceholderText(QCoreApplication::translate("addmovies", "For multiple directors, use comma to separate the directors", nullptr));
-        casts->setPlaceholderText(QCoreApplication::translate("addmovies", "For multiple casts, use comma to separate the directors", nullptr));
+        casts->setPlaceholderText(QCoreApplication::translate("addmovies", "For multiple casts, use comma to separate the casts", nullptr));
         genresBox->setTitle(QString());
         textGenres->setText(QCoreApplication::translate("addmovies", "Genres", nullptr));
         addButton->setText(QCoreApplication::translate("addmovies", "Add", nullptr));
