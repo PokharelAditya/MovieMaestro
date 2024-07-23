@@ -1202,7 +1202,7 @@ void HomePage::on_ratebtn_clicked()
     QString moviename;
     QSqlDatabase mydb = database::getMoviesData();
     QSqlQuery myquery(mydb);
-    myquery.prepare("SELECT Title FROM Movies_table WHERE Movie_ID = :movieid");
+    /*myquery.prepare("SELECT Title FROM Movies_table WHERE Movie_ID = :movieid");
     if(foryouorlatest == 1)
     {
     myquery.bindValue(":movieid", PrefferedMovieforlatestID[btn_number-1]);
@@ -1226,11 +1226,23 @@ void HomePage::on_ratebtn_clicked()
 
             moviename = myquery.value(0).toString();
 
+    } */
+    int id;
+    if(foryouorlatest == 1)
+    {
+        id = PrefferedMovieforlatestID[btn_number-1];
     }
-    qDebug()<<"the movie name is " << moviename;
+    else if(foryouorlatest == 0)
+    {
+        id = PrefferedMovieID[btn_number-1];
+    }
+    else if(foryouorlatest ==3)
+    {
+     id=_movielist[btn_number-1];
+    }
     myquery.prepare("SELECT COUNT(*) FROM UserMovieRating WHERE username = :username AND movie_name = :moviename");
     myquery.bindValue(":username" , lusername);
-    myquery.bindValue(":moviename" , moviename);
+    myquery.bindValue(":moviename" , QString::number(id));
     if(!myquery.exec())
     {
         QMessageBox::warning(this , "here are some error" , "you have entered wrong query in ratebtnclicked 2");
@@ -1249,7 +1261,7 @@ void HomePage::on_ratebtn_clicked()
     }
     myquery.bindValue(":username" ,lusername);
     myquery.bindValue(":rating",rating);
-    myquery.bindValue(":movie_name",moviename);
+    myquery.bindValue(":movie_name", QString::number(id));
 
         if(!myquery.exec())
         {
@@ -1260,7 +1272,7 @@ void HomePage::on_ratebtn_clicked()
     int summationrating =0, ratingno=0 , avgrating=0;
 
     myquery.prepare("SELECT rating FROM UserMovieRating WHERE movie_name = :moviename");
-    myquery.bindValue(":moviename",moviename);
+    myquery.bindValue(":moviename",QString::number(id));
     if(!myquery.exec())
     {
         QMessageBox::warning(this , "here are some error" , "you have entered wrong query in ratebtnclicked 4");
@@ -1272,7 +1284,7 @@ void HomePage::on_ratebtn_clicked()
         summationrating  += myquery.value(0).toInt();
     }
     myquery.prepare("SELECT COUNT(*) FROM UserMovieRating WHERE movie_name = :moviename");
-    myquery.bindValue(":moviename" , moviename);
+    myquery.bindValue(":moviename" , QString::number(id));
     if(!myquery.exec())
     {
         QMessageBox::warning(this , "here are some error" , "you have entered wrong query in ratebtnclicked 5");
@@ -1283,9 +1295,9 @@ void HomePage::on_ratebtn_clicked()
     qDebug()<<"the summation rating is " << summationrating;
     qDebug()<<"the average rating of the movei is " << avgrating;
     qDebug()<<"there " << ratingno << " many field " ;
-    myquery.prepare("UPDATE Movies_table SET rating =:rating WHERE Title = :moviename ");
+    myquery.prepare("UPDATE Movies_table SET rating =:rating WHERE Movie_ID = :moviename ");
     myquery.bindValue(":rating" , avgrating);
-    myquery.bindValue(":moviename",moviename);
+    myquery.bindValue(":moviename",id);
     if(!myquery.exec())
     {
         QMessageBox::warning(this , "some error " , "you have entered wrong query in ratebtnclicked 6");
