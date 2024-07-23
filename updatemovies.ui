@@ -1989,7 +1989,7 @@ border:none;</string>
     <property name="font">
      <font>
       <pointsize>12</pointsize>
-      <bold>false</bold>
+      <bold>true</bold>
      </font>
     </property>
     <property name="cursor">

@@ -497,6 +497,282 @@ void updatemovies::on_poster_clicked()
 
 void updatemovies::on_updateUpdateButton_clicked()
 {
+    QString title = ui->title->text(),
+        date = ui->date->date().toString("yyyy-MM-dd"),
+        description = ui->description->toPlainText(),
+        directors = ui->directors->toPlainText(),
+        casts = ui->casts->toPlainText();
 
+    int id = ui->updateID->text().toInt(),duration = ui->duration->text().toInt();
+
+    bool action = ui->action->isChecked(),
+        comedy = ui->comedy->isChecked(),
+        crime = ui->crime->isChecked(),
+        drama = ui->drama->isChecked(),
+        history = ui->history->isChecked(),
+        horror = ui->horror->isChecked(),
+        romance = ui->romance->isChecked(),
+        scifi = ui->scifi->isChecked(),
+        suspense = ui->suspense->isChecked(),
+        thriller = ui->thriller->isChecked();
+
+    if(title.isEmpty())
+    {
+        QMessageBox::warning(this,"Error","Title of the movie cannot be empty.");
+        ui->title->setFocus();
+    }
+    else if(ui->duration->text().isEmpty())
+    {
+        QMessageBox::warning(this,"Error","Duration of the movie cannot be empty.");
+        ui->duration->setFocus();
+    }
+    else if(description.isEmpty())
+    {
+        QMessageBox::warning(this,"Error","Description of the movie cannot be empty.");
+        ui->description->setFocus();
+    }
+    else if(directors.isEmpty())
+    {
+        QMessageBox::warning(this,"Error","Directors of the movie cannot be empty.");
+        ui->directors->setFocus();
+    }
+    else if(casts.isEmpty())
+    {
+        QMessageBox::warning(this,"Error","Casts of the movie cannot be empty.");
+        ui->casts->setFocus();
+    }
+    else if(action==0 && comedy==0 && crime==0 && drama==0 && history==0 && horror==0 && romance==0 && scifi==0 && suspense==0 && thriller==0)
+    {
+        QMessageBox::warning(this,"Error","At lease one genre has to be selected.");
+    }
+    else if(ui->posterLabel->pixmap().isNull())
+    {
+        QMessageBox::warning(this,"Error","Please upload a poster.");
+    }
+    else
+    {
+        QSqlDatabase MoviesData = database::getMoviesData();
+
+        QSqlQuery Pquery(MoviesData);
+        Pquery.prepare("Select Poster,Rating from Movies_table where Movie_ID = :id");
+        Pquery.bindValue(":id",id);
+        Pquery.exec();
+        Pquery.next();
+        QByteArray imageData = Pquery.value(0).toByteArray();
+        double rating = Pquery.value(1).toDouble();
+
+        if(ui->poster->text() != "Change Poster")
+        {
+            QString imagePath = ui->poster->text();
+            QFile file(imagePath);
+            if(!file.open(QIODevice::ReadOnly))
+            {
+                QMessageBox::warning(this,"Error","Failed to open the image file");
+                return;
+            }
+            imageData = file.readAll();
+        }
+
+        QSqlQuery Deletequery(MoviesData);
+        Deletequery.prepare("DELETE FROM Movies_table WHERE Movie_ID = :id");
+        Deletequery.bindValue(":id",id);
+        Deletequery.exec();
+
+        QSqlQuery Mquery(MoviesData);
+        Mquery.prepare("INSERT INTO Movies_table(Movie_ID, Title, Duration, Released_Date, Description, Poster, Rating)"
+                       "VALUES(:id, :Title, :Duration, :Released_Date, :Description, :Poster, :Rating)");
+        Mquery.bindValue(":id",id);
+        Mquery.bindValue(":Title",title);
+        Mquery.bindValue(":Duration",duration);
+        Mquery.bindValue(":Released_Date",date);
+        Mquery.bindValue(":Description",description);
+        Mquery.bindValue(":Poster",imageData);
+        Mquery.bindValue(":Rating",rating);
+        Mquery.exec();
+
+        QSqlQuery MGquery(MoviesData);
+        MGquery.prepare("INSERT INTO MoviesGenres_table(Movie_ID, Genre_ID)"
+                        "VALUES(:Movie_ID, :Genre_ID)");
+        if(action == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",1);
+            MGquery.exec();
+        }
+        if(comedy == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",2);
+            MGquery.exec();
+        }
+        if(crime == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",3);
+            MGquery.exec();
+        }
+        if(drama == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",4);
+            MGquery.exec();
+        }
+        if(history == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",5);
+            MGquery.exec();
+        }
+        if(horror == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",6);
+            MGquery.exec();
+        }
+        if(romance == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",7);
+            MGquery.exec();
+        }
+        if(scifi == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",8);
+            MGquery.exec();
+        }
+        if(suspense == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",9);
+            MGquery.exec();
+        }
+        if(thriller == 1)
+        {
+            MGquery.bindValue(":Movie_ID",id);
+            MGquery.bindValue(":Genre_ID",10);
+            MGquery.exec();
+        }
+
+
+        QVector<QString> directorsArray;
+        QString director;
+        for(int index=0;index<directors.length();index++)
+        {
+            QChar ch = directors.at(index);
+            if(ch != ',')
+            {
+                director += ch;
+            }
+            else
+            {
+                directorsArray.append(director.trimmed());
+                director = "";
+            }
+        }
+        if(!director.isEmpty())
+        {
+            directorsArray.append(director.trimmed());
+        }
+
+        for(const QString &str : directorsArray)
+        {
+            QSqlQuery Dquery(MoviesData);
+            Dquery.prepare("SELECT Director_ID,Director_Name from Directors_table");
+            Dquery.exec();
+
+            QSqlQuery DInputquery(MoviesData);
+            DInputquery.prepare("INSERT INTO Directors_table(Director_Name)"
+                                "VALUES(:newdirector)");
+            int newdirector_id;
+
+            QSqlQuery MDquery(MoviesData);
+            MDquery.prepare("INSERT INTO MoviesDirectors_table(Movie_ID, Director_ID)"
+                            "VALUES(:Movie_ID, :Director_ID)");
+
+            while(Dquery.next())
+            {
+                if(str.toUpper() == Dquery.value(1).toString().toUpper())
+                {
+                    MDquery.bindValue(":Movie_ID",id);
+                    MDquery.bindValue(":Director_ID",Dquery.value(0));
+                    MDquery.exec();
+                    goto Dskip;
+                }
+            }
+
+            DInputquery.bindValue(":newdirector",str);
+            DInputquery.exec();
+            newdirector_id = DInputquery.lastInsertId().toInt();
+            MDquery.bindValue(":Movie_ID",id);
+            MDquery.bindValue(":Director_ID",newdirector_id);
+            MDquery.exec();
+
+        Dskip:
+            continue;
+        }
+
+        QVector<QString> castsArray;
+        QString cast;
+        for(int index=0;index<casts.length();index++)
+        {
+            QChar ch = casts.at(index);
+            if(ch != ',')
+            {
+                cast += ch;
+            }
+            else
+            {
+                castsArray.append(cast.trimmed());
+                cast = "";
+            }
+        }
+        if(!cast.isEmpty())
+        {
+            castsArray.append(cast.trimmed());
+        }
+
+        for(const QString &str: castsArray)
+        {
+            QSqlQuery Cquery(MoviesData);
+            Cquery.prepare("Select Cast_ID, Cast_Name from Casts_table");
+            Cquery.exec();
+
+            QSqlQuery CInputquery(MoviesData);
+            CInputquery.prepare("INSERT INTO Casts_table(Cast_Name)"
+                                "VALUES(:newcast)");
+            int newcast_id;
+
+            QSqlQuery MCquery(MoviesData);
+            MCquery.prepare("INSERT INTO MoviesCasts_table(Movie_ID,Cast_ID)"
+                            "VALUES(:Movie_ID,:Cast_ID)");
+
+            while(Cquery.next())
+            {
+                if(str.toUpper() == Cquery.value(1).toString().toUpper())
+                {
+                    MCquery.bindValue(":Movie_ID",id);
+                    MCquery.bindValue(":Cast_ID",Cquery.value(0));
+                    MCquery.exec();
+                    goto Cskip;
+                }
+            }
+            CInputquery.bindValue(":newcast",str);
+            CInputquery.exec();
+            newcast_id = CInputquery.lastInsertId().toInt();
+            MCquery.bindValue(":Movie_ID",id);
+            MCquery.bindValue(":Cast_ID",newcast_id);
+            MCquery.exec();
+
+        Cskip:
+            continue;
+        }
+
+        database::closeMoviesData();
+
+        close();
+        updatemovies *um = new updatemovies();
+        um->show();
+        QMessageBox::information(this,"Info","The movie has been updated.");
+    }
 }
-

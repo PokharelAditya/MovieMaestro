@@ -896,7 +896,7 @@ public:
         poster->setGeometry(QRect(40, 280, 200, 50));
         QFont font10;
         font10.setPointSize(12);
-        font10.setBold(false);
+        font10.setBold(true);
         poster->setFont(font10);
         poster->setCursor(QCursor(Qt::PointingHandCursor));
         poster->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -969,10 +969,7 @@ public:
         crime = new QCheckBox(updateMoviesBox);
         crime->setObjectName("crime");
         crime->setGeometry(QRect(760, 110, 140, 50));
-        QFont font12;
-        font12.setPointSize(12);
-        font12.setBold(true);
-        crime->setFont(font12);
+        crime->setFont(font10);
         crime->setCursor(QCursor(Qt::PointingHandCursor));
         crime->setStyleSheet(QString::fromUtf8("QCheckBox\n"
 "{\n"
