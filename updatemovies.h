@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QEvent>
+#include <QPixmap>
+#include <QFileDialog>
 
 namespace Ui {
 class updatemovies;
@@ -56,6 +58,12 @@ private slots:
     void on_deleteCancelButton_clicked();
 
     void on_deleteDeleteButton_clicked();
+
+    void on_updateCancelButton_clicked();
+
+    void on_poster_clicked();
+
+    void on_updateUpdateButton_clicked();
 
 protected:
     bool eventFilter(QObject *, QEvent *) override;

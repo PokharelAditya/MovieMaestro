@@ -862,7 +862,7 @@ border-radius:5px;
 </string>
     </property>
     <property name="placeholderText">
-     <string>For multiple casts, use comma to separate the directors</string>
+     <string>For multiple casts, use comma to separate the casts</string>
     </property>
    </widget>
   </widget>
