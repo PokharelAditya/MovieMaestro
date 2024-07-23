@@ -4,6 +4,7 @@
 #include "database.h"
 
 extern QString option;
+int searchId = 0;
 
 updatemovies::updatemovies(QWidget *parent)
     : QWidget(parent)
@@ -87,6 +88,26 @@ void updatemovies::setPoster(int id)
 
 void updatemovies::on_Next_clicked()
 {
+    if(!(ui->searchBox->text().isEmpty()))
+    {
+        QSqlDatabase moviesData = database::getMoviesData();
+        QSqlQuery Squery(moviesData);
+        Squery.prepare("SELECT Movie_ID from Movies_table WHERE title LIKE :searchText ORDER BY Title ASC");
+        Squery.bindValue(":searchText","%"+ui->searchBox->text()+"%");
+        Squery.exec();
+        while(Squery.next())
+        {
+            if(Squery.value(0).toInt() == ui->textID_14->text().toInt())
+            {
+                Squery.next();
+                searchId = Squery.value(0).toInt();
+            }
+        }
+        database::closeMoviesData();
+        on_searchBox_textChanged(ui->searchBox->text());
+        return;
+    }
+
     int id = 0;
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
@@ -107,6 +128,29 @@ void updatemovies::on_Next_clicked()
 
 void updatemovies::on_Previous_clicked()
 {
+    if(!(ui->searchBox->text().isEmpty()))
+    {
+        QSqlDatabase moviesData = database::getMoviesData();
+        QSqlQuery Squery(moviesData);
+        Squery.prepare("SELECT Movie_ID from Movies_table WHERE title LIKE :searchText ORDER BY Title DESC");
+        Squery.bindValue(":searchText","%"+ui->searchBox->text()+"%");
+        Squery.exec();
+        while(Squery.next())
+        {
+            if(Squery.value(0).toInt() == ui->textID_1->text().toInt())
+            {
+                for(int i=1;i<=14;i++)
+                {
+                    Squery.next();
+                }
+                searchId = Squery.value(0).toInt();
+            }
+        }
+        database::closeMoviesData();
+        on_searchBox_textChanged(ui->searchBox->text());
+        return;
+    }
+
     int id = 0;
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
@@ -789,49 +833,51 @@ void updatemovies::on_searchBox_textChanged(const QString &searchText)
         int id = query.value(0).toInt();
         database::closeMoviesData();
         setPoster(id);
-        ui->Previous->show();
-        ui->Next->show();
         return;
     }
 
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery Squery(moviesData);
-    Squery.prepare("SELECT Movie_ID,Poster from Movies_table WHERE title LIKE :searchText");
+    Squery.prepare("SELECT Movie_ID,Poster from Movies_table WHERE title LIKE :searchText ORDER BY Title ASC");
     Squery.bindValue(":searchText","%"+searchText+"%");
     Squery.exec();
-    for(int i=1;i<=14;i++)
+    while(Squery.next())
     {
-        Squery.next();
-
-        QString posterName = QString("poster_%1").arg(i);
-        QPushButton *poster = findChild<QPushButton *>(posterName);
-        QString idName = QString("textID_%1").arg(i);
-        QLabel *textID = findChild<QLabel *>(idName);
-
-        QString mid = Squery.value(0).toString();
-        QByteArray imageData = Squery.value(1).toByteArray();
-        QPixmap pixmap;
-        pixmap.loadFromData(imageData);
-
-        textID->setText(mid);
-        poster->setIcon(pixmap);
-        poster->setIconSize(QSize(120,180));
-
-        if(mid.isEmpty())
+        if(Squery.value(0).toInt()==searchId || searchId==0)
         {
-            poster->hide();
-            textID->hide();
-        }
-        else
-        {
-            poster->show();
-            textID->show();
-            poster->installEventFilter(this);
+            for(int i=1;i<=14;i++)
+            {
+                QString posterName = QString("poster_%1").arg(i);
+                QPushButton *poster = findChild<QPushButton *>(posterName);
+                QString idName = QString("textID_%1").arg(i);
+                QLabel *textID = findChild<QLabel *>(idName);
+
+                QString mid = Squery.value(0).toString();
+                QByteArray imageData = Squery.value(1).toByteArray();
+                QPixmap pixmap;
+                pixmap.loadFromData(imageData);
+
+                textID->setText(mid);
+                poster->setIcon(pixmap);
+                poster->setIconSize(QSize(120,180));
+
+                if(mid.isEmpty())
+                {
+                    poster->hide();
+                    textID->hide();
+                }
+                else
+                {
+                    poster->show();
+                    textID->show();
+                    poster->installEventFilter(this);
+                }
+
+                Squery.next();
+            }
+            break;
         }
     }
+    searchId = 0;
     database::closeMoviesData();
-
-    ui->Previous->hide();
-    ui->Next->hide();
 }
-
