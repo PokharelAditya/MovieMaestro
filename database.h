@@ -46,6 +46,8 @@ class database
         QSqlQuery query(db);
         query.prepare("PRAGMA foreign_keys = ON");
         query.exec();
+        query.prepare("VACUUM");
+        query.exec();
         return db;
     }
 
