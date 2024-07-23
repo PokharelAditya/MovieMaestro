@@ -309,7 +309,7 @@ void User::on_loginbutton_clicked()
     if (myQuery.exec())/* this check if query sqlite ma gayera execute vayo kinai vanera  */{
         if (myQuery.next()) { // Check if a row is returned
             QString databasepw = myQuery.value(0).toString(); // Get the password from the result
-            if (decrypt(databasepw) == pw) {
+            if (databasepw == encrypt(pw)) {
                 QSettings mysetting("myapp" ,"MovieMaestro");
                 mysetting.setValue("isLogged", true);
                 mysetting.setValue("username", ui->lusernameslot->text());

@@ -29,10 +29,6 @@ private slots:
 
     void on_rightbtn_clicked();
 
-    void on_brightnessmodebtn_clicked();
-
-
-
     void on_leftbtn_2_clicked();
 
     void on_rightbtn_2_clicked();
@@ -83,17 +79,37 @@ private slots:
 
     void on_ratebtn_clicked();
 
+    void on_gearbtn_clicked();
+
+    void on_onepage_clicked();
+
+    void on_twopage_clicked();
+
+    void on_topleft_clicked();
+
+    void on_topright_clicked();
+
+    void on_topratemovie_1_clicked();
+
+    void on_topratemovie_2_clicked();
+
+    void on_topratemovie_3_clicked();
+
+    void on_topratemovie_4_clicked();
+
 private:
     void showdescriptionbox(int btn_number);
     Ui::HomePage *ui;
     QSqlDatabase userdatabase;
-    QString username,lusername;
+    QString username,lusername , intusername;
     QIcon search,house,whitesearch,whitehouse,gear,whitegear,sun,moon,right,left,whitestar,star;
     QPixmap logo,blacklogo;
     int position_1 = 0;
     int position_2 = 0;
+    int position_3 =0;
     int brightness = 0;
-    int lockbtn_2,lockbtn_1;
+    int lockbtn_2,lockbtn_1,lockbtn_3;
+    bool lock1;
      QList<QDate> ordereddate;
     int rating=0;
     /// here the moviename field was preerxisting before i took it out to on ratebtn clicked func
@@ -102,6 +118,14 @@ private:
     QList<int> PrefferedMovieID;
     int foryouorlatest;
     QList<int> PrefferedMovieforlatestID;
+    void showforyoupage(int position);
+    void showlatestmovies(int position);
+    void hidepage();
+        void showpage();
+    int pageno=1;
+        void showtoprated(int position);
+    QList<int> _movielist;
+        void showdescriptionbox3(int btn_number);
 };
 
 #endif // HOMEPAGE_H

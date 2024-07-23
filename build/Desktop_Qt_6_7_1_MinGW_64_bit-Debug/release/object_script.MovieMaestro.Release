@@ -5,6 +5,7 @@ release/homepage.o
 release/main.o
 release/updatemovies.o
 release/user.o
+release/usersetting.o
 release/qrc_images.o
 release/qrc_photos.o
 release/moc_addmovies.o
@@ -13,3 +14,4 @@ release/moc_adminoptions.o
 release/moc_homepage.o
 release/moc_updatemovies.o
 release/moc_user.o
+release/moc_usersetting.o
