@@ -22,6 +22,9 @@ public:
     explicit User(QWidget *parent = nullptr);
     ~User();
     QString _username;
+    QString encrypt(const QString &plaintext);
+    bool checklength(const QString &text, bool ispassword);// changed
+    bool containsSpecialCharAndNumber(const QString &text);
 private slots:
 
 
@@ -74,8 +77,6 @@ private:
     int count =0;
     int horror =0 , action =0 , thriller =0, romance =0, comedy =0, rom_com=0, drama=0, sci_fi=0,history=0, suspense=0;
     Ui::User *ui;
-    bool checklength(const QString &text, bool ispassword);// changed
-     bool containsSpecialCharAndNumber(const QString &text);
     QLineEdit *usernameslot;//changed you have to declar all the user defined datatypes you are going to make in .header file and then only provdie implementation in the .cpp file
     QLineEdit *passwordslot;// changed
     QLineEdit *passwordslot_2; // changed here the data type is QLineEdit
@@ -88,7 +89,6 @@ private:
     int charToInt(QChar ch);
     QChar intToChar(int num);
     int mod(int a, int b);
-    QString encrypt(const QString &plaintext);
     int determinant(const QVector<QVector<int>> &matrix);
     int modularInverse(int a, int m);
     QVector<QVector<int>> inverseMatrix(const QVector<QVector<int>> &matrix);

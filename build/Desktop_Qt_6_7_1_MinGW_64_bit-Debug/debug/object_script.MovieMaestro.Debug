@@ -5,6 +5,7 @@ debug/homepage.o
 debug/main.o
 debug/updatemovies.o
 debug/user.o
+debug/usersetting.o
 debug/qrc_images.o
 debug/qrc_photos.o
 debug/moc_addmovies.o
@@ -13,3 +14,4 @@ debug/moc_adminoptions.o
 debug/moc_homepage.o
 debug/moc_updatemovies.o
 debug/moc_user.o
+debug/moc_usersetting.o

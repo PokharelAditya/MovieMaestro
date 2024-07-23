@@ -15,7 +15,8 @@ SOURCES += \
     homepage.cpp \
     main.cpp \
     updatemovies.cpp \
-    user.cpp
+    user.cpp \
+    usersetting.cpp
 
 HEADERS += \
     Databasemanager.h \
@@ -25,7 +26,8 @@ HEADERS += \
     database.h \
     homepage.h \
     updatemovies.h \
-    user.h
+    user.h \
+    usersetting.h
 
 FORMS += \
     addmovies.ui \
@@ -33,7 +35,8 @@ FORMS += \
     adminoptions.ui \
     homepage.ui \
     updatemovies.ui \
-    user.ui
+    user.ui \
+    usersetting.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

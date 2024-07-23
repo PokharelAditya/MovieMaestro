@@ -5,3 +5,4 @@ SELECT * FROM casts_table;
 SELECT * FROM moviesgenres_table;
 SELECT * FROM moviesdirectors_table;
 SELECT * FROM moviescasts_table;
+SELECT * FROM UserMovieRating;
