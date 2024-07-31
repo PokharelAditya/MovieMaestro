@@ -20,7 +20,7 @@ updatemovies::updatemovies(QWidget *parent)
 
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
-    query.prepare("SELECT Movie_ID from Movies_table ORDER BY Movie_ID DESC");
+    query.prepare("SELECT Movie_ID from Movies_table ORDER BY Title ASC");
     query.exec();
     query.next();
     int id = query.value(0).toInt();
@@ -44,7 +44,7 @@ void updatemovies::setPoster(int id)
 {
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
-    query.prepare("SELECT Movie_ID,Poster from Movies_table ORDER BY Movie_ID DESC");
+    query.prepare("SELECT Movie_ID,Poster from Movies_table ORDER BY Title ASC");
     query.exec();
     while(query.next())
     {
@@ -111,7 +111,7 @@ void updatemovies::on_Next_clicked()
     int id = 0;
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
-    query.prepare("SELECT Movie_ID FROM Movies_table ORDER BY Movie_ID DESC");
+    query.prepare("SELECT Movie_ID FROM Movies_table ORDER BY Title ASC");
     query.exec();
     while(query.next())
     {
@@ -154,7 +154,7 @@ void updatemovies::on_Previous_clicked()
     int id = 0;
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
-    query.prepare("SELECT Movie_ID FROM Movies_table ORDER BY Movie_ID ASC");
+    query.prepare("SELECT Movie_ID FROM Movies_table ORDER BY Title DESC");
     query.exec();
     while(query.next())
     {
@@ -827,7 +827,7 @@ void updatemovies::on_searchBox_textChanged(const QString &searchText)
     {
         QSqlDatabase moviesData = database::getMoviesData();
         QSqlQuery query(moviesData);
-        query.prepare("SELECT Movie_ID from Movies_table ORDER BY Movie_ID DESC");
+        query.prepare("SELECT Movie_ID from Movies_table ORDER BY Title ASC");
         query.exec();
         query.next();
         int id = query.value(0).toInt();
