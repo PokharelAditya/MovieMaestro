@@ -97,10 +97,39 @@ private slots:
 
     void on_topratemovie_4_clicked();
 
+
+    void on_searchbtn_clicked();
+
+    void on_searchbar_textChanged(const QString &arg1);
+
+    void on_searchleftbtn_clicked();
+
+    void on_searchrightbtn_clicked();
+
+    void on_searchmoviebtn_1_clicked();
+
+    void on_searchmoviebtn_2_clicked();
+
+    void on_searchmoviebtn_3_clicked();
+
+    void on_searchmoviebtn_4_clicked();
+
+    void on_searchmoviebtn_5_clicked();
+
+    void on_searchmoviebtn_6_clicked();
+
+    void on_searchmoviebtn_7_clicked();
+
+    void on_searchmoviebtn_8_clicked();
+
+
+    void on_threepage_clicked();
+
 private:
     void showdescriptionbox(int btn_number);
     Ui::HomePage *ui;
     QSqlDatabase userdatabase;
+    QSqlQuery Wquery;
     QString username,lusername , intusername;
     QIcon search,house,whitesearch,whitehouse,gear,whitegear,sun,moon,right,left,whitestar,star;
     QPixmap logo,blacklogo;
@@ -126,6 +155,14 @@ private:
         void showtoprated(int position);
     QList<int> _movielist;
         void showdescriptionbox3(int btn_number);
+    int discoverornot = 0;
+        int _position =0;
+    int lockbtn_4;
+        bool alreadyvisited=false;
+    QList<int> intmovieidlists;
+        int checkbox =0;
+    void showdescriptionbox4(int btn_number);
+        QString name;
 };
 
 #endif // HOMEPAGE_H

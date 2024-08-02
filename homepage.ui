@@ -6,9 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1231</width>
-    <height>867</height>
+    <width>1200</width>
+    <height>750</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>750</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>750</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -53,8 +65,8 @@ background:black;}</string>
   <widget class="QPushButton" name="house">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>10</y>
+     <x>180</x>
+     <y>90</y>
      <width>50</width>
      <height>50</height>
     </rect>
@@ -62,6 +74,7 @@ background:black;}</string>
    <property name="font">
     <font>
      <pointsize>15</pointsize>
+     <bold>false</bold>
     </font>
    </property>
    <property name="cursor">
@@ -85,10 +98,10 @@ background:black;}</string>
   <widget class="QLabel" name="logo">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>10</y>
-     <width>50</width>
-     <height>50</height>
+     <width>141</width>
+     <height>141</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -99,6 +112,9 @@ background:none;
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="photos.qrc">:/MM Transparent BG.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -161,48 +177,29 @@ background:black;}</string>
   <widget class="QLineEdit" name="searchbar">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>20</y>
+     <x>310</x>
+     <y>40</y>
      <width>561</width>
      <height>41</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QObject
+    <string notr="true">QLineEdit
 {
-background-color:grey;
+background-color:rgb(225,225,225);
+border:none;
+border-radius:20px;
 color:black;
 }</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="foryoulabel">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>130</y>
-     <width>131</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial Black</family>
-     <pointsize>18</pointsize>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>For You</string>
    </property>
   </widget>
   <widget class="QGroupBox" name="foryoubox">
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>170</y>
-     <width>1041</width>
-     <height>281</height>
+     <y>1000</y>
+     <width>1031</width>
+     <height>1000</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -364,7 +361,7 @@ width:50px;
   <widget class="QPushButton" name="leftbtn">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>250</y>
      <width>80</width>
      <height>80</height>
@@ -393,8 +390,8 @@ border:none;
   <widget class="QPushButton" name="rightbtn">
    <property name="geometry">
     <rect>
-     <x>1140</x>
-     <y>250</y>
+     <x>1110</x>
+     <y>270</y>
      <width>80</width>
      <height>80</height>
     </rect>
@@ -422,10 +419,10 @@ border:none;
   <widget class="QGroupBox" name="recentgroupbox">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>490</y>
+     <x>80</x>
+     <y>1000</y>
      <width>1041</width>
-     <height>281</height>
+     <height>1000</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -451,16 +448,14 @@ border:none;
      <string notr="true">QPushButton
 {
 background:none;
-height:60px;
-width:30px;
+border:2px solid rgb(194, 194, 194);
 }
-QPushButton:hover
-{
-background:none;
-height:80px;
-width:50px;
 
-}</string>
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -488,16 +483,14 @@ width:50px;
      <string notr="true">QPushButton
 {
 background:none;
-height:60px;
-width:30px;
+border:2px solid rgb(194, 194, 194);
 }
-QPushButton:hover
-{
-background:none;
-height:80px;
-width:50px;
 
-}</string>
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -525,16 +518,14 @@ width:50px;
      <string notr="true">QPushButton
 {
 background:none;
-height:60px;
-width:30px;
+border:2px solid rgb(194, 194, 194);
 }
-QPushButton:hover
-{
-background:none;
-height:80px;
-width:50px;
 
-}</string>
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -562,16 +553,14 @@ width:50px;
      <string notr="true">QPushButton
 {
 background:none;
-height:60px;
-width:30px;
+border:2px solid rgb(194, 194, 194);
 }
-QPushButton:hover
-{
-background:none;
-height:80px;
-width:50px;
 
-}</string>
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -583,56 +572,6 @@ width:50px;
      </size>
     </property>
    </widget>
-  </widget>
-  <widget class="QLabel" name="recentlabel">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>440</y>
-     <width>131</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Arial Black</family>
-     <pointsize>18</pointsize>
-     <italic>true</italic>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Recent</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="rightbtn_2">
-   <property name="geometry">
-    <rect>
-     <x>1140</x>
-     <y>590</y>
-     <width>80</width>
-     <height>80</height>
-    </rect>
-   </property>
-   <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{
-background-color:black;
-border:none;
-}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>80</width>
-     <height>80</height>
-    </size>
-   </property>
   </widget>
   <widget class="QPushButton" name="leftbtn_2">
    <property name="geometry">
@@ -662,171 +601,6 @@ border:none;
      <height>80</height>
     </size>
    </property>
-  </widget>
-  <widget class="QGroupBox" name="recentgroupbox_2">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>480</y>
-     <width>1041</width>
-     <height>281</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QGroupBox
-{
-background:none;
-border:none;
-}</string>
-   </property>
-   <widget class="QPushButton" name="moviebtn_13">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>60</y>
-      <width>171</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton
-{
-background:none;
-height:60px;
-width:30px;
-}
-QPushButton:hover
-{
-background:none;
-height:80px;
-width:50px;
-
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>30</width>
-      <height>60</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="moviebtn_14">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>60</y>
-      <width>171</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton
-{
-background:none;
-height:60px;
-width:30px;
-}
-QPushButton:hover
-{
-background:none;
-height:80px;
-width:50px;
-
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>30</width>
-      <height>60</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="moviebtn_15">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>60</y>
-      <width>171</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton
-{
-background:none;
-height:60px;
-width:30px;
-}
-QPushButton:hover
-{
-background:none;
-height:80px;
-width:50px;
-
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>30</width>
-      <height>60</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="moviebtn_16">
-    <property name="geometry">
-     <rect>
-      <x>800</x>
-      <y>60</y>
-      <width>171</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton
-{
-background:none;
-height:60px;
-width:30px;
-}
-QPushButton:hover
-{
-background:none;
-height:80px;
-width:50px;
-
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>30</width>
-      <height>60</height>
-     </size>
-    </property>
-   </widget>
   </widget>
   <widget class="QLabel" name="castlabel">
    <property name="geometry">
@@ -858,7 +632,7 @@ width:50px;
      <x>900</x>
      <y>70</y>
      <width>271</width>
-     <height>61</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -879,85 +653,13 @@ width:50px;
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="onepage">
-   <property name="geometry">
-    <rect>
-     <x>510</x>
-     <y>790</y>
-     <width>54</width>
-     <height>54</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>15</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{
-background:none;
-border:2px solid orange;
-  border-radius: 25px; 
-        min-width: 50px;    
-        min-height: 50px;    
-        max-width: 50px;   
-        max-height: 50px;   
-}
-QPushButton:hover
-{
-background:orange;
-
-}</string>
-   </property>
-   <property name="text">
-    <string>1</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="twopage">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>790</y>
-     <width>54</width>
-     <height>54</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>15</pointsize>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{
-background:none;
-border:2px solid orange;
-  border-radius: 25px; 
-        min-width: 50px;    
-        min-height: 50px;    
-        max-width: 50px;   
-        max-height: 50px;   
-}
-QPushButton:hover
-{
-background:orange;
-
-}</string>
-   </property>
-   <property name="text">
-    <string>2</string>
-   </property>
-  </widget>
   <widget class="QGroupBox" name="toprategroupbox">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>70</y>
+     <x>-10</x>
+     <y>1000</y>
      <width>1231</width>
-     <height>651</height>
+     <height>1000</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -1009,7 +711,17 @@ background:orange;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -1025,7 +737,17 @@ background:orange;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -1041,7 +763,17 @@ background:orange;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -1057,7 +789,17 @@ background:orange;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid rgb(194, 194, 194);
+}
+
+QPushButton:Hover
+{
+border:2px solid orange;
+}
+</string>
     </property>
     <property name="text">
      <string/>
@@ -1099,10 +841,10 @@ background:orange;
   <widget class="QGroupBox" name="descriptionbox">
    <property name="geometry">
     <rect>
-     <x>35</x>
-     <y>104</y>
+     <x>0</x>
+     <y>1000</y>
      <width>1201</width>
-     <height>581</height>
+     <height>1000</height>
     </rect>
    </property>
    <property name="font">
@@ -1554,7 +1296,396 @@ border-radius:10px;</string>
     </property>
    </widget>
   </widget>
+  <widget class="QGroupBox" name="searchbox">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>1000</y>
+     <width>1231</width>
+     <height>1000</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none;
+background:black;</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>0</y>
+      <width>16</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:orange;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>20</y>
+      <width>231</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Discover</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchmoviebtn_1">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>130</y>
+      <width>161</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchmoviebtn_2">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>130</y>
+      <width>161</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchmoviebtn_3">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>130</y>
+      <width>161</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchmoviebtn_4">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>130</y>
+      <width>161</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchmoviebtn_5">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>370</y>
+      <width>161</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchmoviebtn_6">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>370</y>
+      <width>161</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchmoviebtn_7">
+    <property name="geometry">
+     <rect>
+      <x>700</x>
+      <y>380</y>
+      <width>161</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchmoviebtn_8">
+    <property name="geometry">
+     <rect>
+      <x>940</x>
+      <y>380</y>
+      <width>161</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchleftbtn">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>260</y>
+      <width>61</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="searchrightbtn">
+    <property name="geometry">
+     <rect>
+      <x>1140</x>
+      <y>260</y>
+      <width>61</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:black</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="threepage">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>0</y>
+      <width>151</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid orange;
+
+      
+}
+QPushButton:hover
+{
+background:orange;
+
+}</string>
+    </property>
+    <property name="text">
+     <string>Latest</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="twopage">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>0</y>
+      <width>171</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid orange;
+
+      
+}
+QPushButton:hover
+{
+background:orange;
+
+}</string>
+    </property>
+    <property name="text">
+     <string>Top Rated</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="onepage">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>0</y>
+      <width>141</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+border:2px solid orange;
+
+      
+}
+QPushButton:hover
+{
+background:orange;
+
+}</string>
+    </property>
+    <property name="text">
+     <string>For You</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="rightbtn_2">
+   <property name="geometry">
+    <rect>
+     <x>1110</x>
+     <y>570</y>
+     <width>80</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+background-color:black;
+border:none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>80</width>
+     <height>80</height>
+    </size>
+   </property>
+  </widget>
+  <widget class="QLabel" name="recentlabel">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>180</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="foryoulabel">
+   <property name="geometry">
+    <rect>
+     <x>130</x>
+     <y>230</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <zorder>ProfilePicture</zorder>
+  <zorder>house</zorder>
+  <zorder>logo</zorder>
+  <zorder>searchbtn</zorder>
+  <zorder>gearbtn</zorder>
+  <zorder>searchbar</zorder>
+  <zorder>foryoubox</zorder>
+  <zorder>leftbtn</zorder>
+  <zorder>rightbtn</zorder>
+  <zorder>leftbtn_2</zorder>
+  <zorder>castlabel</zorder>
+  <zorder>movienameforhome</zorder>
+  <zorder>descriptionbox</zorder>
+  <zorder>searchbox</zorder>
+  <zorder>toprategroupbox</zorder>
+  <zorder>recentgroupbox</zorder>
+  <zorder>rightbtn_2</zorder>
+  <zorder>recentlabel</zorder>
+  <zorder>foryoulabel</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="photos.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1121,13 +1121,13 @@ public:
         posterLabel->raise();
         poster->raise();
         Background->raise();
-        moviesBox->raise();
         BackToAdminOptions->raise();
         searchGroupBox->raise();
         Logo->raise();
         viewMoviesBox->raise();
         deleteMoviesBox->raise();
         updateMoviesBox->raise();
+        moviesBox->raise();
 
         retranslateUi(updatemovies);
 

@@ -2423,13 +2423,13 @@ border:none;</string>
    <zorder>poster</zorder>
   </widget>
   <zorder>Background</zorder>
-  <zorder>moviesBox</zorder>
   <zorder>BackToAdminOptions</zorder>
   <zorder>searchGroupBox</zorder>
   <zorder>Logo</zorder>
   <zorder>viewMoviesBox</zorder>
   <zorder>deleteMoviesBox</zorder>
   <zorder>updateMoviesBox</zorder>
+  <zorder>moviesBox</zorder>
  </widget>
  <resources>
   <include location="photos.qrc"/>

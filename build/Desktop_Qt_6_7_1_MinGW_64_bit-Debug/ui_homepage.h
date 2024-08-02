@@ -29,7 +29,6 @@ public:
     QPushButton *searchbtn;
     QPushButton *gearbtn;
     QLineEdit *searchbar;
-    QLabel *foryoulabel;
     QGroupBox *foryoubox;
     QPushButton *moviebtn_1;
     QPushButton *moviebtn_2;
@@ -42,18 +41,9 @@ public:
     QPushButton *moviebtn_10;
     QPushButton *moviebtn_11;
     QPushButton *moviebtn_12;
-    QLabel *recentlabel;
-    QPushButton *rightbtn_2;
     QPushButton *leftbtn_2;
-    QGroupBox *recentgroupbox_2;
-    QPushButton *moviebtn_13;
-    QPushButton *moviebtn_14;
-    QPushButton *moviebtn_15;
-    QPushButton *moviebtn_16;
     QLabel *castlabel;
     QLabel *movienameforhome;
-    QPushButton *onepage;
-    QPushButton *twopage;
     QGroupBox *toprategroupbox;
     QLabel *highrated;
     QPushButton *pushButton;
@@ -83,12 +73,33 @@ public:
     QLabel *directorlabel_3;
     QTextEdit *genrelabel;
     QLabel *ratinglabel;
+    QGroupBox *searchbox;
+    QLabel *label_3;
+    QLabel *label_4;
+    QPushButton *searchmoviebtn_1;
+    QPushButton *searchmoviebtn_2;
+    QPushButton *searchmoviebtn_3;
+    QPushButton *searchmoviebtn_4;
+    QPushButton *searchmoviebtn_5;
+    QPushButton *searchmoviebtn_6;
+    QPushButton *searchmoviebtn_7;
+    QPushButton *searchmoviebtn_8;
+    QPushButton *searchleftbtn;
+    QPushButton *searchrightbtn;
+    QPushButton *threepage;
+    QPushButton *twopage;
+    QPushButton *onepage;
+    QPushButton *rightbtn_2;
+    QLabel *recentlabel;
+    QLabel *foryoulabel;
 
     void setupUi(QDialog *HomePage)
     {
         if (HomePage->objectName().isEmpty())
             HomePage->setObjectName("HomePage");
-        HomePage->resize(1231, 867);
+        HomePage->resize(1200, 750);
+        HomePage->setMinimumSize(QSize(1200, 750));
+        HomePage->setMaximumSize(QSize(1200, 750));
         QFont font;
         font.setPointSize(30);
         font.setBold(true);
@@ -105,9 +116,10 @@ public:
         ProfilePicture->setIconSize(QSize(50, 50));
         house = new QPushButton(HomePage);
         house->setObjectName("house");
-        house->setGeometry(QRect(80, 10, 50, 50));
+        house->setGeometry(QRect(180, 90, 50, 50));
         QFont font1;
         font1.setPointSize(15);
+        font1.setBold(false);
         house->setFont(font1);
         house->setCursor(QCursor(Qt::PointingHandCursor));
         house->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -116,11 +128,12 @@ public:
         house->setIconSize(QSize(50, 50));
         logo = new QLabel(HomePage);
         logo->setObjectName("logo");
-        logo->setGeometry(QRect(10, 10, 50, 50));
+        logo->setGeometry(QRect(20, 10, 141, 141));
         logo->setStyleSheet(QString::fromUtf8("QLabel\n"
 "{\n"
 "background:none;\n"
 "}"));
+        logo->setPixmap(QPixmap(QString::fromUtf8(":/MM Transparent BG.png")));
         logo->setScaledContents(true);
         searchbtn = new QPushButton(HomePage);
         searchbtn->setObjectName("searchbtn");
@@ -140,24 +153,17 @@ public:
         gearbtn->setIconSize(QSize(50, 50));
         searchbar = new QLineEdit(HomePage);
         searchbar->setObjectName("searchbar");
-        searchbar->setGeometry(QRect(270, 20, 561, 41));
-        searchbar->setStyleSheet(QString::fromUtf8("QObject\n"
+        searchbar->setGeometry(QRect(310, 40, 561, 41));
+        searchbar->setStyleSheet(QString::fromUtf8("QLineEdit\n"
 "{\n"
-"background-color:grey;\n"
+"background-color:rgb(225,225,225);\n"
+"border:none;\n"
+"border-radius:20px;\n"
 "color:black;\n"
 "}"));
-        foryoulabel = new QLabel(HomePage);
-        foryoulabel->setObjectName("foryoulabel");
-        foryoulabel->setGeometry(QRect(30, 130, 131, 31));
-        QFont font2;
-        font2.setFamilies({QString::fromUtf8("Arial Black")});
-        font2.setPointSize(18);
-        font2.setBold(true);
-        font2.setItalic(true);
-        foryoulabel->setFont(font2);
         foryoubox = new QGroupBox(HomePage);
         foryoubox->setObjectName("foryoubox");
-        foryoubox->setGeometry(QRect(100, 170, 1041, 281));
+        foryoubox->setGeometry(QRect(100, 1000, 1031, 1000));
         foryoubox->setStyleSheet(QString::fromUtf8("QGroupBox\n"
 "{\n"
 "background:none;\n"
@@ -237,7 +243,7 @@ public:
         moviebtn_4->setIconSize(QSize(30, 60));
         leftbtn = new QPushButton(HomePage);
         leftbtn->setObjectName("leftbtn");
-        leftbtn->setGeometry(QRect(20, 250, 80, 80));
+        leftbtn->setGeometry(QRect(30, 250, 80, 80));
         leftbtn->setCursor(QCursor(Qt::PointingHandCursor));
         leftbtn->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
@@ -247,7 +253,7 @@ public:
         leftbtn->setIconSize(QSize(80, 80));
         rightbtn = new QPushButton(HomePage);
         rightbtn->setObjectName("rightbtn");
-        rightbtn->setGeometry(QRect(1140, 250, 80, 80));
+        rightbtn->setGeometry(QRect(1110, 270, 80, 80));
         rightbtn->setCursor(QCursor(Qt::PointingHandCursor));
         rightbtn->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
@@ -257,7 +263,7 @@ public:
         rightbtn->setIconSize(QSize(80, 80));
         recentgroupbox = new QGroupBox(HomePage);
         recentgroupbox->setObjectName("recentgroupbox");
-        recentgroupbox->setGeometry(QRect(100, 490, 1041, 281));
+        recentgroupbox->setGeometry(QRect(80, 1000, 1041, 1000));
         recentgroupbox->setStyleSheet(QString::fromUtf8("QGroupBox\n"
 "{\n"
 "background:none;\n"
@@ -270,16 +276,14 @@ public:
         moviebtn_9->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
 "background:none;\n"
-"height:60px;\n"
-"width:30px;\n"
+"border:2px solid rgb(194, 194, 194);\n"
 "}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:none;\n"
-"height:80px;\n"
-"width:50px;\n"
 "\n"
-"}"));
+"QPushButton:Hover\n"
+"{\n"
+"border:2px solid orange;\n"
+"}\n"
+""));
         moviebtn_9->setIconSize(QSize(30, 60));
         moviebtn_10 = new QPushButton(recentgroupbox);
         moviebtn_10->setObjectName("moviebtn_10");
@@ -288,16 +292,14 @@ public:
         moviebtn_10->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
 "background:none;\n"
-"height:60px;\n"
-"width:30px;\n"
+"border:2px solid rgb(194, 194, 194);\n"
 "}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:none;\n"
-"height:80px;\n"
-"width:50px;\n"
 "\n"
-"}"));
+"QPushButton:Hover\n"
+"{\n"
+"border:2px solid orange;\n"
+"}\n"
+""));
         moviebtn_10->setIconSize(QSize(30, 60));
         moviebtn_11 = new QPushButton(recentgroupbox);
         moviebtn_11->setObjectName("moviebtn_11");
@@ -306,16 +308,14 @@ public:
         moviebtn_11->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
 "background:none;\n"
-"height:60px;\n"
-"width:30px;\n"
+"border:2px solid rgb(194, 194, 194);\n"
 "}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:none;\n"
-"height:80px;\n"
-"width:50px;\n"
 "\n"
-"}"));
+"QPushButton:Hover\n"
+"{\n"
+"border:2px solid orange;\n"
+"}\n"
+""));
         moviebtn_11->setIconSize(QSize(30, 60));
         moviebtn_12 = new QPushButton(recentgroupbox);
         moviebtn_12->setObjectName("moviebtn_12");
@@ -324,31 +324,15 @@ public:
         moviebtn_12->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
 "background:none;\n"
-"height:60px;\n"
-"width:30px;\n"
+"border:2px solid rgb(194, 194, 194);\n"
 "}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:none;\n"
-"height:80px;\n"
-"width:50px;\n"
 "\n"
-"}"));
-        moviebtn_12->setIconSize(QSize(30, 60));
-        recentlabel = new QLabel(HomePage);
-        recentlabel->setObjectName("recentlabel");
-        recentlabel->setGeometry(QRect(20, 440, 131, 31));
-        recentlabel->setFont(font2);
-        rightbtn_2 = new QPushButton(HomePage);
-        rightbtn_2->setObjectName("rightbtn_2");
-        rightbtn_2->setGeometry(QRect(1140, 590, 80, 80));
-        rightbtn_2->setCursor(QCursor(Qt::PointingHandCursor));
-        rightbtn_2->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"QPushButton:Hover\n"
 "{\n"
-"background-color:black;\n"
-"border:none;\n"
-"}"));
-        rightbtn_2->setIconSize(QSize(80, 80));
+"border:2px solid orange;\n"
+"}\n"
+""));
+        moviebtn_12->setIconSize(QSize(30, 60));
         leftbtn_2 = new QPushButton(HomePage);
         leftbtn_2->setObjectName("leftbtn_2");
         leftbtn_2->setGeometry(QRect(20, 590, 80, 80));
@@ -359,174 +343,93 @@ public:
 "border:none;\n"
 "}"));
         leftbtn_2->setIconSize(QSize(80, 80));
-        recentgroupbox_2 = new QGroupBox(HomePage);
-        recentgroupbox_2->setObjectName("recentgroupbox_2");
-        recentgroupbox_2->setGeometry(QRect(100, 480, 1041, 281));
-        recentgroupbox_2->setStyleSheet(QString::fromUtf8("QGroupBox\n"
-"{\n"
-"background:none;\n"
-"border:none;\n"
-"}"));
-        moviebtn_13 = new QPushButton(recentgroupbox_2);
-        moviebtn_13->setObjectName("moviebtn_13");
-        moviebtn_13->setGeometry(QRect(30, 60, 171, 171));
-        moviebtn_13->setCursor(QCursor(Qt::PointingHandCursor));
-        moviebtn_13->setStyleSheet(QString::fromUtf8("QPushButton\n"
-"{\n"
-"background:none;\n"
-"height:60px;\n"
-"width:30px;\n"
-"}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:none;\n"
-"height:80px;\n"
-"width:50px;\n"
-"\n"
-"}"));
-        moviebtn_13->setIconSize(QSize(30, 60));
-        moviebtn_14 = new QPushButton(recentgroupbox_2);
-        moviebtn_14->setObjectName("moviebtn_14");
-        moviebtn_14->setGeometry(QRect(280, 60, 171, 171));
-        moviebtn_14->setCursor(QCursor(Qt::PointingHandCursor));
-        moviebtn_14->setStyleSheet(QString::fromUtf8("QPushButton\n"
-"{\n"
-"background:none;\n"
-"height:60px;\n"
-"width:30px;\n"
-"}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:none;\n"
-"height:80px;\n"
-"width:50px;\n"
-"\n"
-"}"));
-        moviebtn_14->setIconSize(QSize(30, 60));
-        moviebtn_15 = new QPushButton(recentgroupbox_2);
-        moviebtn_15->setObjectName("moviebtn_15");
-        moviebtn_15->setGeometry(QRect(560, 60, 171, 171));
-        moviebtn_15->setCursor(QCursor(Qt::PointingHandCursor));
-        moviebtn_15->setStyleSheet(QString::fromUtf8("QPushButton\n"
-"{\n"
-"background:none;\n"
-"height:60px;\n"
-"width:30px;\n"
-"}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:none;\n"
-"height:80px;\n"
-"width:50px;\n"
-"\n"
-"}"));
-        moviebtn_15->setIconSize(QSize(30, 60));
-        moviebtn_16 = new QPushButton(recentgroupbox_2);
-        moviebtn_16->setObjectName("moviebtn_16");
-        moviebtn_16->setGeometry(QRect(800, 60, 171, 171));
-        moviebtn_16->setCursor(QCursor(Qt::PointingHandCursor));
-        moviebtn_16->setStyleSheet(QString::fromUtf8("QPushButton\n"
-"{\n"
-"background:none;\n"
-"height:60px;\n"
-"width:30px;\n"
-"}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:none;\n"
-"height:80px;\n"
-"width:50px;\n"
-"\n"
-"}"));
-        moviebtn_16->setIconSize(QSize(30, 60));
         castlabel = new QLabel(HomePage);
         castlabel->setObjectName("castlabel");
         castlabel->setGeometry(QRect(780, 740, 111, 41));
-        QFont font3;
-        font3.setFamilies({QString::fromUtf8("Arial Black")});
-        font3.setPointSize(17);
-        font3.setBold(true);
-        font3.setItalic(true);
-        castlabel->setFont(font3);
+        QFont font2;
+        font2.setFamilies({QString::fromUtf8("Arial Black")});
+        font2.setPointSize(17);
+        font2.setBold(true);
+        font2.setItalic(true);
+        castlabel->setFont(font2);
         castlabel->setAlignment(Qt::AlignCenter);
         movienameforhome = new QLabel(HomePage);
         movienameforhome->setObjectName("movienameforhome");
-        movienameforhome->setGeometry(QRect(900, 70, 271, 61));
-        movienameforhome->setFont(font3);
+        movienameforhome->setGeometry(QRect(900, 70, 271, 41));
+        movienameforhome->setFont(font2);
         movienameforhome->setStyleSheet(QString::fromUtf8("border:none;"));
         movienameforhome->setAlignment(Qt::AlignCenter);
-        onepage = new QPushButton(HomePage);
-        onepage->setObjectName("onepage");
-        onepage->setGeometry(QRect(510, 790, 54, 54));
-        QFont font4;
-        font4.setPointSize(15);
-        font4.setBold(true);
-        onepage->setFont(font4);
-        onepage->setStyleSheet(QString::fromUtf8("QPushButton\n"
-"{\n"
-"background:none;\n"
-"border:2px solid orange;\n"
-"  border-radius: 25px; \n"
-"        min-width: 50px;    \n"
-"        min-height: 50px;    \n"
-"        max-width: 50px;   \n"
-"        max-height: 50px;   \n"
-"}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:orange;\n"
-"\n"
-"}"));
-        twopage = new QPushButton(HomePage);
-        twopage->setObjectName("twopage");
-        twopage->setGeometry(QRect(580, 790, 54, 54));
-        twopage->setFont(font4);
-        twopage->setStyleSheet(QString::fromUtf8("QPushButton\n"
-"{\n"
-"background:none;\n"
-"border:2px solid orange;\n"
-"  border-radius: 25px; \n"
-"        min-width: 50px;    \n"
-"        min-height: 50px;    \n"
-"        max-width: 50px;   \n"
-"        max-height: 50px;   \n"
-"}\n"
-"QPushButton:hover\n"
-"{\n"
-"background:orange;\n"
-"\n"
-"}"));
         toprategroupbox = new QGroupBox(HomePage);
         toprategroupbox->setObjectName("toprategroupbox");
-        toprategroupbox->setGeometry(QRect(0, 70, 1231, 651));
+        toprategroupbox->setGeometry(QRect(-10, 1000, 1231, 1000));
         toprategroupbox->setStyleSheet(QString::fromUtf8("border:none;"));
         highrated = new QLabel(toprategroupbox);
         highrated->setObjectName("highrated");
         highrated->setGeometry(QRect(40, 20, 171, 51));
-        QFont font5;
-        font5.setPointSize(25);
-        font5.setBold(true);
-        font5.setItalic(true);
-        highrated->setFont(font5);
+        QFont font3;
+        font3.setPointSize(25);
+        font3.setBold(true);
+        font3.setItalic(true);
+        highrated->setFont(font3);
         pushButton = new QPushButton(toprategroupbox);
         pushButton->setObjectName("pushButton");
         pushButton->setGeometry(QRect(160, 140, 171, 181));
         topratemovie_1 = new QPushButton(toprategroupbox);
         topratemovie_1->setObjectName("topratemovie_1");
         topratemovie_1->setGeometry(QRect(170, 250, 151, 191));
-        topratemovie_1->setStyleSheet(QString::fromUtf8(""));
+        topratemovie_1->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgb(194, 194, 194);\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"border:2px solid orange;\n"
+"}\n"
+""));
         topratemovie_2 = new QPushButton(toprategroupbox);
         topratemovie_2->setObjectName("topratemovie_2");
         topratemovie_2->setGeometry(QRect(400, 250, 151, 191));
-        topratemovie_2->setStyleSheet(QString::fromUtf8(""));
+        topratemovie_2->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgb(194, 194, 194);\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"border:2px solid orange;\n"
+"}\n"
+""));
         topratemovie_3 = new QPushButton(toprategroupbox);
         topratemovie_3->setObjectName("topratemovie_3");
         topratemovie_3->setGeometry(QRect(640, 250, 151, 191));
-        topratemovie_3->setStyleSheet(QString::fromUtf8(""));
+        topratemovie_3->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgb(194, 194, 194);\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"border:2px solid orange;\n"
+"}\n"
+""));
         topratemovie_4 = new QPushButton(toprategroupbox);
         topratemovie_4->setObjectName("topratemovie_4");
         topratemovie_4->setGeometry(QRect(870, 250, 151, 191));
-        topratemovie_4->setStyleSheet(QString::fromUtf8(""));
+        topratemovie_4->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid rgb(194, 194, 194);\n"
+"}\n"
+"\n"
+"QPushButton:Hover\n"
+"{\n"
+"border:2px solid orange;\n"
+"}\n"
+""));
         topleft = new QPushButton(toprategroupbox);
         topleft->setObjectName("topleft");
         topleft->setGeometry(QRect(50, 293, 71, 71));
@@ -537,11 +440,11 @@ public:
         topright->setStyleSheet(QString::fromUtf8(""));
         descriptionbox = new QGroupBox(HomePage);
         descriptionbox->setObjectName("descriptionbox");
-        descriptionbox->setGeometry(QRect(35, 104, 1201, 581));
-        QFont font6;
-        font6.setPointSize(10);
-        font6.setBold(true);
-        descriptionbox->setFont(font6);
+        descriptionbox->setGeometry(QRect(0, 1000, 1201, 1000));
+        QFont font4;
+        font4.setPointSize(10);
+        font4.setBold(true);
+        descriptionbox->setFont(font4);
         descriptionbox->setStyleSheet(QString::fromUtf8("\n"
 "border-radius:orange;"));
         moviedescbtn = new QPushButton(descriptionbox);
@@ -560,18 +463,18 @@ public:
         movienamelabel = new QLabel(descriptionbox);
         movienamelabel->setObjectName("movienamelabel");
         movienamelabel->setGeometry(QRect(840, 30, 271, 61));
-        movienamelabel->setFont(font3);
+        movienamelabel->setFont(font2);
         movienamelabel->setStyleSheet(QString::fromUtf8("border:none;"));
         movienamelabel->setAlignment(Qt::AlignCenter);
         directorlabel = new QLabel(descriptionbox);
         directorlabel->setObjectName("directorlabel");
         directorlabel->setGeometry(QRect(350, 360, 91, 41));
-        QFont font7;
-        font7.setFamilies({QString::fromUtf8("Arial Black")});
-        font7.setPointSize(10);
-        font7.setBold(true);
-        font7.setItalic(true);
-        directorlabel->setFont(font7);
+        QFont font5;
+        font5.setFamilies({QString::fromUtf8("Arial Black")});
+        font5.setPointSize(10);
+        font5.setBold(true);
+        font5.setItalic(true);
+        directorlabel->setFont(font5);
         directorlabel->setAlignment(Qt::AlignCenter);
         star = new QPushButton(descriptionbox);
         star->setObjectName("star");
@@ -596,15 +499,15 @@ public:
         star5 = new QPushButton(descriptionbox);
         star5->setObjectName("star5");
         star5->setGeometry(QRect(510, 500, 61, 51));
-        QFont font8;
-        font8.setPointSize(13);
-        star5->setFont(font8);
+        QFont font6;
+        font6.setPointSize(13);
+        star5->setFont(font6);
         star5->setStyleSheet(QString::fromUtf8("\n"
 "border:none;"));
         ratebtn = new QPushButton(descriptionbox);
         ratebtn->setObjectName("ratebtn");
         ratebtn->setGeometry(QRect(620, 490, 131, 61));
-        ratebtn->setFont(font8);
+        ratebtn->setFont(font6);
         ratebtn->setCursor(QCursor(Qt::PointingHandCursor));
         ratebtn->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background:none;\n"
@@ -618,17 +521,17 @@ public:
         description = new QTextEdit(descriptionbox);
         description->setObjectName("description");
         description->setGeometry(QRect(360, 130, 621, 151));
-        description->setFont(font6);
+        description->setFont(font4);
         description->setStyleSheet(QString::fromUtf8("\n"
 "border-radius:10px;"));
         description->setReadOnly(true);
         pushButton_7 = new QPushButton(descriptionbox);
         pushButton_7->setObjectName("pushButton_7");
         pushButton_7->setGeometry(QRect(0, 10, 131, 41));
-        QFont font9;
-        font9.setPointSize(13);
-        font9.setBold(true);
-        pushButton_7->setFont(font9);
+        QFont font7;
+        font7.setPointSize(13);
+        font7.setBold(true);
+        pushButton_7->setFont(font7);
         pushButton_7->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_7->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "background:none;\n"
@@ -642,25 +545,25 @@ public:
         directornames = new QTextEdit(descriptionbox);
         directornames->setObjectName("directornames");
         directornames->setGeometry(QRect(450, 370, 541, 31));
-        directornames->setFont(font6);
+        directornames->setFont(font4);
         directornames->setStyleSheet(QString::fromUtf8("\n"
 "border-radius:10px;"));
         directornames->setReadOnly(true);
         castnames = new QTextEdit(descriptionbox);
         castnames->setObjectName("castnames");
         castnames->setGeometry(QRect(450, 430, 541, 31));
-        castnames->setFont(font6);
+        castnames->setFont(font4);
         castnames->setStyleSheet(QString::fromUtf8("\n"
 "border-radius:10px;"));
         castnames->setReadOnly(true);
         label = new QLabel(descriptionbox);
         label->setObjectName("label");
         label->setGeometry(QRect(360, 90, 101, 31));
-        QFont font10;
-        font10.setPointSize(10);
-        font10.setBold(true);
-        font10.setItalic(true);
-        label->setFont(font10);
+        QFont font8;
+        font8.setPointSize(10);
+        font8.setBold(true);
+        font8.setItalic(true);
+        label->setFont(font8);
         label_2 = new QLabel(descriptionbox);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(800, 20, 16, 81));
@@ -668,27 +571,171 @@ public:
         directorlabel_2 = new QLabel(descriptionbox);
         directorlabel_2->setObjectName("directorlabel_2");
         directorlabel_2->setGeometry(QRect(350, 420, 91, 41));
-        directorlabel_2->setFont(font7);
+        directorlabel_2->setFont(font5);
         directorlabel_2->setAlignment(Qt::AlignCenter);
         directorlabel_3 = new QLabel(descriptionbox);
         directorlabel_3->setObjectName("directorlabel_3");
         directorlabel_3->setGeometry(QRect(350, 300, 91, 41));
-        directorlabel_3->setFont(font7);
+        directorlabel_3->setFont(font5);
         directorlabel_3->setAlignment(Qt::AlignCenter);
         genrelabel = new QTextEdit(descriptionbox);
         genrelabel->setObjectName("genrelabel");
         genrelabel->setGeometry(QRect(450, 310, 541, 31));
-        genrelabel->setFont(font6);
+        genrelabel->setFont(font4);
         genrelabel->setStyleSheet(QString::fromUtf8("\n"
 "border-radius:10px;"));
         genrelabel->setReadOnly(true);
         ratinglabel = new QLabel(descriptionbox);
         ratinglabel->setObjectName("ratinglabel");
         ratinglabel->setGeometry(QRect(870, 500, 261, 41));
-        QFont font11;
-        font11.setPointSize(10);
-        ratinglabel->setFont(font11);
+        QFont font9;
+        font9.setPointSize(10);
+        ratinglabel->setFont(font9);
         ratinglabel->setStyleSheet(QString::fromUtf8(""));
+        searchbox = new QGroupBox(HomePage);
+        searchbox->setObjectName("searchbox");
+        searchbox->setGeometry(QRect(0, 1000, 1231, 1000));
+        searchbox->setStyleSheet(QString::fromUtf8("border:none;\n"
+"background:black;"));
+        label_3 = new QLabel(searchbox);
+        label_3->setObjectName("label_3");
+        label_3->setGeometry(QRect(20, 0, 16, 101));
+        label_3->setStyleSheet(QString::fromUtf8("background:orange;\n"
+""));
+        label_4 = new QLabel(searchbox);
+        label_4->setObjectName("label_4");
+        label_4->setGeometry(QRect(60, 20, 231, 41));
+        QFont font10;
+        font10.setPointSize(20);
+        font10.setBold(true);
+        font10.setItalic(true);
+        label_4->setFont(font10);
+        searchmoviebtn_1 = new QPushButton(searchbox);
+        searchmoviebtn_1->setObjectName("searchmoviebtn_1");
+        searchmoviebtn_1->setGeometry(QRect(120, 130, 161, 181));
+        searchmoviebtn_1->setStyleSheet(QString::fromUtf8(""));
+        searchmoviebtn_2 = new QPushButton(searchbox);
+        searchmoviebtn_2->setObjectName("searchmoviebtn_2");
+        searchmoviebtn_2->setGeometry(QRect(380, 130, 161, 181));
+        searchmoviebtn_2->setStyleSheet(QString::fromUtf8(""));
+        searchmoviebtn_3 = new QPushButton(searchbox);
+        searchmoviebtn_3->setObjectName("searchmoviebtn_3");
+        searchmoviebtn_3->setGeometry(QRect(700, 130, 161, 181));
+        searchmoviebtn_3->setStyleSheet(QString::fromUtf8(""));
+        searchmoviebtn_4 = new QPushButton(searchbox);
+        searchmoviebtn_4->setObjectName("searchmoviebtn_4");
+        searchmoviebtn_4->setGeometry(QRect(940, 130, 161, 181));
+        searchmoviebtn_4->setStyleSheet(QString::fromUtf8(""));
+        searchmoviebtn_5 = new QPushButton(searchbox);
+        searchmoviebtn_5->setObjectName("searchmoviebtn_5");
+        searchmoviebtn_5->setGeometry(QRect(120, 370, 161, 181));
+        searchmoviebtn_5->setStyleSheet(QString::fromUtf8(""));
+        searchmoviebtn_6 = new QPushButton(searchbox);
+        searchmoviebtn_6->setObjectName("searchmoviebtn_6");
+        searchmoviebtn_6->setGeometry(QRect(380, 370, 161, 181));
+        searchmoviebtn_6->setStyleSheet(QString::fromUtf8(""));
+        searchmoviebtn_7 = new QPushButton(searchbox);
+        searchmoviebtn_7->setObjectName("searchmoviebtn_7");
+        searchmoviebtn_7->setGeometry(QRect(700, 380, 161, 181));
+        searchmoviebtn_7->setStyleSheet(QString::fromUtf8(""));
+        searchmoviebtn_8 = new QPushButton(searchbox);
+        searchmoviebtn_8->setObjectName("searchmoviebtn_8");
+        searchmoviebtn_8->setGeometry(QRect(940, 380, 161, 181));
+        searchmoviebtn_8->setStyleSheet(QString::fromUtf8(""));
+        searchleftbtn = new QPushButton(searchbox);
+        searchleftbtn->setObjectName("searchleftbtn");
+        searchleftbtn->setGeometry(QRect(30, 260, 61, 51));
+        searchleftbtn->setStyleSheet(QString::fromUtf8("background:black"));
+        searchrightbtn = new QPushButton(searchbox);
+        searchrightbtn->setObjectName("searchrightbtn");
+        searchrightbtn->setGeometry(QRect(1140, 260, 61, 51));
+        searchrightbtn->setStyleSheet(QString::fromUtf8("background:black"));
+        threepage = new QPushButton(searchbox);
+        threepage->setObjectName("threepage");
+        threepage->setGeometry(QRect(670, 0, 151, 50));
+        QFont font11;
+        font11.setPointSize(15);
+        font11.setBold(true);
+        threepage->setFont(font11);
+        threepage->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid orange;\n"
+"\n"
+"      \n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background:orange;\n"
+"\n"
+"}"));
+        twopage = new QPushButton(searchbox);
+        twopage->setObjectName("twopage");
+        twopage->setGeometry(QRect(500, 0, 171, 50));
+        twopage->setFont(font11);
+        twopage->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid orange;\n"
+"\n"
+"      \n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background:orange;\n"
+"\n"
+"}"));
+        onepage = new QPushButton(searchbox);
+        onepage->setObjectName("onepage");
+        onepage->setGeometry(QRect(360, 0, 141, 50));
+        onepage->setFont(font11);
+        onepage->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"border:2px solid orange;\n"
+"\n"
+"      \n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background:orange;\n"
+"\n"
+"}"));
+        rightbtn_2 = new QPushButton(HomePage);
+        rightbtn_2->setObjectName("rightbtn_2");
+        rightbtn_2->setGeometry(QRect(1110, 570, 80, 80));
+        rightbtn_2->setCursor(QCursor(Qt::PointingHandCursor));
+        rightbtn_2->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background-color:black;\n"
+"border:none;\n"
+"}"));
+        rightbtn_2->setIconSize(QSize(80, 80));
+        recentlabel = new QLabel(HomePage);
+        recentlabel->setObjectName("recentlabel");
+        recentlabel->setGeometry(QRect(120, 180, 49, 16));
+        foryoulabel = new QLabel(HomePage);
+        foryoulabel->setObjectName("foryoulabel");
+        foryoulabel->setGeometry(QRect(130, 230, 49, 16));
+        ProfilePicture->raise();
+        house->raise();
+        logo->raise();
+        searchbtn->raise();
+        gearbtn->raise();
+        searchbar->raise();
+        foryoubox->raise();
+        leftbtn->raise();
+        rightbtn->raise();
+        leftbtn_2->raise();
+        castlabel->raise();
+        movienameforhome->raise();
+        descriptionbox->raise();
+        searchbox->raise();
+        toprategroupbox->raise();
+        recentgroupbox->raise();
+        rightbtn_2->raise();
+        recentlabel->raise();
+        foryoulabel->raise();
 
         retranslateUi(HomePage);
 
@@ -703,7 +750,6 @@ public:
         logo->setText(QString());
         searchbtn->setText(QString());
         gearbtn->setText(QString());
-        foryoulabel->setText(QCoreApplication::translate("HomePage", "For You", nullptr));
         moviebtn_1->setText(QString());
         moviebtn_2->setText(QString());
         moviebtn_3->setText(QString());
@@ -714,17 +760,9 @@ public:
         moviebtn_10->setText(QString());
         moviebtn_11->setText(QString());
         moviebtn_12->setText(QString());
-        recentlabel->setText(QCoreApplication::translate("HomePage", "Recent", nullptr));
-        rightbtn_2->setText(QString());
         leftbtn_2->setText(QString());
-        moviebtn_13->setText(QString());
-        moviebtn_14->setText(QString());
-        moviebtn_15->setText(QString());
-        moviebtn_16->setText(QString());
         castlabel->setText(QString());
         movienameforhome->setText(QString());
-        onepage->setText(QCoreApplication::translate("HomePage", "1", nullptr));
-        twopage->setText(QCoreApplication::translate("HomePage", "2", nullptr));
         toprategroupbox->setTitle(QString());
         highrated->setText(QCoreApplication::translate("HomePage", "Top Rated", nullptr));
         pushButton->setText(QString());
@@ -750,6 +788,25 @@ public:
         directorlabel_2->setText(QCoreApplication::translate("HomePage", "Casts:", nullptr));
         directorlabel_3->setText(QCoreApplication::translate("HomePage", "Genre:", nullptr));
         ratinglabel->setText(QString());
+        searchbox->setTitle(QString());
+        label_3->setText(QString());
+        label_4->setText(QCoreApplication::translate("HomePage", "Discover", nullptr));
+        searchmoviebtn_1->setText(QString());
+        searchmoviebtn_2->setText(QString());
+        searchmoviebtn_3->setText(QString());
+        searchmoviebtn_4->setText(QString());
+        searchmoviebtn_5->setText(QString());
+        searchmoviebtn_6->setText(QString());
+        searchmoviebtn_7->setText(QString());
+        searchmoviebtn_8->setText(QString());
+        searchleftbtn->setText(QString());
+        searchrightbtn->setText(QString());
+        threepage->setText(QCoreApplication::translate("HomePage", "Latest", nullptr));
+        twopage->setText(QCoreApplication::translate("HomePage", "Top Rated", nullptr));
+        onepage->setText(QCoreApplication::translate("HomePage", "For You", nullptr));
+        rightbtn_2->setText(QString());
+        recentlabel->setText(QCoreApplication::translate("HomePage", "TextLabel", nullptr));
+        foryoulabel->setText(QCoreApplication::translate("HomePage", "TextLabel", nullptr));
     } // retranslateUi
 
 };

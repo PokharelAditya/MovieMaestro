@@ -51,7 +51,6 @@ HomePage::HomePage(User *myuser,QWidget *parent)
     mysetting->beginGroup("window");
 
     QString userName = mysetting->value("username", "Default Name").toString();
-    qDebug()<<"hey this is this  " << userName;
     mysetting->endGroup();
     ui->setupUi(this);
     intusername = myuser->_username;
@@ -64,7 +63,7 @@ HomePage::HomePage(User *myuser,QWidget *parent)
     QSqlQuery query(userdatabase);
     query.prepare("SELECT images FROM userinfo WHERE user_id = :username");
     query.bindValue(":username", myuser->_username);
-    qDebug()<<"after bind values";
+
     if (!query.exec()) {
          QMessageBox::critical(this, tr("Database Error"), tr("Failed to execute query: ") + query.lastError().text(), QMessageBox::Ok);
         return;
@@ -77,7 +76,6 @@ HomePage::HomePage(User *myuser,QWidget *parent)
             QByteArray imageData = query.value(0).toByteArray();
             QPixmap pixmap;
             pixmap.loadFromData(imageData);
-            qDebug()<<"after pixxmap";
             if (!pixmap.isNull()) {
                 ui->ProfilePicture->setIcon(pixmap);
             } else {
@@ -139,16 +137,20 @@ HomePage::HomePage(User *myuser,QWidget *parent)
                 {preffered = (comedy == 1)?true:false;}
 
                 if(GenreName == "Crime")
-                {preffered = (crime == 1)?true:false;}
+                {preffered = (crime == 1)?true:false;
+
+                }
 
                 if(GenreName == "Drama")
                 {preffered = (drama == 1)?true:false;}
 
-                if(GenreName == "Sci_Fi")
-                {preffered = (sci_fi == 1)?true:false;}
 
                 if(GenreName == "History")
                 {preffered = (history == 1)?true:false;}
+
+                if(GenreName == "Sci-Fi")
+                {preffered = (sci_fi == 1)?true:false;
+                    }
 
                 if(GenreName == "Suspense")
                 {preffered = (suspense == 1)?true:false;}
@@ -158,7 +160,6 @@ HomePage::HomePage(User *myuser,QWidget *parent)
                 }
 
             }
-
             /////////////////////////////////////////////
               QVector<QString> PrefferedMovies;
 
@@ -181,7 +182,6 @@ HomePage::HomePage(User *myuser,QWidget *parent)
                     }
                 }
             }
-            qDebug()<< "the movies to watch are " << PrefferedMovies;
 
             ////////////////////////////////////////////////////////////////////////////////
              QVector<QDate> ReleaseDate;
@@ -201,7 +201,6 @@ HomePage::HomePage(User *myuser,QWidget *parent)
 
 
          }
-                qDebug()<<"the relase date of preffered movies are " << ReleaseDate;
          for(int i=0; i<ReleaseDate.count(); i++)
                 {
                     for(int j =0 ; j<ReleaseDate.count(); j++)
@@ -215,7 +214,6 @@ HomePage::HomePage(User *myuser,QWidget *parent)
                  }
              }
                 }
-         qDebug()<<"the release date of the movies in order are " << ReleaseDate;
                     ////////////////////////////////////////////////////////////
          ordereddate = ReleaseDate;
          ///////////////////////////////////////////////////////////////////// this is for latest release
@@ -239,17 +237,77 @@ HomePage::HomePage(User *myuser,QWidget *parent)
              /// ////////////////////////////////////////////////////
          }
          PrefferedMovieforlatestID = PrefferedMovieID;
-         //////////////////////////////////end of latest slot
+
+         /////////////////////////////////////////// adding user updatability in teh code in this section lol
+        QList<int> firstlist;
+         myquery.prepare("SELECT movie_name FROM UserMovieRating where rating >= 4 and username = :username");
+         myquery.bindValue(":username" ,myuser->_username );
+         if(myquery.exec())
+         {
+             while(myquery.next())
+             {
+                 firstlist.append(myquery.value(0).toInt());
+             }
+
+         }
+else
+         {
+            QMessageBox::warning(this , "error"  , "soem problem in your recent query");
+         }
+         QList<int> secondlist;
+         for(int i =0 ; i<firstlist.count(); i++)
+         {
+             myquery.prepare("SELECT Director_ID FROM MoviesDirectors_table WHERE Movie_ID = :movieid ");
+             myquery.bindValue(":movieid",firstlist[i]);
+             if(myquery.exec())
+             {
+                 while(myquery.next())
+                 {
+                     secondlist.append(myquery.value(0).toInt());
+                 }
+
+             }
+             else
+             {
+                 QMessageBox::warning(this , "error"  , "soem problem in your second query");
+             }
+         }
+         QList<int> thirdlist;
+         for(int i =0; i <secondlist.count(); i++)
+         {
+         myquery.prepare("SELECT Movie_ID FROM MoviesDirectors_table WHERE Director_ID = :directorid ");
+            myquery.bindValue(":directorid" , secondlist[i]);
+         if(myquery.exec())
+         {
+             while(myquery.next())
+             {
+
+
+                 thirdlist.append(myquery.value(0).toInt());
+             }
+
+         }
+         else
+         {
+             QMessageBox::warning(this , "error"  , "some problem in your third query");
+         }
+         }
+
+
+         for(int i =0; i<thirdlist.count(); i++)
+         {
+             if(!PrefferedMovieID.contains(thirdlist[i]))
+             {
+                 PrefferedMovieID.append(thirdlist[i]);
+             }
+         }
+             //////////////////////////////////end of latest slot
 
 
                 ///////////////////////////////////////////////////////////////////
         setWindowTitle("Movie Maestro");
         setWindowIcon(QIcon(":/MM Transparent BG.png" ));
      ui->searchbar->hide();
-     ui->searchbtn->setIcon(whitesearch);
-     ui->logo->setPixmap(logo);
-     ui->house->setIcon(whitehouse);
-     ui->gearbtn->setIcon(whitegear);
      ui->rightbtn->setIcon(right);
      ui->leftbtn->setIcon(left);
      ui->leftbtn_2->setIcon(left);
@@ -270,12 +328,15 @@ HomePage::HomePage(User *myuser,QWidget *parent)
      ui->topleft->setIconSize(ui->topleft->size());
      ui->topright->setIcon(right);
      ui->topright->setIconSize(ui->topright->size());
+     ui->searchleftbtn->setIcon(left);
+     ui->searchleftbtn->setIconSize(ui->searchleftbtn->size());
 
-
+     ui->searchrightbtn->setIcon(right);
+     ui->searchrightbtn->setIconSize(ui->searchrightbtn->size());
      ui->foryoubox->show();
       ui->recentgroupbox->show();
+     ui->searchbox->hide();
 
-     ui->recentgroupbox_2->hide();
    showforyoupage(position_1);
      showlatestmovies(position_2);
    showtoprated(position_3);
@@ -286,16 +347,104 @@ HomePage::~HomePage()
     delete ui;
 }
 /////////////////////////////////////////////////////// all the user defined function here
+void HomePage::showdescriptionbox4(int btn_number)
+{
+    foryouorlatest = 4;
+    ui->descriptionbox->show();
+    QSqlDatabase userdatabase = database::getMoviesData();
+    QSqlQuery myquery(userdatabase);
+    myquery.prepare("SELECT Released_Date, Title , Duration, Description , Poster ,Rating FROM Movies_Table WHERE Movie_ID =:movieid");
+    myquery.bindValue(":movieid" ,intmovieidlists[btn_number-1]);
+    if(!myquery.exec())
+    {
+        QMessageBox::critical(this, "Database Error", "Failed to update user preferences: " + myquery.lastError().text());
+
+    }
+    if(!myquery.next())
+    {
+        QMessageBox::warning(this , "erro", "failed to find such data");
+        return;
+    }
+    QString title = myquery.value(1).toString();
+    QString duration = myquery.value(2).toString();
+    QString description = myquery.value(3).toString();
+    QString finaldesc = duration + " m :" + description + "   MOVIE RELEASED ON :  " + myquery.value(0).toString();
+    QByteArray imageData2 = myquery.value(4).toByteArray();
+    QPixmap pixmap2;
+    pixmap2.loadFromData(imageData2);
+    ui->moviedescbtn->setIcon(pixmap2);
+    ui->ratinglabel->setText("Avg user rating : " +myquery.value(5).toString());
+    QSize btnsize = ui->moviedescbtn->size();
+    ui->moviedescbtn->setIconSize(btnsize);
+    ui->movienamelabel->setText(title);
+    ui->description->setText(finaldesc);
+    int ID_Movie =intmovieidlists[btn_number-1];
+    QString casts = "";
+    QString directors = "";
+    myquery.prepare("SELECT MoviesCasts_table.Movie_ID , Casts_table.Cast_Name FROM MoviesCasts_table INNER JOIN Casts_table ON MoviesCasts_table.Cast_ID = Casts_table.Cast_ID ");
+    if(!myquery.exec())
+    {
+        QMessageBox::critical(this, "Database Error", "Failed to update user preferences: " + myquery.lastError().text());
+
+    }
+    while(myquery.next())
+    {
+        if(ID_Movie == myquery.value(0).toInt())
+        {
+            casts = casts + myquery.value(1).toString() + ",";
+        }
+
+    }
+    if (!casts.isEmpty() && casts.endsWith(',')) {
+        casts.chop(1); // Remove the last character
+    }
+    ui->castnames->setText(casts);
+    myquery.prepare("SELECT MoviesDirectors_table.Movie_ID , Directors_table.Director_Name FROM MoviesDirectors_table INNER JOIN Directors_table ON Directors_table.Director_ID = MoviesDirectors_table.Director_ID");
+    if(!myquery.exec())
+    {
+        QMessageBox::critical(this, "Database Error", "Failed to update user preferences: " + myquery.lastError().text());
+
+    }
+    while(myquery.next())
+    {
+        if(ID_Movie == myquery.value(0).toInt())
+        {
+            directors = directors + myquery.value(1).toString() +  ",";
+        }
+    }
+    if(!directors.isEmpty() && directors.endsWith(','))
+    {
+        directors.chop(1);
+    }
+    ui->directornames->setText(directors);
+    QString genres;
+    myquery.prepare("SELECT MoviesGenres_table.Movie_ID , MoviesGenres_table.Genre_ID ,Genres_table.Genre_Name FROM MoviesGenres_table INNER JOIN Genres_table ON Genres_table.Genre_ID = MoviesGenres_table.Genre_ID ");
+    if(!myquery.exec())
+    {
+        QMessageBox::warning(this, "error" ,"oops error");
+    }
+    while(myquery.next())
+    {
+        if(ID_Movie == myquery.value(0).toInt())
+        {
+            genres += myquery.value(2).toString()+ ",";
+        }
+    }
+    if(!genres.isEmpty() && genres.endsWith(','))
+    {
+        genres.chop(1);
+    }
+    ui->genrelabel->setText(genres);
+}
+///////////////////////////////////////////////////////////////////////////////
 void HomePage::showdescriptionbox3(int btn_number)
 {
     foryouorlatest = 3;
     ui->descriptionbox->show();
-    qDebug()<<"we are here 1";
     QSqlDatabase userdatabase = database::getMoviesData();
     QSqlQuery myquery(userdatabase);
     myquery.prepare("SELECT Released_Date, Title , Duration, Description , Poster ,Rating FROM Movies_Table WHERE Movie_ID =:movieid");
     myquery.bindValue(":movieid" ,_movielist[btn_number-1]);
- qDebug()<<"we are here 1";
     if(!myquery.exec())
     {
         QMessageBox::critical(this, "Database Error", "Failed to update user preferences: " + myquery.lastError().text());
@@ -381,7 +530,6 @@ void HomePage::showdescriptionbox3(int btn_number)
 void HomePage::showdescriptionbox2(int btn_number)
 {
     foryouorlatest = 0;
-    qDebug()<<"this has been called from " << btn_number;
     ui->descriptionbox->show();
 
     QSqlDatabase userdatabase = database::getMoviesData();
@@ -480,6 +628,8 @@ void HomePage::hidepage()
     ui->rightbtn->hide();
     ui->leftbtn_2->hide();
     ui->rightbtn_2->hide();
+    ui->recentlabel->hide();
+    ui->foryoulabel->hide();
 }
 void HomePage::showpage()
 {
@@ -489,18 +639,17 @@ void HomePage::showpage()
     ui->rightbtn->show();
     ui->leftbtn_2->show();
     ui->rightbtn_2->show();
+    ui->recentlabel->show();
+    ui->foryoulabel->show();
 }
 void HomePage::showdescriptionbox(int btn_number)
 {
     lockbtn_2 = ordereddate.count();
-    qDebug()<<"the value of lockabtn _2 is " << lockbtn_2;
-    qDebug()<<"the vlaue of btn number -1 is " << btn_number-1;
     if(btn_number> lockbtn_2)
     {
         return;
     }
     foryouorlatest = 1;
-    qDebug()<<"this has been called from " << btn_number;
     ui->descriptionbox->show();
     QSqlDatabase userdatabase = database::getMoviesData();
     QSqlQuery myquery(userdatabase);
@@ -621,7 +770,6 @@ void HomePage::showforyoupage(int position)
 
 
     }
-    qDebug() << "the rating list is as follos "<<ratinglist;
     if(!lock1)
     {
     for(int i=0; i< PrefferedMovieID.count(); i++)
@@ -644,14 +792,11 @@ void HomePage::showforyoupage(int position)
         }
         lockbtn_1 = (PrefferedMovieID.count() + 3) / 4 - 1;
     }
-    qDebug()<<"the no of movies are " << PrefferedMovieID.count();
     int templock;
 
 
     }
     lock1 = true;
-    qDebug()<<"the lock btn no is " << lockbtn_1;
-     qDebug() << "movie list in order of rating is as follwos  "<<PrefferedMovieID;
     /* -------------------------------------------------------now to add the pictures -----------------*/
      int startIndex = 4 * position;
      int endIndex = qMin(startIndex + 4, PrefferedMovieID.count());
@@ -664,27 +809,21 @@ void HomePage::showforyoupage(int position)
 
         myquery.prepare("SELECT Poster  FROM Movies_Table where Movie_ID= :movieid");
         myquery.bindValue(":movieid" , PrefferedMovieID[i] );
-        qDebug()<<"after it is binded we have";
 
         if(!myquery.exec())
         {
             QMessageBox::warning(this ,"error" , "failed to add images to the buttons for for you at last");
             return;
         }
-        qDebug()<<"after checkin if it runs eerror ";
         //////////////////////////////////////////////////////
         while(myquery.next())
         {
-            qDebug()<<"1";
+
             QByteArray imageData2 = myquery.value(0).toByteArray();
 
             QPixmap pixmap2;
-qDebug()<<"2";
             pixmap2.loadFromData(imageData2);
-qDebug()<<"3";
 
-                // Access each button individually
-           qDebug()<<"3";
                 QPushButton* button = nullptr;
                 switch (i-startIndex) {
                 case 0: button = ui->moviebtn_1; break;
@@ -692,14 +831,14 @@ qDebug()<<"3";
                 case 2: button = ui->moviebtn_3; break;
                 case 3: button = ui->moviebtn_4; break;
                 default: break;
-qDebug()<<"4";
+
                 }
 
                 if (button) {
-                  qDebug()<<"5";
+
                     if (!pixmap2.isNull())
                     {
-                      qDebug()<<"6";
+
                         button->setIcon(pixmap2);
                         button->setIconSize(QSize(342, 171));
                         button->setVisible(true); // Show button if image is available
@@ -757,10 +896,10 @@ qDebug()<<"4";
                     }
 
                     if (button) {
-                        qDebug()<<"5";
+
                         if (!pixmap2.isNull())
                         {
-                            qDebug()<<"6";
+
                             button->setIcon(pixmap2);
                             button->setIconSize(QSize(342, 171));
                             button->setVisible(true); // Show button if image is available
@@ -805,8 +944,6 @@ qDebug()<<"4";
             }
 
         }
-        qDebug()<<"hey this is " << movierating.count();
-        qDebug()<<"hey this is " << movieids.count();
         for(int i=0; i<movierating.count(); i++)
         {
 
@@ -851,16 +988,16 @@ qDebug()<<"4";
             //////////////////////////////////////////////////////
             while(myquery.next())
             {
-                qDebug()<<"1";
+
                 QByteArray imageData2 = myquery.value(0).toByteArray();
 
                 QPixmap pixmap2;
-                qDebug()<<"2";
+
                 pixmap2.loadFromData(imageData2);
-                qDebug()<<"3";
+
 
                 // Access each button individually
-                qDebug()<<"3";
+
                 QPushButton* button = nullptr;
                 switch (i-startIndex) {
                 case 0: button = ui->topratemovie_1; break;
@@ -912,11 +1049,11 @@ void HomePage::on_house_clicked()
 
 void HomePage::on_leftbtn_clicked()
 {
-     qDebug()<<"the left vlaue of the position is from outside left else "<<position_1;
+
     if(!position_1<=0)
     {
         position_1--;
-         qDebug()<<"the left vlaue of the position is from insisde  "<<position_1;
+
         showforyoupage(position_1);
     }
  else
@@ -930,14 +1067,14 @@ void HomePage::on_rightbtn_clicked()
 {
     if(position_1 >=lockbtn_1)
     {
-         qDebug()<<"the right vlaue of the position is from position > = lockbtn wala part "<<position_1;
+
         showforyoupage(position_1);
     }
 
     else
     {
      position_1++;
-        qDebug()<<"the right vlaue of the position is  tesko else part"<<position_1;
+
     showforyoupage(position_1);
     }
 
@@ -1128,13 +1265,17 @@ hidepage();
 void HomePage::on_pushButton_7_clicked()
 {
     ui->descriptionbox->close();//tyo close descrioption ko  sign ho yo
-    if(pageno == 1)
+    if(pageno == 1 && checkbox !=1)
     {
     showpage();
     }
-    else if (pageno ==2)
+    else if (pageno ==2 && checkbox !=1)
     {
         ui->toprategroupbox->show();
+    }
+    else if (checkbox==1)
+    {
+        ui->searchbox->show();
     }
     }
 
@@ -1202,31 +1343,6 @@ void HomePage::on_ratebtn_clicked()
     QString moviename;
     QSqlDatabase mydb = database::getMoviesData();
     QSqlQuery myquery(mydb);
-    /*myquery.prepare("SELECT Title FROM Movies_table WHERE Movie_ID = :movieid");
-    if(foryouorlatest == 1)
-    {
-    myquery.bindValue(":movieid", PrefferedMovieforlatestID[btn_number-1]);
-    }
-    else if(foryouorlatest == 0)
-    {
-        myquery.bindValue(":movieid",PrefferedMovieID[btn_number-1]);
-    }
-    else if(foryouorlatest ==3)
-    {
-        myquery.bindValue(":movieid",_movielist[btn_number-1]);
-    }
-
-
-    if(!myquery.exec())
-    {
-        QMessageBox::warning(this , "here are some error" , "you have entered wrong query in ratebtnclicked 1");
-    }
-    while(myquery.next())
-    {
-
-            moviename = myquery.value(0).toString();
-
-    } */
     int id;
     if(foryouorlatest == 1)
     {
@@ -1239,6 +1355,10 @@ void HomePage::on_ratebtn_clicked()
     else if(foryouorlatest ==3)
     {
      id=_movielist[btn_number-1];
+    }
+    else if(foryouorlatest ==4)
+    {
+        id=intmovieidlists[btn_number-1];
     }
     myquery.prepare("SELECT COUNT(*) FROM UserMovieRating WHERE username = :username AND movie_name = :moviename");
     myquery.bindValue(":username" , lusername);
@@ -1292,9 +1412,6 @@ void HomePage::on_ratebtn_clicked()
     myquery.next();
     ratingno = myquery.value(0).toInt();
     avgrating = summationrating/ratingno;
-    qDebug()<<"the summation rating is " << summationrating;
-    qDebug()<<"the average rating of the movei is " << avgrating;
-    qDebug()<<"there " << ratingno << " many field " ;
     myquery.prepare("UPDATE Movies_table SET rating =:rating WHERE Movie_ID = :moviename ");
     myquery.bindValue(":rating" , avgrating);
     myquery.bindValue(":moviename",id);
@@ -1376,5 +1493,245 @@ void HomePage::on_topratemovie_4_clicked()
     btn_number = 4+ 4*position_3;
     showdescriptionbox3(4+4*position_3);
     ui->toprategroupbox->close();
+}
+
+
+void HomePage::on_searchbtn_clicked()
+{
+    if(discoverornot ==0 )
+    {
+    ui->searchbar->show();
+        discoverornot=1;}
+    else if (discoverornot==1)
+    {
+        ui->searchbox->hide();
+        ui->searchbar->hide();
+        if(pageno == 1)
+        {
+            showpage();
+            checkbox =0;
+        }
+        else if(pageno ==2)
+        {
+            checkbox=0;
+            ui->toprategroupbox->show();
+
+        }
+         discoverornot=0;
+    }
+}
+
+
+void HomePage::on_searchbar_textChanged(const QString &arg1)
+{
+    checkbox =1;
+
+    ui->searchbox->show();
+    ui->toprategroupbox->hide();
+    hidepage();
+    QSqlDatabase mydb = database::getMoviesData();
+    QSqlQuery myquery(mydb);
+    QList<QString> movielists;
+    QList<int> movieidlists;
+    QString moviename;
+    myquery.prepare("SELECT Title , Movie_ID FROM Movies_table ");
+    if(!myquery.exec())
+    {
+        QMessageBox::warning(this , "error" , "error for search bar 1");
+        return;
+    }
+    while(myquery.next())
+    {
+        moviename = myquery.value(0).toString();
+        if(moviename.toUpper().contains((ui->searchbar->text()).toUpper()))
+        {
+            movielists.append(moviename);
+            movieidlists.append(myquery.value(1).toInt());
+        };
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+  lockbtn_4 = (movielists.count() + 3) / 8 - 1;
+
+
+    int startIndex = 8 * _position;
+    int endIndex = qMin(startIndex + 8, movieidlists.count());
+    if (startIndex >= endIndex) {
+        _position = 0; // Reset to the first page
+        startIndex = 0;
+        endIndex = qMin(startIndex + 8, movieidlists.count());
+    }
+    ui->searchmoviebtn_1->setVisible(false);
+    ui->searchmoviebtn_2->setVisible(false);
+    ui->searchmoviebtn_3->setVisible(false);
+    ui->searchmoviebtn_4->setVisible(false);
+    ui->searchmoviebtn_5->setVisible(false);
+    ui->searchmoviebtn_6->setVisible(false);
+    ui->searchmoviebtn_7->setVisible(false);
+    ui->searchmoviebtn_8->setVisible(false);
+    for(int i =startIndex ; i<endIndex; i++)
+    {
+
+        myquery.prepare("SELECT Poster  FROM Movies_Table where Movie_ID= :movieid");
+        myquery.bindValue(":movieid" , movieidlists[i] );
+
+        if(!myquery.exec())
+        {
+            QMessageBox::warning(this ,"error" , "failed to add images to the buttons for for you at last");
+            return;
+        }
+
+        QPushButton* button;
+        //////////////////////////////////////////////////////
+        while(myquery.next())
+        {
+
+            QByteArray imageData2 = myquery.value(0).toByteArray();
+
+            QPixmap pixmap2;
+
+            pixmap2.loadFromData(imageData2);
+             button = nullptr;
+            switch (i-startIndex) {
+            case 0: button = ui->searchmoviebtn_1; break;
+            case 1: button = ui->searchmoviebtn_2; break;
+            case 2: button = ui->searchmoviebtn_3; break;
+            case 3: button = ui->searchmoviebtn_4; break;
+            case 4: button = ui->searchmoviebtn_5; break;
+            case 5: button = ui->searchmoviebtn_6; break;
+            case 6: button = ui->searchmoviebtn_7; break;
+            case 7: button = ui->searchmoviebtn_8; break;
+            default:
+                // Handle default case if necessary
+                break;
+            ;
+            }
+
+            if (button) {
+
+                if (!pixmap2.isNull())
+                {
+
+                    button->setIcon(pixmap2);
+                    button->setIconSize(button->size());
+                    button->setVisible(true); // Show button if image is available
+                }
+
+            }
+
+        }
+
+    }
+    intmovieidlists = movieidlists;
+    /// /////////////////////////////////////////////////////////////////////////////////////////
+}
+
+
+void HomePage::on_searchleftbtn_clicked()
+{
+    if(!_position<=0)
+    {
+        _position--;
+       on_searchbar_textChanged("");
+
+    }
+    else
+    {
+       on_searchbar_textChanged("");
+    }
+}
+
+
+void HomePage::on_searchrightbtn_clicked()
+{
+    if(_position >=lockbtn_4)
+    {
+        on_searchbar_textChanged("");
+    }
+
+    else
+    {
+        _position++;
+       on_searchbar_textChanged("");
+    }
+}
+
+
+void HomePage::on_searchmoviebtn_1_clicked()
+{
+    foryouorlatest =4;
+    btn_number = 1 + 8*_position;
+    showdescriptionbox4(1+8*_position);
+    ui->searchbox->close();
+}
+
+
+void HomePage::on_searchmoviebtn_2_clicked()
+{
+    foryouorlatest =4;
+    btn_number = 2 + 8*_position;
+    showdescriptionbox4(2+8*_position);
+    ui->searchbox->close();
+}
+
+
+void HomePage::on_searchmoviebtn_3_clicked()
+{
+    foryouorlatest =4;
+    btn_number = 3 + 8*_position;
+    showdescriptionbox4(3+8*_position);
+    ui->searchbox->close();
+}
+
+
+void HomePage::on_searchmoviebtn_4_clicked()
+{
+    foryouorlatest =4;
+    btn_number = 4 + 8*_position;
+    showdescriptionbox4(4+8*_position);
+    ui->searchbox->close();
+}
+
+
+void HomePage::on_searchmoviebtn_5_clicked()
+{
+    foryouorlatest =4;
+    btn_number = 5 + 8*_position;
+    showdescriptionbox4(5+8*_position);
+    ui->searchbox->close();
+}
+
+
+void HomePage::on_searchmoviebtn_6_clicked()
+{
+    foryouorlatest =4;
+    btn_number = 6 + 8*_position;
+    showdescriptionbox4(6+8*_position);
+    ui->searchbox->close();
+}
+
+
+void HomePage::on_searchmoviebtn_7_clicked()
+{
+    foryouorlatest =4;
+    btn_number = 7 + 8*_position;
+    showdescriptionbox4(7+8*_position);
+    ui->searchbox->close();
+}
+
+
+void HomePage::on_searchmoviebtn_8_clicked()
+{
+    foryouorlatest =4;
+    btn_number = 8 + 8*_position;
+    showdescriptionbox4(8+8*_position);
+    ui->searchbox->close();
+}
+
+
+void HomePage::on_threepage_clicked()
+{
+
 }
 

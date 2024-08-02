@@ -23,8 +23,6 @@ public:
             userdatabase.setDatabaseName(QCoreApplication::applicationDirPath() + "/../userdatabase.db");
             if (!userdatabase.open()) {
                 QMessageBox::warning(nullptr, "Database Info", "Failed to connect to the database: " + userdatabase.lastError().text(), QMessageBox::Ok);
-            } else {
-                QMessageBox::information(nullptr, "Database Info", "Connected to the database", QMessageBox::Ok);
             }
         }
         return userdatabase;

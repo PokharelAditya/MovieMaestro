@@ -68,6 +68,7 @@ UserSetting::UserSetting(User *myuser,QWidget *parent)
     ui->updateppbox->hide();
     ui->options->show();
     tusername = myuser->_username;
+
 }
 
 UserSetting::~UserSetting()
@@ -84,6 +85,60 @@ void UserSetting::on_changepwbtn_clicked()
 
 void UserSetting::on_updategenrebtn_clicked()
 {
+    QSqlDatabase db = DatabaseManager::instance().getDatabase();
+    QSqlQuery query(db);
+    query.prepare("SELECT horro , action , thriller, romance , comedy , rom_com , drama , sci_fi ,history , suspense FROM userinfo WHERE user_id = :userid");
+    query.bindValue(":userid" ,tusername );
+    if(!query.exec())
+    {
+        QMessageBox::warning(this , "error" , "query error");
+    }
+    if(!query.next())
+    {
+        QMessageBox::warning(this , "error" , "such table not found");
+    }
+
+
+    if(query.value(0).toInt() ==1)
+    {
+        ui->horror->setChecked(true);
+    }
+    if(query.value(1).toInt() ==1)
+    {
+        ui->action->setChecked(true);
+    }
+    if(query.value(2).toInt() ==1)
+    {
+        ui->thriller->setChecked(true);
+    }
+    if(query.value(3).toInt() ==1)
+    {
+        ui->romance->setChecked(true);
+    }
+    if(query.value(4).toInt() ==1)
+    {
+        ui->comedy->setChecked(true);
+    }
+    if(query.value(5).toInt() ==1)
+    {
+        ui->romcom->setChecked(true);
+    }
+    if(query.value(6).toInt() ==1)
+    {
+        ui->drama->setChecked(true);
+    }
+    if(query.value(7).toInt() ==1)
+    {
+        ui->scifi->setChecked(true);
+    }
+    if(query.value(8).toInt() ==1)
+    {
+        ui->history->setChecked(true);
+    }
+    if(query.value(9).toInt() ==1)
+    {
+        ui->suspense->setChecked(true);
+    }
     ui->options->hide();
     ui->genrebox->show();
 }
