@@ -57,6 +57,7 @@ public:
     QTextEdit *description;
     QPushButton *pushButton_7;
     QLabel *ratinglabel;
+    QPushButton *moviedescbtn_2;
     QFrame *Line;
     QLabel *moviesText;
     QPushButton *onepage;
@@ -197,7 +198,7 @@ public:
         rightbtn->setCursor(QCursor(Qt::PointingHandCursor));
         rightbtn->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
-"background-color:black;\n"
+"background-color:none;;\n"
 "border:none;\n"
 "}"));
         QIcon icon4;
@@ -210,7 +211,7 @@ public:
         leftbtn->setCursor(QCursor(Qt::PointingHandCursor));
         leftbtn->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
-"background-color:black;\n"
+"background-color:none;\n"
 "border:none;\n"
 "}"));
         QIcon icon5;
@@ -343,7 +344,7 @@ public:
         rightbtn_2->setCursor(QCursor(Qt::PointingHandCursor));
         rightbtn_2->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
-"background-color:black;\n"
+"background-color:none;\n"
 "border:none;\n"
 "}"));
         rightbtn_2->setIcon(icon4);
@@ -354,7 +355,7 @@ public:
         leftbtn_2->setCursor(QCursor(Qt::PointingHandCursor));
         leftbtn_2->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
-"background-color:black;\n"
+"background-color:none;\n"
 "border:none;\n"
 "}"));
         leftbtn_2->setIcon(icon5);
@@ -474,6 +475,20 @@ public:
         ratinglabel->setFont(font8);
         ratinglabel->setStyleSheet(QString::fromUtf8(""));
         ratinglabel->setAlignment(Qt::AlignCenter);
+        moviedescbtn_2 = new QPushButton(descriptionbox);
+        moviedescbtn_2->setObjectName("moviedescbtn_2");
+        moviedescbtn_2->setGeometry(QRect(30, 30, 244, 364));
+        moviedescbtn_2->setCursor(QCursor(Qt::ArrowCursor));
+        moviedescbtn_2->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"background:none;\n"
+"height:60px;\n"
+"width:30px;\n"
+"border:2px solid rgb(194, 194, 194);\n"
+"border-radius:0px;\n"
+"}\n"
+""));
+        moviedescbtn_2->setIconSize(QSize(200, 300));
         Line = new QFrame(HomePage);
         Line->setObjectName("Line");
         Line->setGeometry(QRect(40, 160, 10, 60));
@@ -492,7 +507,7 @@ public:
         moviesText->setStyleSheet(QString::fromUtf8("color:rgb(200, 200 200);"));
         onepage = new QPushButton(HomePage);
         onepage->setObjectName("onepage");
-        onepage->setGeometry(QRect(340, 170, 141, 50));
+        onepage->setGeometry(QRect(330, 170, 180, 50));
         QFont font10;
         font10.setPointSize(15);
         font10.setBold(true);
@@ -501,8 +516,8 @@ public:
 "{\n"
 "background:rgba(230, 149, 40, 200);\n"
 "border:2px solid rgba(230, 149, 40, 200);\n"
-"\n"
-"      \n"
+"border-top-left-radius:25px;    \n"
+"border-bottom-left-radius:25px;    \n"
 "}\n"
 "QPushButton:hover\n"
 "{\n"
@@ -511,7 +526,7 @@ public:
 "}"));
         twopage = new QPushButton(HomePage);
         twopage->setObjectName("twopage");
-        twopage->setGeometry(QRect(480, 170, 171, 50));
+        twopage->setGeometry(QRect(510, 170, 180, 50));
         twopage->setFont(font10);
         twopage->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
@@ -527,14 +542,14 @@ public:
 "}"));
         threepage = new QPushButton(HomePage);
         threepage->setObjectName("threepage");
-        threepage->setGeometry(QRect(650, 170, 151, 50));
+        threepage->setGeometry(QRect(690, 170, 180, 50));
         threepage->setFont(font10);
         threepage->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
 "background:none;\n"
 "border:2px solid rgba(230, 149, 40, 200);\n"
-"\n"
-"      \n"
+"border-top-right-radius:25px;\n"
+"border-bottom-right-radius:25px;    \n"
 "}\n"
 "QPushButton:hover\n"
 "{\n"
@@ -551,14 +566,14 @@ public:
         topleft->setObjectName("topleft");
         topleft->setGeometry(QRect(10, 190, 60, 60));
         topleft->setCursor(QCursor(Qt::PointingHandCursor));
-        topleft->setStyleSheet(QString::fromUtf8(""));
+        topleft->setStyleSheet(QString::fromUtf8("background:none;"));
         topleft->setIcon(icon5);
         topleft->setIconSize(QSize(50, 50));
         topright = new QPushButton(toprategroupbox);
         topright->setObjectName("topright");
         topright->setGeometry(QRect(1070, 190, 60, 60));
         topright->setCursor(QCursor(Qt::PointingHandCursor));
-        topright->setStyleSheet(QString::fromUtf8(""));
+        topright->setStyleSheet(QString::fromUtf8("background:none;"));
         topright->setIcon(icon4);
         topright->setIconSize(QSize(50, 50));
         topratemovie_3 = new QPushButton(toprategroupbox);
@@ -792,8 +807,8 @@ public:
         recentgroupbox->raise();
         toprategroupbox->raise();
         foryoubox->raise();
-        descriptionbox->raise();
         searchbox->raise();
+        descriptionbox->raise();
 
         retranslateUi(HomePage);
 
@@ -841,6 +856,7 @@ public:
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", nullptr));
         pushButton_7->setText(QCoreApplication::translate("HomePage", "Close", nullptr));
         ratinglabel->setText(QString());
+        moviedescbtn_2->setText(QString());
         moviesText->setText(QCoreApplication::translate("HomePage", "Movies", nullptr));
         onepage->setText(QCoreApplication::translate("HomePage", "For You", nullptr));
         twopage->setText(QCoreApplication::translate("HomePage", "Top Rated", nullptr));

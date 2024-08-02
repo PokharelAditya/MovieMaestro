@@ -86,11 +86,11 @@ bool addmovies::check_if_movie_already_exist(QString title)
 {
     QSqlDatabase MoviesData = database::getMoviesData();
     QSqlQuery query(MoviesData);
-    query.prepare("SELECT title from Movies_table");
+    query.prepare("SELECT Title from Movies_table");
     query.exec();
     while(query.next())
     {
-        if(query.value(1).toString().toUpper() == title.toUpper())
+        if(query.value(0).toString().toUpper() == title.toUpper())
         {
             database::closeMoviesData();
             return 1;

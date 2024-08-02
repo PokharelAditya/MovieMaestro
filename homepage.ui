@@ -964,6 +964,39 @@ background:rgb(230, 149, 40);
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QPushButton" name="moviedescbtn_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>244</width>
+      <height>364</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton
+{
+background:none;
+height:60px;
+width:30px;
+border:2px solid rgb(194, 194, 194);
+border-radius:0px;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>200</width>
+      <height>300</height>
+     </size>
+    </property>
+   </widget>
   </widget>
   <widget class="Line" name="Line">
    <property name="geometry">
@@ -1008,9 +1041,9 @@ border:none;</string>
   <widget class="QPushButton" name="onepage">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>330</x>
      <y>170</y>
-     <width>141</width>
+     <width>180</width>
      <height>50</height>
     </rect>
    </property>
@@ -1025,8 +1058,8 @@ border:none;</string>
 {
 background:rgba(230, 149, 40, 200);
 border:2px solid rgba(230, 149, 40, 200);
-
-      
+border-top-left-radius:25px;    
+border-bottom-left-radius:25px;    
 }
 QPushButton:hover
 {
@@ -1041,9 +1074,9 @@ background:orange;
   <widget class="QPushButton" name="twopage">
    <property name="geometry">
     <rect>
-     <x>480</x>
+     <x>510</x>
      <y>170</y>
-     <width>171</width>
+     <width>180</width>
      <height>50</height>
     </rect>
    </property>
@@ -1074,9 +1107,9 @@ background:orange;
   <widget class="QPushButton" name="threepage">
    <property name="geometry">
     <rect>
-     <x>650</x>
+     <x>690</x>
      <y>170</y>
-     <width>151</width>
+     <width>180</width>
      <height>50</height>
     </rect>
    </property>
@@ -1091,8 +1124,8 @@ background:orange;
 {
 background:none;
 border:2px solid rgba(230, 149, 40, 200);
-
-      
+border-top-right-radius:25px;
+border-bottom-right-radius:25px;    
 }
 QPushButton:hover
 {
@@ -1709,8 +1742,8 @@ border:2px solid orange;
   <zorder>recentgroupbox</zorder>
   <zorder>toprategroupbox</zorder>
   <zorder>foryoubox</zorder>
-  <zorder>descriptionbox</zorder>
   <zorder>searchbox</zorder>
+  <zorder>descriptionbox</zorder>
  </widget>
  <resources>
   <include location="photos.qrc"/>

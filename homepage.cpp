@@ -735,17 +735,10 @@ void HomePage::hidepage()
 {
     ui->foryoubox->hide();
     ui->recentgroupbox->hide();
-    ui->leftbtn->hide();
-    ui->rightbtn->hide();
 }
 void HomePage::showpage()
 {
     ui->foryoubox->show();
-    ui->recentgroupbox->show();
-    ui->leftbtn->show();
-    ui->rightbtn->show();
-    ui->leftbtn_2->show();
-    ui->rightbtn_2->show();
 }
 void HomePage::showdescriptionbox(int btn_number)
 {
@@ -885,36 +878,6 @@ void HomePage::showdescriptionbox(int btn_number)
     }
  qDebug()<<"the value of user name is " << _rating;
 }
-
-/*bool HomePage::eventFilter(QObject *obj, QEvent *event)
-{
-    for(int i=1;i<=14;i++)
-    {
-        QString posterName = QString("poster_%1").arg(i);
-        QPushButton *poster = findChild<QPushButton *>(posterName);
-        QString idName = QString("textID_%1").arg(i);
-        QLabel *textID = findChild<QLabel *>(idName);
-
-        if(obj == poster)
-        {
-            if(event->type() == QEvent::Enter)
-            {
-                setTitle(textID->text().toInt());
-                poster->resize(134,199);
-                poster->setIconSize(QSize(130,195));
-                return true;
-            }
-            else if(event->type() == QEvent::Leave)
-            {
-                ui->titleText->clear();
-                poster->resize(124,184);
-                poster->setIconSize(QSize(120,180));
-                return true;
-            }
-        }
-    }
-    return QWidget::eventFilter(obj, event);
-}*/
 
 //////////////////////////////////////////////////////// for , for you section we have our sevlesa
 void HomePage::showforyoupage(int position)
@@ -1643,7 +1606,8 @@ void HomePage::on_onepage_clicked()
                                "{"
                                "background:rgba(230, 149, 40, 200);"
                                "border:2px solid rgba(230, 149, 40, 200);"
-
+                               "border-top-left-radius:25px;"
+                               "border-bottom-left-radius:25px;"
 
                                "}"
                                "QPushButton:hover"
@@ -1668,7 +1632,8 @@ void HomePage::on_onepage_clicked()
                                  "{"
                                  "background:none;"
                                  "border:2px solid rgba(230, 149, 40, 200);"
-
+                                 "border-top-right-radius:25px;"
+                                 "border-bottom-right-radius:25px;"
 
                                  "}"
                                  "QPushButton:hover"
@@ -1702,7 +1667,8 @@ void HomePage::on_twopage_clicked()
                                "{"
                                "background:none;"
                                "border:2px solid rgba(230, 149, 40, 200);"
-
+                                "border-top-left-radius:25px;"
+                               "border-bottom-left-radius:25px;"
 
                                "}"
                                "QPushButton:hover"
@@ -1715,7 +1681,8 @@ void HomePage::on_twopage_clicked()
                                "{"
                                "background:none;"
                                "border:2px solid rgba(230, 149, 40, 200);"
-
+                                 "border-top-right-radius:25px;"
+                                 "border-bottom-right-radius:25px;"
 
                                "}"
                                "QPushButton:hover"
@@ -2033,7 +2000,8 @@ void HomePage::on_threepage_clicked()
                                "{"
                                "background:rgba(230, 149, 40, 200);"
                                "border:2px solid rgba(230, 149, 40, 200);"
-
+                                 "border-top-right-radius:25px;"
+                                 "border-bottom-right-radius:25px;"
 
                                "}"
                                "QPushButton:hover"
@@ -2045,7 +2013,8 @@ void HomePage::on_threepage_clicked()
                                "{"
                                "background:none;"
                                "border:2px solid rgba(230, 149, 40, 200);"
-
+                               "border-top-left-radius:25px;"
+                               "border-bottom-left-radius:25px;"
 
                                "}"
                                "QPushButton:hover"
