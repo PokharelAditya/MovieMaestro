@@ -4,6 +4,7 @@
 #include "database.h"
 
 extern QString option;
+int searchId = 0;
 
 updatemovies::updatemovies(QWidget *parent)
     : QWidget(parent)
@@ -19,7 +20,7 @@ updatemovies::updatemovies(QWidget *parent)
 
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
-    query.prepare("SELECT Movie_ID from Movies_table ORDER BY Movie_ID DESC");
+    query.prepare("SELECT Movie_ID from Movies_table ORDER BY Title ASC");
     query.exec();
     query.next();
     int id = query.value(0).toInt();
@@ -43,7 +44,7 @@ void updatemovies::setPoster(int id)
 {
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
-    query.prepare("SELECT Movie_ID,Poster from Movies_table ORDER BY Movie_ID DESC");
+    query.prepare("SELECT Movie_ID,Poster from Movies_table ORDER BY Title ASC");
     query.exec();
     while(query.next())
     {
@@ -87,10 +88,30 @@ void updatemovies::setPoster(int id)
 
 void updatemovies::on_Next_clicked()
 {
+    if(!(ui->searchBox->text().isEmpty()))
+    {
+        QSqlDatabase moviesData = database::getMoviesData();
+        QSqlQuery Squery(moviesData);
+        Squery.prepare("SELECT Movie_ID from Movies_table WHERE title LIKE :searchText ORDER BY Title ASC");
+        Squery.bindValue(":searchText","%"+ui->searchBox->text()+"%");
+        Squery.exec();
+        while(Squery.next())
+        {
+            if(Squery.value(0).toInt() == ui->textID_14->text().toInt())
+            {
+                Squery.next();
+                searchId = Squery.value(0).toInt();
+            }
+        }
+        database::closeMoviesData();
+        on_searchBox_textChanged(ui->searchBox->text());
+        return;
+    }
+
     int id = 0;
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
-    query.prepare("SELECT Movie_ID FROM Movies_table ORDER BY Movie_ID DESC");
+    query.prepare("SELECT Movie_ID FROM Movies_table ORDER BY Title ASC");
     query.exec();
     while(query.next())
     {
@@ -107,10 +128,33 @@ void updatemovies::on_Next_clicked()
 
 void updatemovies::on_Previous_clicked()
 {
+    if(!(ui->searchBox->text().isEmpty()))
+    {
+        QSqlDatabase moviesData = database::getMoviesData();
+        QSqlQuery Squery(moviesData);
+        Squery.prepare("SELECT Movie_ID from Movies_table WHERE title LIKE :searchText ORDER BY Title DESC");
+        Squery.bindValue(":searchText","%"+ui->searchBox->text()+"%");
+        Squery.exec();
+        while(Squery.next())
+        {
+            if(Squery.value(0).toInt() == ui->textID_1->text().toInt())
+            {
+                for(int i=1;i<=14;i++)
+                {
+                    Squery.next();
+                }
+                searchId = Squery.value(0).toInt();
+            }
+        }
+        database::closeMoviesData();
+        on_searchBox_textChanged(ui->searchBox->text());
+        return;
+    }
+
     int id = 0;
     QSqlDatabase moviesData = database::getMoviesData();
     QSqlQuery query(moviesData);
-    query.prepare("SELECT Movie_ID FROM Movies_table ORDER BY Movie_ID ASC");
+    query.prepare("SELECT Movie_ID FROM Movies_table ORDER BY Title DESC");
     query.exec();
     while(query.next())
     {
@@ -775,4 +819,65 @@ void updatemovies::on_updateUpdateButton_clicked()
         um->show();
         QMessageBox::information(this,"Info","The movie has been updated.");
     }
+}
+
+void updatemovies::on_searchBox_textChanged(const QString &searchText)
+{
+    if(searchText == "")
+    {
+        QSqlDatabase moviesData = database::getMoviesData();
+        QSqlQuery query(moviesData);
+        query.prepare("SELECT Movie_ID from Movies_table ORDER BY Title ASC");
+        query.exec();
+        query.next();
+        int id = query.value(0).toInt();
+        database::closeMoviesData();
+        setPoster(id);
+        return;
+    }
+
+    QSqlDatabase moviesData = database::getMoviesData();
+    QSqlQuery Squery(moviesData);
+    Squery.prepare("SELECT Movie_ID,Poster from Movies_table WHERE title LIKE :searchText ORDER BY Title ASC");
+    Squery.bindValue(":searchText","%"+searchText+"%");
+    Squery.exec();
+    while(Squery.next())
+    {
+        if(Squery.value(0).toInt()==searchId || searchId==0)
+        {
+            for(int i=1;i<=14;i++)
+            {
+                QString posterName = QString("poster_%1").arg(i);
+                QPushButton *poster = findChild<QPushButton *>(posterName);
+                QString idName = QString("textID_%1").arg(i);
+                QLabel *textID = findChild<QLabel *>(idName);
+
+                QString mid = Squery.value(0).toString();
+                QByteArray imageData = Squery.value(1).toByteArray();
+                QPixmap pixmap;
+                pixmap.loadFromData(imageData);
+
+                textID->setText(mid);
+                poster->setIcon(pixmap);
+                poster->setIconSize(QSize(120,180));
+
+                if(mid.isEmpty())
+                {
+                    poster->hide();
+                    textID->hide();
+                }
+                else
+                {
+                    poster->show();
+                    textID->show();
+                    poster->installEventFilter(this);
+                }
+
+                Squery.next();
+            }
+            break;
+        }
+    }
+    searchId = 0;
+    database::closeMoviesData();
 }
