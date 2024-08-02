@@ -204,11 +204,7 @@ bool User::adduserdata(QString &user_id , QString &password , QByteArray &myData
          setredusernamelineedit();
          return; // Exit the function if username already exists
      }
-     if(myImage.isNull())
-     {
-         msg.warning(this , "Profile Picture" ,"Please select an approprite profile pic");
-         return;
-     }
+
 
      ui->signupbox->hide();
      ui->genre->show();

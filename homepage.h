@@ -163,6 +163,10 @@ private:
         int checkbox =0;
     void showdescriptionbox4(int btn_number);
         QString name;
+    void on_no_starclicked();
+        QString aname;
+    void showcontent();
+            void hidecontent();
 };
 
 #endif // HOMEPAGE_H

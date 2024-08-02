@@ -13,5 +13,8 @@
         <file>Search.png</file>
         <file>Next_icon.png</file>
         <file>Previous_icon.png</file>
+        <file>signout.png</file>
+        <file>userrr.png</file>
+        <file>backgrounduser.png</file>
     </qresource>
 </RCC>

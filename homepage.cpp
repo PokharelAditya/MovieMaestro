@@ -33,8 +33,8 @@ HomePage::HomePage(User *myuser,QWidget *parent)
     whitesearch(":/whitesearchicon.png"),
     gear(":/gear.png"),
     whitegear(":/whitegear.png"),
-    house(":/house.png"),
-    whitehouse(":/whitehouse.png"),
+    house(":/signout.png"),
+    whitehouse(":/signout.png"),
     search(":searchicon.png"),
     left(":/left.png"),
     right(":/right.png"),
@@ -54,6 +54,7 @@ HomePage::HomePage(User *myuser,QWidget *parent)
     mysetting->endGroup();
     ui->setupUi(this);
     intusername = myuser->_username;
+    aname = intusername;
     if (!myuser) {
         QMessageBox::critical(this, tr("Error"), tr("Invalid user object."), QMessageBox::Ok);
         return;
@@ -69,19 +70,15 @@ HomePage::HomePage(User *myuser,QWidget *parent)
         return;
     }
 
-        if (!query.next()) {
-         QMessageBox::warning(this, tr("No Image Found"), tr("No image found for the specified user."), QMessageBox::Ok);
-            return;
+        if (query.next()) {
+        QByteArray imageData = query.value(0).toByteArray();
+        QPixmap pixmap;
+        pixmap.loadFromData(imageData);
+        if (!pixmap.isNull()) {
+            ui->ProfilePicture->setIcon(pixmap);
         }
-            QByteArray imageData = query.value(0).toByteArray();
-            QPixmap pixmap;
-            pixmap.loadFromData(imageData);
-            if (!pixmap.isNull()) {
-                ui->ProfilePicture->setIcon(pixmap);
-            } else {
-                QMessageBox::warning(this, tr("Image Load Error"), tr("Failed to load image from database."), QMessageBox::Ok);
-                return;
-            }
+        }
+
             /////////////////////////////////////////////////////////////////////////////
             QSqlDatabase setmovies = database::getMoviesData();
             QSqlQuery myquery(setmovies);
@@ -308,33 +305,20 @@ else
         setWindowTitle("Movie Maestro");
         setWindowIcon(QIcon(":/MM Transparent BG.png" ));
      ui->searchbar->hide();
-     ui->rightbtn->setIcon(right);
-     ui->leftbtn->setIcon(left);
-     ui->leftbtn_2->setIcon(left);
-     ui->rightbtn_2->setIcon(right);
      ui->descriptionbox->hide();
      ui->star->setIcon(whitestar);
-     ui->star->setIconSize(QSize(61,51));
+     ui->star->setIconSize(QSize(25,25));
      ui->star2->setIcon(whitestar);
-     ui->star2->setIconSize(QSize(61,51));
+     ui->star2->setIconSize(QSize(25,25));
      ui->star3->setIcon(whitestar);
-     ui->star3->setIconSize(QSize(61,51));
+     ui->star3->setIconSize(QSize(25,25));
      ui->star4->setIcon(whitestar);
-     ui->star4->setIconSize(QSize(61,51));
+     ui->star4->setIconSize(QSize(25,25));
      ui->star5->setIcon(whitestar);
-     ui->star5->setIconSize(QSize(61,51));
+     ui->star5->setIconSize(QSize(25,25));
      ui->toprategroupbox->hide();
-     ui->topleft->setIcon(left);
-     ui->topleft->setIconSize(ui->topleft->size());
-     ui->topright->setIcon(right);
-     ui->topright->setIconSize(ui->topright->size());
-     ui->searchleftbtn->setIcon(left);
-     ui->searchleftbtn->setIconSize(ui->searchleftbtn->size());
-
-     ui->searchrightbtn->setIcon(right);
-     ui->searchrightbtn->setIconSize(ui->searchrightbtn->size());
+     ui->recentgroupbox->hide();
      ui->foryoubox->show();
-      ui->recentgroupbox->show();
      ui->searchbox->hide();
 
    showforyoupage(position_1);
@@ -355,6 +339,7 @@ void HomePage::showdescriptionbox4(int btn_number)
     QSqlQuery myquery(userdatabase);
     myquery.prepare("SELECT Released_Date, Title , Duration, Description , Poster ,Rating FROM Movies_Table WHERE Movie_ID =:movieid");
     myquery.bindValue(":movieid" ,intmovieidlists[btn_number-1]);
+
     if(!myquery.exec())
     {
         QMessageBox::critical(this, "Database Error", "Failed to update user preferences: " + myquery.lastError().text());
@@ -368,16 +353,14 @@ void HomePage::showdescriptionbox4(int btn_number)
     QString title = myquery.value(1).toString();
     QString duration = myquery.value(2).toString();
     QString description = myquery.value(3).toString();
-    QString finaldesc = duration + " m :" + description + "   MOVIE RELEASED ON :  " + myquery.value(0).toString();
     QByteArray imageData2 = myquery.value(4).toByteArray();
     QPixmap pixmap2;
     pixmap2.loadFromData(imageData2);
     ui->moviedescbtn->setIcon(pixmap2);
     ui->ratinglabel->setText("Avg user rating : " +myquery.value(5).toString());
     QSize btnsize = ui->moviedescbtn->size();
-    ui->moviedescbtn->setIconSize(btnsize);
+    ui->moviedescbtn->setIconSize(QSize(240,360));
     ui->movienamelabel->setText(title);
-    ui->description->setText(finaldesc);
     int ID_Movie =intmovieidlists[btn_number-1];
     QString casts = "";
     QString directors = "";
@@ -398,7 +381,6 @@ void HomePage::showdescriptionbox4(int btn_number)
     if (!casts.isEmpty() && casts.endsWith(',')) {
         casts.chop(1); // Remove the last character
     }
-    ui->castnames->setText(casts);
     myquery.prepare("SELECT MoviesDirectors_table.Movie_ID , Directors_table.Director_Name FROM MoviesDirectors_table INNER JOIN Directors_table ON Directors_table.Director_ID = MoviesDirectors_table.Director_ID");
     if(!myquery.exec())
     {
@@ -416,7 +398,7 @@ void HomePage::showdescriptionbox4(int btn_number)
     {
         directors.chop(1);
     }
-    ui->directornames->setText(directors);
+
     QString genres;
     myquery.prepare("SELECT MoviesGenres_table.Movie_ID , MoviesGenres_table.Genre_ID ,Genres_table.Genre_Name FROM MoviesGenres_table INNER JOIN Genres_table ON Genres_table.Genre_ID = MoviesGenres_table.Genre_ID ");
     if(!myquery.exec())
@@ -434,7 +416,53 @@ void HomePage::showdescriptionbox4(int btn_number)
     {
         genres.chop(1);
     }
-    ui->genrelabel->setText(genres);
+    QString finaldesc =  "Overview:\n" + description + "\n\nGenres: " + genres + "\n\nDuration: " + duration + " mins\n\n" + "Director: " + directors + "\n\nCasts: " + casts;
+    ui->description->setText(finaldesc);
+    int _rating;
+    myquery.prepare("SELECT rating FROM UserMovieRating WHERE movie_name = :movieid and username = :username");
+    myquery.bindValue(":movieid" , QString::number(intmovieidlists[btn_number-1]));
+    myquery.bindValue(":username", aname);
+    qDebug()<<"ther use name is " << aname;
+    if(!myquery.exec())
+
+    {
+        QMessageBox::warning(this , "error" ,"here are some error in 1");
+
+    }
+    if(!myquery.next())
+    {
+        _rating = 0;
+    }
+    else
+    {
+        _rating = myquery.value(0).toInt();
+    }
+    if (_rating == 0)
+    {
+        on_no_starclicked();
+    }
+    if (_rating == 1)
+    {
+        on_star_clicked();
+    }
+    if (_rating == 2)
+    {
+        on_star2_clicked();
+    }
+    if (_rating == 3)
+    {
+        on_star3_clicked();
+    }
+    if (_rating == 4)
+    {
+        on_star4_clicked();
+    }
+    if (_rating == 5)
+    {
+        on_star5_clicked();
+    }
+    qDebug()<<"the user rating is " << _rating;
+
 }
 ///////////////////////////////////////////////////////////////////////////////
 void HomePage::showdescriptionbox3(int btn_number)
@@ -458,16 +486,14 @@ void HomePage::showdescriptionbox3(int btn_number)
     QString title = myquery.value(1).toString();
     QString duration = myquery.value(2).toString();
     QString description = myquery.value(3).toString();
-    QString finaldesc = duration + " m :" + description + "   MOVIE RELEASED ON :  " + myquery.value(0).toString();
     QByteArray imageData2 = myquery.value(4).toByteArray();
     QPixmap pixmap2;
     pixmap2.loadFromData(imageData2);
     ui->moviedescbtn->setIcon(pixmap2);
     ui->ratinglabel->setText("Avg user rating : " +myquery.value(5).toString());
     QSize btnsize = ui->moviedescbtn->size();
-    ui->moviedescbtn->setIconSize(btnsize);
+    ui->moviedescbtn->setIconSize(QSize(240,360));
     ui->movienamelabel->setText(title);
-    ui->description->setText(finaldesc);
     int ID_Movie = _movielist[btn_number-1];
     QString casts = "";
     QString directors = "";
@@ -488,7 +514,6 @@ void HomePage::showdescriptionbox3(int btn_number)
     if (!casts.isEmpty() && casts.endsWith(',')) {
         casts.chop(1); // Remove the last character
     }
-    ui->castnames->setText(casts);
     myquery.prepare("SELECT MoviesDirectors_table.Movie_ID , Directors_table.Director_Name FROM MoviesDirectors_table INNER JOIN Directors_table ON Directors_table.Director_ID = MoviesDirectors_table.Director_ID");
     if(!myquery.exec())
     {
@@ -506,7 +531,6 @@ void HomePage::showdescriptionbox3(int btn_number)
     {
         directors.chop(1);
     }
-    ui->directornames->setText(directors);
     QString genres;
     myquery.prepare("SELECT MoviesGenres_table.Movie_ID , MoviesGenres_table.Genre_ID ,Genres_table.Genre_Name FROM MoviesGenres_table INNER JOIN Genres_table ON Genres_table.Genre_ID = MoviesGenres_table.Genre_ID ");
     if(!myquery.exec())
@@ -524,7 +548,52 @@ void HomePage::showdescriptionbox3(int btn_number)
     {
         genres.chop(1);
     }
-    ui->genrelabel->setText(genres);
+    QString finaldesc =  "Overview:\n" + description + "\n\nGenres: " + genres + "\n\nDuration: " + duration + " mins\n\n" + "Director: " + directors + "\n\nCasts: " + casts;
+    ui->description->setText(finaldesc);
+    int _rating;
+    myquery.prepare("SELECT rating FROM UserMovieRating WHERE movie_name = :movieid and username = :username");
+    myquery.bindValue(":movieid" , QString::number(_movielist[btn_number-1]));
+    myquery.bindValue(":username", aname);
+    qDebug()<<"ther use name is " << aname;
+    if(!myquery.exec())
+
+    {
+        QMessageBox::warning(this , "error" ,"here are some error in 1");
+
+    }
+    if(!myquery.next())
+    {
+        _rating = 0;
+    }
+    else
+    {
+        _rating = myquery.value(0).toInt();
+    }
+    if (_rating == 0)
+    {
+        on_no_starclicked();
+    }
+    if (_rating == 1)
+    {
+        on_star_clicked();
+    }
+    if (_rating == 2)
+    {
+        on_star2_clicked();
+    }
+    if (_rating == 3)
+    {
+        on_star3_clicked();
+    }
+    if (_rating == 4)
+    {
+        on_star4_clicked();
+    }
+    if (_rating == 5)
+    {
+        on_star5_clicked();
+    }
+    qDebug()<<"the user rating is " << _rating;
 }
 /*---------------------------------------------------------showdescription2 here  */
 void HomePage::showdescriptionbox2(int btn_number)
@@ -550,16 +619,15 @@ void HomePage::showdescriptionbox2(int btn_number)
     QString title = myquery.value(1).toString();
     QString duration = myquery.value(2).toString();
     QString description = myquery.value(3).toString();
-    QString finaldesc = "This movie runs for " + duration + " m :" + description + "   This Movie was released on:  " + myquery.value(0).toString() ;
+
     QByteArray imageData2 = myquery.value(4).toByteArray();
     QPixmap pixmap2;
     pixmap2.loadFromData(imageData2);
     ui->moviedescbtn->setIcon(pixmap2);
     ui->ratinglabel->setText("Avg user rating. " +myquery.value(5).toString());
     QSize btnsize = ui->moviedescbtn->size();
-    ui->moviedescbtn->setIconSize(btnsize);
+    ui->moviedescbtn->setIconSize(QSize(240,360));
     ui->movienamelabel->setText(title);
-    ui->description->setText(finaldesc);
     int ID_Movie = PrefferedMovieID[btn_number-1];
     QString casts = "";
     QString directors = "";
@@ -580,7 +648,7 @@ void HomePage::showdescriptionbox2(int btn_number)
     if (!casts.isEmpty() && casts.endsWith(',')) {
         casts.chop(1); // Remove the last character
     }
-    ui->castnames->setText(casts);
+
     myquery.prepare("SELECT MoviesDirectors_table.Movie_ID , Directors_table.Director_Name FROM MoviesDirectors_table INNER JOIN Directors_table ON Directors_table.Director_ID = MoviesDirectors_table.Director_ID");
     if(!myquery.exec())
     {
@@ -598,7 +666,6 @@ void HomePage::showdescriptionbox2(int btn_number)
     {
         directors.chop(1);
     }
-    ui->directornames->setText(directors);
     QString genres;
     myquery.prepare("SELECT MoviesGenres_table.Movie_ID , MoviesGenres_table.Genre_ID ,Genres_table.Genre_Name FROM MoviesGenres_table INNER JOIN Genres_table ON Genres_table.Genre_ID = MoviesGenres_table.Genre_ID ");
     if(!myquery.exec())
@@ -616,8 +683,52 @@ void HomePage::showdescriptionbox2(int btn_number)
     {
         genres.chop(1);
     }
-    ui->genrelabel->setText(genres);
+    QString finaldesc =  "Overview:\n" + description + "\n\nGenres: " + genres + "\n\nDuration: " + duration + " mins\n\n" + "Director: " + directors + "\n\nCasts: " + casts;
+    ui->description->setText(finaldesc);
+    int _rating;
+    myquery.prepare("SELECT rating FROM UserMovieRating WHERE movie_name = :movieid and username = :username");
+    myquery.bindValue(":movieid" , QString::number(PrefferedMovieID[btn_number-1]));
+    myquery.bindValue(":username", aname);
+    qDebug()<<"ther use name is " << aname;
+    if(!myquery.exec())
 
+    {
+        QMessageBox::warning(this , "error" ,"here are some error in 1");
+
+    }
+    if(!myquery.next())
+    {
+        _rating = 0;
+    }
+    else
+    {
+        _rating = myquery.value(0).toInt();
+    }
+    if (_rating == 0)
+    {
+        on_no_starclicked();
+    }
+    if (_rating == 1)
+    {
+        on_star_clicked();
+    }
+    if (_rating == 2)
+    {
+        on_star2_clicked();
+    }
+    if (_rating == 3)
+    {
+        on_star3_clicked();
+    }
+    if (_rating == 4)
+    {
+        on_star4_clicked();
+    }
+    if (_rating == 5)
+    {
+        on_star5_clicked();
+    }
+    qDebug()<<"the rating is " << _rating;
 }
 /*-------------------------------------------------------------------*/
 void HomePage::hidepage()
@@ -626,10 +737,6 @@ void HomePage::hidepage()
     ui->recentgroupbox->hide();
     ui->leftbtn->hide();
     ui->rightbtn->hide();
-    ui->leftbtn_2->hide();
-    ui->rightbtn_2->hide();
-    ui->recentlabel->hide();
-    ui->foryoulabel->hide();
 }
 void HomePage::showpage()
 {
@@ -639,8 +746,6 @@ void HomePage::showpage()
     ui->rightbtn->show();
     ui->leftbtn_2->show();
     ui->rightbtn_2->show();
-    ui->recentlabel->show();
-    ui->foryoulabel->show();
 }
 void HomePage::showdescriptionbox(int btn_number)
 {
@@ -666,19 +771,18 @@ void HomePage::showdescriptionbox(int btn_number)
         QMessageBox::warning(this , "erro", "failed to find such data");
         return;
     }
+    int _id = myquery.value(0).toInt();
     QString title = myquery.value(1).toString();
     QString duration = myquery.value(2).toString();
     QString description = myquery.value(3).toString();
-    QString finaldesc = duration + " m :" + description + "   MOVIE RELEASED ON :  " + ordereddate[btn_number-1].toString() ;
     QByteArray imageData2 = myquery.value(4).toByteArray();
     QPixmap pixmap2;
     pixmap2.loadFromData(imageData2);
     ui->moviedescbtn->setIcon(pixmap2);
     ui->ratinglabel->setText("Avg user rating : " +myquery.value(5).toString());
     QSize btnsize = ui->moviedescbtn->size();
-    ui->moviedescbtn->setIconSize(btnsize);
-    ui->movienamelabel->setText(title);
-    ui->description->setText(finaldesc);
+    ui->moviedescbtn->setIconSize(QSize(240,360));
+    ui->movienamelabel->setText(title);;
     int ID_Movie = myquery.value(0).toInt();
     QString casts = "";
     QString directors = "";
@@ -699,7 +803,6 @@ void HomePage::showdescriptionbox(int btn_number)
     if (!casts.isEmpty() && casts.endsWith(',')) {
         casts.chop(1); // Remove the last character
     }
-    ui->castnames->setText(casts);
     myquery.prepare("SELECT MoviesDirectors_table.Movie_ID , Directors_table.Director_Name FROM MoviesDirectors_table INNER JOIN Directors_table ON Directors_table.Director_ID = MoviesDirectors_table.Director_ID");
     if(!myquery.exec())
     {
@@ -717,7 +820,6 @@ void HomePage::showdescriptionbox(int btn_number)
     {
         directors.chop(1);
     }
-    ui->directornames->setText(directors);
     QString genres;
     myquery.prepare("SELECT MoviesGenres_table.Movie_ID , MoviesGenres_table.Genre_ID ,Genres_table.Genre_Name FROM MoviesGenres_table INNER JOIN Genres_table ON Genres_table.Genre_ID = MoviesGenres_table.Genre_ID ");
     if(!myquery.exec())
@@ -735,8 +837,85 @@ void HomePage::showdescriptionbox(int btn_number)
     {
         genres.chop(1);
     }
-    ui->genrelabel->setText(genres);
+    QString finaldesc =  "Overview:\n" + description + "\n\nGenres: " + genres + "\n\nDuration: " + duration + " mins\n\n" + "Director: " + directors + "\n\nCasts: " + casts;
+    ui->description->setText(finaldesc);
+    int _rating;
+    myquery.prepare("SELECT rating FROM UserMovieRating WHERE movie_name = :movieid and username = :username");
+    myquery.bindValue(":movieid" , _id);
+    myquery.bindValue(":username",aname);
+    qDebug()<<"ther use name is " << aname;
+    if(!myquery.exec())
+
+    {
+        QMessageBox::warning(this , "error" ,"here are some error in 1");
+
+    }
+
+    if(!myquery.next())
+    {
+        _rating = 0;
+    }
+    else
+    {
+        _rating = myquery.value(0).toInt();
+    }
+    if (_rating == 0)
+    {
+        on_no_starclicked();
+    }
+    if (_rating == 1)
+    {
+        on_star_clicked();
+    }
+    if (_rating == 2)
+    {
+        on_star2_clicked();
+    }
+    if (_rating == 3)
+    {
+        on_star3_clicked();
+    }
+    if (_rating == 4)
+    {
+        on_star4_clicked();
+    }
+    if (_rating == 5)
+    {
+        on_star5_clicked();
+    }
+ qDebug()<<"the value of user name is " << _rating;
 }
+
+/*bool HomePage::eventFilter(QObject *obj, QEvent *event)
+{
+    for(int i=1;i<=14;i++)
+    {
+        QString posterName = QString("poster_%1").arg(i);
+        QPushButton *poster = findChild<QPushButton *>(posterName);
+        QString idName = QString("textID_%1").arg(i);
+        QLabel *textID = findChild<QLabel *>(idName);
+
+        if(obj == poster)
+        {
+            if(event->type() == QEvent::Enter)
+            {
+                setTitle(textID->text().toInt());
+                poster->resize(134,199);
+                poster->setIconSize(QSize(130,195));
+                return true;
+            }
+            else if(event->type() == QEvent::Leave)
+            {
+                ui->titleText->clear();
+                poster->resize(124,184);
+                poster->setIconSize(QSize(120,180));
+                return true;
+            }
+        }
+    }
+    return QWidget::eventFilter(obj, event);
+}*/
+
 //////////////////////////////////////////////////////// for , for you section we have our sevlesa
 void HomePage::showforyoupage(int position)
 {
@@ -840,7 +1019,7 @@ void HomePage::showforyoupage(int position)
                     {
 
                         button->setIcon(pixmap2);
-                        button->setIconSize(QSize(342, 171));
+                        button->setIconSize(QSize(200, 300));
                         button->setVisible(true); // Show button if image is available
                     }
 
@@ -901,7 +1080,7 @@ void HomePage::showforyoupage(int position)
                         {
 
                             button->setIcon(pixmap2);
-                            button->setIconSize(QSize(342, 171));
+                            button->setIconSize(QSize(200, 300));
                             button->setVisible(true); // Show button if image is available
                         }
 
@@ -1014,7 +1193,7 @@ void HomePage::showforyoupage(int position)
                     {
 
                         button->setIcon(pixmap2);
-                        button->setIconSize(button->size());
+                        button->setIconSize(QSize(200,300));
                         button->setVisible(true); // Show button if image is available
                     }
 
@@ -1038,12 +1217,16 @@ void HomePage::on_userpagebtn_clicked()
 
 void HomePage::on_house_clicked()
 {
-    QSettings mysetting("myapp","MovieMaestro");
-    mysetting.setValue("isLogged",false);
-    mysetting.setValue("username", "");
-    User *myuser = new User();
-    this->close();
-    myuser->show();
+    if(QMessageBox::question(this,"Sign Out","Are you sure to sign out?",QMessageBox::Yes,QMessageBox::No) == QMessageBox::Yes)
+    {
+        QSettings mysetting("myapp","MovieMaestro");
+        mysetting.setValue("isLogged",false);
+        mysetting.setValue("username", "");
+        User *myuser = new User();
+        this->close();
+        myuser->show();
+        QMessageBox::information(this,"Signed Out","You have been signed out.");
+    }
 }
 
 
@@ -1273,6 +1456,10 @@ void HomePage::on_pushButton_7_clicked()
     {
         ui->toprategroupbox->show();
     }
+    else if(pageno==3 && checkbox !=1)
+    {
+        ui->recentgroupbox->show();
+    }
     else if (checkbox==1)
     {
         ui->searchbox->show();
@@ -1280,7 +1467,15 @@ void HomePage::on_pushButton_7_clicked()
     }
 
 /////////////////////////////////////////////// yo chai aba rating star ko lagi
-
+    void HomePage::on_no_starclicked()
+    {
+        ui->star->setIcon(whitestar);
+        ui->star2->setIcon(whitestar);
+        ui->star3->setIcon(whitestar);
+        ui->star4->setIcon(whitestar);
+        ui->star5->setIcon(whitestar);
+        rating = 0;
+    }
 void HomePage::on_star_clicked()
 {
     ui->star->setIcon(star);
@@ -1420,7 +1615,7 @@ void HomePage::on_ratebtn_clicked()
         QMessageBox::warning(this , "some error " , "you have entered wrong query in ratebtnclicked 6");
         return;
     }
-
+    QMessageBox::information(this , "Rated","The movie has been rated successfully.");
 
 }
 
@@ -1442,7 +1637,46 @@ void HomePage::on_onepage_clicked()
 {
     pageno = 1;
     showpage();
+    ui->recentgroupbox->hide();
     ui->toprategroupbox->hide();
+    ui->onepage->setStyleSheet("QPushButton"
+                               "{"
+                               "background:rgba(230, 149, 40, 200);"
+                               "border:2px solid rgba(230, 149, 40, 200);"
+
+
+                               "}"
+                               "QPushButton:hover"
+                               "{"
+                               "background:orange;"
+
+                               "}");
+    ui->twopage->setStyleSheet("QPushButton"
+                               "{"
+                               "background:none;"
+                               "border:2px solid rgba(230, 149, 40, 200);"
+
+
+                               "}"
+                               "QPushButton:hover"
+                               "{"
+                               "background:orange;"
+
+                               "}");
+
+    ui->threepage->setStyleSheet("QPushButton"
+                                 "{"
+                                 "background:none;"
+                                 "border:2px solid rgba(230, 149, 40, 200);"
+
+
+                                 "}"
+                                 "QPushButton:hover"
+                                 "{"
+                                 "background:orange;"
+
+                                 "}");
+
 }
 
 
@@ -1451,6 +1685,45 @@ void HomePage::on_twopage_clicked()
     pageno = 2;
     hidepage();
     ui->toprategroupbox->show();
+    ui->recentgroupbox->hide();
+    ui->twopage->setStyleSheet("QPushButton"
+"{"
+"background:rgba(230, 149, 40, 200);"
+"border:2px solid rgba(230, 149, 40, 200);"
+
+
+"}"
+"QPushButton:hover"
+"{"
+"background:orange;"
+
+                               "}");
+    ui->onepage->setStyleSheet("QPushButton"
+                               "{"
+                               "background:none;"
+                               "border:2px solid rgba(230, 149, 40, 200);"
+
+
+                               "}"
+                               "QPushButton:hover"
+                               "{"
+                               "background:orange;"
+
+                               "}");
+
+    ui->threepage->setStyleSheet("QPushButton"
+                               "{"
+                               "background:none;"
+                               "border:2px solid rgba(230, 149, 40, 200);"
+
+
+                               "}"
+                               "QPushButton:hover"
+                               "{"
+                               "background:orange;"
+
+                               "}");
+
 
 }
 
@@ -1494,8 +1767,18 @@ void HomePage::on_topratemovie_4_clicked()
     showdescriptionbox3(4+4*position_3);
     ui->toprategroupbox->close();
 }
-
-
+void HomePage::hidecontent()
+{
+    ui->onepage->hide();
+    ui->twopage->hide();
+    ui->threepage->hide();
+}
+void HomePage::showcontent()
+{
+    ui->onepage->show();
+    ui->twopage->show();
+    ui->threepage->show();
+}
 void HomePage::on_searchbtn_clicked()
 {
     if(discoverornot ==0 )
@@ -1508,15 +1791,24 @@ void HomePage::on_searchbtn_clicked()
         ui->searchbar->hide();
         if(pageno == 1)
         {
+            showcontent();
             showpage();
             checkbox =0;
         }
         else if(pageno ==2)
         {
+            showcontent();
             checkbox=0;
             ui->toprategroupbox->show();
 
         }
+        if(pageno==3)
+        {
+            showcontent();
+            checkbox = 0;
+            ui->recentgroupbox->show();
+        }
+
          discoverornot=0;
     }
 }
@@ -1525,9 +1817,10 @@ void HomePage::on_searchbtn_clicked()
 void HomePage::on_searchbar_textChanged(const QString &arg1)
 {
     checkbox =1;
-
+    hidecontent();
     ui->searchbox->show();
     ui->toprategroupbox->hide();
+    ui->recentgroupbox->hide();
     hidepage();
     QSqlDatabase mydb = database::getMoviesData();
     QSqlQuery myquery(mydb);
@@ -1614,7 +1907,7 @@ void HomePage::on_searchbar_textChanged(const QString &arg1)
                 {
 
                     button->setIcon(pixmap2);
-                    button->setIconSize(button->size());
+                    button->setIconSize(QSize(133,200));
                     button->setVisible(true); // Show button if image is available
                 }
 
@@ -1732,6 +2025,47 @@ void HomePage::on_searchmoviebtn_8_clicked()
 
 void HomePage::on_threepage_clicked()
 {
+    pageno = 3;
+    hidepage();
+    ui->toprategroupbox->hide();
+    ui->recentgroupbox->show();
+    ui->threepage->setStyleSheet("QPushButton"
+                               "{"
+                               "background:rgba(230, 149, 40, 200);"
+                               "border:2px solid rgba(230, 149, 40, 200);"
+
+
+                               "}"
+                               "QPushButton:hover"
+                               "{"
+                               "background:orange;"
+
+                               "}");
+    ui->onepage->setStyleSheet("QPushButton"
+                               "{"
+                               "background:none;"
+                               "border:2px solid rgba(230, 149, 40, 200);"
+
+
+                               "}"
+                               "QPushButton:hover"
+                               "{"
+                               "background:orange;"
+
+                               "}");
+
+    ui->twopage->setStyleSheet("QPushButton"
+                                 "{"
+                                 "background:none;"
+                                 "border:2px solid rgba(230, 149, 40, 200);"
+
+
+                                 "}"
+                                 "QPushButton:hover"
+                                 "{"
+                                 "background:orange;"
+
+                                 "}");
 
 }
 

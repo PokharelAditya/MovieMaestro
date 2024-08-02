@@ -6,24 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1315</width>
-    <height>838</height>
+    <width>1200</width>
+    <height>750</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background:black;
+   <string notr="true">background:none;
 </string>
   </property>
   <widget class="QLabel" name="profilepic">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>141</width>
-     <height>151</height>
+     <x>40</x>
+     <y>40</y>
+     <width>100</width>
+     <height>100</height>
     </rect>
    </property>
    <property name="text">
@@ -33,15 +33,16 @@
   <widget class="QGroupBox" name="options">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>200</y>
-     <width>451</width>
-     <height>471</height>
+     <x>350</x>
+     <y>125</y>
+     <width>500</width>
+     <height>500</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">QGroupBox
 {
+background-color:rgba(0, 0, 0, 220);
 border:2px solid orange;
 border-radius:10px
 }</string>
@@ -52,8 +53,8 @@ border-radius:10px
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>20</y>
+      <x>40</x>
+      <y>40</y>
       <width>421</width>
       <height>51</height>
      </rect>
@@ -74,8 +75,8 @@ border-radius:10px
    <widget class="QPushButton" name="changepwbtn">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>130</y>
+      <x>80</x>
+      <y>140</y>
       <width>341</width>
       <height>61</height>
      </rect>
@@ -107,8 +108,8 @@ background:orange;
    <widget class="QPushButton" name="updateppbtn">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>340</y>
+      <x>80</x>
+      <y>360</y>
       <width>341</width>
       <height>61</height>
      </rect>
@@ -140,8 +141,8 @@ background:orange;
    <widget class="QPushButton" name="updategenrebtn">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>230</y>
+      <x>80</x>
+      <y>250</y>
       <width>341</width>
       <height>61</height>
      </rect>
@@ -174,16 +175,19 @@ background:orange;
   <widget class="QGroupBox" name="genrebox">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>60</y>
-     <width>471</width>
-     <height>661</height>
+     <x>350</x>
+     <y>70</y>
+     <width>501</width>
+     <height>621</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border:2px solid orange;
-border-radius:10px;
-background:black;</string>
+    <string notr="true">QGroupBox
+{
+background-color:rgba(0, 0, 0, 220);
+border:2px solid orange;
+border-radius:10px
+}</string>
    </property>
    <property name="title">
     <string/>
@@ -191,9 +195,9 @@ background:black;</string>
    <widget class="QLabel" name="login_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>90</x>
       <y>30</y>
-      <width>261</width>
+      <width>320</width>
       <height>41</height>
      </rect>
     </property>
@@ -218,7 +222,7 @@ color:white;</string>
    <widget class="QRadioButton" name="horror">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>50</x>
       <y>130</y>
       <width>181</width>
       <height>51</height>
@@ -247,7 +251,7 @@ background-color:rgb(255,163,26);
    <widget class="QRadioButton" name="action">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>270</x>
       <y>130</y>
       <width>181</width>
       <height>51</height>
@@ -276,7 +280,7 @@ background-color:rgb(255,163,26);
    <widget class="QRadioButton" name="thriller">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>50</x>
       <y>210</y>
       <width>181</width>
       <height>51</height>
@@ -305,7 +309,7 @@ background-color:rgb(255,163,26);
    <widget class="QRadioButton" name="romance">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>270</x>
       <y>210</y>
       <width>181</width>
       <height>51</height>
@@ -334,7 +338,7 @@ background-color:rgb(255,163,26);
    <widget class="QRadioButton" name="comedy">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>50</x>
       <y>290</y>
       <width>181</width>
       <height>51</height>
@@ -363,7 +367,7 @@ background-color:rgb(255,163,26);
    <widget class="QRadioButton" name="romcom">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>270</x>
       <y>290</y>
       <width>181</width>
       <height>51</height>
@@ -392,7 +396,7 @@ background-color:rgb(255,163,26);
    <widget class="QRadioButton" name="drama">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>50</x>
       <y>370</y>
       <width>181</width>
       <height>51</height>
@@ -421,7 +425,7 @@ background-color:rgb(255,163,26);
    <widget class="QRadioButton" name="scifi">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>270</x>
       <y>370</y>
       <width>181</width>
       <height>51</height>
@@ -450,7 +454,7 @@ background-color:rgb(255,163,26);
    <widget class="QRadioButton" name="history">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>50</x>
       <y>440</y>
       <width>181</width>
       <height>51</height>
@@ -479,7 +483,7 @@ background-color:rgb(255,163,26);
    <widget class="QRadioButton" name="suspense">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>270</x>
       <y>440</y>
       <width>181</width>
       <height>51</height>
@@ -508,9 +512,9 @@ background-color:rgb(255,163,26);
    <widget class="QPushButton" name="changegenrebtn">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>50</x>
       <y>530</y>
-      <width>181</width>
+      <width>131</width>
       <height>51</height>
      </rect>
     </property>
@@ -546,9 +550,9 @@ background-color:rgb(255,163,26);
    <widget class="QPushButton" name="updategenrebtn_2">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>200</x>
       <y>530</y>
-      <width>181</width>
+      <width>121</width>
       <height>51</height>
      </rect>
     </property>
@@ -584,9 +588,9 @@ background-color:rgb(255,163,26);
    <widget class="QPushButton" name="backgenre">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>600</y>
-      <width>101</width>
+      <x>340</x>
+      <y>530</y>
+      <width>111</width>
       <height>51</height>
      </rect>
     </property>
@@ -623,17 +627,20 @@ background-color:rgb(255,163,26);
   <widget class="QGroupBox" name="changepwbox">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>200</y>
-     <width>471</width>
-     <height>461</height>
+     <x>350</x>
+     <y>125</y>
+     <width>501</width>
+     <height>501</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background:black;
+    <string notr="true">QGroupBox
+{
+background-color:rgba(0, 0, 0, 220);
+
 border:2px solid orange;
-
-
+border-radius:10px
+}
 </string>
    </property>
    <property name="title">
@@ -642,8 +649,8 @@ border:2px solid orange;
    <widget class="QLabel" name="PasswordLabel">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
+      <x>20</x>
+      <y>50</y>
       <width>451</width>
       <height>41</height>
      </rect>
@@ -659,8 +666,11 @@ border:2px solid orange;
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color:white;
-border:none;</string>
+     <string notr="true">QGroupBox
+{
+border:2px solid orange;
+border-radius:10px
+}</string>
     </property>
     <property name="text">
      <string>Change Password</string>
@@ -672,8 +682,8 @@ border:none;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>130</y>
+      <x>30</x>
+      <y>170</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -694,8 +704,8 @@ border:none;</string>
    <widget class="QLineEdit" name="oldpassword">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>130</y>
+      <x>90</x>
+      <y>170</y>
       <width>361</width>
       <height>41</height>
      </rect>
@@ -720,8 +730,8 @@ color:white;
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>210</y>
+      <x>30</x>
+      <y>250</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -742,8 +752,8 @@ color:white;
    <widget class="QLineEdit" name="newpassword">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>210</y>
+      <x>90</x>
+      <y>250</y>
       <width>361</width>
       <height>41</height>
      </rect>
@@ -769,8 +779,8 @@ color:white;
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>300</y>
-      <width>361</width>
+      <y>370</y>
+      <width>180</width>
       <height>51</height>
      </rect>
     </property>
@@ -839,9 +849,9 @@ background:none;</string>
    <widget class="QPushButton" name="backpw">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>390</y>
-      <width>101</width>
+      <x>270</x>
+      <y>370</y>
+      <width>180</width>
       <height>51</height>
      </rect>
     </property>
@@ -878,16 +888,16 @@ background-color:rgb(255,163,26);
   <widget class="QGroupBox" name="updateppbox">
    <property name="geometry">
     <rect>
-     <x>400</x>
-     <y>200</y>
-     <width>531</width>
-     <height>441</height>
+     <x>350</x>
+     <y>125</y>
+     <width>501</width>
+     <height>501</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border:2px solid orange;
 border-radius:10px;
-</string>
+background-color:rgba(0, 0, 0, 220);</string>
    </property>
    <property name="title">
     <string/>
@@ -895,10 +905,10 @@ border-radius:10px;
    <widget class="QPushButton" name="profilepicbtn">
     <property name="geometry">
      <rect>
-      <x>140</x>
-      <y>30</y>
-      <width>291</width>
-      <height>231</height>
+      <x>100</x>
+      <y>50</y>
+      <width>300</width>
+      <height>300</height>
      </rect>
     </property>
     <property name="text">
@@ -908,8 +918,8 @@ border-radius:10px;
    <widget class="QPushButton" name="updateprofilepicbtn">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>300</y>
+      <x>50</x>
+      <y>390</y>
       <width>181</width>
       <height>51</height>
      </rect>
@@ -946,9 +956,9 @@ background-color:rgb(255,163,26);
    <widget class="QPushButton" name="backpp">
     <property name="geometry">
      <rect>
-      <x>410</x>
-      <y>370</y>
-      <width>101</width>
+      <x>270</x>
+      <y>390</y>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>
@@ -985,15 +995,15 @@ background-color:rgb(255,163,26);
   <widget class="QPushButton" name="gobackbtn">
    <property name="geometry">
     <rect>
-     <x>1080</x>
-     <y>10</y>
-     <width>211</width>
-     <height>51</height>
+     <x>1030</x>
+     <y>30</y>
+     <width>141</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>15</pointsize>
+     <pointsize>12</pointsize>
      <italic>true</italic>
      <bold>true</bold>
      <underline>false</underline>
@@ -1006,6 +1016,7 @@ background-color:rgb(255,163,26);
    <property name="styleSheet">
     <string notr="true">QPushButton
 {
+background:none;
 border:2px solid rgb(255,163,26);
 border-radius:10px;
 padding:5px;
@@ -1020,9 +1031,36 @@ background-color:rgb(255,163,26);
     <string>Go Back</string>
    </property>
   </widget>
+  <widget class="QLabel" name="bg">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>750</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="photos.qrc">:/backgrounduser.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>bg</zorder>
+  <zorder>profilepic</zorder>
+  <zorder>gobackbtn</zorder>
+  <zorder>options</zorder>
+  <zorder>updateppbox</zorder>
+  <zorder>genrebox</zorder>
+  <zorder>changepwbox</zorder>
  </widget>
  <resources>
   <include location="images.qrc"/>
+  <include location="photos.qrc"/>
  </resources>
  <connections/>
 </ui>

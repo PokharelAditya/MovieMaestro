@@ -59,28 +59,30 @@ public:
     QPushButton *updateprofilepicbtn;
     QPushButton *backpp;
     QPushButton *gobackbtn;
+    QLabel *bg;
 
     void setupUi(QDialog *UserSetting)
     {
         if (UserSetting->objectName().isEmpty())
             UserSetting->setObjectName("UserSetting");
-        UserSetting->resize(1315, 838);
-        UserSetting->setStyleSheet(QString::fromUtf8("background:black;\n"
+        UserSetting->resize(1200, 750);
+        UserSetting->setStyleSheet(QString::fromUtf8("background:none;\n"
 ""));
         profilepic = new QLabel(UserSetting);
         profilepic->setObjectName("profilepic");
-        profilepic->setGeometry(QRect(20, 10, 141, 151));
+        profilepic->setGeometry(QRect(40, 40, 100, 100));
         options = new QGroupBox(UserSetting);
         options->setObjectName("options");
-        options->setGeometry(QRect(400, 200, 451, 471));
+        options->setGeometry(QRect(350, 125, 500, 500));
         options->setStyleSheet(QString::fromUtf8("QGroupBox\n"
 "{\n"
+"background-color:rgba(0, 0, 0, 220);\n"
 "border:2px solid orange;\n"
 "border-radius:10px\n"
 "}"));
         label = new QLabel(options);
         label->setObjectName("label");
-        label->setGeometry(QRect(10, 20, 421, 51));
+        label->setGeometry(QRect(40, 40, 421, 51));
         QFont font;
         font.setPointSize(20);
         font.setBold(true);
@@ -88,7 +90,7 @@ public:
         label->setAlignment(Qt::AlignCenter);
         changepwbtn = new QPushButton(options);
         changepwbtn->setObjectName("changepwbtn");
-        changepwbtn->setGeometry(QRect(60, 130, 341, 61));
+        changepwbtn->setGeometry(QRect(80, 140, 341, 61));
         QFont font1;
         font1.setPointSize(15);
         font1.setBold(true);
@@ -105,7 +107,7 @@ public:
 "}"));
         updateppbtn = new QPushButton(options);
         updateppbtn->setObjectName("updateppbtn");
-        updateppbtn->setGeometry(QRect(60, 340, 341, 61));
+        updateppbtn->setGeometry(QRect(80, 360, 341, 61));
         updateppbtn->setFont(font1);
         updateppbtn->setCursor(QCursor(Qt::PointingHandCursor));
         updateppbtn->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -119,7 +121,7 @@ public:
 "}"));
         updategenrebtn = new QPushButton(options);
         updategenrebtn->setObjectName("updategenrebtn");
-        updategenrebtn->setGeometry(QRect(60, 230, 341, 61));
+        updategenrebtn->setGeometry(QRect(80, 250, 341, 61));
         updategenrebtn->setFont(font1);
         updategenrebtn->setCursor(QCursor(Qt::PointingHandCursor));
         updategenrebtn->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -133,13 +135,16 @@ public:
 "}"));
         genrebox = new QGroupBox(UserSetting);
         genrebox->setObjectName("genrebox");
-        genrebox->setGeometry(QRect(400, 60, 471, 661));
-        genrebox->setStyleSheet(QString::fromUtf8("border:2px solid orange;\n"
-"border-radius:10px;\n"
-"background:black;"));
+        genrebox->setGeometry(QRect(350, 70, 501, 621));
+        genrebox->setStyleSheet(QString::fromUtf8("QGroupBox\n"
+"{\n"
+"background-color:rgba(0, 0, 0, 220);\n"
+"border:2px solid orange;\n"
+"border-radius:10px\n"
+"}"));
         login_2 = new QLabel(genrebox);
         login_2->setObjectName("login_2");
-        login_2->setGeometry(QRect(10, 30, 261, 41));
+        login_2->setGeometry(QRect(90, 30, 320, 41));
         QFont font2;
         font2.setPointSize(20);
         font2.setWeight(QFont::Black);
@@ -152,7 +157,7 @@ public:
 "color:white;"));
         horror = new QRadioButton(genrebox);
         horror->setObjectName("horror");
-        horror->setGeometry(QRect(10, 130, 181, 51));
+        horror->setGeometry(QRect(50, 130, 181, 51));
         horror->setCursor(QCursor(Qt::PointingHandCursor));
         horror->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -167,7 +172,7 @@ public:
 "}"));
         action = new QRadioButton(genrebox);
         action->setObjectName("action");
-        action->setGeometry(QRect(220, 130, 181, 51));
+        action->setGeometry(QRect(270, 130, 181, 51));
         action->setCursor(QCursor(Qt::PointingHandCursor));
         action->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -182,7 +187,7 @@ public:
 "}"));
         thriller = new QRadioButton(genrebox);
         thriller->setObjectName("thriller");
-        thriller->setGeometry(QRect(10, 210, 181, 51));
+        thriller->setGeometry(QRect(50, 210, 181, 51));
         thriller->setCursor(QCursor(Qt::PointingHandCursor));
         thriller->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -197,7 +202,7 @@ public:
 "}"));
         romance = new QRadioButton(genrebox);
         romance->setObjectName("romance");
-        romance->setGeometry(QRect(220, 210, 181, 51));
+        romance->setGeometry(QRect(270, 210, 181, 51));
         romance->setCursor(QCursor(Qt::PointingHandCursor));
         romance->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -212,7 +217,7 @@ public:
 "}"));
         comedy = new QRadioButton(genrebox);
         comedy->setObjectName("comedy");
-        comedy->setGeometry(QRect(10, 290, 181, 51));
+        comedy->setGeometry(QRect(50, 290, 181, 51));
         comedy->setCursor(QCursor(Qt::PointingHandCursor));
         comedy->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -227,7 +232,7 @@ public:
 "}"));
         romcom = new QRadioButton(genrebox);
         romcom->setObjectName("romcom");
-        romcom->setGeometry(QRect(220, 290, 181, 51));
+        romcom->setGeometry(QRect(270, 290, 181, 51));
         romcom->setCursor(QCursor(Qt::PointingHandCursor));
         romcom->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -242,7 +247,7 @@ public:
 "}"));
         drama = new QRadioButton(genrebox);
         drama->setObjectName("drama");
-        drama->setGeometry(QRect(10, 370, 181, 51));
+        drama->setGeometry(QRect(50, 370, 181, 51));
         drama->setCursor(QCursor(Qt::PointingHandCursor));
         drama->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -257,7 +262,7 @@ public:
 "}"));
         scifi = new QRadioButton(genrebox);
         scifi->setObjectName("scifi");
-        scifi->setGeometry(QRect(220, 370, 181, 51));
+        scifi->setGeometry(QRect(270, 370, 181, 51));
         scifi->setCursor(QCursor(Qt::PointingHandCursor));
         scifi->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -272,7 +277,7 @@ public:
 "}"));
         history = new QRadioButton(genrebox);
         history->setObjectName("history");
-        history->setGeometry(QRect(10, 440, 181, 51));
+        history->setGeometry(QRect(50, 440, 181, 51));
         history->setCursor(QCursor(Qt::PointingHandCursor));
         history->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -287,7 +292,7 @@ public:
 "}"));
         suspense = new QRadioButton(genrebox);
         suspense->setObjectName("suspense");
-        suspense->setGeometry(QRect(220, 440, 181, 51));
+        suspense->setGeometry(QRect(270, 440, 181, 51));
         suspense->setCursor(QCursor(Qt::PointingHandCursor));
         suspense->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -302,7 +307,7 @@ public:
 "}"));
         changegenrebtn = new QPushButton(genrebox);
         changegenrebtn->setObjectName("changegenrebtn");
-        changegenrebtn->setGeometry(QRect(20, 530, 181, 51));
+        changegenrebtn->setGeometry(QRect(50, 530, 131, 51));
         QFont font3;
         font3.setPointSize(15);
         font3.setBold(true);
@@ -324,7 +329,7 @@ public:
 "}"));
         updategenrebtn_2 = new QPushButton(genrebox);
         updategenrebtn_2->setObjectName("updategenrebtn_2");
-        updategenrebtn_2->setGeometry(QRect(220, 530, 181, 51));
+        updategenrebtn_2->setGeometry(QRect(200, 530, 121, 51));
         updategenrebtn_2->setFont(font3);
         updategenrebtn_2->setCursor(QCursor(Qt::PointingHandCursor));
         updategenrebtn_2->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -340,7 +345,7 @@ public:
 "}"));
         backgenre = new QPushButton(genrebox);
         backgenre->setObjectName("backgenre");
-        backgenre->setGeometry(QRect(360, 600, 101, 51));
+        backgenre->setGeometry(QRect(340, 530, 111, 51));
         backgenre->setFont(font3);
         backgenre->setCursor(QCursor(Qt::PointingHandCursor));
         backgenre->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -356,28 +361,34 @@ public:
 "}"));
         changepwbox = new QGroupBox(UserSetting);
         changepwbox->setObjectName("changepwbox");
-        changepwbox->setGeometry(QRect(400, 200, 471, 461));
-        changepwbox->setStyleSheet(QString::fromUtf8("background:black;\n"
+        changepwbox->setGeometry(QRect(350, 125, 501, 501));
+        changepwbox->setStyleSheet(QString::fromUtf8("QGroupBox\n"
+"{\n"
+"background-color:rgba(0, 0, 0, 220);\n"
+"\n"
 "border:2px solid orange;\n"
-"\n"
-"\n"
+"border-radius:10px\n"
+"}\n"
 ""));
         PasswordLabel = new QLabel(changepwbox);
         PasswordLabel->setObjectName("PasswordLabel");
-        PasswordLabel->setGeometry(QRect(10, 10, 451, 41));
+        PasswordLabel->setGeometry(QRect(20, 50, 451, 41));
         PasswordLabel->setFont(font2);
-        PasswordLabel->setStyleSheet(QString::fromUtf8("color:white;\n"
-"border:none;"));
+        PasswordLabel->setStyleSheet(QString::fromUtf8("QGroupBox\n"
+"{\n"
+"border:2px solid orange;\n"
+"border-radius:10px\n"
+"}"));
         PasswordLabel->setAlignment(Qt::AlignCenter);
         label_2 = new QLabel(changepwbox);
         label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(10, 130, 41, 41));
+        label_2->setGeometry(QRect(30, 170, 41, 41));
         label_2->setStyleSheet(QString::fromUtf8("border:none;"));
         label_2->setPixmap(QPixmap(QString::fromUtf8(":/passwordicon.png")));
         label_2->setScaledContents(true);
         oldpassword = new QLineEdit(changepwbox);
         oldpassword->setObjectName("oldpassword");
-        oldpassword->setGeometry(QRect(70, 130, 361, 41));
+        oldpassword->setGeometry(QRect(90, 170, 361, 41));
         oldpassword->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:1px solid white;\n"
 "background-color:transparent;\n"
@@ -387,13 +398,13 @@ public:
         oldpassword->setClearButtonEnabled(true);
         label_4 = new QLabel(changepwbox);
         label_4->setObjectName("label_4");
-        label_4->setGeometry(QRect(20, 210, 41, 41));
+        label_4->setGeometry(QRect(30, 250, 41, 41));
         label_4->setStyleSheet(QString::fromUtf8("border:none;"));
         label_4->setPixmap(QPixmap(QString::fromUtf8(":/passwordicon.png")));
         label_4->setScaledContents(true);
         newpassword = new QLineEdit(changepwbox);
         newpassword->setObjectName("newpassword");
-        newpassword->setGeometry(QRect(70, 210, 361, 41));
+        newpassword->setGeometry(QRect(90, 250, 361, 41));
         newpassword->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:1px solid white;\n"
 "background-color:transparent;\n"
@@ -403,7 +414,7 @@ public:
         newpassword->setClearButtonEnabled(true);
         updatebtn = new QPushButton(changepwbox);
         updatebtn->setObjectName("updatebtn");
-        updatebtn->setGeometry(QRect(50, 300, 361, 51));
+        updatebtn->setGeometry(QRect(50, 370, 180, 51));
         updatebtn->setFont(font3);
         updatebtn->setCursor(QCursor(Qt::PointingHandCursor));
         updatebtn->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -428,7 +439,7 @@ public:
         eyebtn->setStyleSheet(QString::fromUtf8("border:none;"));
         backpw = new QPushButton(changepwbox);
         backpw->setObjectName("backpw");
-        backpw->setGeometry(QRect(360, 390, 101, 51));
+        backpw->setGeometry(QRect(270, 370, 180, 51));
         backpw->setFont(font3);
         backpw->setCursor(QCursor(Qt::PointingHandCursor));
         backpw->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -444,16 +455,16 @@ public:
 "}"));
         updateppbox = new QGroupBox(UserSetting);
         updateppbox->setObjectName("updateppbox");
-        updateppbox->setGeometry(QRect(400, 200, 531, 441));
+        updateppbox->setGeometry(QRect(350, 125, 501, 501));
         updateppbox->setStyleSheet(QString::fromUtf8("border:2px solid orange;\n"
 "border-radius:10px;\n"
-""));
+"background-color:rgba(0, 0, 0, 220);"));
         profilepicbtn = new QPushButton(updateppbox);
         profilepicbtn->setObjectName("profilepicbtn");
-        profilepicbtn->setGeometry(QRect(140, 30, 291, 231));
+        profilepicbtn->setGeometry(QRect(100, 50, 300, 300));
         updateprofilepicbtn = new QPushButton(updateppbox);
         updateprofilepicbtn->setObjectName("updateprofilepicbtn");
-        updateprofilepicbtn->setGeometry(QRect(190, 300, 181, 51));
+        updateprofilepicbtn->setGeometry(QRect(50, 390, 181, 51));
         updateprofilepicbtn->setFont(font3);
         updateprofilepicbtn->setCursor(QCursor(Qt::PointingHandCursor));
         updateprofilepicbtn->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -469,7 +480,7 @@ public:
 "}"));
         backpp = new QPushButton(updateppbox);
         backpp->setObjectName("backpp");
-        backpp->setGeometry(QRect(410, 370, 101, 51));
+        backpp->setGeometry(QRect(270, 390, 181, 51));
         backpp->setFont(font3);
         backpp->setCursor(QCursor(Qt::PointingHandCursor));
         backpp->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -485,11 +496,18 @@ public:
 "}"));
         gobackbtn = new QPushButton(UserSetting);
         gobackbtn->setObjectName("gobackbtn");
-        gobackbtn->setGeometry(QRect(1080, 10, 211, 51));
-        gobackbtn->setFont(font3);
+        gobackbtn->setGeometry(QRect(1030, 30, 141, 41));
+        QFont font4;
+        font4.setPointSize(12);
+        font4.setBold(true);
+        font4.setItalic(true);
+        font4.setUnderline(false);
+        font4.setStrikeOut(false);
+        gobackbtn->setFont(font4);
         gobackbtn->setCursor(QCursor(Qt::PointingHandCursor));
         gobackbtn->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
+"background:none;\n"
 "border:2px solid rgb(255,163,26);\n"
 "border-radius:10px;\n"
 "padding:5px;\n"
@@ -499,6 +517,18 @@ public:
 "{\n"
 "background-color:rgb(255,163,26);\n"
 "}"));
+        bg = new QLabel(UserSetting);
+        bg->setObjectName("bg");
+        bg->setGeometry(QRect(0, 0, 1200, 750));
+        bg->setPixmap(QPixmap(QString::fromUtf8(":/backgrounduser.png")));
+        bg->setScaledContents(true);
+        bg->raise();
+        profilepic->raise();
+        gobackbtn->raise();
+        options->raise();
+        updateppbox->raise();
+        genrebox->raise();
+        changepwbox->raise();
 
         retranslateUi(UserSetting);
 
@@ -544,6 +574,7 @@ public:
         updateprofilepicbtn->setText(QCoreApplication::translate("UserSetting", "Update", nullptr));
         backpp->setText(QCoreApplication::translate("UserSetting", "Back", nullptr));
         gobackbtn->setText(QCoreApplication::translate("UserSetting", "Go Back", nullptr));
+        bg->setText(QString());
     } // retranslateUi
 
 };

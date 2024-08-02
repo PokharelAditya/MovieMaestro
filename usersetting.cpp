@@ -46,23 +46,20 @@ UserSetting::UserSetting(User *myuser,QWidget *parent)
         QMessageBox::warning(this , "error", "ther have been some error");
 
     }
-    if(!myquery.next())
+    if(myquery.next())
     {
-        QMessageBox::warning(this , "error", "ther have been some error fetching the imagee");
-    }
-     imageData = myquery.value(0).toByteArray();
-      pixmap.loadFromData(imageData);
-    if (!pixmap.isNull()) {
+        imageData = myquery.value(0).toByteArray();
+        pixmap.loadFromData(imageData);
+        if (!pixmap.isNull()) {
 
-        ui->profilepic->setPixmap(pixmap);
-        ui->profilepic->setScaledContents(true);
-        ui->profilepicbtn->setIcon(pixmap);
-        ui->profilepicbtn->setIconSize(ui->profilepicbtn->size());
+            ui->profilepic->setPixmap(pixmap);
+            ui->profilepic->setScaledContents(true);
+            ui->profilepicbtn->setIcon(pixmap);
+            ui->profilepicbtn->setIconSize(ui->profilepicbtn->size());
 
-    } else {
-        QMessageBox::warning(this, tr("Image Load Error"), tr("Failed to load image from database."), QMessageBox::Ok);
-        return;
+        }
     }
+
     ui->changepwbox->hide();
     ui->genrebox->hide();
     ui->updateppbox->hide();
@@ -183,7 +180,7 @@ void UserSetting::on_changegenrebtn_clicked()
         QMessageBox::warning(this, "error", "here are few of the errors in the query to update the query list  ");
         return;
     }
-
+    QMessageBox::information(this,"Updated","The genre has been changed.");
 
 }
 
@@ -242,7 +239,7 @@ void UserSetting::on_updategenrebtn_2_clicked()
          QMessageBox::warning(this ,"error" ,"here are some porble in the end ");
          return;
      }
-
+    QMessageBox::information(this,"Added","The selected genre has been added.");
 }
 
 
@@ -301,6 +298,8 @@ void UserSetting::on_updatebtn_clicked()
 
 void UserSetting::on_updateprofilepicbtn_clicked()
 {
+    if(QMessageBox::question(this,"Update","Do you want to update your profile picture?",QMessageBox::Yes,QMessageBox::No) == QMessageBox::Yes)
+    {
     QSqlDatabase db = DatabaseManager::instance().getDatabase();
     QSqlQuery query(db);
     query.prepare("UPDATE userinfo SET images= :images WHERE user_id =:username");
@@ -310,6 +309,8 @@ void UserSetting::on_updateprofilepicbtn_clicked()
     {
         QMessageBox::warning(this , "error" , "erro while executing query to insert the data " );
         return ;
+    }
+    QMessageBox::information(this ,"Info" , "Your profile picture has been updated.");
     }
 
 }

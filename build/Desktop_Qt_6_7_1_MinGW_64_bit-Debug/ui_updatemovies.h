@@ -1124,10 +1124,10 @@ public:
         BackToAdminOptions->raise();
         searchGroupBox->raise();
         Logo->raise();
-        viewMoviesBox->raise();
         deleteMoviesBox->raise();
         updateMoviesBox->raise();
         moviesBox->raise();
+        viewMoviesBox->raise();
 
         retranslateUi(updatemovies);
 

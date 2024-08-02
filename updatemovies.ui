@@ -2426,10 +2426,10 @@ border:none;</string>
   <zorder>BackToAdminOptions</zorder>
   <zorder>searchGroupBox</zorder>
   <zorder>Logo</zorder>
-  <zorder>viewMoviesBox</zorder>
   <zorder>deleteMoviesBox</zorder>
   <zorder>updateMoviesBox</zorder>
   <zorder>moviesBox</zorder>
+  <zorder>viewMoviesBox</zorder>
  </widget>
  <resources>
   <include location="photos.qrc"/>

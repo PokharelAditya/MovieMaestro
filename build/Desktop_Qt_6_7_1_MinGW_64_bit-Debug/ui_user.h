@@ -80,12 +80,12 @@ public:
 "    );"));
         label = new QLabel(User);
         label->setObjectName("label");
-        label->setGeometry(QRect(20, 140, 641, 381));
+        label->setGeometry(QRect(20, 185, 641, 380));
         label->setPixmap(QPixmap(QString::fromUtf8(":/logo.jpg")));
         label->setScaledContents(true);
         signupbox = new QGroupBox(User);
         signupbox->setObjectName("signupbox");
-        signupbox->setGeometry(QRect(710, 55, 471, 661));
+        signupbox->setGeometry(QRect(710, 55, 471, 631));
         signupbox->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:1px solid black;\n"
 ""));
@@ -195,18 +195,18 @@ public:
         clearconfirmpasswordbtn_2->setStyleSheet(QString::fromUtf8("border:none;"));
         alreadyregistered = new QPushButton(signupbox);
         alreadyregistered->setObjectName("alreadyregistered");
-        alreadyregistered->setGeometry(QRect(250, 393, 181, 29));
+        alreadyregistered->setGeometry(QRect(250, 400, 181, 29));
         alreadyregistered->setCursor(QCursor(Qt::PointingHandCursor));
         alreadyregistered->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
-"border:2px solid rgb(255,163,26);\n"
+"border:none;\n"
 "border-radius:10px;\n"
 "padding:5px;\n"
 "\n"
 "}\n"
 "QPushButton:hover\n"
 "{\n"
-"background-color:rgb(255,163,26);\n"
+"\n"
 "}"));
         UploadImage = new QPushButton(signupbox);
         UploadImage->setObjectName("UploadImage");
@@ -224,7 +224,7 @@ public:
         UploadImage->setIconSize(QSize(141, 101));
         loginbox = new QGroupBox(User);
         loginbox->setObjectName("loginbox");
-        loginbox->setGeometry(QRect(710, 55, 471, 661));
+        loginbox->setGeometry(QRect(710, 55, 471, 631));
         loginbox->setStyleSheet(QString::fromUtf8("background:none;\n"
 "border:1px solid black;\n"
 ""));
@@ -298,21 +298,22 @@ public:
         lclearpasswordbtn->setGeometry(QRect(400, 250, 21, 20));
         goback = new QPushButton(loginbox);
         goback->setObjectName("goback");
-        goback->setGeometry(QRect(260, 310, 171, 41));
+        goback->setGeometry(QRect(260, 320, 171, 41));
+        goback->setCursor(QCursor(Qt::PointingHandCursor));
         goback->setStyleSheet(QString::fromUtf8("QPushButton\n"
 "{\n"
-"border:2px solid rgb(255,163,26);\n"
+"border:none;\n"
 "border-radius:10px;\n"
 "padding:5px;\n"
 "\n"
 "}\n"
 "QPushButton:hover\n"
 "{\n"
-"background-color:rgb(255,163,26);\n"
+"\n"
 "}"));
         adminloginbtn = new QPushButton(User);
         adminloginbtn->setObjectName("adminloginbtn");
-        adminloginbtn->setGeometry(QRect(30, 10, 161, 101));
+        adminloginbtn->setGeometry(QRect(30, 30, 111, 101));
         QFont font2;
         font2.setPointSize(54);
         adminloginbtn->setFont(font2);
@@ -323,7 +324,7 @@ public:
 ""));
         genre = new QGroupBox(User);
         genre->setObjectName("genre");
-        genre->setGeometry(QRect(710, 55, 471, 661));
+        genre->setGeometry(QRect(710, 55, 471, 631));
         genre->setStyleSheet(QString::fromUtf8("background:none;"));
         login_2 = new QLabel(genre);
         login_2->setObjectName("login_2");
@@ -332,7 +333,7 @@ public:
         login_2->setStyleSheet(QString::fromUtf8("color:white;"));
         horror = new QRadioButton(genre);
         horror->setObjectName("horror");
-        horror->setGeometry(QRect(10, 130, 181, 51));
+        horror->setGeometry(QRect(40, 130, 181, 51));
         horror->setCursor(QCursor(Qt::PointingHandCursor));
         horror->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -347,7 +348,7 @@ public:
 "}"));
         action = new QRadioButton(genre);
         action->setObjectName("action");
-        action->setGeometry(QRect(220, 130, 181, 51));
+        action->setGeometry(QRect(250, 130, 181, 51));
         action->setCursor(QCursor(Qt::PointingHandCursor));
         action->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -362,7 +363,7 @@ public:
 "}"));
         thriller = new QRadioButton(genre);
         thriller->setObjectName("thriller");
-        thriller->setGeometry(QRect(10, 210, 181, 51));
+        thriller->setGeometry(QRect(40, 210, 181, 51));
         thriller->setCursor(QCursor(Qt::PointingHandCursor));
         thriller->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -377,7 +378,7 @@ public:
 "}"));
         romance = new QRadioButton(genre);
         romance->setObjectName("romance");
-        romance->setGeometry(QRect(220, 210, 181, 51));
+        romance->setGeometry(QRect(250, 210, 181, 51));
         romance->setCursor(QCursor(Qt::PointingHandCursor));
         romance->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -392,7 +393,7 @@ public:
 "}"));
         comedy = new QRadioButton(genre);
         comedy->setObjectName("comedy");
-        comedy->setGeometry(QRect(10, 290, 181, 51));
+        comedy->setGeometry(QRect(40, 290, 181, 51));
         comedy->setCursor(QCursor(Qt::PointingHandCursor));
         comedy->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -407,7 +408,7 @@ public:
 "}"));
         romcom = new QRadioButton(genre);
         romcom->setObjectName("romcom");
-        romcom->setGeometry(QRect(220, 290, 181, 51));
+        romcom->setGeometry(QRect(250, 290, 181, 51));
         romcom->setCursor(QCursor(Qt::PointingHandCursor));
         romcom->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -422,7 +423,7 @@ public:
 "}"));
         drama = new QRadioButton(genre);
         drama->setObjectName("drama");
-        drama->setGeometry(QRect(10, 370, 181, 51));
+        drama->setGeometry(QRect(40, 370, 181, 51));
         drama->setCursor(QCursor(Qt::PointingHandCursor));
         drama->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -437,7 +438,7 @@ public:
 "}"));
         scifi = new QRadioButton(genre);
         scifi->setObjectName("scifi");
-        scifi->setGeometry(QRect(220, 370, 181, 51));
+        scifi->setGeometry(QRect(250, 370, 181, 51));
         scifi->setCursor(QCursor(Qt::PointingHandCursor));
         scifi->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -452,7 +453,7 @@ public:
 "}"));
         history = new QRadioButton(genre);
         history->setObjectName("history");
-        history->setGeometry(QRect(10, 440, 181, 51));
+        history->setGeometry(QRect(40, 440, 181, 51));
         history->setCursor(QCursor(Qt::PointingHandCursor));
         history->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -467,7 +468,7 @@ public:
 "}"));
         suspense = new QRadioButton(genre);
         suspense->setObjectName("suspense");
-        suspense->setGeometry(QRect(220, 440, 181, 51));
+        suspense->setGeometry(QRect(250, 440, 181, 51));
         suspense->setCursor(QCursor(Qt::PointingHandCursor));
         suspense->setStyleSheet(QString::fromUtf8("QRadioButton\n"
 "{\n"
@@ -482,7 +483,7 @@ public:
 "}"));
         submit = new QPushButton(genre);
         submit->setObjectName("submit");
-        submit->setGeometry(QRect(30, 530, 361, 51));
+        submit->setGeometry(QRect(60, 530, 361, 51));
         submit->setFont(font1);
         submit->setCursor(QCursor(Qt::PointingHandCursor));
         submit->setStyleSheet(QString::fromUtf8("QPushButton\n"
@@ -504,6 +505,11 @@ public:
 "border:2px solid rgb(255,163,26);\n"
 "border-radius:10px;\n"
 ""));
+        label->raise();
+        adminloginbtn->raise();
+        genre->raise();
+        signupbox->raise();
+        loginbox->raise();
 
         retranslateUi(User);
 
@@ -548,7 +554,7 @@ public:
         thriller->setText(QCoreApplication::translate("User", "thriller", nullptr));
         romance->setText(QCoreApplication::translate("User", "romance", nullptr));
         comedy->setText(QCoreApplication::translate("User", "comedy", nullptr));
-        romcom->setText(QCoreApplication::translate("User", "rom-com", nullptr));
+        romcom->setText(QCoreApplication::translate("User", "crime", nullptr));
         drama->setText(QCoreApplication::translate("User", "drama", nullptr));
         scifi->setText(QCoreApplication::translate("User", "sci-fi", nullptr));
         history->setText(QCoreApplication::translate("User", "history", nullptr));
