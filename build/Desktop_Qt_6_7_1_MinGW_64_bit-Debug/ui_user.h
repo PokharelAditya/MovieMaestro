@@ -68,16 +68,14 @@ public:
     QRadioButton *suspense;
     QPushButton *submit;
     QPushButton *left;
+    QLabel *background;
 
     void setupUi(QDialog *User)
     {
         if (User->objectName().isEmpty())
             User->setObjectName("User");
         User->resize(1200, 750);
-        User->setStyleSheet(QString::fromUtf8(" background: qlineargradient(\n"
-"        spread:pad, x1:0, y1:0, x2:1, y2:0, \n"
-"        stop:0 #000000, stop:0.65 #000000, stop:1 #505050\n"
-"    );"));
+        User->setStyleSheet(QString::fromUtf8(""));
         label = new QLabel(User);
         label->setObjectName("label");
         label->setGeometry(QRect(20, 185, 641, 380));
@@ -505,6 +503,14 @@ public:
 "border:2px solid rgb(255,163,26);\n"
 "border-radius:10px;\n"
 ""));
+        background = new QLabel(User);
+        background->setObjectName("background");
+        background->setGeometry(QRect(0, 0, 1200, 750));
+        background->setStyleSheet(QString::fromUtf8(" background: qlineargradient(\n"
+"        spread:pad, x1:0, y1:0, x2:1, y2:0, \n"
+"        stop:0 #000000, stop:0.65 #000000, stop:1 #505050\n"
+"    );"));
+        background->raise();
         label->raise();
         adminloginbtn->raise();
         genre->raise();
@@ -561,6 +567,7 @@ public:
         suspense->setText(QCoreApplication::translate("User", "suspense", nullptr));
         submit->setText(QCoreApplication::translate("User", "Submit", nullptr));
         left->setText(QString());
+        background->setText(QString());
     } // retranslateUi
 
 };

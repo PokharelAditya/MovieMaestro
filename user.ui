@@ -14,10 +14,7 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"> background: qlineargradient(
-        spread:pad, x1:0, y1:0, x2:1, y2:0, 
-        stop:0 #000000, stop:0.65 #000000, stop:1 #505050
-    );</string>
+   <string notr="true"/>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -1085,6 +1082,26 @@ border-radius:10px;
     </property>
    </widget>
   </widget>
+  <widget class="QLabel" name="background">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1200</width>
+     <height>750</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"> background: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:1, y2:0, 
+        stop:0 #000000, stop:0.65 #000000, stop:1 #505050
+    );</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>background</zorder>
   <zorder>label</zorder>
   <zorder>adminloginbtn</zorder>
   <zorder>genre</zorder>

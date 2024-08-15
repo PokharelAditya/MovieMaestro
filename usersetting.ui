@@ -390,7 +390,7 @@ background-color:rgb(255,163,26);
 }</string>
     </property>
     <property name="text">
-     <string>rom-com</string>
+     <string>crime</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="drama">
@@ -1055,12 +1055,12 @@ background-color:rgb(255,163,26);
   <zorder>gobackbtn</zorder>
   <zorder>options</zorder>
   <zorder>updateppbox</zorder>
-  <zorder>genrebox</zorder>
   <zorder>changepwbox</zorder>
+  <zorder>genrebox</zorder>
  </widget>
  <resources>
-  <include location="images.qrc"/>
   <include location="photos.qrc"/>
+  <include location="images.qrc"/>
  </resources>
  <connections/>
 </ui>
