@@ -527,8 +527,8 @@ public:
         gobackbtn->raise();
         options->raise();
         updateppbox->raise();
-        genrebox->raise();
         changepwbox->raise();
+        genrebox->raise();
 
         retranslateUi(UserSetting);
 
@@ -551,7 +551,7 @@ public:
         thriller->setText(QCoreApplication::translate("UserSetting", "thriller", nullptr));
         romance->setText(QCoreApplication::translate("UserSetting", "romance", nullptr));
         comedy->setText(QCoreApplication::translate("UserSetting", "comedy", nullptr));
-        romcom->setText(QCoreApplication::translate("UserSetting", "rom-com", nullptr));
+        romcom->setText(QCoreApplication::translate("UserSetting", "crime", nullptr));
         drama->setText(QCoreApplication::translate("UserSetting", "drama", nullptr));
         scifi->setText(QCoreApplication::translate("UserSetting", "sci-fi", nullptr));
         history->setText(QCoreApplication::translate("UserSetting", "history", nullptr));
