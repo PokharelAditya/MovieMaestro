@@ -79,7 +79,7 @@ HomePage::HomePage(User *myuser,QWidget *parent)
         }
         }
 
-            /////////////////////////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////////////
             QSqlDatabase setmovies = database::getMoviesData();
             QSqlQuery myquery(setmovies);
          myquery.prepare("SELECT Movie_ID FROM Movies_table");
@@ -298,6 +298,142 @@ else
                  PrefferedMovieID.append(thirdlist[i]);
              }
          }
+         ///////////////////////////////////////////////// for suggesting movies on the basis of the cast
+         nameforreload = myuser->_username;
+         QList<int> fourthlist;
+         myquery.prepare("SELECT movie_name FROM UserMovieRating where rating >= 4 and username = :username");
+         myquery.bindValue(":username" ,myuser->_username );
+         if(myquery.exec())
+         {
+             while(myquery.next())
+             {
+                 fourthlist.append(myquery.value(0).toInt());
+             }
+
+         }
+         else
+         {
+             QMessageBox::warning(this , "error"  , "soem problem in your recent query");
+         }
+         QList<int> fifthlist;
+         qDebug()<<"the movies later on added are " << fourthlist;
+         for(int i =0 ; i<fourthlist.count(); i++)
+         {
+             myquery.prepare("SELECT Cast_ID FROM MoviesCasts_table WHERE Movie_ID = :movieid ");
+             myquery.bindValue(":movieid",fourthlist[i]);
+             if(myquery.exec())
+             {
+                 while(myquery.next())
+                 {
+                     fifthlist.append(myquery.value(0).toInt());
+                 }
+
+             }
+             else
+             {
+                 QMessageBox::warning(this , "error"  , "soem problem in your second query");
+             }
+         }
+         qDebug()<<"your favorite movie casts are " << fifthlist;
+         QList<int> sixthlist;
+         for(int i =0; i <fifthlist.count(); i++)
+         {
+             myquery.prepare("SELECT Movie_ID FROM MoviesCasts_table WHERE Cast_ID = :directorid ");
+             myquery.bindValue(":directorid" , fifthlist[i]);
+             if(myquery.exec())
+             {
+                 while(myquery.next())
+                 {
+
+
+                     sixthlist.append(myquery.value(0).toInt());
+                 }
+
+             }
+             else
+             {
+                 QMessageBox::warning(this , "error"  , "some problem in your third query");
+             }
+         }
+
+         qDebug()<<"the movies where your actor acted is " << sixthlist;
+         for(int i =0; i<sixthlist.count(); i++)
+         {
+             if(!PrefferedMovieID.contains(sixthlist[i]))
+             {
+                 PrefferedMovieID.append(sixthlist[i]);
+             }
+         }
+         QList<int> prefferedgenreidlist;
+         //////////////////////////////////////////////////////////////////////here for recurring id
+         for(int i=0; i<fourthlist.count(); i++)
+         {
+             myquery.prepare("SELECT Genre_ID FROM MoviesGenres_table WHERE  Movie_ID = :movieid");
+             myquery.bindValue(":movieid", fourthlist[i]);
+             if(myquery.exec())
+             {
+                 while(myquery.next())
+                 {
+                     if(!genreidlist.contains(myquery.value(0).toInt()))
+                     {
+                     prefferedgenreidlist.append(myquery.value(0).toInt());
+                     }
+                 }
+
+             }
+             else
+             {
+                 QMessageBox::warning(this , "error"  , "soem problem in your recent query");
+             }
+         }
+         QList<int> actuallyprefferedidlist;
+         for(int i =0; i<prefferedgenreidlist.count(); i++)
+         {
+             int count =0;
+             for(int j =0; j<prefferedgenreidlist.count(); j++)
+             {
+                 if(prefferedgenreidlist[i] == prefferedgenreidlist[j])
+                 {
+                     count++;
+                 }
+             }
+             if(count >=3)
+             {
+                 if(!actuallyprefferedidlist.contains(prefferedgenreidlist[i]))
+                 {
+                     actuallyprefferedidlist.append(prefferedgenreidlist[i]);
+                 }
+             }
+             count ==0;
+         }
+         QList<int> actuallyprefferedmovieidlist;
+         for(int i=0; i<actuallyprefferedidlist.count(); i++)
+         {
+             myquery.prepare("SELECT Movie_ID FROM MoviesGenres_table WHERE Genre_ID =:genreid");
+             myquery.bindValue(":genreid", actuallyprefferedidlist[i]);
+             if(myquery.exec())
+             {
+                 while(myquery.next())
+                 {
+                     actuallyprefferedmovieidlist.append(myquery.value(0).toInt());
+                 }
+
+             }
+             else
+             {
+                 QMessageBox::warning(this , "error"  , "soem problem in your second query");
+             }
+
+         }
+         for(int i =0; i<actuallyprefferedmovieidlist.count(); i++)
+         {
+             if(!PrefferedMovieID.contains(actuallyprefferedmovieidlist[i]))
+             {
+                 PrefferedMovieID.append(actuallyprefferedmovieidlist[i]);
+             }
+         }
+         /////
+         ////////////////////////////////////////////////////////////////////////
              //////////////////////////////////end of latest slot
 
 
@@ -1812,7 +1948,7 @@ void HomePage::on_searchbar_textChanged(const QString &arg1)
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-  lockbtn_4 = (movielists.count() + 3) / 8 - 1;
+    lockbtn_4 = (movielists.count() + 3) / 8 - 1;
 
 
     int startIndex = 8 * _position;
@@ -1852,7 +1988,7 @@ void HomePage::on_searchbar_textChanged(const QString &arg1)
             QPixmap pixmap2;
 
             pixmap2.loadFromData(imageData2);
-             button = nullptr;
+            button = nullptr;
             switch (i-startIndex) {
             case 0: button = ui->searchmoviebtn_1; break;
             case 1: button = ui->searchmoviebtn_2; break;
@@ -1865,7 +2001,7 @@ void HomePage::on_searchbar_textChanged(const QString &arg1)
             default:
                 // Handle default case if necessary
                 break;
-            ;
+                ;
             }
 
             if (button) {
@@ -1886,7 +2022,6 @@ void HomePage::on_searchbar_textChanged(const QString &arg1)
     intmovieidlists = movieidlists;
     /// /////////////////////////////////////////////////////////////////////////////////////////
 }
-
 
 void HomePage::on_searchleftbtn_clicked()
 {
@@ -2036,5 +2171,15 @@ void HomePage::on_threepage_clicked()
 
                                  "}");
 
+}
+
+
+void HomePage::on_pushButton_clicked()
+{
+    this->close();
+    User *someuser = new User();
+    someuser->_username = nameforreload;
+    HomePage *myuser = new HomePage(someuser);
+    myuser->show();
 }
 

@@ -103,31 +103,6 @@ background:none;}</string>
     </size>
    </property>
   </widget>
-  <widget class="QLabel" name="logo">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>30</y>
-     <width>120</width>
-     <height>110</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QLabel
-{
-background:none;
-}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="photos.qrc">:/MM Transparent BG.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
   <widget class="QPushButton" name="searchbtn">
    <property name="geometry">
     <rect>
@@ -1727,10 +1702,32 @@ border:2px solid orange;
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>120</width>
+     <height>110</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="icon">
+    <iconset resource="photos.qrc">
+     <normaloff>:/MM Transparent BG.png</normaloff>:/MM Transparent BG.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>120</width>
+     <height>120</height>
+    </size>
+   </property>
+  </widget>
   <zorder>bg</zorder>
   <zorder>ProfilePicture</zorder>
   <zorder>house</zorder>
-  <zorder>logo</zorder>
   <zorder>searchbtn</zorder>
   <zorder>gearbtn</zorder>
   <zorder>searchbar</zorder>
@@ -1744,6 +1741,7 @@ border:2px solid orange;
   <zorder>foryoubox</zorder>
   <zorder>searchbox</zorder>
   <zorder>descriptionbox</zorder>
+  <zorder>pushButton</zorder>
  </widget>
  <resources>
   <include location="photos.qrc"/>

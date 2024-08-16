@@ -27,7 +27,6 @@ class Ui_HomePage
 public:
     QPushButton *ProfilePicture;
     QPushButton *house;
-    QLabel *logo;
     QPushButton *searchbtn;
     QPushButton *gearbtn;
     QLineEdit *searchbar;
@@ -82,6 +81,7 @@ public:
     QPushButton *searchmoviebtn_7;
     QPushButton *searchmoviebtn_8;
     QLabel *bg;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *HomePage)
     {
@@ -122,15 +122,6 @@ public:
         icon1.addFile(QString::fromUtf8(":/signout.png"), QSize(), QIcon::Normal, QIcon::Off);
         house->setIcon(icon1);
         house->setIconSize(QSize(50, 50));
-        logo = new QLabel(HomePage);
-        logo->setObjectName("logo");
-        logo->setGeometry(QRect(30, 30, 120, 110));
-        logo->setStyleSheet(QString::fromUtf8("QLabel\n"
-"{\n"
-"background:none;\n"
-"}"));
-        logo->setPixmap(QPixmap(QString::fromUtf8(":/MM Transparent BG.png")));
-        logo->setScaledContents(true);
         searchbtn = new QPushButton(HomePage);
         searchbtn->setObjectName("searchbtn");
         searchbtn->setGeometry(QRect(890, 55, 50, 50));
@@ -792,10 +783,16 @@ public:
         bg->setGeometry(QRect(0, 0, 1200, 750));
         bg->setPixmap(QPixmap(QString::fromUtf8(":/backgrounduser.png")));
         bg->setScaledContents(true);
+        pushButton = new QPushButton(HomePage);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(30, 30, 120, 110));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/MM Transparent BG.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon6);
+        pushButton->setIconSize(QSize(120, 120));
         bg->raise();
         ProfilePicture->raise();
         house->raise();
-        logo->raise();
         searchbtn->raise();
         gearbtn->raise();
         searchbar->raise();
@@ -809,6 +806,7 @@ public:
         foryoubox->raise();
         searchbox->raise();
         descriptionbox->raise();
+        pushButton->raise();
 
         retranslateUi(HomePage);
 
@@ -820,7 +818,6 @@ public:
         HomePage->setWindowTitle(QCoreApplication::translate("HomePage", "Dialog", nullptr));
         ProfilePicture->setText(QString());
         house->setText(QString());
-        logo->setText(QString());
         searchbtn->setText(QString());
         gearbtn->setText(QString());
         searchbar->setPlaceholderText(QCoreApplication::translate("HomePage", "Search..", nullptr));
@@ -880,6 +877,7 @@ public:
         searchmoviebtn_7->setText(QString());
         searchmoviebtn_8->setText(QString());
         bg->setText(QString());
+        pushButton->setText(QString());
     } // retranslateUi
 
 };

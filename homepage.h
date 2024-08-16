@@ -125,6 +125,8 @@ private slots:
 
     void on_threepage_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     void showdescriptionbox(int btn_number);
     Ui::HomePage *ui;
@@ -166,7 +168,8 @@ private:
     void on_no_starclicked();
         QString aname;
     void showcontent();
-            void hidecontent();
+        void hidecontent();
+    QString nameforreload;
 };
 
 #endif // HOMEPAGE_H
