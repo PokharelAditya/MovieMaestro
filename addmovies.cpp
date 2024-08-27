@@ -153,7 +153,7 @@ void addmovies::on_addButton_clicked()
     }
     else if(action==0 && comedy==0 && crime==0 && drama==0 && history==0 && horror==0 && romance==0 && scifi==0 && suspense==0 && thriller==0)
     {
-        QMessageBox::warning(this,"Error","At lease one genre has to be selected.");
+        QMessageBox::warning(this,"Error","At least, one genre has to be selected.");
     }
     else if(ui->poster->text() == "Upload Poster")
     {
